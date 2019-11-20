@@ -1,0 +1,19 @@
+Dit is de uitleg hoe je een pagina kan toevoegen en waar je je pagina kan aanpassen.
+
+Bedenk eerst goed na over de naam van je adress.
+De naam van je adress ziet er als volgt uit: localhost/{Event}/{Pagina}/{variabelen}
+Zoals: localhost/Jazz voor de hoofdpagina van de Jazz
+       localhost/Jazz/Evovle voor bijvoorbeeld een pagina van een artiest.
+In dit geval is Jazz de controller en Evolve de action
+
+
+1.  Maak de controller aan.
+    Ga naar App/Controllers en maak daar een bestand aan met de naam van de controller en met de extensie .php
+    Kopier de code uit de template en daar staan de rest van de instructies.
+
+2.  Maak een view aan.
+    Ga naar App/Views en maak daar een map aan met de naam van de je controller(zoals bv Jazz, Food, Winkelwagen etc.)
+    Kopier daar het bestand Template.php dat staat in de App/Views map. Hier staat de rest van de instructies voor dit gedeelte.
+
+3.  Ga naar index.php in de map Public en voeg je een regel toe.
+    Zie index.php voor meer info.
