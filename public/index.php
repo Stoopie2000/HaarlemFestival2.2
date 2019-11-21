@@ -42,6 +42,8 @@ $router = new Core\Router();
   *     Je kan ook variables mee geven in de URL als je dat wilt vraag het dan even.
   */
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
+$router->add('cms', ['controller' => 'CMS', 'action' => 'login']);
+$router->add('{controller}/{index}');
 
     
 $router->dispatch($_SERVER['QUERY_STRING']);

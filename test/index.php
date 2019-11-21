@@ -12,13 +12,17 @@
         <title>Hello, world!</title>
     </head>
     <body>
-        <div class="text-center title_bar fixed-top" >
-            <h1><strong>Haarlem festival <small>CMS</small><strong></h1>
+        <div class="logo">
+            <img src="img/Logo.png" alt="" class="logoimg">
+            <div class="logoparallelogram"></div>
         </div>
 
-        <div class="logo fixed-top">
-
+        <div class="text-center title_bar fixed-top">
+            <h1><strong>Haarlem festival <small>CMS</small></strong></h1>
         </div>
+
+        <div class="navbar1"></div>
+        <div class="content"></div>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
