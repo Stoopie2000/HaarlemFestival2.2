@@ -1,0 +1,33 @@
+<?php
+if(!isset($_SESSION))
+session_start();
+?>
+<header class="" style="top: 0" id="app-bar">
+  <div class="">
+    <section class="">
+      <a href="/" class="">Home</a>
+      <a href="/dance" class="">Dance</a>
+    </section>
+    <section class="">
+      <?php if(isset($_SESSION["user_id"])){
+              if(isset($_SESSION["type"]) &&  ($_SESSION["type"] == "admin" || $_SESSION["type"] == "Super admin")){
+      ?>
+      <a href="admin_panel" class="">
+        Admin Panel
+      </a>
+        <?php } ?>
+      <a href="logout.php" class="">
+        LOGOUT
+      </a>
+      <a href="profile.php" class="">Profile</a>
+      <?php }else{ ?>
+      <a href="login" class="mdc-button">
+        LOGIN
+      </a>
+      <a href="register.php" class="">
+        REGISTER
+      </a>
+      <?php } ?>
+    </section>
+  </div>
+</header>
