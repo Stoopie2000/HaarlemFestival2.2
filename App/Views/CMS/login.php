@@ -1,12 +1,15 @@
 <?php 
-    require 'inc/header.html';
+    require 'inc/header.php';
+
+    // if login than show nav
+    if(true){
+        require 'inc/nav.php';
+        // require 'inc/account.php';
+    } else{
+        echo '<div class="navbar1"></div>';
+    }
 ?>
 
-<div class="text-center title_bar fixed-top">
-    <h1><strong>Haarlem festival <small>CMS</small></strong></h1>
-</div>
-
-<div class="navbar1"></div>
 <div class="content">
 
 </div>
