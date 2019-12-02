@@ -43,7 +43,58 @@
     </nav>
 
     <div class="background">
-        <img src="haarlem-spaarne-zomer.jpg" alt="Haarlem Spaarne" width="1903" height="991">
+        <img src="haarlem-spaarne-zomer.jpg" alt="Haarlem Spaarne">
+    </div>
+
+    <div class="backgroundText">
+        <p class="introductionText">Haarlem Festival is a festival spanning multiple days in the city of Haarlem. With the four different</br>
+        events: Jazz, Food, Dance and Historic we show four different sides of Haarlem's rich culture.</br>
+        The festival will take place from Thursday 26th of July to Sunday 29th of July.
+        </p>
+        <a class="arrowDown" href=>&#187;</a>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <img src="jazz-homepage.jpg" alt="Jazz musician">
+            <div class="jazz">
+                <a class="detailTitle">Jazz</a>
+                <p class="detailText">Haarlem Festival has invited some of</br>
+                                    the best jazz artists for a very</br>
+                                    special event.</br> 
+                                    On Thursday, Friday and Saturday</br>
+                                    Patronaat will host the jazz event. On</br>
+                                    Sunday there will be a free concert</br>
+                                    near De Grote Kerk.
+                </p>
+            </div>
+        </div>
+        <div class="column">
+            <img src="food-homepage.jpg" alt="Food">
+            <div class="food">
+            <a class="detailTitle">Food</a>
+                <p class="detailText">If you are coming to Haarlem for the</br>
+                                    festival, you can't miss out on the</br>
+                                    great food Haarlem has to offer.</br> 
+                                    During the festival, a wide selection of</br>
+                                    restaurants are available to get a</br>
+                                    taste of what we have to offer.
+                </p>
+            </div>
+        </div>
+        <div class="column">
+            <img src="dance-homepage.jpg" alt="DJ">
+            <div class="dance">
+                <a class="detailTitle">Dance</a>
+                <p class="detailText">Enjoy a very special three-day event </br>
+                                    with music from some of the best </br>
+                                    Dutch DJ’s. During this event the city </br> 
+                                    center will be transformed into a </br>
+                                    haven for dance, trance, house </br>
+                                    techno fanatics.
+                </p>
+            </div>
+        </div>
     </div>
 </body>
 

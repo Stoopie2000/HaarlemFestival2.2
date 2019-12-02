@@ -1,3 +1,7 @@
+body{
+    background-color: #990000;
+}
+
 .logo{
   position: absolute;
   z-index: 30;
@@ -145,8 +149,8 @@ nav.navbar {
 }
 
 .linav .active {
-    background: #FFFF00;
-    color: #000000;
+    background: #990000;
+    color: #FFFFFF;
 }
 
 .background{
@@ -185,48 +189,47 @@ nav.navbar {
   height: 20px;
 }
 
-.row{
-  display: flex;
-  position: absolute;
-  top: 1100px;
-  left: 50%;
-  margin-left: -675px;
+.lineUpButton{
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    width: 283px;
+    height: 86px;
+    position: absolute;
+    top: 974px;
+    left: 659px;
 }
 
-.column {
-  flex: 33.33%;
+.tab{
+    display: inline-block;
+    position: absolute;
+    top: 974;
+    left: 615px;
+    text-align: center;
 }
 
-.jazz{
-  background-color: #990000;
-  height: 300px;
+.tab button{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-family: "Arial", sans-serif;
+    font-size: 36pt;
+    border-radius: 10px;
+    border-style: none;
+    width: 283px;
+    height: 86px;
+    margin-left: 30px;
 }
 
-.food{
-  background-color: #FF9900;
-  height: 300px;
+.tab button.active{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
-.dance{
-  background-color: #000099;
-  height: 300px;
-}
-
-.detailTitle{
-  color: #FFFFFF;
-  font-family: "Arial", sans-serif;
-  font-size: 28pt;
-  font-weight: bold;
-  position: relative;
-  top: 30px;
-  left: 70px;
-}
-
-.detailText{
-  color: #FFFFFF;
-  font-family: "Arial", sans-serif;
-  font-size: 14pt;
-  position: relative;
-  top: 10px;
-  left: 70px;
+.ticketsMenu{
+    background-color: rgb(255, 255, 255, 0.80);
+    border-radius: 25px;
+    width: 1046px;
+    height: 666px;
+    position: absolute;
+    top: 1214px;
+    left: 437px;
 }
