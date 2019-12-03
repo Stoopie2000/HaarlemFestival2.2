@@ -5,7 +5,7 @@ namespace App;
 /**
  * Application configuration
  *
- * PHP version 7.0
+ * PHP version 5.6
  */
 class Config
 {
@@ -14,29 +14,35 @@ class Config
      * Database host
      * @var string
      */
-    const DB_HOST = 'your-database-host';
+    const DB_HOST = 'localhost';
 
     /**
      * Database name
      * @var string
      */
-    const DB_NAME = 'your-database-name';
+    const DB_NAME = 'haarlem_festival_db';
 
     /**
      * Database user
      * @var string
      */
-    const DB_USER = 'your-database-user';
+    const DB_USER = 's633931_Admin';
 
     /**
      * Database password
      * @var string
      */
-    const DB_PASSWORD = 'your-database-password';
+    const DB_PASSWORD = 'Pret9999';
 
     /**
      * Show or hide error messages on screen
      * @var boolean
      */
     const SHOW_ERRORS = true;
+
+    /**
+     * Secret key to be used in hashing
+     * @var int
+     */
+    const SECRET_KEY = 42;
 }
