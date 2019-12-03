@@ -29,6 +29,10 @@ $router = new Core\Router();
   *     Je hebt een Controller en een Action 
   *     Zoals Jazz, Food, Home, winkelwagen zijn Controllers.
   *     Zoals een subpagina van een controller zoals een pagina met info over een restaurant of een artiest is een Action.
+  *    
+  *     De $router->add() methode werkt als volgt:
+  *     Als je een adress hebt als www.google.com/Jazz/Evolve dan is Jazz de controller en Evolve de Action.
+  *     De add methode wordt dan $router->add('/Jazz/Evolve');
   *
   *     Maar stel je hebt geen Action
   *     Zoals www.google.com/Jazz
@@ -37,9 +41,11 @@ $router = new Core\Router();
   *
   *     Je kan ook variables mee geven in de URL als je dat wilt vraag het dan even.
   */
-
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('dance', ['controller' => 'Dance', 'action' => 'index']);
+$router->add('cms', ['controller' => 'CMS', 'action' => 'login']);
+$router->add('cms/{action}/{event}', ['controller' => 'cms']);
 $router->add('{controller}/{action}');
 
+    
 $router->dispatch($_SERVER['QUERY_STRING']);

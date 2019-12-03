@@ -1,0 +1,55 @@
+body, html{
+    height: 100%;
+}
+
+.title_bar{
+    position: absolute;
+    width: 100%;
+    color: white;
+    background-color: #111111;
+    height: 60px;
+    padding-top: 3px;
+}
+
+.navbar1{
+    background-color: #111111;
+    height: 100vh;
+    position: absolute;
+    width: 200px;
+    padding-top: 175px;
+}
+
+.logoparallelogram{
+    height: 175px;
+    width: 246px;
+    background-color: white;
+    z-index: 1500;
+    position: absolute;
+    left: -23px;
+    transform: skew(-15deg);
+}
+
+.content{
+    width: 100vw;
+    height: 100vh;
+    background-color: gray;
+    padding-top: 60px;
+    padding-left: 200px;
+}
+
+.logoimg{
+    width: 180px;
+    height: 150px;
+    z-index: 1600;
+    position: absolute;
+    left: 20px;
+    top: 10px;
+}
+
+.logo{
+    position: absolute;
+    height: 175px;
+    width: 246px;
+}
+
+
