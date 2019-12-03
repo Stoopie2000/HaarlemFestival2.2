@@ -2,32 +2,26 @@
 if(!isset($_SESSION))
 session_start();
 ?>
-<header class="" style="top: 0" id="app-bar">
-  <div class="">
-    <section class="">
-      <a href="/" class="">Home</a>
-      <a href="/dance" class="">Dance</a>
-    </section>
-    <section class="">
-      <?php if(isset($_SESSION["user_id"])){
-              if(isset($_SESSION["type"]) &&  ($_SESSION["type"] == "admin" || $_SESSION["type"] == "Super admin")){
-      ?>
-      <a href="admin_panel" class="">
-        Admin Panel
-      </a>
-        <?php } ?>
-      <a href="logout.php" class="">
-        LOGOUT
-      </a>
-      <a href="profile.php" class="">Profile</a>
-      <?php }else{ ?>
-      <a href="login" class="mdc-button">
-        LOGIN
-      </a>
-      <a href="register.php" class="">
-        REGISTER
-      </a>
-      <?php } ?>
-    </section>
+<header class="" style="" id="">
+  <div class="topleft"></div>
+  <div class="topbar">
+    <ul class="ultop">
+      <li class="top"><a href="login/new"><span>Login</span></a></li>
+      <li class="top"><a href="cart/view"><span>Cart</span></a></li>
+      <div class="search-container">
+        <input type="text" placeholder="Search.." name="search">
+      </div>
+    </ul>
   </div>
+
+  <div class="topright"></div>
+
+  <nav class ="navbar">
+    <ul class="ulnav">
+      <li class="linav"><a class="active" href=><span>HOME</span></a></li>
+      <li class="linav"><a href="jazz"><span>JAZZ</span></a></li>
+      <li class="linav"><a href="dance"><span>DANCE</span></a></li>
+      <li class="linav"><a href="food"><span>FOOD</span></a></li>
+    </ul>
+  </nav>
 </header>

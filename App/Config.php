@@ -11,7 +11,7 @@ class Config
 
     // ROOTURL de url van de root map
     // Change the ... to your folder name
-    const URLROOT = 'http://localhost/HF2.2/public';
+    const URLROOT = 'http://localhost/haarlemfestival.nl/public';
 
     /**
      * Database host

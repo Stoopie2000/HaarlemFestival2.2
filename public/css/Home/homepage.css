@@ -92,7 +92,7 @@
 }
 
 nav.navbar {
-    background-color: rgb(54, 54, 54, 0.75);
+    background-color: rgba(54, 54, 54, 0.75);
     height: 123px;
     transform: skewX(-15deg);
     -ms-transform: skewX(-15deg);
@@ -160,7 +160,7 @@ nav.navbar {
   top: 821px;
   left: 0px;
   width: 100%;
-  background-color: rgb(54, 54, 54, 0.75);
+  background-color: rgba(54, 54, 54, 0.75);
   height: 123px;
   z-index: 1;
 }
