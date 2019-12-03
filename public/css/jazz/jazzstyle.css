@@ -202,7 +202,7 @@ nav.navbar {
 .tab{
     display: inline-block;
     position: absolute;
-    top: 974;
+    top: 974px;
     left: 615px;
     text-align: center;
 }
@@ -222,6 +222,31 @@ nav.navbar {
 .tab button.active{
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
+}
+
+.tabDays{
+  display: inline-block;
+  position: absolute;
+  top: 1111px;
+  left: 571px;
+  text-align: center;
+}
+
+.tabDays button{
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  font-family: "Arial", sans-serif;
+  font-size: 24pt;
+  border-radius: 10px;
+  border-style: none;
+  width: 233px;
+  height: 48px;
+  margin-left: 10px;
+}
+
+.tabDays button.active{
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 .ticketsMenu{

@@ -5,7 +5,7 @@ namespace App\Controllers;
 use \Core\View;
 
 // Verander de 'Template' met de naam van je eigen controller
-class Template extends \Core\Controller
+class Jazz extends \Core\Controller
 {
 
     /**
@@ -16,7 +16,7 @@ class Template extends \Core\Controller
     public function indexAction()
     {
         // Wat je mee geeft met deze methode is de Path naar de view 'index', de Path is vanuit de Views map.
-        View::renderTemplate('Jazz.html');
+        View::render('Jazz/Jazz.php');
     }
     
 }

@@ -1,11 +1,5 @@
 <?php 
-
-use App\Config;
-
-
     require dirname(__DIR__) . '\header.html'
-
-    
 
     // Hieronder kan je je html code kwijt voor de pagina
 ?>
@@ -13,13 +7,13 @@ use App\Config;
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">>
     <title>Haarlem Festival Homepage</title>
 </head>
 
 <body>
     <div class="logo">
-            <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">
+        <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">   
     </div>
 
     <div class="topleft"></div>
@@ -47,7 +41,7 @@ use App\Config;
     </nav>
 
     <div class="background">
-        <img src="<?php echo Config::URLROOT; ?>/img/jazz/gumbokings.jpg" alt="Gumbo Kings">
+        <img src="gumbokings.jpg" alt="Gumbo Kings">
     </div>
 
     <div class="backgroundText">
@@ -61,6 +55,12 @@ use App\Config;
     <div class="tab">
             <button class="tabLinks"><a>Line Up</a></button>
             <button class="active"><a>Tickets</a></button>
+    </div>
+
+    <div class="tabDays">
+            <button class="tabLinks"><a>Thurday</a></button>
+            <button class="active"><a>Friday</a></button>
+            <button class="tabLinks"><a>Saturday</a></button>
     </div>
 
     <div class="ticketsMenu"></div>
