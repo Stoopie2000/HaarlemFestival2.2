@@ -83,7 +83,7 @@
                     $startTime = DateTime::createFromFormat('H:i:s', $concert->StartTime)->format('H:i');
 
 
-                    echo ("<li style='list-style-type: none;'>$startTime $venue->Name: $concertArtistsNames</li>");
+                    echo ("<li style='list-style-type: none;'>$startTime $venue->Name: <b>$concertArtistsNames</b></li>");
                 }
                 ?>
             </div>
