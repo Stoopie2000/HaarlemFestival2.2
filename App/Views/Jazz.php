@@ -1,5 +1,11 @@
 <?php 
+
+use App\Config;
+
+
     require dirname(__DIR__) . '\header.html'
+
+    
 
     // Hieronder kan je je html code kwijt voor de pagina
 ?>
@@ -7,13 +13,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="jazzstyle.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">
     <title>Haarlem Festival Homepage</title>
 </head>
 
 <body>
     <div class="logo">
-            <img src="haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">
+            <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">
     </div>
 
     <div class="topleft"></div>
@@ -41,7 +47,7 @@
     </nav>
 
     <div class="background">
-        <img src="gumbokings.jpg" alt="Gumbo Kings">
+        <img src="<?php echo Config::URLROOT; ?>/img/jazz/gumbokings.jpg" alt="Gumbo Kings">
     </div>
 
     <div class="backgroundText">

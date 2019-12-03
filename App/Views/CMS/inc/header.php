@@ -21,7 +21,7 @@
     <body>
         <div class="">
         <div class="logo">
-            <img src="<?php echo Config::URLROOT; ?>/img/Logo.png" alt="" class="logoimg">
+            <img src="<?php echo Config::URLROOT; ?>/img/cms/Logo.png" alt="" class="logoimg">
             <div class="logoparallelogram"></div>
         </div>
         </div>
