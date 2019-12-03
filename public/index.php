@@ -43,7 +43,8 @@ $router = new Core\Router();
   */
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('cms', ['controller' => 'CMS', 'action' => 'login']);
-$router->add('{controller}/{index}');
+$router->add('cms/{action}/{event}', ['controller' => 'cms']);
+$router->add('{controller}/{action}');
 
     
 $router->dispatch($_SERVER['QUERY_STRING']);

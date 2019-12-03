@@ -1,0 +1,16 @@
+.title {
+    height: 115px;
+    width: 100%;
+
+}
+
+.content_center {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    height: 100%;
+}

@@ -3,6 +3,7 @@ body, html{
 }
 
 .title_bar{
+    position: absolute;
     width: 100%;
     color: white;
     background-color: #111111;
@@ -46,9 +47,9 @@ body, html{
 }
 
 .logo{
+    position: absolute;
     height: 175px;
     width: 246px;
-    position: absolute;
 }
 
 

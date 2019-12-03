@@ -10,6 +10,9 @@ namespace App;
 class Config
 {
 
+    // ROOTURL de url van de root map
+    const URLROOT = 'http://localhost/HF2.2/public';
+
     /**
      * Database host
      * @var string
