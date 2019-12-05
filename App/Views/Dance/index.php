@@ -3,9 +3,6 @@
 <head>
     <title>Haarlem Dance</title>
     <?php
-    use App\Models\Artist;
-    use App\Models\Concert;
-    use App\Models\Venue;
     use App\Config;
 
     include(dirname(dirname(__FILE__)) . "/Default/website_head.html")?>

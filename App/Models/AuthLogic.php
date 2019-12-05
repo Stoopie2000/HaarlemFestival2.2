@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Models\Logic;
+namespace App\Models;
 
 
 use App\Config;
@@ -14,24 +14,23 @@ class AuthLogic
     /**
      * Store user_id in session and if $remember is true store a remember_me token in database and set a remember cookie
      *
-     * @param $userId
-     * @param $email
-     * @param $remember
+     * @param User $user
+     * @param bool $remember
      *
      * @return void
      */
-    public static function on_login($userId, $email, $remember)
+    public static function on_login($user, $remember)
     {
         if(!isset($_SESSION))
             session_start();
-        $_SESSION["user_id"] = $userId;
+        $_SESSION["user_id"] = $user->UserID;
 
         if ($remember){
             $token = new Token();
-            $cookie = $email . ':' . $token->getValue();
+            $cookie = $user->Email . ':' . $token->getValue();
             $mac = hash_hmac('sha256', $cookie, Config::SECRET_KEY);
             $cookie .= ':' . $mac;
-            User::store_token_for_user($email, $token->getValue());
+            $user->store_token($token->getValue());
 
             setcookie('rememberme', $cookie, time()+60*60*24*365, '/');
         }
@@ -44,7 +43,6 @@ class AuthLogic
      */
     public static function getReturnToPage()
     {
-        //return $_SESSION['return_to'] ?? '/';
         if(isset($_SESSION['return_to']))
             return $_SESSION['return_to'];
         else

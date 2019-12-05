@@ -4,6 +4,8 @@ namespace Core;
 
 use PDO;
 use App\Config;
+use PDOException;
+use PDOStatement;
 
 /**
  * Base model
@@ -16,7 +18,7 @@ abstract class Model
     /**
      * Get the PDO database connection
      *
-     * @return mixed
+     * @return PDO Existing PDO or if PDO doesnt exist yet a new PDO.
      */
     protected static function get_pdo() : PDO
     {
@@ -42,17 +44,32 @@ abstract class Model
         return $pdo;
     }
 
+    /**
+     * @param string $sql This must be a valid SQL statement for the target database server.
+     * @param array $parameters An Array of parameters to complete the sql quarry. Parameters need to be in the same order as in the SQL statement. <br>
+     *                          Example: $sql = INSERT INTO users(Email, Password) VALUES (?, ?) $parameters = [example@gmail.com, Welcome123]
+     * @return bool TRUE on success or FALSE on failure.
+     */
     protected static function execute_edit_query($sql, $parameters){
         $pdo = self::get_pdo();
         $stmt = $pdo->prepare($sql);
         if ($stmt->execute($parameters)){
             unset($pdo);
+            return true;
         } else {
             echo "Oops! Something went wrong. Please try again later.";
             unset($pdo);
+            return false;
         }
     }
 
+    /**
+     * @param string $sql This must be a valid SQL statement for the target database server.
+     * @param int $fetchMode The fetch mode must be one of the PDO::FETCH_* constants.
+     * @param array $parameters An Array of parameters to complete the sql quarry. Parameters need to be in the same order as in the SQL statement. <br>
+     *                          Example: $sql = SELECT * FROM users WHERE email = ? AND password = ? $parameters = [example@gmail.com, Welcome123]
+     * @return bool|PDOStatement A PDOStatement if successful, FALSE if unsuccessful
+     */
     protected static function execute_select_query($sql, $fetchMode = PDO::FETCH_ASSOC, $parameters = [])
     {
         $stmt = static::get_pdo()->prepare($sql);
