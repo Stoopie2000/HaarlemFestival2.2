@@ -169,7 +169,8 @@ nav.navbar {
   z-index: 1;
 }
 
-.introductionText{
+.jazzText{
+  width: 40%;
   padding-left: 2%;
   color: white;
   font-family: "Arial", sans-serif;
