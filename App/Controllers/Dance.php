@@ -27,4 +27,15 @@ class Dance extends Controller
             'plays_at' => PlaysAt::getAll()
         ]);
     }
+
+    public function locationsAction(){
+        $location = Venue::find_venue_by_name($this->route_params['location']);
+        $concerts = Concert::find_for_location($location->VenueID);
+        if ($location){
+            View::render('Dance/locations/detail.php', [
+                'venue' => $location,
+                'concerts' => $concerts
+            ]);
+        }
+    }
 }

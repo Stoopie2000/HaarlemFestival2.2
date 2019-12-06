@@ -45,6 +45,7 @@ $router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('dance', ['controller' => 'Dance', 'action' => 'index']);
 $router->add('cms', ['controller' => 'CMS', 'action' => 'login']);
 $router->add('cms/{action}/{event}', ['controller' => 'cms']);
+$router->add('dance/{action}/{location}', ['controller' => 'dance']);
 $router->add('{controller}/{action}');
 
     
