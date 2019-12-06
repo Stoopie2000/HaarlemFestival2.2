@@ -10,7 +10,7 @@ require dirname(__DIR__) . '\header.html'
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/homepage.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/Home/homepage.css">
     <title>Haarlem Festival Homepage</title>
 </head>
 
@@ -18,32 +18,7 @@ require dirname(__DIR__) . '\header.html'
     <div class="logo">
             <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">
     </div>
-
-    <div class="topleft"></div>
-    <div class="topbar">
-        <ul class="ultop"> 
-            <li class="top"><a href="login"><span>Login</span></a></li>
-            <li class="top"><a href="cart"><span>Cart</span></a></li>
-            <div class="search-container">
-                
-                   <input type="text" placeholder="Search.." name="search">
-                
-            </div>
-        </ul>
-    </div>
-
-    
-
-    <div class="topright"></div>
-    
-    <nav class ="navbar">
-        <ul class="ulnav">
-            <li class="linav"><a class="active" href=><span>HOME</span></a></li>
-            <li class="linav"><a href=><span>JAZZ</span></a></li>
-            <li class="linav"><a href=><span>DANCE</span></a></li>
-            <li class="linav"><a href=><span>FOOD</span></a></li>
-        </ul>
-    </nav>
+    <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html") ?>
 
     <div class="background">
         <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-spaarne-zomer.jpg" alt="Haarlem Spaarne">
@@ -64,7 +39,7 @@ require dirname(__DIR__) . '\header.html'
                 <a class="detailTitle">Jazz</a>
                 <p class="detailText">Haarlem Festival has invited some of</br>
                                     the best jazz artists for a very</br>
-                                    special event.</br> 
+                                    special event.</br>
                                     On Thursday, Friday and Saturday</br>
                                     Patronaat will host the jazz event. On</br>
                                     Sunday there will be a free concert</br>
