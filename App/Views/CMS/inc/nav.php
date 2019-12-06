@@ -13,7 +13,7 @@
             <div class="collapse" id="Pages">
                 <!--Needs to be dynamic!! -->
                 <a class="menu menu-sub<?php echo ($action == 'pages' && $event == 'home' ? ' active' : ''); ?>" href="#">Home</a>
-                <a class="menu menu-sub active" href="#">Jazz</a>
+                <a class="menu menu-sub" href="#">Jazz</a>
                 <a class="menu menu-sub" href="#">Dance</a>
                 <a class="menu menu-sub" href="#">Food</a>
                 <a class="menu menu-sub" href="#">New</a>

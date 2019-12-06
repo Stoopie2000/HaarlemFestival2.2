@@ -18,7 +18,9 @@
             </h1>
         </div>
         <div class="row">
-            <div class="col-4">
+            <div class="container col-4">
+            </div>
+            <div class="container col-8">
 
             </div>
         </div>
