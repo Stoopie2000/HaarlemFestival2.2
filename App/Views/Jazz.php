@@ -1,9 +1,8 @@
-<?php 
+<?php
 
 use App\Config;
 
-
-    require dirname(__DIR__) . '\header.html'
+require dirname(__DIR__) . '\header.html'
 
     
 

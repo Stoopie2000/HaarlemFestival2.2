@@ -3,7 +3,6 @@
 
 namespace App\Models;
 
-
 use Core\Model;
 use PDO;
 
@@ -13,13 +12,20 @@ class PlaysAt extends Model
     {
         foreach ($data as $key => $value) {
             $this->$key = $value;
-        };
+        }
     }
 
     public static function getAll()
     {
         $sql = 'SELECT * FROM plays_at';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
-        return $users = $stmt->fetchAll();
+        return $playsAt = $stmt->fetchAll();
+    }
+
+    public static function get_from_concert_ID(int $ConcertID)
+    {
+        $sql = 'SELECT * FROM plays_at WHERE ConcertID = ?';
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$ConcertID]);
+        return $playsAt = $stmt->fetchAll();
     }
 }

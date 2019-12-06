@@ -2,16 +2,22 @@
 
 
 namespace App\Models;
+
 use Core\Model;
 use PDO;
 
 class Artist extends Model
 {
+    /**
+     * Artist constructor.
+     *
+     * @param array $data
+     */
     public function __construct($data = [])
     {
         foreach ($data as $key => $value) {
             $this->$key = $value;
-        };
+        }
     }
 
     /**
@@ -23,6 +29,13 @@ class Artist extends Model
     {
         $sql = 'SELECT * FROM artists';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
-        return $users = $stmt->fetchAll();
+        return $artists = $stmt->fetchAll();
+    }
+
+    public static function get_from_ID($ArtistID)
+    {
+        $sql = 'SELECT * FROM artists WHERE ArtistID = ?';
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$ArtistID]);
+        return $artist = $stmt->fetch();
     }
 }

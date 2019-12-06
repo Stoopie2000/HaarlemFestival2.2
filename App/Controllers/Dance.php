@@ -3,13 +3,14 @@
 
 namespace App\Controllers;
 
-
 use App\Models\Artist;
 use App\Models\Concert;
+use App\Models\DayTicket;
 use App\Models\PlaysAt;
 use App\Models\Venue;
 use Core\Controller;
 use Core\View;
+use DateTime;
 
 class Dance extends Controller
 {
@@ -28,13 +29,18 @@ class Dance extends Controller
         ]);
     }
 
-    public function locationsAction(){
-        $location = Venue::find_venue_by_name($this->route_params['location']);
-        $concerts = Concert::find_for_location($location->VenueID);
-        if ($location){
+    public function locationsAction()
+    {
+        $location = Venue::find_venue_by_name(str_replace('-', ' ', $this->route_params['location']));
+        $concertsAtLocation = Concert::find_for_location($location->VenueID);
+        $concerts = Concert::getAll();
+
+        if ($location) {
             View::render('Dance/locations/detail.php', [
                 'venue' => $location,
-                'concerts' => $concerts
+                'concerts' => $concerts,
+                'concertsAtLocation' => $concertsAtLocation,
+                'dayTickets' => DayTicket::get_all()
             ]);
         }
     }

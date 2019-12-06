@@ -1,11 +1,11 @@
-<?php 
+<?php
     require 'inc/header.php';
 
     // if login than show nav
-    if(true){
+    if (true) {
         require 'inc/nav.php';
-        // require 'inc/account.php';
-    } else{
+    // require 'inc/account.php';
+    } else {
         echo '<div class="navbar1"></div>';
     }
 ?>

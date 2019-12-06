@@ -26,10 +26,10 @@ set_exception_handler('Core\Error::exceptionHandler');
 $router = new Core\Router();
 
 /**  Add the routes
-  *     Je hebt een Controller en een Action 
+  *     Je hebt een Controller en een Action
   *     Zoals Jazz, Food, Home, winkelwagen zijn Controllers.
   *     Zoals een subpagina van een controller zoals een pagina met info over een restaurant of een artiest is een Action.
-  *    
+  *
   *     De $router->add() methode werkt als volgt:
   *     Als je een adress hebt als www.google.com/Jazz/Evolve dan is Jazz de controller en Evolve de Action.
   *     De add methode wordt dan $router->add('/Jazz/Evolve');

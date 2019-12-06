@@ -3,9 +3,11 @@
 
 namespace App\Controllers;
 
-
-use App\Models\{Flash, AuthLogic, User};
-use Core\{Controller, View};
+use App\Models\Flash;
+use App\Models\AuthLogic;
+use App\Models\User;
+use Core\Controller;
+use Core\View;
 use Exception;
 
 class Login extends Controller
@@ -27,18 +29,18 @@ class Login extends Controller
 
         $remember = isset($_POST["remember_me"]);
 
-        if ($user){
+        if ($user) {
             AuthLogic::on_login($user, $remember);
 
             Flash::addMessage('Login successful');
 
             $this->redirect(AuthLogic::getReturnToPage());
-        }else {
-                Flash::addMessage('Username or password incorrect', Flash::WARNING);
-                View::render('Login/new.php', [
+        } else {
+            Flash::addMessage('Username or password incorrect', Flash::WARNING);
+            View::render('Login/new.php', [
                     'email' => $_POST['email'],
                     'remember_me' => $remember
                 ]);
-         }
+        }
     }
 }
