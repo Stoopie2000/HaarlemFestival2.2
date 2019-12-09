@@ -12,6 +12,7 @@ use PDO;
  * @property DateTime EndTime
  * @property array Artists
  * @property int  ConcertID
+ * @property Venue Venue
  */
 class Concert extends Model
 {
@@ -30,6 +31,8 @@ class Concert extends Model
         foreach ($playsAt as $item) {
             $this->Artists[] = Artist::get_from_ID($item->ArtistID);
         }
+
+        $this->Venue = Venue::get_venue($this->VenueID);
     }
 
     /**
@@ -48,6 +51,13 @@ class Concert extends Model
     {
         $sql = 'SELECT * FROM concerts WHERE VenueID = ?';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$locationID]);
+        return $concerts = $stmt->fetchAll();
+    }
+
+    public static function get_for_artist(int $ArtistID)
+    {
+        $sql = "SELECT * FROM concerts INNER JOIN plays_at pa on concerts.ConcertID = pa.ConcertID WHERE pa.ArtistID = ?";
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$ArtistID]);
         return $concerts = $stmt->fetchAll();
     }
 

@@ -42,10 +42,11 @@ $router = new Core\Router();
   *     Je kan ook variables mee geven in de URL als je dat wilt vraag het dan even.
   */
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
-$router->add('dance', ['controller' => 'Dance', 'action' => 'index']);
 $router->add('cms', ['controller' => 'CMS', 'action' => 'login']);
 $router->add('cms/{action}/{event}', ['controller' => 'cms']);
-$router->add('dance/{action}/{location}', ['controller' => 'dance']);
+$router->add('dance', ['controller' => 'Dance', 'action' => 'index']);
+$router->add('dance/locations/{location}', ['controller' => 'dance', 'action' => 'locations']);
+$router->add('dance/lineup/{artist}', ['controller' => 'dance', 'action' => 'lineup']);
 $router->add('{controller}/{action}');
 
     

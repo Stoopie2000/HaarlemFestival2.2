@@ -28,4 +28,11 @@ class Venue extends Model
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$venue]);
         return $venue = $stmt->fetch();
     }
+
+    public static function get_venue($VenueID)
+    {
+        $sql = 'SELECT * FROM venue WHERE VenueID = ?';
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$VenueID]);
+        return $venue = $stmt->fetch();
+    }
 }

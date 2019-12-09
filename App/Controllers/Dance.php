@@ -10,7 +10,6 @@ use App\Models\PlaysAt;
 use App\Models\Venue;
 use Core\Controller;
 use Core\View;
-use DateTime;
 
 class Dance extends Controller
 {
@@ -32,15 +31,29 @@ class Dance extends Controller
     public function locationsAction()
     {
         $location = Venue::find_venue_by_name(str_replace('-', ' ', $this->route_params['location']));
-        $concertsAtLocation = Concert::find_for_location($location->VenueID);
-        $concerts = Concert::getAll();
+
 
         if ($location) {
+            $concertsAtLocation = Concert::find_for_location($location->VenueID);
+            $concerts = Concert::getAll();
+
             View::render('Dance/locations/detail.php', [
                 'venue' => $location,
                 'concerts' => $concerts,
                 'concertsAtLocation' => $concertsAtLocation,
                 'dayTickets' => DayTicket::get_all()
+            ]);
+        }
+    }
+
+    public function lineupAction()
+    {
+        $artist = Artist::find_by_name(str_replace('-', ' ', $this->route_params['artist']));
+
+        if ($artist){
+            $artist->Concerts = $artist->get_concerts();
+            View::render('Dance/lineup/detail.php', [
+                'artist' => $artist
             ]);
         }
     }
