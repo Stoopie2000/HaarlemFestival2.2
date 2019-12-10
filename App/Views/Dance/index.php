@@ -6,7 +6,7 @@
     use App\Config;
 
     include(dirname(dirname(__FILE__)) . "/Default/website_head.html")?>
-    <link rel="stylesheet" href="<?php echo Config::URLROOT; ?>/css/Dance/danceStyle.css"
+    <link rel="stylesheet" href="<?php echo Config::URLROOT; ?>/css/Dance/danceStyle.css">
 </head>
 <body id="dancePage" class="">
 <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html") ?>

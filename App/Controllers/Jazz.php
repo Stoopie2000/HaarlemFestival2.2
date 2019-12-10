@@ -5,6 +5,7 @@ namespace App\Controllers;
 use Core\View;
 use Core\Controller;
 use App\Models\JazzArtist;
+use App\Models\AllAccessJazz;
 
 class Jazz extends \Core\Controller
 {
@@ -16,7 +17,8 @@ class Jazz extends \Core\Controller
     public function indexAction()
     {
         View::render('Jazz/Jazz.php', [
-            'jazzArtists' => JazzArtist::getArtistsThursday()
+            'jazzArtists' => JazzArtist::getAllArtists(),
+            'allAccessJazz' => AllAccessJazz::getAllAccessJazz()
         ]);
     }
     
