@@ -11,7 +11,7 @@ class Config
 
     // ROOTURL de url van de root map
     // Change the ... to your folder name
-    const URLROOT = 'http://localhost/';
+    const URLROOT = 'http://localhost/HF2.2/public';
 
     /**
      * Database host
@@ -35,7 +35,7 @@ class Config
      * Database password
      * @var string
      */
-    const DB_PASSWORD = 'Pret9999';
+    const DB_PASSWORD = '';
 
     /**
      * Show or hide error messages on screen
