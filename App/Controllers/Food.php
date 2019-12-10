@@ -2,21 +2,21 @@
 
 namespace App\Controllers;
 
+use App\Models\Category;
+use App\Models\Restaurant;
+use Core\Controller;
 use \Core\View;
 
-// Verander de 'Template' met de naam van je eigen controller
-class Food extends \Core\Controller
+class Food extends Controller
 {
-
     /**
-     * Voor iedere Action maak je hier een niewe methode aan.
+     * @throws \Exception
      */
-
-    // Dit is de Action 'index', de naam van deze methode is dus de naam van je Action met 'Action' erachter.
     public function indexAction()
     {
-        // Wat je mee geeft met deze methode is de Path naar de view 'index', de Path is vanuit de Views map.
-        View::render('Food/Food.php');
-    }
+        $restaurants = Restaurant::getAll();
+        $categories = Category::getAll();
 
+        View::render('Food/Food.php', compact('restaurants', 'categories'));
+    }
 }
