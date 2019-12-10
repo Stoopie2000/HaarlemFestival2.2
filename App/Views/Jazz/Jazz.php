@@ -60,12 +60,19 @@
     </div>
 
     <div class="tabDays">
-            <button class="tabLinks"><a>Thurday</a></button>
-            <button class="active"><a>Friday</a></button>
+            <button class="active"><a>Thurday</a></button>
+            <button class="tabLinks"><a>Friday</a></button>
             <button class="tabLinks"><a>Saturday</a></button>
     </div>
 
-    <div class="ticketsMenu"></div>
+    <div class="ticketsMenu">
+        <?php
+                /** @var array $jazzArtists */
+                foreach ($jazzArtists as $jazzArtist) {
+                    echo ("<li style='list-style-type: none;'><a> $venue->Name </a></li>");
+                }
+        ?>
+    </div>
 
 <?php
     // Hier eindigen we de pagina mee
