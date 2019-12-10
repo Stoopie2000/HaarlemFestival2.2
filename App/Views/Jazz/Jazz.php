@@ -3,11 +3,14 @@
 
     require dirname(__DIR__) . '\header.html'
 
-    // Hieronder kan je je html code kwijt voor de pagina
+    
 ?>
 
 <html lang="en">
 <head>
+<?php
+$tags = array('bears');
+?>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">>
     <title>Haarlem Festival Homepage</title>
@@ -60,12 +63,106 @@
     </div>
 
     <div class="tabDays">
-            <button class="tabLinks"><a>Thurday</a></button>
-            <button class="active"><a>Friday</a></button>
+            <button class="active"><a>Thurday</a></button>
+            <button class="tabLinks"><a>Friday</a></button>
             <button class="tabLinks"><a>Saturday</a></button>
     </div>
 
-    <div class="ticketsMenu"></div>
+    <?php 
+    $date = 1;
+    ?>
+
+    <div class="ticketsMenu">
+
+        <a class="allAccessHead">All Access Tickets</a>
+        <div class = "allAccess">
+                <?php
+                        /** @var array $allAccessJazz */
+                        foreach ($allAccessJazz as $allAccessJazzTicket) 
+                        {
+                            echo ("<li><a> $allAccessJazzTicket->name </a></li>");
+                        }
+                ?>
+            <div class = "priceAllAccess">
+                <?php
+                        /** @var array $allAccessJazz */
+                        foreach ($allAccessJazz as $allAccessJazzTicket)
+                        {
+                            echo ("<li><a>€$allAccessJazzTicket->Price,00</a></li>");
+                        }
+                ?>
+            </div>
+        </div>
+
+        <div class="dashedLine"></div>
+        
+        <?php 
+            if($date == 1)
+            {
+                echo ("<a class=dayTicketsHead>Tickets Thursday</a>");
+            }
+            else if($date == 2){
+                echo ("<a class=dayTicketsHead>Tickets Friday</a>");
+            }                else if($date == 3)
+            {
+                echo ("<a class=dayTicketsHead>Tickets Saturday</a>");
+            }
+        ?>
+
+        <div class = "dayTickets">
+            
+            <?php 
+                /** @var array $jazzArtists */
+                foreach ($jazzArtists as $jazzArtist) 
+                {
+                    if($jazzArtist->DateID == $date)
+                    {
+                        echo ("<li><a> $jazzArtist->Name </a></li>");
+                    }
+                }
+            ?>
+
+            <div class = "hall">
+                <?php
+                        /** @var array $jazzArtists */
+                        foreach ($jazzArtists as $jazzArtist) 
+                        {
+                            if($jazzArtist->DateID == $date)
+                            {
+                                echo ("<li><a>$jazzArtist->Hall</a></li>");
+                            }
+                        }
+                ?>
+            </div>
+            <div class = "priceDay">
+                <?php
+                        /** @var array $jazzArtists */
+                        foreach ($jazzArtists as $jazzArtist) 
+                        {
+                            if($jazzArtist->DateID == $date)
+                            {
+                                echo ("<li><a>€$jazzArtist->Price,00</a></li>");
+                            }
+                        }
+                ?>
+            </div>
+        </div>
+
+        
+
+        
+
+        
+
+        <div class = "quantity">
+            <li>
+                <input type="image" src="<?php echo Config::URLROOT; ?>/img/jazz/min.png" />
+                <input class="qty" type="number" value="0" />
+                <input type="image" src="<?php echo Config::URLROOT; ?>/img/jazz/plus.png" />
+            </li>
+        </div>
+        
+    </div>
 
 <?php
     // Hier eindigen we de pagina mee
