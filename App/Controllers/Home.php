@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use Core\Controller;
 use \Core\View;
 
 /**
@@ -9,7 +10,7 @@ use \Core\View;
  *
  * PHP version 7.0
  */
-class Home extends \Core\Controller
+class Home extends Controller
 {
 
     /**

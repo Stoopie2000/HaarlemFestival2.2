@@ -2,16 +2,29 @@
 
 
 namespace App\Models;
+
 use Core\Model;
 use PDO;
 
+/**
+ * Class Artist
+ * @package App\Models
+ *
+ * @property int ArtistID
+ * @property array Concerts
+ */
 class Artist extends Model
 {
+    /**
+     * Artist constructor.
+     *
+     * @param array $data
+     */
     public function __construct($data = [])
     {
         foreach ($data as $key => $value) {
             $this->$key = $value;
-        };
+        }
     }
 
     /**
@@ -23,6 +36,26 @@ class Artist extends Model
     {
         $sql = 'SELECT * FROM artists';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
-        return $users = $stmt->fetchAll();
+        return $artists = $stmt->fetchAll();
+    }
+
+    public static function get_from_ID($artistID)
+    {
+        $sql = 'SELECT * FROM artists WHERE ArtistID = ?';
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$artistID]);
+        return $artist = $stmt->fetch();
+    }
+
+    public static function find_by_name($artistName) : Artist
+    {
+        $sql = 'SELECT * FROM artists WHERE Name like ?';
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$artistName]);
+        return $artist = $stmt->fetch();
+    }
+
+    public function get_concerts()
+    {
+        $concerts = Concert::get_for_artist($this->ArtistID);
+        return $concerts;
     }
 }
