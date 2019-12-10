@@ -22,21 +22,32 @@
 
             </div>
             <div class="col-10">
-                <div class="listview">
-                    <div class="listitem">
-                        <div class="litop">
-                            <div class="litoptext">Thursday</div>
-                            <div class="litoptext">26 July</div>
-                            <div class="litoptext">Tom Thomsom Assemble</div>
-                            <div class="litoptext">18:00 - 19:00</div>
-                        </div>
-                        <div class="libottom">
+                <div class="listview"><?php
+                    foreach ($concerts as $concert) {
+                        echo("<div class='listitem'><div class='litop'><div class='litoptext'>");
+                        echo date_format($concert->Date, 'l');
+                        echo("</div><div class='litoptext'>");
+                        echo date_format($concert->Date, 'd F');
+                        echo("</div><div class='litoptext'>");
+                        echo $concert->Artists->Name;
+                        echo("</div><div class='litoptext'>");
+                        echo(date_format($concert->StartTime, 'G:i') . " - " . date_format($concert->EndTime, 'G:i'));
+                        echo("</div></div><div class='libottom'><div class='libottomtext'>Location:</br>");
+                        echo $concert->Venue->Name;
+                        echo("</div><div class='libottomtext'>Hall:</br>");
+                        echo $concert->Venue->Hall;
+                        echo("</div><div class='libottomtext'>Seats:</br>");
+                        echo $concert->Venue->SeatingCapacity;
+                        echo("</div><div class='libottomtext'>Price:</br>");
+                        echo("€ " . printf("%1\$.2f", $concert->Price));
+                        echo("</div></div>");
+                    }?>
+                        <!--<div class="libottom">
                             <div class="libottomtext">Location:</br>Patronaat</div>
                             <div class="libottomtext">Hall:</br>Main Hall</div>
                             <div class="libottomtext">Seats:</br>300</div>
                             <div class="libottomtext">Price:</br>€ 15,00</div>
-                        </div>
-                    </div>
+                        </div>-->
                 </div>
             </div>
         </div>
