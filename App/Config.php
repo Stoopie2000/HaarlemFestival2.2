@@ -17,25 +17,25 @@ class Config
      * Database host
      * @var string
      */
-    const DB_HOST = 'localhost';
+    const DB_HOST = 'hfteam6.infhaarlem.nl';
 
     /**
      * Database name
      * @var string
      */
-    const DB_NAME = 'haarlem_festival_db';
+    const DB_NAME = 'hfteam6_DB';
 
     /**
      * Database user
      * @var string
      */
-    const DB_USER = 's633931_Admin';
+    const DB_USER = 'hfteam6_Group';
 
     /**
      * Database password
      * @var string
      */
-    const DB_PASSWORD = '';
+    const DB_PASSWORD = 'tv5rMk4gL';
 
     /**
      * Show or hide error messages on screen
