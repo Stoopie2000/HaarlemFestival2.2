@@ -29,17 +29,12 @@ class CMS extends \Core\Controller
 
     public function EventsAction(){
         print_r($this->route_params);
-        $concerts = Concert::getAll();
-        foreach ($concerts as $concert) {
-            if ($concert->Artists->Event != $this->route_params->event) {
-                unset($concerts[$concert]);
-            };
-        }
+        $concerts = Concert::getAll($this->route_params["event"]);
 
         
         // Wat je mee geeft met deze methode is de Path naar de view 'index', de Path is vanuit de Views map.
         View::render('CMS/events.php', [
-            $this->route_params,
+            'params' => $this->route_params,
             'concerts' => $concerts
         ]);
     }

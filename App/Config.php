@@ -12,7 +12,7 @@ class Config
 
     // ROOTURL de url van de root map
     // Change the ... to your folder name
-    const URLROOT = 'localhost';
+    const URLROOT = 'http://localhost:32123/HF2.2/public';
 
     /**
      * Database host
