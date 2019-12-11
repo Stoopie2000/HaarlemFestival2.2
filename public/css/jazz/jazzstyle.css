@@ -169,7 +169,8 @@ nav.navbar {
   z-index: 1;
 }
 
-.introductionText{
+.jazzText{
+  width: 40%;
   padding-left: 2%;
   color: white;
   font-family: "Arial", sans-serif;
@@ -202,7 +203,7 @@ nav.navbar {
 .tab{
     display: inline-block;
     position: absolute;
-    top: 974;
+    top: 974px;
     left: 615px;
     text-align: center;
 }
@@ -224,6 +225,31 @@ nav.navbar {
     color: rgb(255, 255, 255);
 }
 
+.tabDays{
+  display: inline-block;
+  position: absolute;
+  top: 1111px;
+  left: 571px;
+  text-align: center;
+}
+
+.tabDays button{
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  font-family: "Arial", sans-serif;
+  font-size: 24pt;
+  border-radius: 10px;
+  border-style: none;
+  width: 233px;
+  height: 48px;
+  margin-left: 10px;
+}
+
+.tabDays button.active{
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
 .ticketsMenu{
     background-color: rgb(255, 255, 255, 0.80);
     border-radius: 25px;
@@ -233,3 +259,118 @@ nav.navbar {
     top: 1214px;
     left: 437px;
 }
+
+.ticketsMenu a{
+  font-family: Arial, sans-serif;
+  font-size: 18pt;
+}
+
+.ticketsMenu li{
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+.allAccess{
+
+    position: absolute;
+    left: 97px;
+    top: 80px;
+}
+
+.priceAllAccess{
+  position: absolute;
+  left: 650px;
+  top: 0px;
+}
+
+.dayTickets{
+  position: absolute;
+  left: 97px;
+  top: 333px;
+}
+
+.hall{
+  position: absolute;
+  left: 430px;
+  top: 0px;
+  width: 150px;
+}
+
+.hall li{
+  list-style-type: none;
+}
+
+.priceDay{
+  position: absolute;
+  left: 650px;
+  top: 0px;
+}
+
+.priceDay li{
+  list-style-type: none;
+}
+
+.quantity{
+  position: absolute;
+  left: 892px;
+  top: 335px;
+}
+
+.quantity li{
+  list-style-type: none;
+  margin-bottom: 10px;
+  
+}
+
+.quantity input.qty{
+  width: 15px;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  font-family: Arial, sans-serif;
+  font-size: 18pt;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.dayTicketsHead{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: 200px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 26pt;
+  font-weight: bold;
+}
+
+.allAccessHead{
+  display: block;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 26pt;
+  font-weight: bold;
+}
+
+.dashedLine{
+  border:none;
+  border-top:4px dotted #990000;
+  margin-top: 200px;
+}
+

@@ -2,7 +2,6 @@
 
 
 namespace App\Models;
-
 use Core\Model;
 use PDO;
 
@@ -24,7 +23,7 @@ class Artist extends Model
     {
         foreach ($data as $key => $value) {
             $this->$key = $value;
-        }
+        };
     }
 
     /**

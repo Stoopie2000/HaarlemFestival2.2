@@ -26,7 +26,6 @@ class Login extends Controller
     public function createAction()
     {
         $user = User::authenticate($_POST["email"], $_POST["password"]);
-
         $remember = isset($_POST["remember_me"]);
 
         if ($user) {
