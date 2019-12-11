@@ -44,8 +44,8 @@ class Concert extends Model
      */
     public static function getAll()
     {
-        $sql = 'SELECT * FROM concerts';
-        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
+        $sql = 'SELECT * FROM concerts where Event = ?';
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, ['dance']);
         return $concerts = $stmt->fetchAll();
     }
 
