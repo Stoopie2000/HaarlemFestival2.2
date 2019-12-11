@@ -13,6 +13,7 @@ use PDO;
  * @property array Artists
  * @property int  ConcertID
  * @property Venue Venue
+ * @property  int DateID
  */
 class Concert extends Model
 {
@@ -22,6 +23,7 @@ class Concert extends Model
             $this->$key = $value;
         }
 
+        $this->Date = Date::get_by_ID($this->DateID)->Date;
         $this->Date = DateTime::createFromFormat('Y-m-d', $this->Date)->format('l d F');
         $this->StartTime = DateTime::createFromFormat('G:i:s', $this->StartTime)->format('G:i');
         $this->EndTime = DateTime::createFromFormat('G:i:s', $this->EndTime)->format('G:i');
