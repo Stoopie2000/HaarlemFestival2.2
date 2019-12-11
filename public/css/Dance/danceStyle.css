@@ -39,9 +39,16 @@
 
 #dancePage .ticket{
     margin-bottom: 15px;
+    font-size: 1.4rem;
 }
 #dancePage .ticket a{
     color: black;
+}
+#dancePage .schedule{
+    font-size: 1.3rem;
+}
+#dancePage .ticket .btn{
+    float: right;
 }
 
 #dancePage{

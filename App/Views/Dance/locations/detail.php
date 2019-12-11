@@ -1,7 +1,6 @@
 <?php
 
 use App\Config;
-use App\Models\Concert;
 use App\Models\Venue;
 
 /** @var Venue $venue
@@ -14,7 +13,7 @@ include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html")?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Haarlem Dance</title>
+    <title>Haarlem Dance - <?php echo $venue->Name ?></title>
   <link rel="stylesheet" href="<?php echo Config::URLROOT; ?>/css/Dance/danceStyle.css"
 </head>
 <body id="dancePage" class="">
@@ -60,7 +59,7 @@ include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html")?>
     <?php foreach ($dayTickets as $dayTicket) {
     if (!isset($dayTicket->Day)) {
          echo"<div class='row'>
-                <div class='col-row-6'>
+                <div class='col-sm-6'>
                     <h2>All-access pass for Friday 27, Saturday 28 and Sunday 29</h2>
                 </div>
               </div>
@@ -102,12 +101,9 @@ include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html")?>
 
                 echo "<li style='list-style-type: none;'>$concert->StartTime - $concert->EndTime $venue->Name: <b>$concertArtistsNames</b></li>";
             }
-        } ?>
-
-                  </ul>
+            }; echo "</ul>
                 </div>
-            </div>
-        <?php
+            </div>";
     }
 }?>
 

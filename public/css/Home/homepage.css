@@ -230,3 +230,8 @@ nav.navbar {
   top: 10px;
   left: 70px;
 }
+
+.ticketsMenu a{
+  font-family: "Arial", sans-serif;
+  font-size: 14pt;
+}

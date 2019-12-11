@@ -74,7 +74,11 @@ abstract class Model
     protected static function execute_select_query($sql, $fetchMode = PDO::FETCH_ASSOC, $parameters = [])
     {
         $stmt = static::get_pdo()->prepare($sql);
-        $stmt->setFetchMode($fetchMode, get_called_class());
+        if ($fetchMode == 2){
+            $stmt->setFetchMode($fetchMode);
+        }else{
+            $stmt->setFetchMode($fetchMode, get_called_class());
+        }
         if ($stmt->execute($parameters)) {
             unset($pdo);
             return $stmt;

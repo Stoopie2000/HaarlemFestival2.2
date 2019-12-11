@@ -301,7 +301,7 @@
             "php-cs-fixer"
         ],
         "type": "application",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "PhpCsFixer\\": "src/"

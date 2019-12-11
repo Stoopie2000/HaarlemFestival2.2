@@ -11,8 +11,11 @@
 
 namespace Composer\Semver\Constraint;
 
+<<<<<<< HEAD
 use InvalidArgumentException;
 
+=======
+>>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
 /**
  * Defines a constraint.
  */
@@ -116,12 +119,20 @@ class Constraint implements ConstraintInterface
      * @param string $operator
      * @param string $version
      *
+<<<<<<< HEAD
      * @throws InvalidArgumentException if invalid operator is given.
+=======
+     * @throws \InvalidArgumentException if invalid operator is given.
+>>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
      */
     public function __construct($operator, $version)
     {
         if (!isset(self::$transOpStr[$operator])) {
+<<<<<<< HEAD
             throw new InvalidArgumentException(sprintf(
+=======
+            throw new \InvalidArgumentException(sprintf(
+>>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
                 'Invalid operator "%s" given, expected one of: %s',
                 $operator,
                 implode(', ', self::getSupportedOperators())
@@ -138,14 +149,22 @@ class Constraint implements ConstraintInterface
      * @param string $operator
      * @param bool $compareBranches
      *
+<<<<<<< HEAD
      * @throws InvalidArgumentException if invalid operator is given.
+=======
+     * @throws \InvalidArgumentException if invalid operator is given.
+>>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
      *
      * @return bool
      */
     public function versionCompare($a, $b, $operator, $compareBranches = false)
     {
         if (!isset(self::$transOpStr[$operator])) {
+<<<<<<< HEAD
             throw new InvalidArgumentException(sprintf(
+=======
+            throw new \InvalidArgumentException(sprintf(
+>>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
                 'Invalid operator "%s" given, expected one of: %s',
                 $operator,
                 implode(', ', self::getSupportedOperators())

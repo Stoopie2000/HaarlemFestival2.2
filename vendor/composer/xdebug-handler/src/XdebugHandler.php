@@ -12,8 +12,11 @@
 namespace Composer\XdebugHandler;
 
 use Psr\Log\LoggerInterface;
+<<<<<<< HEAD
 use ReflectionExtension;
 use RuntimeException;
+=======
+>>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
 
 /**
  * @author John Stevenson <john-stevenson@blueyonder.co.uk>
@@ -53,12 +56,20 @@ class XdebugHandler
      *
      * @param string $envPrefix Value used in environment variables
      * @param string $colorOption Command-line long option to force color output
+<<<<<<< HEAD
      * @throws RuntimeException If a parameter is invalid
+=======
+     * @throws \RuntimeException If a parameter is invalid
+>>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
      */
     public function __construct($envPrefix, $colorOption = '')
     {
         if (!is_string($envPrefix) || empty($envPrefix) || !is_string($colorOption)) {
+<<<<<<< HEAD
             throw new RuntimeException('Invalid constructor parameter');
+=======
+            throw new \RuntimeException('Invalid constructor parameter');
+>>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
         }
 
         self::$name = strtoupper($envPrefix);
@@ -68,7 +79,11 @@ class XdebugHandler
         $this->colorOption = $colorOption;
 
         if (extension_loaded('xdebug')) {
+<<<<<<< HEAD
             $ext = new ReflectionExtension('xdebug');
+=======
+            $ext = new \ReflectionExtension('xdebug');
+>>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
             $this->loaded = $ext->getVersion() ?: 'unknown';
         }
 
