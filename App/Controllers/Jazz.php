@@ -2,21 +2,24 @@
 
 namespace App\Controllers;
 
-use \Core\View;
+use Core\View;
+use Core\Controller;
+use App\Models\JazzArtist;
+use App\Models\AllAccessJazz;
 
-// Verander de 'Template' met de naam van je eigen controller
 class Jazz extends \Core\Controller
 {
 
     /**
-     * Voor iedere Action maak je hier een niewe methode aan.
+     * Show default jazz page
      */
     
-    // Dit is de Action 'index', de naam van deze methode is dus de naam van je Action met 'Action' erachter.
     public function indexAction()
     {
-        // Wat je mee geeft met deze methode is de Path naar de view 'index', de Path is vanuit de Views map.
-        View::render('Jazz/Jazz.php');
+        View::render('Jazz/Jazz.php', [
+            'jazzArtists' => JazzArtist::getAllArtists(),
+            'allAccessJazz' => AllAccessJazz::getAllAccessJazz()
+        ]);
     }
     
 }
