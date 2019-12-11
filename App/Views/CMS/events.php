@@ -29,9 +29,12 @@
                         echo("</div><div class='litoptext'>");
                         echo explode(" ", $concert->Date)[1] . " " . explode(" ", $concert->Date)[2];
                         echo("</div><div class='litoptext'>");
-                        foreach ($concert->Artists as $artist) {
-                            echo $artist->Name . ", ";
-                        };
+                        for ($i=0; $i < count($concert->Artists); $i++) { 
+                            echo $concert->Artists[$i]->Name;
+                            if ($i != (count($concert->Artists) - 1)) {
+                                echo ", ";
+                            }
+                        }
                         echo("</div><div class='litoptext'>");
                         echo(date_format($concert->StartTime, 'G:i') . " - " . date_format($concert->EndTime, 'G:i'));
                         echo("</div></div><div class='libottom'><div class='libottomtext'>Location:</br>");

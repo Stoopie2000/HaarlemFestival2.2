@@ -45,7 +45,7 @@ class Artist extends Model
         return $artist = $stmt->fetch();
     }
 
-    public static function find_by_name($artistName) : Artist
+    public static function find_by_name($artistName)
     {
         $sql = 'SELECT * FROM artists WHERE Name like ?';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$artistName]);
