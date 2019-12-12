@@ -24,7 +24,9 @@ class CMS extends \Core\Controller
         //];
 
         // Wat je mee geeft met deze methode is de Path naar de view 'index', de Path is vanuit de Views map.
-        View::render('CMS/login.php', $this->route_params);
+        View::render('CMS/login.php', [
+        'params' => $this->route_params
+        ]);
     }
 
     public function EventsAction(){

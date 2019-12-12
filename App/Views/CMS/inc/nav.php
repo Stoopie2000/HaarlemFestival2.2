@@ -6,7 +6,10 @@
     <nav class="nav flex-column nav-fill">
         <a class="menu menu-head<?php 
             // Short if else statement ({condition} ? {code if true} : {code if false})
-            echo ($params["action"] == 'login' ? ' active' : '');
+            //echo ($params["action"] == 'login' ? ' active' : '');
+            if ($params["action"] == "login") {
+                echo " active"; 
+            };
         ?>" href="<?php echo Config::URLROOT; ?>/cms">Menu</a>
         <a class="menu menu-item<?php echo ($params["action"] == 'users' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/login/users">Users</a>
         <a class="menu menu-item dropdown-toggle" href="#Pages" role="button" data-toggle="collapse">Pages</a>

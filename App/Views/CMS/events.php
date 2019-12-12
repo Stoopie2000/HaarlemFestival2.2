@@ -36,7 +36,7 @@
                             }
                         }
                         echo("</div><div class='litoptext'>");
-                        echo(date_format($concert->StartTime, 'G:i') . " - " . date_format($concert->EndTime, 'G:i'));
+                        echo($concert->StartTime . " - " . $concert->EndTime);
                         echo("</div></div><div class='libottom'><div class='libottomtext'>Location:</br>");
                         echo $concert->Venue->Name;
                         echo("</div><div class='libottomtext'>Hall:</br>");
@@ -45,7 +45,7 @@
                         echo $concert->Venue->SeatingCapacity;
                         echo("</div><div class='libottomtext'>Price:</br>");
                         echo("€ " . printf("%1\$.2f", $concert->Price));
-                        echo("</div></div>");
+                        echo("</div></div></div>");
                     }?>
                         <!--<div class="libottom">
                             <div class="libottomtext">Location:</br>Patronaat</div>
