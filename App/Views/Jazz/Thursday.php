@@ -1,16 +1,13 @@
 <?php 
     use App\Config;
 
-    require dirname(__DIR__) . '\header.html'
+    /*require dirname(__DIR__) . '\header.html'*/
 
     
 ?>
 
 <html lang="en">
 <head>
-<?php
-$tags = array('bears');
-?>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">>
     <title>Haarlem Festival Homepage</title>
@@ -68,10 +65,6 @@ $tags = array('bears');
             <button class="tabLinks"><a>Saturday</a></button>
     </div>
 
-    <?php 
-    $date = 1;
-    ?>
-
     <div class="ticketsMenu">
 
         <a class="allAccessHead">All Access Tickets</a>
@@ -80,7 +73,7 @@ $tags = array('bears');
                         /** @var array $allAccessJazz */
                         foreach ($allAccessJazz as $allAccessJazzTicket) 
                         {
-                            echo ("<li><a> $allAccessJazzTicket->name </a></li>");
+                            echo ("<li><a> $allAccessJazzTicket->Name </a></li>");
                         }
                 ?>
             <div class = "priceAllAccess">
@@ -96,18 +89,7 @@ $tags = array('bears');
 
         <div class="dashedLine"></div>
         
-        <?php 
-            if($date == 1)
-            {
-                echo ("<a class=dayTicketsHead>Tickets Thursday</a>");
-            }
-            else if($date == 2){
-                echo ("<a class=dayTicketsHead>Tickets Friday</a>");
-            }                else if($date == 3)
-            {
-                echo ("<a class=dayTicketsHead>Tickets Saturday</a>");
-            }
-        ?>
+        <a class=dayTicketsHead>Tickets Thursday</a>
 
         <div class = "dayTickets">
             
@@ -115,7 +97,7 @@ $tags = array('bears');
                 /** @var array $jazzArtists */
                 foreach ($jazzArtists as $jazzArtist) 
                 {
-                    if($jazzArtist->DateID == $date)
+                    if($jazzArtist->DateID == 1)
                     {
                         echo ("<li><a> $jazzArtist->Name </a></li>");
                     }
@@ -127,7 +109,7 @@ $tags = array('bears');
                         /** @var array $jazzArtists */
                         foreach ($jazzArtists as $jazzArtist) 
                         {
-                            if($jazzArtist->DateID == $date)
+                            if($jazzArtist->DateID == 1)
                             {
                                 echo ("<li><a>$jazzArtist->Hall</a></li>");
                             }
@@ -139,7 +121,7 @@ $tags = array('bears');
                         /** @var array $jazzArtists */
                         foreach ($jazzArtists as $jazzArtist) 
                         {
-                            if($jazzArtist->DateID == $date)
+                            if($jazzArtist->DateID == 1)
                             {
                                 echo ("<li><a>€$jazzArtist->Price,00</a></li>");
                             }
