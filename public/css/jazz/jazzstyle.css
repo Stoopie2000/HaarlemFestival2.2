@@ -271,6 +271,20 @@ nav.navbar {
   margin-bottom: 10px;
 }
 
+.ticketsMenu button{
+  background-color: transparent;
+  border: none;
+  width: 10px;
+  text-align: center;
+
+}
+
+.ticketsMenu button i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .allAccess{
     position: absolute;
     left: 80px;
@@ -314,7 +328,7 @@ nav.navbar {
   width: 100px;
 }
 
-.qty{
+.qtyTicket{
   width: 15px;
   text-align: center;
   background-color: transparent;

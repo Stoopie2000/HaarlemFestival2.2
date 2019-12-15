@@ -15,6 +15,10 @@
 </head>
 
 <body>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="<?php echo Config::URLROOT; ?>/js/ticketsScriptJazz.js"></script>
+
     <div class="logo">
         <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">   
     </div>
@@ -75,9 +79,9 @@
                         foreach ($allAccessJazz as $allAccessJazzTicket) 
                         {
                             echo ("<ul><li><a> $allAccessJazzTicket->Name </a><li><a class=priceAllAccess>€$allAccessJazzTicket->Price,00</a></li><li class=quantity>
-                            <i class='fas fa-minus-circle fa-lg'></i>
-                            <input class=qty type=number value=0 />
-                            <i class='fas fa-plus-circle fa-lg'></i>
+                            <button class='qtyMinus' field='quantityTicket'><i class='fas fa-minus-circle fa-lg'></i></button>
+                            <input class='qtyTicket' type=number value=0 name='quantityTicket'/>
+                            <button class='qtyPlus' field='quantityTicket'><i class='fas fa-plus-circle fa-lg'></i></button>
                             </li></ul>");
                         }
                 ?>
@@ -97,9 +101,9 @@
                     if($jazzArtist->DateID == 2)
                     { 
                         echo ("<ul><li><a> $jazzArtist->Name </a><li><a class=hall>$jazzArtist->Hall</a></li><li><a class=priceDay>€$jazzArtist->Price,00</a></li><li class=quantity>
-                        <i class='fas fa-minus-circle fa-lg'></i>
-                        <input class=qty type=number value=0 />
-                        <i class='fas fa-plus-circle fa-lg'></i>
+                        <button class='qtyMinus' field='quantityTicket'><i class='fas fa-minus-circle fa-lg'></i></button>
+                        <input class=qtyTicket type=number value=0 name='quantityTicket'/>
+                        <button class='qtyPlus' field='quantityTicket'><i class='fas fa-plus-circle fa-lg'></i></button>
                         </li></ul>");
                     }
                 }
