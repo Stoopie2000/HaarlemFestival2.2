@@ -9,7 +9,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">>
+    <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">
+    <script src="https://kit.fontawesome.com/1ccd03e13f.js" crossorigin="anonymous"></script>
     <title>Haarlem Festival Homepage</title>
 </head>
 
@@ -60,91 +61,50 @@
     </div>
 
     <div class="tabDays">
-            <button class="tabLinks"><a>Thurday</a></button>
+            <button class="tabLinks"><a>Thursday</a></button>
             <button class="tabLinks"><a>Friday</a></button>
             <button class="active"><a>Saturday</a></button>
     </div>
 
     <div class="ticketsMenu">
 
-        <a class="allAccessHead">All Access Tickets</a>
-        <div class = "allAccess">
-                <?php
-                        /** @var array $allAccessJazz */
-                        foreach ($allAccessJazz as $allAccessJazzTicket) 
-                        {
-                            echo ("<li><a> $allAccessJazzTicket->Name </a></li>");
-                        }
-                ?>
-            <div class = "priceAllAccess">
-                <?php
-                        /** @var array $allAccessJazz */
-                        foreach ($allAccessJazz as $allAccessJazzTicket)
-                        {
-                            echo ("<li><a>€$allAccessJazzTicket->Price,00</a></li>");
-                        }
-                ?>
-            </div>
-        </div>
-
-        <div class="dashedLine"></div>
-        
-        <a class=dayTicketsHead>Tickets Saturday</a>
-
-        <div class = "dayTickets">
-            
-            <?php 
-                /** @var array $jazzArtists */
-                foreach ($jazzArtists as $jazzArtist) 
+<a class="allAccessHead">All Access Tickets</a>
+<div class = "allAccess">
+        <?php
+                /** @var array $allAccessJazz */
+                foreach ($allAccessJazz as $allAccessJazzTicket) 
                 {
-                    if($jazzArtist->DateID == 3)
-                    {
-                        echo ("<li><a> $jazzArtist->Name </a></li>");
-                    }
+                    echo ("<ul><li><a> $allAccessJazzTicket->Name </a><li><a class=priceAllAccess>€$allAccessJazzTicket->Price,00</a></li><li class=quantity>
+                    <i class='fas fa-minus-circle fa-lg'></i>
+                    <input class=qty type=number value=0 />
+                    <i class='fas fa-plus-circle fa-lg'></i>
+                    </li></ul>");
                 }
-            ?>
+        ?>
+    
+</div>
 
-            <div class = "hall">
-                <?php
-                        /** @var array $jazzArtists */
-                        foreach ($jazzArtists as $jazzArtist) 
-                        {
-                            if($jazzArtist->DateID == 3)
-                            {
-                                echo ("<li><a>$jazzArtist->Hall</a></li>");
-                            }
-                        }
-                ?>
-            </div>
-            <div class = "priceDay">
-                <?php
-                        /** @var array $jazzArtists */
-                        foreach ($jazzArtists as $jazzArtist) 
-                        {
-                            if($jazzArtist->DateID == 3)
-                            {
-                                echo ("<li><a>€$jazzArtist->Price,00</a></li>");
-                            }
-                        }
-                ?>
-            </div>
-        </div>
+<div class="dashedLine"></div>
 
-        
+<a class=dayTicketsHead>Tickets Friday</a>
 
-        
-
-        
-
-        <div class = "quantity">
-            <li>
-                <input type="image" src="<?php echo Config::URLROOT; ?>/img/jazz/min.png" />
-                <input class="qty" type="number" value="0" />
-                <input type="image" src="<?php echo Config::URLROOT; ?>/img/jazz/plus.png" />
-            </li>
-        </div>
-        
-    </div>
+<div class = "dayTickets">
+    
+    <?php 
+        /** @var array $jazzArtists */
+        foreach ($jazzArtists as $jazzArtist) 
+        {
+            if($jazzArtist->DateID == 3)
+            { 
+                echo ("<ul><li><a> $jazzArtist->Name </a><li><a class=hall>$jazzArtist->Hall</a></li><li><a class=priceDay>€$jazzArtist->Price,00</a></li><li class=quantity>
+                <i class='fas fa-minus-circle fa-lg'></i>
+                <input class=qty type=number value=0 />
+                <i class='fas fa-plus-circle fa-lg'></i>
+                </li></ul>");
+            }
+        }
+    ?>
+</div>
 
 <?php
     // Hier eindigen we de pagina mee
