@@ -87,4 +87,21 @@ abstract class Controller
         header('Location: http://' . $_SERVER['HTTP_HOST'] . $url, true, 303);
         exit;
     }
+
+    /**
+     * Get the originally-requested page to return to after requiring login, or default to the homepage
+     *
+     * @return string
+     */
+    protected function get_return_to_page()
+    {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (isset($_SESSION['return_to'])) {
+            return $_SESSION['return_to'];
+        } else {
+            return '/';
+        }
+    }
 }
