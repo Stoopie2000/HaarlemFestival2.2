@@ -10,7 +10,13 @@ use App\Models\Venue;
  * @var array $dayTickets
  * @author Bram Bos <brambos27@gmail.com>
  */
-include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html")?>
+include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html");
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,9 +52,28 @@ include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html")?>
             <div class='col-sm-6'>Tickets for $venue->Name " . date_format($concert->Date, 'l d F') . " " . date_format($concert->StartTime, 'G:i') . " - " . date_format($concert->EndTime, 'G:i') . "</div>
             <div class='col-sm-1'>€$concert->Price</div>
             <div class='col-sm-5'>
-              <a class='btn btn-light' href='/order/addItems?productType=concert&productID=$concert->ConcertID&quantity=1'>Add To Basket</a>
+              ");
+    if (!isset($_SESSION['basket'])){
+        echo "<a class='btn btn-light' href='/order/addItems?productType=concert&productID=$concert->ConcertID&quantity=1'>Add To Basket</a>
             </div>
-          </div>");
+            </div>";
+    }else{
+        $matchedConcert = false;
+        foreach ($_SESSION['basket']->items as $basketItem){
+            if ($basketItem->Item == $concert){
+                $matchedConcert = $concert;
+            }
+        }
+        if (!$matchedConcert){
+            echo "<a class='btn btn-light' href='/order/addItems?productType=concert&productID=$concert->ConcertID&quantity=1'>Add To Basket</a>
+            </div>
+            </div>";
+        }else{
+            echo "<a class='btn btn-light' href='/order/basket'>View Basket</a>
+            </div>
+            </div>";
+        }
+    }
 } ?>
     </div>
     <div class="container allAccessContainer">
@@ -64,11 +89,11 @@ include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html")?>
             $dayStings[] = date_format($day, 'l d F');
         }
 
-      $daysCommaSeperated = implode(', ', $dayStings);
+      $daysCommaSeparated = implode(', ', $dayStings);
 
          echo"<div class='row'>
                 <div class='col-sm-6'>
-                    <h2>All-access pass for $daysCommaSeperated</h2>
+                    <h2>All-access pass for $daysCommaSeparated</h2>
                 </div>
               </div>
         <div class='row ticket'>
@@ -78,10 +103,28 @@ include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html")?>
             <div class='col-sm-1'>
                 €$dayTicket->Price
             </div>
-            <div class='col-sm-5'>
-                <a class='btn btn-light' href='/order/addItems?productType=dayticket&productID=$dayTicket->DayTicketID&quantity=1'>Add To Basket</a>
+            <div class='col-sm-5'>";
+                    if (!isset($_SESSION['basket'])){
+        echo "<a class='btn btn-light' href='/order/addItems?productType=dayTicket&productID=$dayTicket->DayTicketID&quantity=1'>Add To Basket</a>
             </div>
-        </div>";
+            </div>";
+    }else {
+            $matchedDayTicket = false;
+            foreach ($_SESSION['basket']->items as $basketItem) {
+                if ($basketItem->Item == $dayTicket) {
+                    $matchedDayTicket = $dayTicket;
+                }
+            }
+            if (!$matchedDayTicket) {
+                echo "<a class='btn btn-light' href='/order/addItems?productType=dayTicket&productID=$dayTicket->DayTicketID&quantity=1'>Add To Basket</a>
+  </div>
+  </div>";
+            } else {
+                echo "<a class='btn btn-light' href='/order/basket'>View Basket</a>
+  </div>
+  </div>";
+            }
+                    }
 
          if (count($dayTicket->Days) > 1){
            echo "<a href='schedule'>View the entire Haarlem dance schedule</a>"; //TODO Werkende link naar schedule
@@ -103,44 +146,11 @@ include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html")?>
 
                 echo "<li style='list-style-type: none;'>" . date_format($concert->StartTime, 'H:i') . " - " . date_format($concert->EndTime, 'H:i') . "  $concertVenue->Name: <b>$concertArtistsNames</b></li>";
             }
-            }; echo "</ul>
+            }
+             echo "</ul>
                 </div>
             </div>";
          }
-
-//    } else{
-//        echo("<div class='row ticket'>
-//            <div class='col-sm-6'>
-//                All-access pass for $dayTicket->Day
-//            </div>
-//            <div class='col-sm-1'>
-//                $dayTicket->Price
-//            </div>
-//            <div class='col-sm-5'>
-//                <a class='btn btn-light' href='detail.php'>Add To Basket</a>
-//            </div>
-//        </div>
-//            <div class='row schedule'>
-//                <div class='col-sm-6'>
-//                  <h2>Schedule $dayTicket->Day</h2>
-//                  <ul>")?>
-<!--      -->
-<!--            --><?php //foreach ($concerts as $concert) {
-//
-//            if ($concert->Date == $dayTicket->Day) {
-//                $concertArtists = [];
-//                foreach ($concert->Artists as $artist) {
-//                    $concertArtists[] = $artist->Name;
-//                }
-//                $concertArtistsNames = implode(", ", $concertArtists);
-//
-//                echo "<li style='list-style-type: none;'>" . date_format($concert->StartTime, 'G:i') . " - " . date_format($concert->EndTime, 'G:i') . "  $venue->Name: <b>$concertArtistsNames</b></li>";
-//            }
-//            }; echo "</ul>
-//                </div>
-//            </div>";
-//    }
-
 }?>
 
     </div>

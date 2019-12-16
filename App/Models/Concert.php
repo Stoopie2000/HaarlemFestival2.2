@@ -62,7 +62,7 @@ class Concert extends Model
 
     public static function get_for_artist($artistID)
     {
-        $sql = "SELECT * FROM concerts INNER JOIN plays_at pa on concerts.ConcertID = pa.ConcertID WHERE pa.ArtistID = ?";
+        $sql = "SELECT DateID, concerts.ConcertID, DateID, StartTime, EndTime, NumberOfTickets, Price, VenueID, Event FROM concerts INNER JOIN plays_at pa on concerts.ConcertID = pa.ConcertID WHERE pa.ArtistID = ?";
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$artistID]);
         return $concerts = $stmt->fetchAll();
     }

@@ -59,7 +59,7 @@ class DayTicket extends Model
     {
         $dayTicket = self::get_by_ID($ticketInfo['productID']);
         $basketItem = new BasketItem();
-        $basketItem->Description = $dayTicket->Name . " " . $dayTicket->Type;
+        $basketItem->Description = $dayTicket->Name . " Haarlem " . ucfirst($dayTicket->Type);
         $basketItem->Item = $dayTicket;
         $basketItem->Quantity = $ticketInfo['quantity'];
         $basketItem->Price = $dayTicket->Price;

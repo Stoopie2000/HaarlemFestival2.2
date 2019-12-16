@@ -68,11 +68,28 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
                         echo("<div class='row ticket'>
             <div class='col-sm-6'>Tickets for $artist->Name at $venue->Name " . date_format($valueConcert->Date, 'l d F') . " " . date_format($valueConcert->StartTime, 'H:i') . " - " . date_format($valueConcert->EndTime, 'H:i') . "</div>
             <div class='col-sm-1'>€$valueConcert->Price</div>
-            <div class='col-sm-5 btn-container'>
-              <a class='btn btn-light' href='/order/addItems?productType=concert&productID=$valueConcert->ConcertID&quantity=1'>Add To Basket</a>
+            <div class='col-sm-5 btn-container'>");
+                            if (isset($_SESSION['basket'])){
+                              $matchedConcert = false;
+                              foreach ($_SESSION['basket']->items as $basketItem){
+                                if ($basketItem->Item == $valueConcert){
+                                  $matchedConcert = $valueConcert;
+                                }
+                              }
+                              if (!$matchedConcert){
+                                echo "<a class='btn btn-light' href='/order/addItems?productType=concert&productID=$valueConcert->ConcertID&quantity=1'>Add To Basket</a>
             </div>
-          </div>");
-                    } ?>
+            </div>";
+}else{
+                                echo "<a class='btn btn-light' href='/order/basket'>View Basket</a>
+            </div>
+            </div>";
+                              }
+}else{
+                              echo "<a class='btn btn-light' href='/order/addItems?productType=concert&productID=$valueConcert->ConcertID&quantity=1'>Add To Basket</a>
+            </div>
+            </div>";}
+                                                          }?>
                 </div>
             </div>
         </div>
