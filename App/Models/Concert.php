@@ -13,7 +13,11 @@ use PDO;
  * @property array Artists
  * @property int  ConcertID
  * @property Venue Venue
- * @property  int DateID
+ * @property int DateID
+ * @property string Event
+ * @property int VenueID
+ * @property float Price
+ * @author Bram Bos <brambos27@gmail.com>
  */
 class Concert extends Model
 {
@@ -23,15 +27,14 @@ class Concert extends Model
             $this->$key = $value;
         }
 
-        $this->Date = Date::get_by_ID($this->DateID)->Date;
-        $this->Date = DateTime::createFromFormat('Y-m-d', $this->Date)->format('l d F');
-        $this->StartTime = DateTime::createFromFormat('G:i:s', $this->StartTime)->format('G:i');
-        $this->EndTime = DateTime::createFromFormat('G:i:s', $this->EndTime)->format('G:i');
+        $this->Date = date_create(Date::get_by_ID($this->DateID)->Date);
+        $this->StartTime = date_create($this->StartTime);
+        $this->EndTime = date_create($this->EndTime);
 
         $playsAt = PlaysAt::get_from_concert_ID($this->ConcertID);
 
         foreach ($playsAt as $item) {
-            $this->Artists[] = Artist::get_from_ID($item->ArtistID);
+            $this->Artists[] = Artist::get_by_ID($item->ArtistID);
         }
 
         $this->Venue = Venue::get_venue($this->VenueID);
@@ -40,12 +43,13 @@ class Concert extends Model
     /**
      * Get all the concerts as an associative array
      *
-     * @return array
+     * @param string $event
+     * @return array $concerts
      */
-    public static function getAll()
+    public static function getAll($event)
     {
         $sql = 'SELECT * FROM concerts where Event = ?';
-        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, ['dance']);
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$event]);
         return $concerts = $stmt->fetchAll();
     }
 
@@ -56,14 +60,26 @@ class Concert extends Model
         return $concerts = $stmt->fetchAll();
     }
 
-    public static function get_for_artist(int $ArtistID)
+    public static function get_for_artist($artistID)
     {
         $sql = "SELECT * FROM concerts INNER JOIN plays_at pa on concerts.ConcertID = pa.ConcertID WHERE pa.ArtistID = ?";
-        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$ArtistID]);
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$artistID]);
         return $concerts = $stmt->fetchAll();
     }
 
-    public function getArtists()
+    public static function get_by_ID($concertID){
+        $sql = 'SELECT * FROM concerts where ConcertID = ?';
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$concertID]);
+        return $concerts = $stmt->fetch();
+    }
+
+    public static function makeBasketItem($ticketInfo)
     {
+        $concert = self::get_by_ID($ticketInfo['productID']);
+        $basketItem = new BasketItem();
+        $basketItem->Description = $concert->Venue->Name . " Ticket";
+
+        $basketItem->Price = $concert->Price;
+        return $basketItem;
     }
 }

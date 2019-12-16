@@ -248,12 +248,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "26b8f8154b06d5d1bd3841a1bcfb31eba4c85f8f"
+                "reference": "601b764fb1db68e20f4b93dd9211a2a668db6fe6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/26b8f8154b06d5d1bd3841a1bcfb31eba4c85f8f",
-                "reference": "26b8f8154b06d5d1bd3841a1bcfb31eba4c85f8f",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/601b764fb1db68e20f4b93dd9211a2a668db6fe6",
+                "reference": "601b764fb1db68e20f4b93dd9211a2a668db6fe6",
                 "shasum": ""
             },
             "require": {
@@ -329,7 +329,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2019-11-28T17:34:53+00:00"
+            "time": "2019-12-09T19:11:08+00:00"
         },
         {
             "name": "paragonie/random_compat",
