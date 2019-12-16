@@ -1,22 +1,24 @@
 <?php 
     use App\Config;
 
-    require dirname(__DIR__) . '\header.html'
+    /*require dirname(__DIR__) . '\header.html'*/
 
     
 ?>
 
 <html lang="en">
 <head>
-<?php
-$tags = array('bears');
-?>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">>
+    <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">
+    <script src="https://kit.fontawesome.com/1ccd03e13f.js" crossorigin="anonymous"></script>
     <title>Haarlem Festival Homepage</title>
 </head>
 
 <body>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo Config::URLROOT; ?>/js/ticketsScriptJazz.js"></script>
+
     <div class="logo">
         <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">   
     </div>
@@ -63,14 +65,10 @@ $tags = array('bears');
     </div>
 
     <div class="tabDays">
-            <button class="active"><a>Thurday</a></button>
-            <button class="tabLinks"><a>Friday</a></button>
+            <button class="tabLinks"><a>Thursday</a></button>
+            <button class="active"><a>Friday</a></button>
             <button class="tabLinks"><a>Saturday</a></button>
     </div>
-
-    <?php 
-    $date = 1;
-    ?>
 
     <div class="ticketsMenu">
 
@@ -80,34 +78,19 @@ $tags = array('bears');
                         /** @var array $allAccessJazz */
                         foreach ($allAccessJazz as $allAccessJazzTicket) 
                         {
-                            echo ("<li><a> $allAccessJazzTicket->name </a></li>");
+                            echo ("<ul><li><a> $allAccessJazzTicket->Name </a><li><a class=priceAllAccess>€$allAccessJazzTicket->Price,00</a></li><li class=quantity>
+                            <button class='qtyMinus' field='quantityTicket'><i class='fas fa-minus-circle fa-lg'></i></button>
+                            <input class='qtyTicket' type='text' value='0' name='quantityTicket'/>
+                            <button class='qtyPlus' field='quantityTicket'><i class='fas fa-plus-circle fa-lg'></i></button>
+                            </li></ul>");
                         }
                 ?>
-            <div class = "priceAllAccess">
-                <?php
-                        /** @var array $allAccessJazz */
-                        foreach ($allAccessJazz as $allAccessJazzTicket)
-                        {
-                            echo ("<li><a>€$allAccessJazzTicket->Price,00</a></li>");
-                        }
-                ?>
-            </div>
+            
         </div>
 
         <div class="dashedLine"></div>
         
-        <?php 
-            if($date == 1)
-            {
-                echo ("<a class=dayTicketsHead>Tickets Thursday</a>");
-            }
-            else if($date == 2){
-                echo ("<a class=dayTicketsHead>Tickets Friday</a>");
-            }                else if($date == 3)
-            {
-                echo ("<a class=dayTicketsHead>Tickets Saturday</a>");
-            }
-        ?>
+        <a class=dayTicketsHead>Tickets Friday</a>
 
         <div class = "dayTickets">
             
@@ -115,52 +98,20 @@ $tags = array('bears');
                 /** @var array $jazzArtists */
                 foreach ($jazzArtists as $jazzArtist) 
                 {
-                    if($jazzArtist->DateID == $date)
-                    {
-                        echo ("<li><a> $jazzArtist->Name </a></li>");
+                    if($jazzArtist->DateID == 2)
+                    { 
+                        echo ("<ul><li><a> $jazzArtist->Name </a><li><a class=hall>$jazzArtist->Hall</a></li><li><a class=priceDay>€$jazzArtist->Price,00</a></li><li class=quantity>
+                        <button class='qtyMinus' field='quantityTicket'><i class='fas fa-minus-circle fa-lg'></i></button>
+                        <input class=qtyTicket type=number value=0 name='quantityTicket'/>
+                        <button class='qtyPlus' field='quantityTicket'><i class='fas fa-plus-circle fa-lg'></i></button>
+                        </li></ul>");
                     }
                 }
             ?>
-
-            <div class = "hall">
-                <?php
-                        /** @var array $jazzArtists */
-                        foreach ($jazzArtists as $jazzArtist) 
-                        {
-                            if($jazzArtist->DateID == $date)
-                            {
-                                echo ("<li><a>$jazzArtist->Hall</a></li>");
-                            }
-                        }
-                ?>
-            </div>
-            <div class = "priceDay">
-                <?php
-                        /** @var array $jazzArtists */
-                        foreach ($jazzArtists as $jazzArtist) 
-                        {
-                            if($jazzArtist->DateID == $date)
-                            {
-                                echo ("<li><a>€$jazzArtist->Price,00</a></li>");
-                            }
-                        }
-                ?>
-            </div>
         </div>
 
         
 
-        
-
-        
-
-        <div class = "quantity">
-            <li>
-                <input type="image" src="<?php echo Config::URLROOT; ?>/img/jazz/min.png" />
-                <input class="qty" type="number" value="0" />
-                <input type="image" src="<?php echo Config::URLROOT; ?>/img/jazz/plus.png" />
-            </li>
-        </div>
         
     </div>
 

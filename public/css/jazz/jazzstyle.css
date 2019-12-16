@@ -258,6 +258,7 @@ nav.navbar {
     position: absolute;
     top: 1214px;
     left: 437px;
+    line-height: 1em;
 }
 
 .ticketsMenu a{
@@ -270,65 +271,77 @@ nav.navbar {
   margin-bottom: 10px;
 }
 
-.allAccess{
+.ticketsMenu button{
+  background-color: transparent;
+  border: none;
+  width: 10px;
+  text-align: center;
+}
 
+.ticketsMenu button i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.add{
+  
+  color: #000000;
+  
+}
+
+.allAccess{
     position: absolute;
-    left: 97px;
-    top: 80px;
+    left: 80px;
+    top: 50px;
+}
+
+.allAccess li{
+  display:inline;
 }
 
 .priceAllAccess{
   position: absolute;
   left: 650px;
-  top: 0px;
 }
 
 .dayTickets{
   position: absolute;
-  left: 97px;
-  top: 333px;
+  left: 80px;
+  top: 310px;
+  
+}
+
+.dayTickets li{
+  display:inline;
 }
 
 .hall{
   position: absolute;
-  left: 430px;
-  top: 0px;
+  left: 450px;
   width: 150px;
-}
-
-.hall li{
-  list-style-type: none;
 }
 
 .priceDay{
   position: absolute;
   left: 650px;
-  top: 0px;
-}
-
-.priceDay li{
-  list-style-type: none;
 }
 
 .quantity{
   position: absolute;
-  left: 892px;
-  top: 335px;
+  left: 770px;
+  width: 100px;
 }
 
-.quantity li{
-  list-style-type: none;
-  margin-bottom: 10px;
-  
-}
-
-.quantity input.qty{
+.qtyTicket{
   width: 15px;
   text-align: center;
   background-color: transparent;
   border: none;
   font-family: Arial, sans-serif;
-  font-size: 18pt;
+  font-size: 15pt;
   margin-left: 5px;
   margin-right: 5px;
 }

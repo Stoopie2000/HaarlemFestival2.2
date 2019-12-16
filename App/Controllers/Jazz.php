@@ -14,12 +14,27 @@ class Jazz extends \Core\Controller
      * Show default jazz page
      */
     
-    public function indexAction()
+    public function thursdayAction()
     {
-        View::render('Jazz/Jazz.php', [
+        View::render('Jazz/Thursday.php', [
             'jazzArtists' => JazzArtist::getAllArtists(),
             'allAccessJazz' => AllAccessJazz::getAllAccessJazz()
         ]);
     }
-    
+
+    public function fridayAction()
+    {
+        View::render('Jazz/Friday.php', [
+            'jazzArtists' => JazzArtist::getAllArtists(),
+            'allAccessJazz' => AllAccessJazz::getAllAccessJazz()
+        ]);
+    }
+
+    public function saturdayAction()
+    {
+        View::render('Jazz/Saturday.php', [
+            'jazzArtists' => JazzArtist::getAllArtists(),
+            'allAccessJazz' => AllAccessJazz::getAllAccessJazz()
+        ]);
+    }
 }
