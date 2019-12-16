@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use Exception;
+
 /**
  * Base controller
  *
@@ -12,6 +14,7 @@ abstract class Controller
 
     /**
      * Parameters from the matched route
+     *
      * @var array
      */
     protected $route_params = [];
@@ -19,7 +22,7 @@ abstract class Controller
     /**
      * Class constructor
      *
-     * @param array $route_params  Parameters from the route
+     * @param array $route_params Parameters from the route
      *
      * @return void
      */
@@ -34,10 +37,11 @@ abstract class Controller
      * filter methods on action methods. Action methods need to be named
      * with an "Action" suffix, e.g. indexAction, showAction etc.
      *
-     * @param string $name  Method name
-     * @param array $args Arguments passed to the method
+     * @param string $name Method name
+     * @param array  $args Arguments passed to the method
      *
      * @return void
+     * @throws Exception
      */
     public function __call($name, $args)
     {
@@ -49,7 +53,7 @@ abstract class Controller
                 $this->after();
             }
         } else {
-            throw new \Exception("Method $method not found in controller " . get_class($this));
+            throw new Exception("Method $method not found in controller " . get_class($this));
         }
     }
 
@@ -74,7 +78,7 @@ abstract class Controller
     /**
      * Redirect to a different page
      *
-     * @param string $url  The relative URL
+     * @param string $url The relative URL
      *
      * @return void
      */
@@ -82,5 +86,22 @@ abstract class Controller
     {
         header('Location: http://' . $_SERVER['HTTP_HOST'] . $url, true, 303);
         exit;
+    }
+
+    /**
+     * Get the originally-requested page to return to after requiring login, or default to the homepage
+     *
+     * @return string
+     */
+    protected function get_return_to_page()
+    {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (isset($_SESSION['return_to'])) {
+            return $_SESSION['return_to'];
+        } else {
+            return '/';
+        }
     }
 }

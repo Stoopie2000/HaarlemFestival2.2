@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+
 /**
  * Application configuration
  *
@@ -11,6 +12,7 @@ class Config
 
     // ROOTURL de url van de root map
     // Change the ... to your folder name
+
     const URLROOT = 'http://dev.school/';
 
     /**
@@ -35,6 +37,7 @@ class Config
      * Database password
      * @var string
      */
+
     const DB_PASSWORD = '';
 
     /**

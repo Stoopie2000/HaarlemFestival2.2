@@ -3,11 +3,14 @@
 
 namespace App\Models;
 
-
 use App\Config;
-use App\Models\User;
 use App\Token;
 
+/**
+ * Class AuthLogic
+ * @package App\Models
+ * @author Bram Bos <brambos27@gmail.com>
+ */
 class AuthLogic
 {
 
@@ -21,11 +24,12 @@ class AuthLogic
      */
     public static function on_login($user, $remember)
     {
-        if(!isset($_SESSION))
+        if (!isset($_SESSION)) {
             session_start();
+        }
         $_SESSION["user_id"] = $user->UserID;
 
-        if ($remember){
+        if ($remember) {
             $token = new Token();
             $cookie = $user->Email . ':' . $token->getValue();
             $mac = hash_hmac('sha256', $cookie, Config::SECRET_KEY);
@@ -43,9 +47,13 @@ class AuthLogic
      */
     public static function getReturnToPage()
     {
-        if(isset($_SESSION['return_to']))
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (isset($_SESSION['return_to'])) {
             return $_SESSION['return_to'];
-        else
+        } else {
             return '/';
+        }
     }
 }

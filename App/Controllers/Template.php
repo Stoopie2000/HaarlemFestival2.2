@@ -2,10 +2,11 @@
 
 namespace App\Controllers;
 
+use Core\Controller;
 use \Core\View;
 
 // Verander de 'Template' met de naam van je eigen controller
-class Template extends \Core\Controller
+class Template extends Controller
 {
 
     /**
@@ -16,7 +17,7 @@ class Template extends \Core\Controller
     public function indexAction()
     {
         // Wat je mee geeft met deze methode is de Path naar de view 'index', de Path is vanuit de Views map.
-        View::renderTemplate('Home/index.html');
+        View::render('Home/index.html');
     }
     
 }
