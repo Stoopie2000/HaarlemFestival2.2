@@ -61,8 +61,8 @@
     </div>
 
     <div class="tabDays">
-            <button class="tabLinks"><a>Thursday</a></button>
-            <button class="tabLinks"><a>Friday</a></button>
+            <button class="tabLinks" onclick="window.location.href='<?php echo Config::URLROOT; ?>/jazz/thursday'"><a>Thursday</a></button>
+            <button class="tabLinks" onclick="window.location.href='<?php echo Config::URLROOT; ?>/jazz/friday'"><a>Friday</a></button>
             <button class="active"><a>Saturday</a></button>
     </div>
 
@@ -75,9 +75,7 @@
                 foreach ($allAccessJazz as $allAccessJazzTicket) 
                 {
                     echo ("<ul><li><a> $allAccessJazzTicket->Name </a><li><a class=priceAllAccess>€$allAccessJazzTicket->Price,00</a></li><li class=quantity>
-                    <i class='fas fa-minus-circle fa-lg'></i>
-                    <input class=qty type=number value=0 />
-                    <i class='fas fa-plus-circle fa-lg'></i>
+                    <a class=Add href=../order/addItems?productType=dayTickets&productID=$allAccessJazzTicket->DayTicketID&quantity=1><i class='fas fa-cart-plus'></i></a>
                     </li></ul>");
                 }
         ?>
@@ -97,7 +95,7 @@
             if($jazzArtist->DateID == 3)
             { 
                 echo ("<ul><li><a> $jazzArtist->Name </a><li><a class=hall>$jazzArtist->Hall</a></li><li><a class=priceDay>€$jazzArtist->Price,00</a></li><li class=quantity>
-                <a class=Add href=localhost/HF2.2/public/order/addItems?productType=concert&productID=$jazzArtist->ConcertID&quantity=1><i class='fas fa-cart-plus'></i></a>
+                <a class=Add href=../order/addItems?productType=concert&productID=$jazzArtist->ConcertID&quantity=1><i class='fas fa-cart-plus'></i></a>
                 </li></ul>");
             }
         }

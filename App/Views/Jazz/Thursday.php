@@ -62,8 +62,8 @@
 
     <div class="tabDays">
             <button class="active"><a>Thursday</a></button>
-            <button class="tabLinks"><a>Friday</a></button>
-            <button class="tabLinks"><a>Saturday</a></button>
+            <button class="tabLinks" onclick="window.location.href='<?php echo Config::URLROOT; ?>/jazz/friday'"><a>Friday</a></button>
+            <button class="tabLinks" onclick="window.location.href='<?php echo Config::URLROOT; ?>/jazz/saturday'"><a>Saturday</a></button>
     </div>
 
  <div class="ticketsMenu">
