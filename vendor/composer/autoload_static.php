@@ -8,11 +8,7 @@ use Closure;
 
 class ComposerStaticInit7c0baa335460178fecca298af007aa1c
 {
-<<<<<<< HEAD
-    public static $files = array(
-=======
     public static $files = array (
->>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
@@ -20,15 +16,6 @@ class ComposerStaticInit7c0baa335460178fecca298af007aa1c
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
     );
 
-<<<<<<< HEAD
-    public static $prefixLengthsPsr4 = array(
-        'T' =>
-        array(
-            'Twig\\' => 5,
-        ),
-        'S' =>
-        array(
-=======
     public static $prefixLengthsPsr4 = array (
         'T' => 
         array (
@@ -36,7 +23,6 @@ class ComposerStaticInit7c0baa335460178fecca298af007aa1c
         ),
         'S' => 
         array (
->>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
             'Symfony\\Polyfill\\Php73\\' => 23,
             'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Php70\\' => 23,
@@ -52,27 +38,13 @@ class ComposerStaticInit7c0baa335460178fecca298af007aa1c
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Symfony\\Component\\Console\\' => 26,
         ),
-<<<<<<< HEAD
-        'P' =>
-        array(
-=======
         'P' => 
         array (
->>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
             'Psr\\Log\\' => 8,
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
             'PhpCsFixer\\' => 11,
         ),
-<<<<<<< HEAD
-        'D' =>
-        array(
-            'Doctrine\\Common\\Lexer\\' => 22,
-            'Doctrine\\Common\\Annotations\\' => 28,
-        ),
-        'C' =>
-        array(
-=======
         'D' => 
         array (
             'Doctrine\\Common\\Lexer\\' => 22,
@@ -80,123 +52,16 @@ class ComposerStaticInit7c0baa335460178fecca298af007aa1c
         ),
         'C' => 
         array (
->>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
             'Core\\' => 5,
             'Composer\\XdebugHandler\\' => 23,
             'Composer\\Semver\\' => 16,
         ),
-<<<<<<< HEAD
-        'A' =>
-        array(
-=======
         'A' => 
         array (
->>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
             'App\\' => 4,
         ),
     );
 
-<<<<<<< HEAD
-    public static $prefixDirsPsr4 = array(
-        'Twig\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/twig/twig/src',
-        ),
-        'Symfony\\Polyfill\\Php73\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php73',
-        ),
-        'Symfony\\Polyfill\\Php72\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
-        ),
-        'Symfony\\Polyfill\\Php70\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php70',
-        ),
-        'Symfony\\Polyfill\\Mbstring\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
-        ),
-        'Symfony\\Polyfill\\Ctype\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
-        ),
-        'Symfony\\Contracts\\Service\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/symfony/service-contracts',
-        ),
-        'Symfony\\Contracts\\EventDispatcher\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/symfony/event-dispatcher-contracts',
-        ),
-        'Symfony\\Component\\Stopwatch\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/symfony/stopwatch',
-        ),
-        'Symfony\\Component\\Process\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/symfony/process',
-        ),
-        'Symfony\\Component\\OptionsResolver\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/symfony/options-resolver',
-        ),
-        'Symfony\\Component\\Finder\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/symfony/finder',
-        ),
-        'Symfony\\Component\\Filesystem\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/symfony/filesystem',
-        ),
-        'Symfony\\Component\\EventDispatcher\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
-        ),
-        'Symfony\\Component\\Console\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/symfony/console',
-        ),
-        'Psr\\Log\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
-        ),
-        'Psr\\EventDispatcher\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/psr/event-dispatcher/src',
-        ),
-        'Psr\\Container\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/psr/container/src',
-        ),
-        'PhpCsFixer\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/friendsofphp/php-cs-fixer/src',
-        ),
-        'Doctrine\\Common\\Lexer\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/doctrine/lexer/lib/Doctrine/Common/Lexer',
-        ),
-        'Doctrine\\Common\\Annotations\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
-        ),
-        'Core\\' =>
-        array(
-            0 => __DIR__ . '/../..' . '/Core',
-        ),
-        'Composer\\XdebugHandler\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/composer/xdebug-handler/src',
-        ),
-        'Composer\\Semver\\' =>
-        array(
-            0 => __DIR__ . '/..' . '/composer/semver/src',
-        ),
-        'App\\' =>
-        array(
-=======
     public static $prefixDirsPsr4 = array (
         'Twig\\' => 
         array (
@@ -296,34 +161,21 @@ class ComposerStaticInit7c0baa335460178fecca298af007aa1c
         ),
         'App\\' => 
         array (
->>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
             0 => __DIR__ . '/../..' . '/App',
         ),
     );
 
-<<<<<<< HEAD
-    public static $prefixesPsr0 = array(
-        'T' =>
-        array(
-            'Twig_' =>
-            array(
-=======
     public static $prefixesPsr0 = array (
         'T' => 
         array (
             'Twig_' => 
             array (
->>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
                 0 => __DIR__ . '/..' . '/twig/twig/lib',
             ),
         ),
     );
 
-<<<<<<< HEAD
-    public static $classMap = array(
-=======
     public static $classMap = array (
->>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
         'AssertionError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
         'DivisionByZeroError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/DivisionByZeroError.php',
@@ -366,10 +218,6 @@ class ComposerStaticInit7c0baa335460178fecca298af007aa1c
             $loader->prefixDirsPsr4 = ComposerStaticInit7c0baa335460178fecca298af007aa1c::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit7c0baa335460178fecca298af007aa1c::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit7c0baa335460178fecca298af007aa1c::$classMap;
-<<<<<<< HEAD
-=======
-
->>>>>>> 67f7f36e1699a5ce1635a09358c6c4642940c377
         }, null, ClassLoader::class);
     }
 }
