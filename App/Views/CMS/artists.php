@@ -37,11 +37,11 @@
                     echo("<div><textarea readonly class='content_horizontal'>" . $artist->Description . "</textarea></div>");
                     echo("<div><a class='content_horizontal'>" . $artist->Event . "</a></div>");
                     echo("<div class='buttons'>");
-                    echo("<button type='button' class='edit float-left' onclick='Edit(" . $artist->ArtistID . ")'<span>&radic;</span>");
+                    echo("<button type='button' class='btn btn-secondary float-left' onclick='Edit(" . $artist->ArtistID . ")'><i class='far fa-edit fa-lg'></i></i>");
                     echo("</div></div>");
                 }?></div>
             <div>
-                <button type="button" class="button btn btn-success" onclick="showLightbox('Create new artist')">Add artist</button>
+                <button type="button" class="button btn btn-success" onclick="Create()">Add artist</button>
             </div>
             <div class="lightbox" id="lightbox">
                 <div class="lbcontent">

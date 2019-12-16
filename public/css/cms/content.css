@@ -157,3 +157,10 @@
     width: 100%;
     height: unset;
 }
+
+#lvitem button {
+    height: 30px;
+    width: 35px;
+    padding: 6px;
+    margin-top: 7.5px;
+}
