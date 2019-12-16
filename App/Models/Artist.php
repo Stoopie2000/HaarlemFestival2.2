@@ -57,4 +57,19 @@ class Artist extends Model
         $concerts = Concert::get_for_artist($this->ArtistID);
         return $concerts;
     }
+
+    public static function edit_artist($id, $name, $description, $event){
+        $sql = 'UPDATE artists SET Name = ?, Description = ?, Event = ? WHERE ArtistID = ?';
+        self::execute_edit_query($sql, [$name, $description, $event, $id]);
+    }
+
+    public static function add_artist($name, $description, $event){
+        $sql = 'INSERT INTO artists (Name, Description, Event) VALUES (?, ?, ?)';
+        self::execute_edit_query($sql, [$name, $description, $event]);
+    }
+    
+    public static function delete_artist($id){
+        $sql = 'DELETE FROM artists WHERE ArtistID = ?';
+        self::execute_edit_query($sql, [$id]);
+    }
 }

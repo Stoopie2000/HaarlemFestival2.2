@@ -158,9 +158,17 @@
     height: unset;
 }
 
-#lvitem button {
+.lvitem button {
     height: 30px;
     width: 35px;
     padding: 6px;
     margin-top: 7.5px;
+}
+
+.buttons {
+    padding-right: 35px;
+}
+
+.modal-title {
+    width: 95%;
 }
