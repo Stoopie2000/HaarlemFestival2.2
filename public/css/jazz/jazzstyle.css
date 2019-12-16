@@ -276,13 +276,20 @@ nav.navbar {
   border: none;
   width: 10px;
   text-align: center;
-
 }
 
 .ticketsMenu button i{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+
+.add{
+  
+  color: #000000;
+  
 }
 
 .allAccess{

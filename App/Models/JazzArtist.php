@@ -16,7 +16,7 @@ class JazzArtist extends Model
 
     public static function getAllArtists()
     {
-        $sql  = "SELECT artists.Name, concerts.Price, concerts.StartTime, concerts.NumberOfTickets, concerts.DateID, venue.Hall FROM `plays_at` 
+        $sql  = "SELECT artists.Name, concerts.ConcertID, concerts.Price, concerts.StartTime, concerts.NumberOfTickets, concerts.DateID, venue.Hall FROM `plays_at` 
         INNER JOIN artists ON plays_at.ArtistID=artists.ArtistID 
         INNER JOIN concerts ON plays_at.ConcertID=concerts.ConcertID
         INNER JOIN venue ON concerts.VenueID=venue.VenueID

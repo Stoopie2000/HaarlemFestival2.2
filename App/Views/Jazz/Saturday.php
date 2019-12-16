@@ -92,14 +92,12 @@
     
     <?php 
         /** @var array $jazzArtists */
-        foreach ($jazzArtists as $jazzArtist) 
+        foreach ($jazzArtists as $jazzArtist)
         {
             if($jazzArtist->DateID == 3)
             { 
                 echo ("<ul><li><a> $jazzArtist->Name </a><li><a class=hall>$jazzArtist->Hall</a></li><li><a class=priceDay>€$jazzArtist->Price,00</a></li><li class=quantity>
-                <i class='fas fa-minus-circle fa-lg'></i>
-                <input class=qty type=number value=0 />
-                <i class='fas fa-plus-circle fa-lg'></i>
+                <a class=Add href=/order/addItems?productType=concert&productID=$jazzArtist->ConcertID&quantity=1><i class='fas fa-cart-plus'></i></a>
                 </li></ul>");
             }
         }
