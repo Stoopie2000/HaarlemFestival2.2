@@ -115,3 +115,33 @@ button{
     float: right;
     top: 0px;
 }
+
+.d-none {
+    visibility: hidden;
+    display: none;
+}
+
+.box {
+    position: relative;
+}
+
+.restaurant {
+    margin-bottom: 25px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.restaurant .food {
+    /*padding: 15px;*/
+}
+
+.reserve {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 800px;
+    height: 525px;
+    margin-right: -800px;
+    background: #FFB339;
+    text-align: left;
+}

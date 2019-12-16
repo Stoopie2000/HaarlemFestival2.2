@@ -7,10 +7,34 @@ use PDO;
 
 class Category extends Model
 {
-    /** @var array $restaurants */
+    /** @var array $categories */
     protected static $categories = [
         [
             'name' => 'Dutch'
+        ],
+        [
+            'name' => 'French'
+        ],
+        [
+            'name' => 'European'
+        ],
+        [
+            'name' => 'Asian'
+        ],
+        [
+            'name' => 'International'
+        ],
+        [
+            'name' => 'Fish and seafood'
+        ],
+        [
+            'name' => 'Steakhouse'
+        ],
+        [
+            'name' => 'Argentinian'
+        ],
+        [
+            'name' => 'Modern'
         ],
     ];
 

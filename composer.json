@@ -1,12 +1,15 @@
 {
-    "require": {
-        "twig/twig": "~2.0",
-      "ext-pdo": "*"
+  "require": {
+    "twig/twig": "~2.0",
+    "ext-pdo": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Core\\": "Core/",
+      "App\\": "App/"
     },
-    "autoload": {
-        "psr-4": {
-             "Core\\": "Core/",
-             "App\\": "App/"
-        }
-    }
+    "files": [
+      "./helpers.php"
+    ]
+  }
 }
