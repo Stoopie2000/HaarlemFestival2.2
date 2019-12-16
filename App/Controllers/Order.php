@@ -29,8 +29,7 @@ class Order extends Controller
            $basket = $_SESSION['basket'];
            $basket->addItem($_GET);
         }
-
-        //TODO: Return to origin page
+        $this->redirect($this->get_return_to_page());
     }
 
     public function removeItemsAction(){
