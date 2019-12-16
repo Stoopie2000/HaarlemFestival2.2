@@ -48,9 +48,8 @@
     </div>
 
     <div class="backgroundText">
-        <p class="jazzText">Haarlem Festival is a festival spanning multiple days in the city of Haarlem. With the four different
-        events: Jazz, Food, Dance and Historic we show four different sides of Haarlem's rich culture.
-        The festival will take place from Thursday 26th of July to Sunday 29th of July.
+        <p class="jazzText">Haarlem Festival has invited some of the best jazz artists for a very special event. 
+        On Thursday, Friday and Saturday Patronaat will host the jazz event. On Sunday there will be a free concert on near De Grote Kerk
         </p>
         <a class="arrowDown" href=>&#187;</a>
     </div>
