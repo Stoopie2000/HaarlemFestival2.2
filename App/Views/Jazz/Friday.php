@@ -16,8 +16,8 @@
 
 <body>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="<?php echo Config::URLROOT; ?>/js/ticketsScriptJazz.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo Config::URLROOT; ?>/js/ticketsScriptJazz.js"></script>
 
     <div class="logo">
         <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">   
@@ -80,7 +80,7 @@
                         {
                             echo ("<ul><li><a> $allAccessJazzTicket->Name </a><li><a class=priceAllAccess>€$allAccessJazzTicket->Price,00</a></li><li class=quantity>
                             <button class='qtyMinus' field='quantityTicket'><i class='fas fa-minus-circle fa-lg'></i></button>
-                            <input class='qtyTicket' type=number value=0 name='quantityTicket'/>
+                            <input class='qtyTicket' type='text' value='0' name='quantityTicket'/>
                             <button class='qtyPlus' field='quantityTicket'><i class='fas fa-plus-circle fa-lg'></i></button>
                             </li></ul>");
                         }
