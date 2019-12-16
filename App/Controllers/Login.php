@@ -10,6 +10,11 @@ use Core\Controller;
 use Core\View;
 use Exception;
 
+/**
+ * Class Login
+ * @package App\Controllers
+ * @author Bram Bos <brambos27@gmail.com>
+ */
 class Login extends Controller
 {
     /**

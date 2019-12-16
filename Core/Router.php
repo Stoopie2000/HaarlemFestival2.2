@@ -4,11 +4,7 @@ namespace Core;
 
 use Exception;
 
-/**
- * Router
- *
- * PHP version 7.0
- */
+
 class Router
 {
 
@@ -173,6 +169,7 @@ class Router
      *   localhost/posts?page=1        posts&page=1              posts
      *   localhost/posts/index         posts/index               posts/index
      *   localhost/posts/index?page=1  posts/index&page=1        posts/index
+     *
      *
      * A URL of the format localhost/?page (one variable name, no value) won't
      * work however. (NB. The .htaccess file converts the first ? to a & when

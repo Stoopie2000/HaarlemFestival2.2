@@ -6,6 +6,11 @@ namespace App\Models;
 use App\Config;
 use App\Token;
 
+/**
+ * Class AuthLogic
+ * @package App\Models
+ * @author Bram Bos <brambos27@gmail.com>
+ */
 class AuthLogic
 {
 

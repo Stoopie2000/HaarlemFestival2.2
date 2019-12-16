@@ -7,7 +7,7 @@ use StoPasswordReset;
 /**
  * Unique random tokens
  *
- * PHP version 7.0
+ * @author Bram Bos <brambos27@gmail.com>
  */
 class Token
 {

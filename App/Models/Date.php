@@ -8,6 +8,11 @@ use Core\Model;
 use DateTime;
 use PDO;
 
+/**
+ * Class Date
+ * @package App\Models
+ * @author Bram Bos <brambos27@gmail.com>
+ */
 class Date extends Model
 {
     public function __construct($data = [])

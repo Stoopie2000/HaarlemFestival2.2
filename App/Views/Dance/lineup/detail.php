@@ -4,7 +4,10 @@ use App\Config;
 use App\Models\Artist;
 
 include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html")
-/** @var Artist $artist */
+/** @var Artist $artist
+ * @var array $concertsArtistPlaysAt
+ * @author Bram Bos <brambos27@gmail.com>
+ */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +40,7 @@ include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html")
     <div class="container schedule&TicketsContainer">
         <div class="row">
             <div class="col-sm-6">
-                <?php foreach($artist->Concerts as $valueConcert){
+                <?php foreach($concertsArtistPlaysAt as $valueConcert){
                     $venue = $valueConcert->Venue;
                     $concertArtists = [];
                     foreach ($valueConcert->Artists as $valueArtist) {
@@ -45,21 +48,21 @@ include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html")
                     }
                     $concertArtistsNames = implode(", ", $concertArtists);
 
-                    echo "<h3>$valueConcert->Date</h3>
-                            $valueConcert->StartTime $venue->Name: <b>$concertArtistsNames</b>
+                    echo "<h3>" . date_format($valueConcert->Date, 'l d F') . "</h3>
+                          " . date_format($valueConcert->StartTime, 'H:i') . " $venue->Name: <b>$concertArtistsNames</b>
                                                         ";
                 } ?>
             </div>
             <div class="col-sm-6">
                 <div class="container ticketContainer">
                     <h2>Buy Tickets Now!</h2>
-                    <?php foreach ($artist->Concerts as $concert) {
-                        $venue = $concert->Venue;
+                    <?php foreach ($concertsArtistPlaysAt as $valueConcert) {
+                        $venue = $valueConcert->Venue;
                         echo("<div class='row ticket'>
-            <div class='col-sm-6'>Tickets for $artist->Name at $venue->Name $concert->Date $concert->StartTime - $concert->EndTime</div>
-            <div class='col-sm-1'>€$concert->Price</div>
+            <div class='col-sm-6'>Tickets for $artist->Name at $venue->Name " . date_format($valueConcert->Date, 'l d F') . " " . date_format($valueConcert->StartTime, 'H:i') . " - " . date_format($valueConcert->EndTime, 'H:i') . "</div>
+            <div class='col-sm-1'>€$valueConcert->Price</div>
             <div class='col-sm-5 btn-container'>
-              <a class='btn btn-light' href='detail.php'>Add To Basket</a>
+              <a class='btn btn-light' href='/order/addItems?productType=concert&productID=$valueConcert->ConcertID&quantity=1'>Add To Basket</a>
             </div>
           </div>");
                     } ?>

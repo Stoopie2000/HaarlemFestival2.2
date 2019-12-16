@@ -7,10 +7,11 @@ use App\Config;
 use PDOException;
 use PDOStatement;
 
+
 /**
- * Base model
- *
- * PHP version 7.0
+ * Class Model
+ * @package Core
+ * @author Bram Bos <brambos27@gmail.com>
  */
 abstract class Model
 {
@@ -19,6 +20,7 @@ abstract class Model
      * Get the PDO database connection
      *
      * @return PDO Existing PDO or if PDO doesnt exist yet a new PDO.
+     * @author Bram Bos <brambos27@gmail.com>
      */
     protected static function get_pdo() : PDO
     {

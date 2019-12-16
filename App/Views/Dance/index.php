@@ -7,10 +7,12 @@
 
 include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
 
-    /** @var array $venues
+    /**
+     *  @var array $venues
      *  @var array $artists
      *  @var array $concerts
      *  @var array $plays_at
+     *  @author Bram Bos <brambos27@gmail.com>
      */
 
     ?>
@@ -54,7 +56,7 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
                     }
                     if (!isset($currentConcertDate)) {
                         $currentConcertDate = $concert->Date;
-                        echo("<h2> $concert->Date</h2>");
+                        echo("<h2>" . date_format($concert->Date, 'l d F') . " </h2>");
                     }
 
                     foreach ($venues as $item) {
@@ -85,7 +87,7 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
                     }
                     $concertArtistsNames = implode(", ", $concertArtists);
 
-                    echo("<li style='list-style-type: none;'>$concert->StartTime - $concert->EndTime $venue->Name: <b>$concertArtistsNames</b></li>");
+                    echo("<li style='list-style-type: none;'>" . date_format($concert->StartTime, 'G:i') . " - " . date_format($concert->EndTime, 'G:i') . " $venue->Name: <b>$concertArtistsNames</b></li>");
                 }
                 ?>
                 </ul>

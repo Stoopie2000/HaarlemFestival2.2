@@ -7,6 +7,11 @@ use App\Models\User;
 use Core\Controller;
 use Core\View;
 
+/**
+ * Class Register
+ * @package App\Controllers
+ * @author Bram Bos <brambos27@gmail.com>
+ */
 class Register extends Controller
 {
     public function newAction()

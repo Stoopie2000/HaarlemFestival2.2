@@ -15,6 +15,7 @@ use PDO;
  * @property string FirstName
  * @property string LastName
  * @property string Password
+ * @author Bram Bos <brambos27@gmail.com>
  */
 class User extends Model
 {

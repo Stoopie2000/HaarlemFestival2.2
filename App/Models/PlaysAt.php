@@ -6,6 +6,11 @@ namespace App\Models;
 use Core\Model;
 use PDO;
 
+/**
+ * Class PlaysAt
+ * @package App\Models
+ * @author Bram Bos <brambos27@gmail.com>
+ */
 class PlaysAt extends Model
 {
     public function __construct($data = [])
