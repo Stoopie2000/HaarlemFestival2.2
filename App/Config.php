@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+
 /**
  * Application configuration
  *
@@ -11,13 +12,13 @@ class Config
 
     // ROOTURL de url van de root map
     // Change the ... to your folder name
-    const URLROOT = 'http://localhost/HF2.2/public';
+    const URLROOT = 'http://localhost';
 
     /**
      * Database host
      * @var string
      */
-    const DB_HOST = 'hfteam6.infhaarlem.nl';
+    const DB_HOST = 'localhost';
 
     /**
      * Database name
@@ -29,13 +30,13 @@ class Config
      * Database user
      * @var string
      */
-    const DB_USER = 'hfteam6_Group';
+    const DB_USER = 's633931_Admin';
 
     /**
      * Database password
      * @var string
      */
-    const DB_PASSWORD = 'tv5rMk4gL';
+    const DB_PASSWORD = 'Pret9999';
 
     /**
      * Show or hide error messages on screen

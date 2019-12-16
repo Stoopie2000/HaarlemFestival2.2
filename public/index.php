@@ -43,9 +43,11 @@ $router = new Core\Router();
   */
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('jazz', ['controller' => 'Jazz', 'action' => 'index']);
-$router->add('dance', ['controller' => 'Dance', 'action' => 'index']);
 $router->add('cms', ['controller' => 'CMS', 'action' => 'login']);
 $router->add('cms/{action}/{event}', ['controller' => 'cms']);
+$router->add('dance', ['controller' => 'Dance', 'action' => 'index']);
+$router->add('dance/locations/{location}', ['controller' => 'dance', 'action' => 'locations']);
+$router->add('dance/lineup/{artist}', ['controller' => 'dance', 'action' => 'lineup']);
 $router->add('{controller}/{action}');
 
     

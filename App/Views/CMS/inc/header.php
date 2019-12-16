@@ -19,11 +19,9 @@
         <title>HF cms</title>
     </head>
     <body>
-        <div class="">
         <div class="logo">
             <img src="<?php echo Config::URLROOT; ?>/img/cms/Logo.png" alt="" class="logoimg">
             <div class="logoparallelogram"></div>
-        </div>
         </div>
 
         <div class="text-center title_bar">
