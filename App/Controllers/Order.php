@@ -17,7 +17,6 @@ class Order extends Controller
 {
     public function addItemsAction(){
         unset($_GET['order/addItems']);
-        var_dump($_GET);
 
         if(!isset($_SESSION))
         {session_start();}

@@ -47,6 +47,9 @@ class AuthLogic
      */
     public static function getReturnToPage()
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_SESSION['return_to'])) {
             return $_SESSION['return_to'];
         } else {

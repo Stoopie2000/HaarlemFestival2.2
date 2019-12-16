@@ -3,11 +3,18 @@
 use App\Config;
 use App\Models\Artist;
 
-include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html")
+include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html");
 /** @var Artist $artist
  * @var array $concertsArtistPlaysAt
  * @author Bram Bos <brambos27@gmail.com>
  */
+
+if (!isset($_SESSION)) {
+  session_start();
+}
+
+$_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
