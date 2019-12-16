@@ -2,10 +2,11 @@
 
 namespace App\Controllers;
 
+use Core\Controller;
 use \Core\View;
 
 // Verander de 'Template' met de naam van je eigen controller
-class Template extends \Core\Controller
+class Template extends Controller
 {
 
     /**

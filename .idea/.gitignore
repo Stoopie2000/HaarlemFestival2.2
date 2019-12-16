@@ -5,3 +5,10 @@
 
 # Datasource local storage ignored files
 /dataSources.local.xml
+/php.xml
+/misc.xml
+/modules.xml
+/php.xml
+/sqldialects.xml
+/vcs.xml
+/workspace.xml

@@ -2,6 +2,9 @@
 
 namespace Core;
 
+use App\Config;
+use ErrorException;
+
 /**
  * Error and exception handler
  *
@@ -23,7 +26,7 @@ class Error
     public static function errorHandler($level, $message, $file, $line)
     {
         if (error_reporting() !== 0) {  // to keep the @ operator working
-            throw new \ErrorException($message, 0, $level, $file, $line);
+            throw new ErrorException($message, 0, $level, $file, $line);
         }
     }
 
@@ -43,7 +46,7 @@ class Error
         }
         http_response_code($code);
 
-        if (\App\Config::SHOW_ERRORS) {
+        if (Config::SHOW_ERRORS) {
             echo "<h1>Fatal error</h1>";
             echo "<p>Uncaught exception: '" . get_class($exception) . "'</p>";
             echo "<p>Message: '" . $exception->getMessage() . "'</p>";

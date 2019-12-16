@@ -11,7 +11,9 @@
 
   <div class="form-group">
     <label for="inputEmail">Email address</label>
-    <input type="text" name="email" placeholder="Email address" autofocus value="<?php if (isset($username)) echo ($username);?>" class="form-control" />
+    <input type="text" name="email" placeholder="Email address" autofocus value="<?php if (isset($username)) {
+    echo($username);
+}?>" class="form-control" />
   </div>
   <div class="form-group">
     <label for="inputPassword">Password</label>
@@ -19,7 +21,9 @@
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox" name="remember_me" <?php if (isset($remember_me) && $remember_me) {echo ('checked="checked"');} ?> /> Remember me
+      <input type="checkbox" name="remember_me" <?php if (isset($remember_me) && $remember_me) {
+    echo('checked="checked"');
+} ?> /> Remember me
     </label>
   </div>
 

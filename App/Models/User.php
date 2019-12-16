@@ -24,7 +24,7 @@ class User extends Model
     {
         foreach ($data as $key => $value) {
             $this->$key = $value;
-        };
+        }
     }
 
     /**
