@@ -10,7 +10,7 @@
     }
 ?>
 
-<div class="content">
+<div class="content" id="events">
     <div class="container">
         <div class="title">
             <h1 class="content_center">

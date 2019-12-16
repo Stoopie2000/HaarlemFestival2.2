@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Artist;
 use App\Models\Concert;
 use Core\Router;
 use \Core\View;
@@ -38,6 +39,15 @@ class CMS extends \Core\Controller
         View::render('CMS/events.php', [
             'params' => $this->route_params,
             'concerts' => $concerts
+        ]);
+    }
+
+    public function ArtistsAction(){
+        print_r($this->route_params);
+
+        View::render('CMS/artists.php', [
+            'params' => $this->route_params,
+            'artists' => Artist::getAll()
         ]);
     }
     

@@ -11,6 +11,13 @@
     align-items: center;
 }
 
+.content_horizontal {
+    height: 100%;
+    display: flex;
+    padding-left: 12px;
+    align-items: center;
+}
+
 .row {
     height: auto;
     width: 100%;
@@ -27,7 +34,7 @@
     margin-left: auto;
 }
 
-.listview {
+#events .listview {
     margin-left: auto;
     margin-right: auto;
     height: 700px;
@@ -37,13 +44,13 @@
     overflow-x: hidden;
 }
 
-.listitem {
+#events .listitem {
     width: 100%;
     height: 100px;
     border: 2px solid black;
 }
 
-.litop {
+#events .litop {
     width: 100%;
     height: 40px;
     border-bottom: 1px solid black;
@@ -51,7 +58,7 @@
     grid-template-columns: 150px 150px 400px 300px;
 }
 
-.libottom {
+#events .libottom {
     width: 100%;
     height: 56px;
     display: grid;
@@ -59,7 +66,7 @@
 
 }
 
-.litoptext {
+#events .litoptext {
     text-align: center;
     font-size: 18px;
     font-weight: bold;
@@ -67,8 +74,86 @@
     vertical-align: middle;
 }
 
-.libottomtext {
+#events .libottomtext {
     text-align: center;
     font-size: 14px;
     margin: auto;
+}
+
+#artists .listview {
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 550px;
+    width: 1080px;
+    background-color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#artists .lvheader {
+    height: 50px;
+    color: #fff;
+    background-color: #343a40;
+    font-weight: bold;
+    width: inherit;
+    display: grid;
+    grid-template-columns: 50px 200px 580px 100px 150px;
+}
+
+#artists .lvitem {
+    border-bottom: 1px solid #454d55;
+    height: 45px;
+    display: grid;
+    grid-template-columns: 50px 200px 580px 100px 150px;
+}
+#artists textarea {
+    height: 44px;
+    width: 580px;
+    resize: none;
+    font-size: 13.333px;
+    border: 0px;
+}
+
+#artists .button {
+    margin: 12px;
+}
+
+.lightbox{
+    display: none;
+    position: fixed;
+    z-index: 1700;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.4);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.lbcontent {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 0px 20px;
+    border: 1px solid #888;
+    border-radius: 20px;
+    width: 80%;
+}
+
+#lightbox textarea {
+    border: 1px solid rgb(169, 169, 169);
+    width: 100%;
+    height: unset;
 }
