@@ -37,7 +37,7 @@
                     echo("<div><textarea readonly class='content_horizontal'>" . $artist->Description . "</textarea></div>");
                     echo("<div><a class='content_horizontal'>" . $artist->Event . "</a></div>");
                     echo("<div class='buttons'>");
-                    echo("<button type='button' class='edit' onclick='e'")
+                    echo("<button type='button' class='edit float-left' onclick='Edit(" . $artist->ArtistID . ")'<span>&radic;</span>");
                     echo("</div></div>");
                 }?></div>
             <div>
