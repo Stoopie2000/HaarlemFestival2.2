@@ -19,7 +19,6 @@ class Jazz extends \Core\Controller
 
     public function indexAction()
     {
-        print_r($this->route_params);
         $dates = Date::get_ALL();
         foreach($dates as $date){
             if(date_format($date->Date, "l") == ucfirst($this->route_params["day"])){
