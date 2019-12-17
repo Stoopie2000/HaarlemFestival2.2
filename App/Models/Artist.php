@@ -32,7 +32,7 @@ class Artist extends Model
      * @param string $event
      * @return array
      */
-    public static function getAll($event)
+    public static function get_for_event($event)
     {
         $sql = 'SELECT * FROM artists WHERE Event = ?';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$event]);
@@ -46,7 +46,7 @@ class Artist extends Model
         return $artist = $stmt->fetch();
     }
 
-    public static function find_by_name($artistName, $event) : Artist
+    public static function find_by_name_and_event($artistName, $event)
     {
         $sql = 'SELECT * FROM artists WHERE Name like ? AND Event = ?';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$artistName, $event]);
