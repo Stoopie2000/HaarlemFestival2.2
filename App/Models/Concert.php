@@ -27,7 +27,7 @@ class Concert extends Model
             $this->$key = $value;
         }
 
-        $this->Date = date_create(Date::get_by_ID($this->DateID)->Date);
+        $this->Date = Date::get_by_ID($this->DateID)->Date;
         $this->StartTime = date_create($this->StartTime);
         $this->EndTime = date_create($this->EndTime);
 
