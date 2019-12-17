@@ -60,10 +60,24 @@
     </div>
 
     <div class="tabDays">
-            <button class="tabLinks" onclick="window.location.href='<?php echo Config::URLROOT; ?>/jazz/thursday'"><a>Thursday</a></button>
-            <button class="tabLinks" onclick="window.location.href='<?php echo Config::URLROOT; ?>/jazz/friday'"><a>Friday</a></button>
-            <button class="active"><a>Saturday</a></button>
+    <?php
+        foreach($dates as $date){
+            
+            $dayName = date_format($date->Date, "l");
+
+            if($dayName == $day){
+                echo("<button class='active'><a>$day</a></button>");
+            }
+            else if($dayName != "Sunday"){
+                echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz/$dayName'><a>$dayName</a></button>");
+            }
+        }
+            
+    ?>
     </div>
+    <!--<button class="tabLinks" onclick="window.location.href='<?php echo Config::URLROOT; ?>/jazz/thursday'"><a>Thursday</a></button>
+            <button class="tabLinks" onclick="window.location.href='<?php echo Config::URLROOT; ?>/jazz/friday'"><a>Friday</a></button>
+            <button class="active"><a>Saturday</a></button>-->
 
     <div class="ticketsMenu">
 
@@ -83,7 +97,7 @@
 
 <div class="dashedLine"></div>
 
-<a class=dayTicketsHead>Tickets Friday</a>
+<a class=dayTicketsHead>Tickets <?php echo $day;?></a>
 
 <div class = "dayTickets">
     
@@ -91,12 +105,11 @@
         /** @var array $jazzArtists */
         foreach ($jazzArtists as $jazzArtist)
         {
-            if($jazzArtist->DateID == 3)
-            { 
+            
                 echo ("<ul><li><a> $jazzArtist->Name </a><li><a class=hall>$jazzArtist->Hall</a></li><li><a class=priceDay>€$jazzArtist->Price,00</a></li><li class=quantity>
                 <a class=Add href=../order/addItems?productType=concert&productID=$jazzArtist->ConcertID&quantity=1><i class='fas fa-cart-plus'></i></a>
                 </li></ul>");
-            }
+            
         }
     ?>
 </div>

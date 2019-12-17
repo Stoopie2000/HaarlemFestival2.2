@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use Core\View;
 use Core\Controller;
+use App\Models\Date;
 use App\Models\JazzArtist;
 use App\Models\AllAccessJazz;
 
@@ -14,27 +15,22 @@ class Jazz extends \Core\Controller
      * Show default jazz page
      */
     
-    public function thursdayAction()
-    {
-        View::render('Jazz/Thursday.php', [
-            'jazzArtists' => JazzArtist::getAllArtists(),
-            'allAccessJazz' => AllAccessJazz::getAllAccessJazz()
-        ]);
-    }
+    
 
-    public function fridayAction()
+    public function indexAction()
     {
-        View::render('Jazz/Friday.php', [
-            'jazzArtists' => JazzArtist::getAllArtists(),
-            'allAccessJazz' => AllAccessJazz::getAllAccessJazz()
-        ]);
-    }
-
-    public function saturdayAction()
-    {
-        View::render('Jazz/Saturday.php', [
-            'jazzArtists' => JazzArtist::getAllArtists(),
-            'allAccessJazz' => AllAccessJazz::getAllAccessJazz()
+        print_r($this->route_params);
+        $dates = Date::get_ALL();
+        foreach($dates as $date){
+            if(date_format($date->Date, "l") == ucfirst($this->route_params["day"])){
+                $dayID = $date->DateID;
+            }
+        }
+        View::render('Jazz/index.php', [
+            'jazzArtists' => JazzArtist::getAllArtists($dayID),
+            'allAccessJazz' => AllAccessJazz::getAllAccessJazz(),
+            'dates' => Date::get_ALL(),
+            'day' => ucfirst($this->route_params["day"])
         ]);
     }
 }
