@@ -10,7 +10,7 @@
     }
 ?>
 
-<div class="content">
+<div class="content" id="events">
     <div class="container">
         <div class="title">
             <h1 class="content_center">
@@ -29,11 +29,14 @@
                         echo("</div><div class='litoptext'>");
                         echo explode(" ", $concert->Date)[1] . " " . explode(" ", $concert->Date)[2];
                         echo("</div><div class='litoptext'>");
-                        foreach ($concert->Artists as $artist) {
-                            echo $artist->Name . ", ";
-                        };
+                        for ($i=0; $i < count($concert->Artists); $i++) { 
+                            echo $concert->Artists[$i]->Name;
+                            if ($i != (count($concert->Artists) - 1)) {
+                                echo ", ";
+                            }
+                        }
                         echo("</div><div class='litoptext'>");
-                        echo(date_format($concert->StartTime, 'G:i') . " - " . date_format($concert->EndTime, 'G:i'));
+                        echo($concert->StartTime . " - " . $concert->EndTime);
                         echo("</div></div><div class='libottom'><div class='libottomtext'>Location:</br>");
                         echo $concert->Venue->Name;
                         echo("</div><div class='libottomtext'>Hall:</br>");
@@ -42,7 +45,7 @@
                         echo $concert->Venue->SeatingCapacity;
                         echo("</div><div class='libottomtext'>Price:</br>");
                         echo("€ " . printf("%1\$.2f", $concert->Price));
-                        echo("</div></div>");
+                        echo("</div></div></div>");
                     }?>
                         <!--<div class="libottom">
                             <div class="libottomtext">Location:</br>Patronaat</div>
