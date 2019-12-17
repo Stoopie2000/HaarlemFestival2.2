@@ -67,7 +67,7 @@ class CMS extends \Core\Controller
 
         View::render('CMS/artists.php', [
             'params' => $this->route_params,
-            'artists' => Artist::getAll()
+            'artists' => Artist::get_all()
         ]);
     }
     

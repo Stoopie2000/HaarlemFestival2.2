@@ -32,10 +32,17 @@ class Artist extends Model
      * @param string $event
      * @return array
      */
-    public static function getAll($event)
+    public static function get_all_by_event($event)
     {
         $sql = 'SELECT * FROM artists WHERE Event = ?';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$event]);
+        return $artists = $stmt->fetchAll();
+    }
+
+    public static function get_all()
+    {
+        $sql = 'SELECT * FROM artists';
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
         return $artists = $stmt->fetchAll();
     }
 
