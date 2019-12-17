@@ -26,7 +26,7 @@ class Dance extends Controller
     public function indexAction()
     {
         View::render('Dance/index.php', [
-            'artists' => Artist::get_for_event('dance'),
+            'artists' => Artist::get_all_by_event('dance'),
             'venues' => Venue::getAll('dance'),
             'concerts' => Concert::getAll('dance'),
             'plays_at' => PlaysAt::getAll()
