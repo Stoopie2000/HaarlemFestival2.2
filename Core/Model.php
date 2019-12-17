@@ -22,7 +22,7 @@ abstract class Model
      * @return PDO Existing PDO or if PDO doesnt exist yet a new PDO.
      * @author Bram Bos <brambos27@gmail.com>
      */
-    protected static function get_pdo() : PDO
+    protected static function get_pdo()
     {
         static $pdo = null;
         if ($pdo === null) {
