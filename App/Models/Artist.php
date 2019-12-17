@@ -46,7 +46,7 @@ class Artist extends Model
         return $artist = $stmt->fetch();
     }
 
-    public static function find_by_name($artistName, $event)
+    public static function find_by_name_and_event($artistName, $event)
     {
         $sql = 'SELECT * FROM artists WHERE Name like ? AND Event = ?';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$artistName, $event]);
@@ -67,7 +67,7 @@ class Artist extends Model
         $sql = 'INSERT INTO artists (Name, Description, Event) VALUES (?, ?, ?)';
         self::execute_edit_query($sql, [$name, $description, $event]);
     }
-    
+
     public static function delete_artist($id){
         $sql = 'DELETE FROM artists WHERE ArtistID = ?';
         self::execute_edit_query($sql, [$id]);

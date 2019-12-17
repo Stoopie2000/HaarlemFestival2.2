@@ -22,7 +22,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
 <html lang="en">
 <head>
     <title>Haarlem Dance - <?php echo $venue->Name ?></title>
-  <link rel="stylesheet" href="<?php echo Config::URLROOT; ?>/css/Dance/danceStyle.css"
+  <link rel="stylesheet" href="/css/Dance/danceStyle.css"
 </head>
 <body id="dancePage" class="">
 <?php include(dirname(dirname(dirname(__FILE__))) . "/Default/navigation.html") ?>
