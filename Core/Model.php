@@ -7,10 +7,11 @@ use App\Config;
 use PDOException;
 use PDOStatement;
 
+
 /**
- * Base model
- *
- * PHP version 7.0
+ * Class Model
+ * @package Core
+ * @author Bram Bos <brambos27@gmail.com>
  */
 abstract class Model
 {
@@ -19,6 +20,7 @@ abstract class Model
      * Get the PDO database connection
      *
      * @return PDO Existing PDO or if PDO doesnt exist yet a new PDO.
+     * @author Bram Bos <brambos27@gmail.com>
      */
     protected static function get_pdo() : PDO
     {
@@ -50,10 +52,11 @@ abstract class Model
      *                          Example: $sql = INSERT INTO users(Email, Password) VALUES (?, ?) $parameters = [example@gmail.com, Welcome123]
      * @return bool TRUE on success or FALSE on failure.
      */
-    protected static function execute_edit_query($sql, $parameters){
+    protected static function execute_edit_query($sql, $parameters)
+    {
         $pdo = self::get_pdo();
         $stmt = $pdo->prepare($sql);
-        if ($stmt->execute($parameters)){
+        if ($stmt->execute($parameters)) {
             unset($pdo);
             return true;
         } else {
@@ -73,8 +76,12 @@ abstract class Model
     protected static function execute_select_query($sql, $fetchMode = PDO::FETCH_ASSOC, $parameters = [])
     {
         $stmt = static::get_pdo()->prepare($sql);
-        $stmt->setFetchMode($fetchMode, get_called_class());
-        if ($stmt->execute($parameters)){
+        if ($fetchMode == 2){
+            $stmt->setFetchMode($fetchMode);
+        }else{
+            $stmt->setFetchMode($fetchMode, get_called_class());
+        }
+        if ($stmt->execute($parameters)) {
             unset($pdo);
             return $stmt;
         } else {

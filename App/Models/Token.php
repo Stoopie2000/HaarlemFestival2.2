@@ -2,16 +2,18 @@
 
 namespace App;
 
+use StoPasswordReset;
+
 /**
  * Unique random tokens
  *
- * PHP version 7.0
+ * @author Bram Bos <brambos27@gmail.com>
  */
 class Token
 {
     /**
      * The token value
-     * @var array
+     * @var string
      */
     protected $token;
 
@@ -28,7 +30,7 @@ class Token
 
         } else {
 
-            $this->token = \StoPasswordReset::generateRandomBase62String(128)(); // generate a token, should be 128 - 256 bit
+            $this->token = StoPasswordReset::generateRandomBase62String(128)(); // generate a token, should be 128 - 256 bit
 
         }
     }

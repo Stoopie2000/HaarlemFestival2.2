@@ -15,6 +15,7 @@ use PDO;
  * @property string FirstName
  * @property string LastName
  * @property string Password
+ * @author Bram Bos <brambos27@gmail.com>
  */
 class User extends Model
 {
@@ -24,7 +25,7 @@ class User extends Model
     {
         foreach ($data as $key => $value) {
             $this->$key = $value;
-        };
+        }
     }
 
     /**
