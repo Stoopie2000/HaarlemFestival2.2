@@ -35,7 +35,7 @@ class CMS extends \Core\Controller
         if ($this->route_params["event"] == 'jazz') {
             $this->route_params["event"] = ucfirst($this->route_params["event"]);
         }
-        $concerts = Concert::getAll($this->route_params["event"]);
+        $concerts = Concert::get_all_by_event($this->route_params["event"]);
 
         
         // Wat je mee geeft met deze methode is de Path naar de view 'index', de Path is vanuit de Views map.
