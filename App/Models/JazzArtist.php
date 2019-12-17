@@ -14,16 +14,16 @@ class JazzArtist extends Model
         };
     }
 
-    public static function getAllArtists()
+    public static function getAllArtists($ID)
     {
         $sql  = "SELECT artists.Name, concerts.ConcertID, concerts.Price, concerts.StartTime, concerts.NumberOfTickets, concerts.DateID, venue.Hall FROM `plays_at` 
         INNER JOIN artists ON plays_at.ArtistID=artists.ArtistID 
         INNER JOIN concerts ON plays_at.ConcertID=concerts.ConcertID
         INNER JOIN venue ON concerts.VenueID=venue.VenueID
-        WHERE artists.Event LIKE 'Jazz'
+        WHERE artists.Event LIKE 'Jazz' AND concerts.DateID = ?
         ORDER BY concerts.ConcertID";
 
-        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$ID]);
         return $users = $stmt->fetchAll();
     }
 }
