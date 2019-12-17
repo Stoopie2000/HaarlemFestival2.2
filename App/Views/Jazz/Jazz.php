@@ -63,7 +63,7 @@ $tags = array('bears');
     </div>
 
     <div class="tabDays">
-            <button class="active"><a>Thurday</a></button>
+            <button class="active"><a>Thursday</a></button>
             <button class="tabLinks"><a>Friday</a></button>
             <button class="tabLinks"><a>Saturday</a></button>
     </div>
