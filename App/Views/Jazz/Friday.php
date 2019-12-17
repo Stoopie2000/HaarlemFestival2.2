@@ -65,9 +65,15 @@
     </div>
 
     <div class="tabDays">
+<<<<<<< HEAD:App/Views/Jazz/Jazz.php
+            <button class="active"><a>Thursday</a></button>
+            <button class="tabLinks"><a>Friday</a></button>
+            <button class="tabLinks"><a>Saturday</a></button>
+=======
             <button class="tabLinks" onclick="window.location.href='<?php echo Config::URLROOT; ?>/jazz/thursday'"><a>Thursday</a></button>
             <button class="active"><a>Friday</a></button>
             <button class="tabLinks" onclick="window.location.href='<?php echo Config::URLROOT; ?>/jazz/saturday'"><a>Saturday</a></button>
+>>>>>>> 7477465cdf2b1021953c1d46ac6bef06b6ac32c4:App/Views/Jazz/Friday.php
     </div>
 
     <div class="ticketsMenu">
