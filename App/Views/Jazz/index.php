@@ -3,7 +3,11 @@
 
     /*require dirname(__DIR__) . '\header.html'*/
 
-    
+    if (!isset($_SESSION)) {
+        session_start();
+      }
+      
+      $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
 ?>
 
 <html lang="en">
