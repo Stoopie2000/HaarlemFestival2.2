@@ -105,6 +105,13 @@
         }
     }
 
+    function Clearlightbox(){
+        document.getElementById('lbName').intertext = null;
+        document.getElementById('Name').value = null;
+        document.getElementById('Description').value = null;
+        document.getElementById('Event').value = "";
+    }
+
     function Create(){
         var lightbox = document.getElementById('lightbox');
         document.getElementById('lbName').innerText = "Create new artist";
