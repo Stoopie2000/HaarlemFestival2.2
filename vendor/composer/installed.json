@@ -250,12 +250,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-            "reference": "26b8f8154b06d5d1bd3841a1bcfb31eba4c85f8f"
+            "reference": "366dacdf417998c5f44e1fd59c34ecae959de155"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/26b8f8154b06d5d1bd3841a1bcfb31eba4c85f8f",
-            "reference": "26b8f8154b06d5d1bd3841a1bcfb31eba4c85f8f",
+            "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/366dacdf417998c5f44e1fd59c34ecae959de155",
+            "reference": "366dacdf417998c5f44e1fd59c34ecae959de155",
             "shasum": ""
         },
         "require": {
@@ -296,7 +296,7 @@
             "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "For XmlMatchesXsd constraint.",
             "symfony/polyfill-mbstring": "When enabling `ext-mbstring` is not possible."
         },
-        "time": "2019-11-28T17:34:53+00:00",
+        "time": "2019-12-15T17:32:02+00:00",
         "bin": [
             "php-cs-fixer"
         ],

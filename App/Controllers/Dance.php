@@ -26,7 +26,7 @@ class Dance extends Controller
     public function indexAction()
     {
         View::render('Dance/index.php', [
-            'artists' => Artist::getAll('dance'),
+            'artists' => Artist::get_all_by_event('dance'),
             'venues' => Venue::getAll('dance'),
             'concerts' => Concert::getAll('dance'),
             'plays_at' => PlaysAt::getAll()
@@ -53,7 +53,7 @@ class Dance extends Controller
 
     public function lineupAction()
     {
-        $artist = Artist::find_by_name(str_replace('-', ' ', $this->route_params['artist']), 'dance');
+        $artist = Artist::find_by_name_and_event(str_replace('-', ' ', $this->route_params['artist']), 'dance');
         $concertsArtistPlaysAt = $artist->get_concerts();
         if ($artist){
             View::render('Dance/lineup/detail.php', [

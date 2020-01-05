@@ -23,4 +23,5 @@ class BasketItem
     public $Extra;
     public $Quantity;
     public $Price;
+    public $ItemID;
 }

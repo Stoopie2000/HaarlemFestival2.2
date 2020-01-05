@@ -17,7 +17,6 @@ class Order extends Controller
 {
     public function addItemsAction(){
         unset($_GET['order/addItems']);
-        var_dump($_GET);
 
         if(!isset($_SESSION))
         {session_start();}
@@ -30,8 +29,7 @@ class Order extends Controller
            $basket = $_SESSION['basket'];
            $basket->addItem($_GET);
         }
-
-        //TODO: Return to origin page
+        $this->redirect($this->get_return_to_page());
     }
 
     public function removeItemsAction(){

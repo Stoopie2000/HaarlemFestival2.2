@@ -27,7 +27,7 @@ class Concert extends Model
             $this->$key = $value;
         }
 
-        $this->Date = date_create(Date::get_by_ID($this->DateID)->Date);
+        $this->Date = Date::get_by_ID($this->DateID)->Date;
         $this->StartTime = date_create($this->StartTime);
         $this->EndTime = date_create($this->EndTime);
 
@@ -62,7 +62,7 @@ class Concert extends Model
 
     public static function get_for_artist($artistID)
     {
-        $sql = "SELECT * FROM concerts INNER JOIN plays_at pa on concerts.ConcertID = pa.ConcertID WHERE pa.ArtistID = ?";
+        $sql = "SELECT DateID, concerts.ConcertID, DateID, StartTime, EndTime, NumberOfTickets, Price, VenueID, Event FROM concerts INNER JOIN plays_at pa on concerts.ConcertID = pa.ConcertID WHERE pa.ArtistID = ?";
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$artistID]);
         return $concerts = $stmt->fetchAll();
     }
@@ -78,7 +78,7 @@ class Concert extends Model
         $concert = self::get_by_ID($ticketInfo['productID']);
         $basketItem = new BasketItem();
         $basketItem->Description = $concert->Venue->Name . " Ticket";
-
+        $basketItem->Item = $concert;
         $basketItem->Price = $concert->Price;
         return $basketItem;
     }
