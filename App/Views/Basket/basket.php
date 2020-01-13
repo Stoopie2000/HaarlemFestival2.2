@@ -2,7 +2,12 @@
 
 use App\Config;
 
-include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
+include(dirname(dirname(__FILE__)) . "/Default/website_head.html");
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
 /**
  * @var array $basket
  *
@@ -29,23 +34,34 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
         <?php
         $priceTotal = 0;
         foreach($basket->items as $basketItem){
+
+
+
             $priceTotal += $basketItem->Price;
-            echo <<<BASKETITEM
-        <div class="row">
-            <div class="col-sm-6">
+            echo "        <div class=\"row\">
+            <div class=\"col-sm-6\">
             $basketItem->Description
             </div>
-            <div class="col-sm-4">
-            <p>
-              $basketItem->Quantity
-           </p>
-           <a href="/order/removeItems?itemID=$basketItem->ItemID">Remove Item</a>
+            <div class=\"col-sm-4\">
+            <div class='dropdown'>
+              <select>
+              ";
+            for($x = 0; $x < ($basketItem->Quantity + 5); $x++){
+                    if ($x == $basketItem->Quantity){
+                        echo"<option selected value='$x'>$x</option>";
+                    }else{
+                        echo"<option value='$x'>$x</option>";
+                    }
+              };
+            echo "
+              </select>
             </div>
-            <div class="col-sm-2">
+           <a href=\"/order/removeItems?itemID=$basketItem->ItemID\">Remove Item</a>
+            </div>
+            <div class=\"col-sm-2\">
             <b> € $basketItem->Price </b>
             </div>
-        </div>
-BASKETITEM;
+        </div>";
         }
         ?>
 

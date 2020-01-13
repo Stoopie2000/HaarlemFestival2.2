@@ -21,14 +21,13 @@ class Dance extends Controller
     /**
      * Show the index page for Haarlem dance
      *
-
      */
     public function indexAction()
     {
         View::render('Dance/index.php', [
             'artists' => Artist::get_all_by_event('dance'),
             'venues' => Venue::getAll('dance'),
-            'concerts' => Concert::getAll('dance'),
+            'concerts' => Concert::get_all_by_event('dance'),
             'plays_at' => PlaysAt::getAll()
         ]);
     }
@@ -39,7 +38,7 @@ class Dance extends Controller
 
         if ($location) {
             $concertsAtLocation = Concert::find_for_location($location->VenueID);
-            $concerts = Concert::getAll('dance');
+            $concerts = Concert::get_all_by_event('dance');
             $dayTickets = DayTicket::get_all('dance');
 
             View::render('Dance/locations/detail.php', [

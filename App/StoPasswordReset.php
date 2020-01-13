@@ -1,4 +1,7 @@
 <?php
+
+namespace App;
+
 /**
  * This class helps building secure password-reset links, and can verify
  * them. It generates unpredictable tokens, and provides hash-values to

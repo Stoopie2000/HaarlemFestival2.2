@@ -41,7 +41,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
                 <p> <?php echo($venue->Description); ?> </p>
             </div>
             <div class="col-sm-6">
-                <img class="img-fluid" src="<?php echo(Config::URLROOT . "img/dance/"); echo($venue->Image)?>">
+                <img class="img-fluid" src="<?php echo(Config::URLROOT . "/img/dance/"); echo($venue->Image)?>">
             </div>
         </div>
     </div>

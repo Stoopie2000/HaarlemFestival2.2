@@ -16,7 +16,8 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
      */
 
     ?>
-    <link rel="stylesheet" href="/css/Dance/danceStyle.css"
+    <link rel="stylesheet" href="/css/Dance/danceStyle.css">
+    <link rel="stylesheet" href="/css/Default/Navigation.css">
 </head>
 <body id="dancePage" class="">
 <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html") ?>

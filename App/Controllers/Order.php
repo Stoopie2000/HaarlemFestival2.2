@@ -41,6 +41,8 @@ class Order extends Controller
         $basket = $_SESSION['basket'];
 
         $basket->removeItem($_GET['itemID']);
+
+        $this->redirect($this->get_return_to_page());
     }
 
     public function basketAction(){

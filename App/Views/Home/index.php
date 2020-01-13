@@ -11,10 +11,11 @@ require dirname(__DIR__) . '\header.html'
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/Home/homepage.css">
+  <link rel="stylesheet" href="/css/Default/Navigation.css">
     <title>Haarlem Festival Homepage</title>
 </head>
 
-<body>
+<body id="homePage">
     <div class="logo">
             <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">
     </div>
