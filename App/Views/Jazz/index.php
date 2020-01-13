@@ -18,34 +18,12 @@
     <title>Haarlem Festival Homepage</title>
 </head>
 
-<body>
+<body id="jazzPage" class="">
     <div class="logo">
         <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">   
     </div>
 
-    <div class="topleft"></div>
-    <div class="topbar">
-        <ul class="ultop"> 
-            <li class="top"><a href="login"><span>Login</span></a></li>
-            <li class="top"><a href="cart"><span>Cart</span></a></li>
-            <div class="search-container">
-                
-                   <input type="text" placeholder="Search.." name="search">
-                
-            </div>
-        </ul>
-    </div>
-
-    <div class="topright"></div>
-    
-    <nav class ="navbar">
-        <ul class="ulnav">
-            <li class="linav"><a href=><span>HOME</span></a></li>
-            <li class="linav"><a class="active" href=><span>JAZZ</span></a></li>
-            <li class="linav"><a href=><span>DANCE</span></a></li>
-            <li class="linav"><a href=><span>FOOD</span></a></li>
-        </ul>
-    </nav>
+    <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html")?>
 
     <div class="background">
         <img src="<?php echo Config::URLROOT; ?>/img/jazz/gumbokings.jpg" alt="Gumbo Kings">
@@ -79,9 +57,6 @@
             
     ?>
     </div>
-    <!--<button class="tabLinks" onclick="window.location.href='<?php echo Config::URLROOT; ?>/jazz/thursday'"><a>Thursday</a></button>
-            <button class="tabLinks" onclick="window.location.href='<?php echo Config::URLROOT; ?>/jazz/friday'"><a>Friday</a></button>
-            <button class="active"><a>Saturday</a></button>-->
 
     <div class="ticketsMenu">
 
@@ -116,7 +91,9 @@
             
         }
     ?>
-</div>
+</div>  
+
+</body>
 
 <?php
     // Hier eindigen we de pagina mee

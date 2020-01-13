@@ -32,4 +32,14 @@ class Jazz extends \Core\Controller
             'day' => ucfirst($this->route_params["day"])
         ]);
     }
+
+    public function lineupAction()
+    {
+        $dates = Date::get_ALL();
+    
+        View::render('Jazz/lineup.php', [
+            'dates' => Date::get_ALL(),
+            'jazzArtists' => JazzArtist::getLineUp()
+        ]);
+    }
 }
