@@ -14,10 +14,11 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">
+    <link rel="stylesheet" href="<?php echo Config::URLROOT; ?>/css/Default/Navigation.css">
     <title>Haarlem Festival Homepage</title>
 </head>
 
-<body>
+<body id="jazzPage" class="">
     <div class="logo">
         <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">   
     </div>
@@ -37,7 +38,7 @@
 
     <div class="tab">
     <button class="active"><a>Line Up</a></button>
-            <?php echo("<button class=tabLinks onclick=window.location.href=" . Config::URLROOT . "/jazz/Thursday'><a>Tickets</a></button>")?>
+    <?php echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz/Thursday'><a>Tickets</a></button>");?>
     </div>
 
     <div class=dayLineup>

@@ -1,3 +1,10 @@
+.logo{
+    position: absolute;
+    z-index: 30;
+    left: 17px;
+    top: 10px;
+  }
+
 .topleft{
     position: absolute;
     left: 0px;
@@ -148,5 +155,5 @@ nav.navbar {
 
 #jazzPage .jazzButton{
     background: #990000;
-    color: #000000;
+    color: #ffffff;
 }

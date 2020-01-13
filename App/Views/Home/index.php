@@ -11,6 +11,7 @@ require dirname(__DIR__) . '\header.html'
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/Home/homepage.css">
+    <link rel="stylesheet" href="<?php echo Config::URLROOT; ?>/css/Default/Navigation.css">
   <link rel="stylesheet" href="/css/Default/Navigation.css">
     <title>Haarlem Festival Homepage</title>
 </head>
@@ -22,7 +23,7 @@ require dirname(__DIR__) . '\header.html'
     <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html")?>
 
     <div class="background">
-        <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-spaarne-zomer.jpg" alt="Haarlem Spaarne">
+        <img src="<?php echo Config::URLROOT; ?>/img/home/haarlem-spaarne-zomer.jpg" alt="Haarlem Spaarne">
     </div>
 
     <div class="backgroundText">
@@ -33,47 +34,23 @@ require dirname(__DIR__) . '\header.html'
         <a class="arrowDown" href=>&#187;</a>
     </div>
 
+    <h1 class="eventHeader">The events</h1>
+
     <div class="row">
-        <div class="column">
-            <img src="<?php echo Config::URLROOT; ?>/img/jazz/jazz-homepage.jpg" alt="Jazz musician">
-            <div class="jazz">
-                <a class="detailTitle">Jazz</a>
-                <p class="detailText">Haarlem Festival has invited some of</br>
-                                    the best jazz artists for a very</br>
-                                    special event.</br>
-                                    On Thursday, Friday and Saturday</br>
-                                    Patronaat will host the jazz event. On</br>
-                                    Sunday there will be a free concert</br>
-                                    near De Grote Kerk.
-                </p>
-            </div>
-        </div>
-        <div class="column">
-            <img src="<?php echo Config::URLROOT; ?>/img/jazz/food-homepage.jpg" alt="Food">
-            <div class="food">
-            <a class="detailTitle">Food</a>
-                <p class="detailText">If you are coming to Haarlem for the</br>
-                                    festival, you can't miss out on the</br>
-                                    great food Haarlem has to offer.</br> 
-                                    During the festival, a wide selection of</br>
-                                    restaurants are available to get a</br>
-                                    taste of what we have to offer.
-                </p>
-            </div>
-        </div>
-        <div class="column">
-            <img src="<?php echo Config::URLROOT; ?>/img/jazz/dance-homepage.jpg" alt="DJ">
-            <div class="dance">
-                <a class="detailTitle">Dance</a>
-                <p class="detailText">Enjoy a very special three-day event </br>
-                                    with music from some of the best </br>
-                                    Dutch DJ’s. During this event the city </br> 
-                                    center will be transformed into a </br>
-                                    haven for dance, trance, house </br>
-                                    techno fanatics.
-                </p>
-            </div>
-        </div>
+        <?php
+
+        foreach($events as $event)
+        {
+            echo ("<div class='column'>
+            <img class='img-fluid' src=" . Config::URLROOT . "/img/home/$event->Image alt=Jazz musician>
+                <div class=textBox; style='background-color:$event->Color';>
+                    <h2 class='detailTitle'>$event->Name</h2>
+                    <p class='detailText'>$event->Description</p>
+                    </p>
+                </div>
+            </div>");
+        }   
+        ?>
     </div>
 </body>
 

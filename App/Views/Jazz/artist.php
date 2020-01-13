@@ -14,6 +14,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">
+    <link rel="stylesheet" href="<?php echo Config::URLROOT; ?>/css/Default/Navigation.css">
     <title>Haarlem Festival Homepage</title>
 </head>
 
@@ -37,7 +38,7 @@
 
     <div class="tab">
             <button class="active"><a>Line Up</a></button>
-            <button class="tabLinks"><a>Tickets</a></button>
+            <?php echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz/Thursday'><a>Tickets</a></button>");?>
     </div>
 
   

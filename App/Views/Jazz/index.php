@@ -14,6 +14,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">
+    <link rel="stylesheet" href="<?php echo Config::URLROOT; ?>/css/Default/Navigation.css">
     <script src="https://kit.fontawesome.com/1ccd03e13f.js" crossorigin="anonymous"></script>
     <title>Haarlem Festival Homepage</title>
 </head>
@@ -37,7 +38,7 @@
     </div>
 
     <div class="tab">
-            <button class="tabLinks"><a>Line Up</a></button>
+            <?php echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz'><a>Line up</a></button>");?>
             <button class="active"><a>Tickets</a></button>
     </div>
 
