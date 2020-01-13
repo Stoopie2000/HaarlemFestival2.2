@@ -310,4 +310,9 @@ input[type=number] {
   width: 343px;
 }
 
+.artistFilter{
+  position: absolute;
+  top: 1000px;
+  left: 1500px;
+}
 

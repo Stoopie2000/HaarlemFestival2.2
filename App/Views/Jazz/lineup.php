@@ -41,6 +41,13 @@
     <?php echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz/Thursday'><a>Tickets</a></button>");?>
     </div>
 
+    <select class="artistFilter" data-event="filter">
+        <option value="Select artist">Select artist</option>
+                <?php foreach ($jazzArtists as $jazzArtist): ?>
+                    <option value="<?= $jazzArtist->Name; ?>"><?= $jazzArtist->Name; ?></option>
+                <?php endforeach; ?>
+        </select>
+
     <div class=dayLineup>
         
 
