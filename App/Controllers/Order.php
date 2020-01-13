@@ -49,7 +49,7 @@ class Order extends Controller
         if(!isset($_SESSION))
         {session_start();}
         if (empty($_SESSION['basket'])){
-            $_SESSION['basket'] = "";
+            $_SESSION['basket']->items[0] = "";
         }
 
         View::render('Basket/basket.php', [

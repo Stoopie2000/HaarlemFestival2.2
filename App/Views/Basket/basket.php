@@ -23,7 +23,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
 <body id="dancePage" class="">
 <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html") ?>
 <main>
-  <?php if (empty($basket)){ ?>
+  <?php if (empty($basket->items[0])){ ?>
   <div class="container">
     <div class="row">
       <div class="col-sm-12">

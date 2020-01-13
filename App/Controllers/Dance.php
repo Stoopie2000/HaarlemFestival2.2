@@ -24,11 +24,20 @@ class Dance extends Controller
      */
     public function indexAction()
     {
+        $concerts = Concert::get_all_by_event('dance');
+
+        $firstDay = $concerts[0]->Date;
+        $lastDay = end($concerts)->Date;
+
+
+
         View::render('Dance/index.php', [
             'artists' => Artist::get_all_by_event('dance'),
             'venues' => Venue::getAll('dance'),
-            'concerts' => Concert::get_all_by_event('dance'),
-            'plays_at' => PlaysAt::getAll()
+            'concerts' => $concerts,
+            'plays_at' => PlaysAt::getAll(),
+            'firstDay' => $firstDay,
+            'finalDay' => $lastDay
         ]);
     }
 

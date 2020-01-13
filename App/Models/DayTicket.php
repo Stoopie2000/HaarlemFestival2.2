@@ -27,7 +27,7 @@ class DayTicket extends Model
         }else{
             $for = $this->get_days();
             foreach ($for as $day){
-                $this->Days[] = date_create(Date::get_by_ID($day['DateID'])->Date);
+                $this->Days[] =  Date::get_by_ID($day['DateID'])->Date;
             }
             unset($this->DateID);
         }

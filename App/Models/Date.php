@@ -21,7 +21,7 @@ class Date extends Model
             $this->$key = $value;
         }
 
-        $this->Date =date_create($this->Date);
+        $this->Date = date_create($this->Date);
     }
 
     public static function get_by_ID($DateID)
