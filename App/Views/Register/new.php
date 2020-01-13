@@ -18,7 +18,7 @@ use App\Models\User;
     </div>
     <div class="form-group">
         <label for="inputPassword">Password</label>
-        <input type="password" id="inputPassword" name="password" placeholder="Password" required class="form-control" />
+        <input type="password" id="inputPassword" name="Password" placeholder="Password" required class="form-control" />
     </div>
     <button type="submit" class="btn btn-default">Sign up</button>
 

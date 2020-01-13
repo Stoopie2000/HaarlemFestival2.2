@@ -52,9 +52,10 @@ class User extends Model
      */
     public function store_token($token)
     {
-        $sql = 'UPDATE users SET UserTokenHash = ? WHERE UserID = ?';
-        $parameters = [$token, $this->UserID];
-        self::execute_edit_query($sql, $parameters);
+        //TODO: Function store_token
+//        $sql = 'UPDATE users SET UserTokenHash = ? WHERE UserID = ?';
+//        $parameters = [$token, $this->UserID];
+//        self::execute_edit_query($sql, $parameters);
     }
 
     /**
@@ -95,7 +96,9 @@ class User extends Model
                 $this->Type = 'customer';
             }
 
-            $sql = 'INSERT INTO users (Email, Type, PasswordHash, FirstName, LastName, UserTokenHash) VALUES (?, ?, ?, ?, ?, ?)';
+            //TODO UserTokenHash
+
+            $sql = 'INSERT INTO users (Email, Type, PasswordHash, FirstName, LastName) VALUES (?, ?, ?, ?, ?)';
             $parameters = [$this->Email, $this->Type, $password_hash, $firstName, $lastName, 0];
 
             return self::execute_edit_query($sql, $parameters);

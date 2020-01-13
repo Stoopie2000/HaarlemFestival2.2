@@ -126,8 +126,7 @@ nav.navbar {
     font-weight: bold;
     text-decoration: none;
     line-height: 124px;
-    text-align: center;
-  }
+}
 
 .linav a span {
     display: inline-block;
