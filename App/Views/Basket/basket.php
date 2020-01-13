@@ -23,20 +23,28 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
 <body id="dancePage" class="">
 <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html") ?>
 <main>
+  <?php if (empty($basket)){ ?>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Your shopping basket is empty!</h1>
+        <a href="/">Return to the home page and order some tickets!</a>
+      </div>
+    </div>
+  </div>
+  <?php }else{ ?>
+
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <h1>Shopping basket</h1>
-            </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Shopping basket</h1>
         </div>
+      </div>
     </div>
     <div class="basketContainer container">
         <?php
         $priceTotal = 0;
         foreach($basket->items as $basketItem){
-
-
-
             $priceTotal += $basketItem->Price;
             echo "        <div class=\"row\">
             <div class=\"col-sm-6\">
@@ -52,7 +60,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
                     }else{
                         echo"<option value='$x'>$x</option>";
                     }
-              };
+              }
             echo "
               </select>
             </div>
@@ -80,7 +88,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
                 ?>
             </div>
         </div>
-
     </div>
 </main>
 </body>
+<?php }
