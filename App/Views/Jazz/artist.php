@@ -41,4 +41,6 @@
             <?php echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz/Thursday'><a>Tickets</a></button>");?>
     </div>
 
+    </body>
+
   
