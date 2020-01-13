@@ -43,9 +43,12 @@
 
     <select class="artistFilter" data-event="filter">
         <option value="Select artist">Select artist</option>
-                <?php foreach ($jazzArtists as $jazzArtist): ?>
-                    <option value="<?= $jazzArtist->Name; ?>"><?= $jazzArtist->Name; ?></option>
-                <?php endforeach; ?>
+                <?php foreach ($jazzArtists as $jazzArtist){
+                    if($jazzArtist->DateID != 4){
+                        echo ("<option value='$jazzArtist->Name'>$jazzArtist->Name</option>");
+                    }
+                }
+                ?>
         </select>
 
     <div class=dayLineup>
