@@ -284,12 +284,8 @@ nav.navbar {
     align-items: center;
 }
 
-
-
 .add{
-  
   color: #000000;
-  
 }
 
 .allAccess{
@@ -311,7 +307,6 @@ nav.navbar {
   position: absolute;
   left: 80px;
   top: 310px;
-  
 }
 
 .dayTickets li{
@@ -386,4 +381,81 @@ input[type=number] {
   border-top:4px dotted #990000;
   margin-top: 200px;
 }
+
+.dayLineup{
+  display: flex;
+  position: absolute;
+  top: 1130px;
+  margin: auto;
+  width: 98.5%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.dayArtist{
+  display: inline-block;
+  margin-left: 40px;
+  margin-right: 40px;
+  background-color: rgb(255, 255, 255, 0.70);
+  width: 343px;
+  height: auto;
+}
+
+.dayName{
+  background-color: rgb(255, 255, 255);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: black;
+  width: 343px;
+  height: 48px;
+  margin-left: 40px;
+  margin-right: 40px;
+  font-family: Arial, sans-serif;
+  font-size: 24pt;
+  text-align: center;
+  line-height: 48px;
+}
+
+.artist{
+  background-color: #333333;
+  position: relative;
+  text-align: left;
+  left: 32px;
+  width: 280px;
+  height: 23px;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.artistName{
+  position: relative;
+  left: 2px;
+  top: 2px;
+}
+
+.artistTime{
+  position: absolute;
+  left: 200px;
+  top: 2px;
+}
+
+.dayRow{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dayFill{
+  height: 30px;
+}
+
+.fill{
+  background-color: rgb(255, 255, 255, 0.70);
+  height: 40px;
+  width: 343px;
+}
+
 
