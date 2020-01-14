@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/hfteam6_db</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="hfteam6_DB@hfteam6.infhaarlem.nl" uuid="7712a9eb-dc95-4f37-98e1-70e12cb175cc">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://hfteam6.infhaarlem.nl:3306/hfteam6_DB</jdbc-url>
+    </data-source>
   </component>
 </project>

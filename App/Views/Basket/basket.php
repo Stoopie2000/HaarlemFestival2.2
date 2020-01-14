@@ -18,12 +18,13 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
 <html lang="en">
 <head>
     <title>Haarlem Festival shopping basket</title>
-    <link rel="stylesheet" href=""
+  <link rel="stylesheet" href="/css/Dance/danceStyle.css">
+  <link rel="stylesheet" href="/css/Default/Navigation.css">
 </head>
-<body id="dancePage" class="">
+<body id="basketPage" class="">
 <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html") ?>
-<main>
-  <?php if (empty($basket->items[0])){ ?>
+<main style="margin-top: 200px">
+  <?php if (empty($basket)){ ?>
   <div class="container">
     <div class="row">
       <div class="col-sm-12">

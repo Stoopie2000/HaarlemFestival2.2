@@ -86,7 +86,9 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
 
                     $concertArtists = [];
                     foreach ($concert->Artists as $artist) {
-                        $concertArtists[] = $artist->Name;
+                      if (!empty($artist)){
+                          $concertArtists[] = $artist->Name;
+                      }
                     }
                     $concertArtistsNames = implode(", ", $concertArtists);
 

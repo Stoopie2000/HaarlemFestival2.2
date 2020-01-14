@@ -38,6 +38,10 @@ class Concert extends Model
         }
 
         $this->Venue = Venue::get_venue($this->VenueID);
+
+        if (empty($this->Artists)){
+            $this->Artists = [];
+        }
     }
 
     /**
@@ -48,7 +52,7 @@ class Concert extends Model
      */
     public static function get_all_by_event($event)
     {
-        $sql = 'SELECT * FROM concerts where Event = ?';
+        $sql = 'SELECT * FROM concerts where Event = ? order by DateID, StartTime ';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$event]);
         return $concerts = $stmt->fetchAll();
     }

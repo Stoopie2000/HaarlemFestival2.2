@@ -56,21 +56,25 @@ class Dance extends Controller
                 'concertsAtLocation' => $concertsAtLocation,
                 'dayTickets' => $dayTickets
             ]);
+        }else{
+            header('HTTP/1.0 404 Not Found');
+            exit;
         }
     }
 
     public function lineupAction()
     {
         $artist = Artist::find_by_name_and_event(str_replace('-', ' ', $this->route_params['artist']), 'dance');
-        $concertsArtistPlaysAt = $artist->get_concerts();
         if ($artist){
+            $concertsArtistPlaysAt = $artist->get_concerts();
             View::render('Dance/lineup/detail.php', [
                 'artist' => $artist,
                 'concertsArtistPlaysAt' => $concertsArtistPlaysAt
             ]);
         }
         else {
-            //TODO 404
+            header('HTTP/1.0 404 Not Found');
+            exit;
         }
     }
 }

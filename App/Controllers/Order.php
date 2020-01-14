@@ -48,12 +48,15 @@ class Order extends Controller
     public function basketAction(){
         if(!isset($_SESSION))
         {session_start();}
+
         if (empty($_SESSION['basket'])){
-            $_SESSION['basket']->items[0] = "";
+            $basket = "";
+        }else{
+            $basket = $_SESSION['basket'];
         }
 
         View::render('Basket/basket.php', [
-            'basket' => $_SESSION['basket']
+            'basket' => $basket
         ]);
     }
 }
