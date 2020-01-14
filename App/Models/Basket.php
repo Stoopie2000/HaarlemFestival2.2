@@ -18,7 +18,7 @@ class Basket extends Model
     {
         foreach ($data as $key => $value) {
             $this->$key = $value;
-        };
+        }
     }
 
     public function addItem($get)
@@ -52,6 +52,8 @@ class Basket extends Model
 
         }else{
             //TODO: 404 gooien ofzo idk. Nadenken
+            header('HTTP/1.0 404 Not Found');
+            exit;
         }
     }
 

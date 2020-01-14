@@ -52,5 +52,5 @@ $router->add('dance/lineup/{artist}', ['controller' => 'dance', 'action' => 'lin
 $router->add('order/{action}', ['controller' => 'order']);
 $router->add('{controller}/{action}');
 
-    
+
 $router->dispatch($_SERVER['QUERY_STRING']);
