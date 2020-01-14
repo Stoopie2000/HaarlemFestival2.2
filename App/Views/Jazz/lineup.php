@@ -52,8 +52,6 @@
         </select>
 
     <div class=dayLineup>
-        
-
         <?php
         foreach($dates as $date){
 
@@ -66,8 +64,8 @@
 
                 if($jazzArtist->DateID == $date->DateID){
                     echo ("
-                        <div class='dayArtist' id='$jazzArtist->Name'>
-                                    <img class='img-fluid' src=" . Config::URLROOT . "/img/jazz/jazzLineup/$jazzArtist->Image>
+                        <div class='dayArtist' id='$jazzArtist->Name'><a href='" . Config::URLROOT . "/jazz/artist/$jazzArtist->ArtistID'>
+                                    <img class='img-fluid' src=" . Config::URLROOT . "/img/jazz/jazzLineup/$jazzArtist->Image></a>
                                     <div class='artist'>
                                         <a class='artistName'>$jazzArtist->Name<a class='artistTime'>$jazzArtist->StartTime</a>
                                     </div><div class='dayFill'>
