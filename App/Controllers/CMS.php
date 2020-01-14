@@ -4,7 +4,9 @@ namespace App\Controllers;
 
 use App\Models\Artist;
 use App\Models\Concert;
-use Core\Router;
+use App\Models\User;
+use App\Models\AuthLogic;
+use App\Models\Flash;
 use \Core\View;
 
 // Verander de 'Template' met de naam van je eigen controller
@@ -16,21 +18,45 @@ class CMS extends \Core\Controller
      */
     
     // Dit is de Action 'index', de naam van deze methode is dus de naam van je Action met 'Action' erachter.
-    public function LoginAction() {
-        print_r($this->route_params);
-
-
-        //$data =[
-
-        //];
-
-        // Wat je mee geeft met deze methode is de Path naar de view 'index', de Path is vanuit de Views map.
+    public function indexAction() {
+        var_dump(isset($_SESSION));
         View::render('CMS/login.php', [
-        'params' => $this->route_params
-        ]);
+            'params' => $this->route_params
+            ]);
     }
 
-    public function EventsAction(){
+    public function loginAction() {
+        $user = User::authenticate($_POST["email"], $_POST["password"]);
+        $remember = isset($_POST["remember_me"]);
+
+        if ($user) {
+            AuthLogic::on_login($user, $remember);
+
+            Flash::addMessage('Login successful');
+
+            $this->redirect(AuthLogic::getReturnToPage());
+        } else {
+            Flash::addMessage('Username or password incorrect', Flash::WARNING);
+            View::render('CMS/login.php', [
+                    'params' => $this->route_params,
+                    'email' => $_POST['email'],
+                    'remember_me' => $remember
+                ]);
+        }
+    }
+
+    public function register(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        } else {
+            View::render('CMS/register.php', [
+                'params' => $this->route_params
+                ]);
+        }
+    }
+
+    public function eventsAction(){
+        var_dump(isset($_SESSION));
         print_r($this->route_params);
         if ($this->route_params["event"] == 'jazz') {
             $this->route_params["event"] = ucfirst($this->route_params["event"]);
