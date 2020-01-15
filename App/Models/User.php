@@ -95,8 +95,8 @@ class User extends Model
                 $this->Type = 'customer';
             }
 
-            $sql = 'INSERT INTO users (Email, Type, PasswordHash, FirstName, LastName, UserTokenHash) VALUES (?, ?, ?, ?, ?, ?)';
-            $parameters = [$this->Email, $this->Type, $password_hash, $firstName, $lastName, 0];
+            $sql = 'INSERT INTO users (Email, Type, PasswordHash, FirstName, LastName) VALUES (?, ?, ?, ?, ?)';
+            $parameters = [$this->Email, $this->Type, $password_hash, $firstName, $lastName];
 
             return self::execute_edit_query($sql, $parameters);
         }

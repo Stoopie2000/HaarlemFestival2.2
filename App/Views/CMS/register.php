@@ -33,8 +33,8 @@
 
             <div class="form-group">
                 <label for="inputEmail">Email address:</label>
-                <input type="text" name="email" placeholder="Email address" autofocus value="<?php if (isset($email)) echo ($email);?>" class="form-control <?php if (isset($email)) if ($email == "") echo "is-invalid";?>" />
-                <span class="invalid-feedback">Please fill in your email address</span>
+                <input type="text" name="email" placeholder="Email address" autofocus value="<?php if (isset($email)) echo ($email);?>" class="form-control <?php if (isset($email_err)) if ($email_err != "") echo "is-invalid";?>" />
+                <span class="invalid-feedback"><?php if (isset($email_err)) echo $email_err; ?></span>
             </div>
 
             <div class="form-group">
