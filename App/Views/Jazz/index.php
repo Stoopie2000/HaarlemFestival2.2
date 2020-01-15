@@ -68,7 +68,7 @@
                 foreach ($allAccessJazz as $allAccessJazzTicket) 
                 {
                     echo ("<ul><li><a> $allAccessJazzTicket->Name </a><li><a class=priceAllAccess>€$allAccessJazzTicket->Price,00</a></li><li class=quantity>
-                    <a class=Add href=../order/addItems?productType=dayTickets&productID=$allAccessJazzTicket->DayTicketID&quantity=1><i class='fas fa-cart-plus'></i></a>
+                    <a class=Add href=../order/addItems?productType=dayTicket&productID=$allAccessJazzTicket->DayTicketID&quantity=1><i class='fas fa-cart-plus'></i></a>
                     </li></ul>");
                 }
         ?>
