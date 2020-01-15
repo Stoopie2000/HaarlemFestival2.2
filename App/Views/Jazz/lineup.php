@@ -64,7 +64,7 @@
 
                 if($jazzArtist->DateID == $date->DateID){
                     echo ("
-                        <div class='dayArtist' id='$jazzArtist->Name'><a href='" . Config::URLROOT . "/jazz/artist/$jazzArtist->ArtistID'>
+                        <div class='dayArtist' id='$jazzArtist->Name'><a href='" . Config::URLROOT . "/jazz/artist/$jazzArtist->Name'>
                                     <img class='img-fluid' src=" . Config::URLROOT . "/img/jazz/jazzLineup/$jazzArtist->Image></a>
                                     <div class='artist'>
                                         <a class='artistName'>$jazzArtist->Name<a class='artistTime'>$jazzArtist->StartTime</a>

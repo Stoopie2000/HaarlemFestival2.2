@@ -7,6 +7,7 @@ use Core\Controller;
 use App\Models\Date;
 use App\Models\JazzArtist;
 use App\Models\AllAccessJazz;
+use App\Models\Artist;
 
 class Jazz extends \Core\Controller
 {
@@ -45,9 +46,8 @@ class Jazz extends \Core\Controller
 
     public function artistAction()
     {
-        
         view::render('Jazz/artist/artist.php', [
-            'artist' => Artist::Get_By_ID($ArtistID)
+            'artist' => Artist::find_by_name_and_event($ArtistName, 'jazz')
         ]);
     }
 }
