@@ -41,6 +41,26 @@
             <?php echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz/Thursday'><a>Tickets</a></button>");?>
     </div>
 
+    <div class="artistRow">
+        <?php  echo ("<div class='artistColumn'><h3>$artist->Name</h3><p class='description'>$artist->Description</p></div>");?>
+        <?php  echo ("<img class='img-fluid' src=" . Config::URLROOT . "/img/jazz/artist/$artist->Image>");?>
+    </div>
+
+    <div class="artistRow">
+    <?php 
+    if($artist->Video == NULL){
+        echo ("<div class='artistColumnEmpty'><a>No video available</a></div>");
+    }
+    else{
+        echo (" <iframe width='500' height='375'
+        src='https://www.youtube.com/embed/$artist->Video'>
+        </iframe> ");
+    }
+    ?>
+        
+        <div class="artistColumn"><?php echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz/Thursday'><a>Tickets</a></button>");?></div>
+    </div>
+
     </body>
 
   

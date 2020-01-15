@@ -42,4 +42,12 @@ class Jazz extends \Core\Controller
             'jazzArtists' => JazzArtist::getLineUp()
         ]);
     }
+
+    public function artistAction()
+    {
+        
+        view::render('Jazz/artist/artist.php', [
+            'artist' => Artist::Get_By_ID($ArtistID)
+        ]);
+    }
 }
