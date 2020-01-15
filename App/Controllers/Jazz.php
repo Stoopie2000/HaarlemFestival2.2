@@ -46,8 +46,11 @@ class Jazz extends \Core\Controller
 
     public function artistAction()
     {
+        $artistName = $this->route_params["artist"];
+        $artistName = preg_replace('/(?<=[a-z])(?=[A-Z])/', ' ', $artistName);
+
         view::render('Jazz/artist/artist.php', [
-            'artist' => Artist::find_by_name_and_event($ArtistName, 'jazz')
+            'artist' => Artist::find_by_name_and_event($artistName, 'jazz')
         ]);
     }
 }

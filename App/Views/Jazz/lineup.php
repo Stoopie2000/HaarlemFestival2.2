@@ -1,7 +1,7 @@
 <?php 
     use App\Config;
 
-    /*require dirname(__DIR__) . '\header.html'*/
+    include(dirname(dirname(__FILE__)) . "/Default/navigation.html");
 
     if (!isset($_SESSION)) {
     session_start();
@@ -23,7 +23,7 @@
         <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">   
     </div>
 
-    <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html")?>
+    
 
     <div class="background">
         <img src="<?php echo Config::URLROOT; ?>/img/jazz/gumbokings.jpg" alt="Gumbo Kings">
@@ -62,9 +62,11 @@
 
             foreach($jazzArtists as $jazzArtist){
 
+                $strippedArtistName = str_replace(' ', '', $jazzArtist->Name);
+
                 if($jazzArtist->DateID == $date->DateID){
                     echo ("
-                        <div class='dayArtist' id='$jazzArtist->Name'><a href='" . Config::URLROOT . "/jazz/artist/$jazzArtist->Name'>
+                        <div class='dayArtist' id='$jazzArtist->Name'><a href='" . Config::URLROOT . "/jazz/artist/$strippedArtistName'>
                                     <img class='img-fluid' src=" . Config::URLROOT . "/img/jazz/jazzLineup/$jazzArtist->Image></a>
                                     <div class='artist'>
                                         <a class='artistName'>$jazzArtist->Name<a class='artistTime'>$jazzArtist->StartTime</a>
