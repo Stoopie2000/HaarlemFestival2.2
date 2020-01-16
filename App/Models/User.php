@@ -99,7 +99,7 @@ class User extends Model
             //TODO UserTokenHash
 
             $sql = 'INSERT INTO users (Email, Type, PasswordHash, FirstName, LastName) VALUES (?, ?, ?, ?, ?)';
-            $parameters = [$this->Email, $this->Type, $password_hash, $firstName, $lastName, 0];
+            $parameters = [$this->Email, $this->Type, $password_hash, $firstName, $lastName];
 
             return self::execute_edit_query($sql, $parameters);
         }
