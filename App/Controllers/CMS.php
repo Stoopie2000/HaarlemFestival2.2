@@ -11,6 +11,7 @@ use App\Models\Flash;
 use App\Models\PlaysAt;
 use App\Models\Venue;
 use \Core\View;
+use DateTime;
 
 // Verander de 'Template' met de naam van je eigen controller
 class CMS extends \Core\Controller
@@ -168,9 +169,13 @@ class CMS extends \Core\Controller
                 }
             }
 
-            $StartTime = date_create_from_format('', $_POST["StartTime"])
-            
+            $StartTime = new DateTime($_POST["BeginTime"]);
+            $EndTime = new DateTime($_POST["EndTime"]);
+            $Price = (float)$_POST["Price"];
+            $VenueID = $this->getVenueID($locations, $_POST["Location"]);
 
+            Concert::edit_concert($_POST["id"], $dateID, $StartTime, $EndTime, $Price, $VenueID, $this->route_params["event"]);
+            $locations[$_POST["id"]] = Concert::get_by_ID($_POST["id"]);
 
         }
 
@@ -227,5 +232,12 @@ class CMS extends \Core\Controller
             }
         }
     }
-    
+
+    private function getVenueID($locations, $Name){
+        foreach ($locations as $location) {
+            if ($location->Hall == $Name || $location->Name == $Name) {
+                return $location->VenueID;
+            }
+        }
+    }
 }
