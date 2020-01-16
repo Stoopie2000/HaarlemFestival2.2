@@ -2,7 +2,7 @@
 
 use App\Config;
 
-require dirname(__DIR__) . '\header.html'
+require dirname(__DIR__) . '/header.html'
 
     // Hieronder kan je je html code kwijt voor de pagina
 ?>
@@ -58,5 +58,5 @@ require dirname(__DIR__) . '\header.html'
 
 <?php
     // Hier eindigen we de pagina mee
-    require dirname(__DIR__) . '\footer.html'
+    require dirname(__DIR__) . '/footer.html'
 ?>
