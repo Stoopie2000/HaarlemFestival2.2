@@ -34,6 +34,6 @@ class Date extends Model
     public static function get_all(){
         $sql = 'SELECT * FROM date';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
-        return $date = $stmt->fetchAll();
+        return $stmt->fetchAll();
     }
 }
