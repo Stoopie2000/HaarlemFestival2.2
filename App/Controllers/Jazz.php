@@ -18,7 +18,7 @@ class Jazz extends \Core\Controller
     
     
 
-    public function indexAction()
+    public function ticketsAction()
     {
         $dates = Date::get_ALL();
         foreach($dates as $date){
@@ -26,7 +26,7 @@ class Jazz extends \Core\Controller
                 $dayID = $date->DateID;
             }
         }
-        View::render('Jazz/index.php', [
+        View::render('Jazz/tickets.php', [
             'jazzArtists' => JazzArtist::getAllArtists($dayID),
             'allAccessJazz' => AllAccessJazz::get_all('jazz'),
             'dates' => $dates,
@@ -34,11 +34,11 @@ class Jazz extends \Core\Controller
         ]);
     }
 
-    public function lineupAction()
+    public function indexAction()
     {
         $dates = Date::get_ALL();
     
-        View::render('Jazz/lineup.php', [
+        View::render('Jazz/index.php', [
             'dates' => Date::get_ALL(),
             'jazzArtists' => JazzArtist::getLineUp()
         ]);
