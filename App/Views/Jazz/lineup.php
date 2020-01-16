@@ -41,16 +41,6 @@
     <?php echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz/Thursday'><a>Tickets</a></button>");?>
     </div>
 
-    <select class="artistFilter" data-event="filter">
-        <option value="Select artist">Select artist</option>
-                <?php foreach ($jazzArtists as $jazzArtist){
-                    if($jazzArtist->DateID != 4){
-                        echo ("<option value='$jazzArtist->Name'>$jazzArtist->Name</option>");
-                    }
-                }
-                ?>
-        </select>
-
     <div class=dayLineup>
         <?php
         foreach($dates as $date){
@@ -62,11 +52,15 @@
 
             foreach($jazzArtists as $jazzArtist){
 
-                $replaceCharacters = array(" " => "-", "&" => "and");
+                /*$startTime = $jazzArtist->StartTime;
+                $startTime = $startTime->format("H:i");*/
 
+                $replaceCharacters = array(" " => "-", "&" => "and");
                 $changedArtistName = strtolower(str_replace(array_keys($replaceCharacters), array_values($replaceCharacters), $jazzArtist->Name));
 
                 if($jazzArtist->DateID == $date->DateID){
+                    
+
                     echo ("
                         <div class='dayArtist' id='$jazzArtist->Name'><a href='" . Config::URLROOT . "/jazz/artist/$changedArtistName'>
                                     <img class='img-fluid' src=" . Config::URLROOT . "/img/jazz/jazzLineup/$jazzArtist->Image></a>

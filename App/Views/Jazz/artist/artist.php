@@ -15,7 +15,6 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">
     <link rel="stylesheet" href="<?php echo Config::URLROOT; ?>/css/Default/Navigation.css">
-    <script src="https://kit.fontawesome.com/1ccd03e13f.js" crossorigin="anonymous"></script>
     <title>Haarlem Festival Homepage</title>
 </head>
 
@@ -50,41 +49,43 @@
    
         <div class="artistRow">
             <?php 
-            if($artist->Video == NULL){
-                echo ("<div class='artistColumnEmpty'><a>No video available</a></div>");
-            }
-            else{
-                echo ("<div class='artistColumn'><iframe width='600' height='400'
-                src='https://www.youtube.com/embed/$artist->Video'>
-                </iframe></div>");
-            }
+                if($artist->Video == NULL){
+                    echo ("<div class='artistColumnEmpty'><a>No video available</a></div>");
+                }
+                else{
+                    echo ("<div class='artistColumn'><iframe width='600' height='400'
+                    src='https://www.youtube.com/embed/$artist->Video'>
+                    </iframe></div>");
+                }
             ?>
+
             <div class="artistTimes"><h4>Times</h4>
-            <?php 
-                $day;
-                $firstValue = reset($concertsArtist);
+                <?php 
+                    $day;
+                    $firstValue = reset($concertsArtist);
 
-                foreach($concertsArtist as $concert){
-                    foreach($dates as $date){
+                    foreach($concertsArtist as $concert){
+                        foreach($dates as $date){
 
-                        if($firstValue->DateID == $date->DateID){
-                            $day = date_format($date->Date, "l");
-                        }
+                            if($firstValue->DateID == $date->DateID){
+                                $day = date_format($date->Date, "l");
+                            }
 
-                        if($date->DateID == $concert->DateID){
-                            $dayName = date_format($date->Date, "l");
-                            $startTime = $concert->StartTime;
-                            $endTime = $concert->EndTime;
+                            if($date->DateID == $concert->DateID){
+                                $dayName = date_format($date->Date, "l");
+                                $startTime = $concert->StartTime;
+                                $endTime = $concert->EndTime;
 
-                            $startTime = $startTime->format("H:i");
-                            $endTime = $endTime->format("H:i");
+                                $startTime = $startTime->format("H:i");
+                                $endTime = $endTime->format("H:i");
 
-                            echo("<div class='concert'><a class='dayNameArtist'>$dayName:<a class='concertTime'>$startTime - $endTime</a></div>");
+                                echo("<div class='concert'><a class='dayNameArtist'>$dayName:<a class='concertTime'>$startTime - $endTime</a></div>");
+                            }
                         }
                     }
-                }
-                echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz/$day'><a>Tickets</a></button>");
-            ?></div>
+                    echo("<button class='ticketsButton' onclick=window.location.href='" . Config::URLROOT . "/jazz/$day'><a>Go to tickets</a></button>");
+                ?>
+            </div>
         </div>
     </div>
 
