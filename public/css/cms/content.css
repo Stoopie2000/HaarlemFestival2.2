@@ -34,6 +34,28 @@
     margin-left: auto;
 }
 
+.filter {
+    background-color: white;
+    border: 2px;
+    margin-right: 150px;
+    margin-left: 0px;
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+#events .input-group {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 280px;
+}
+
+#events .container {
+    width: fit-content;
+    max-width: none;
+
+}
+
 #events .listview {
     margin-left: auto;
     margin-right: auto;
@@ -46,7 +68,7 @@
 
 #events .listitem {
     width: 100%;
-    height: 100px;
+    height: 110px;
     border: 2px solid black;
 }
 
@@ -60,9 +82,9 @@
 
 #events .libottom {
     width: 100%;
-    height: 56px;
+    height: 66px;
     display: grid;
-    grid-template-columns: 200px 150px 150px 150px 175px 175px;
+    grid-template-columns: 200px 250px 150px 150px 125px 125px;
 
 }
 
@@ -145,7 +167,7 @@
 
 .lbcontent {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 10% auto; /* 10% from the top and centered */
     padding: 0px 20px;
     border: 1px solid #888;
     border-radius: 20px;

@@ -121,25 +121,15 @@ class User extends Model
      */
     private function validate()
     {
-        if ($this->Name == '')
-            $this->errors[] = 'Name is required';
+        if (strlen($this->Password) < 6)
+            $this->errors[] = 'Please enter at least 6 characters for the Password';
 
-        if (self::find_by_email($this->Email))
-            $this->errors[] = 'This Email address is already registered';
+        if (preg_match('/.*[a-z]+.*/i', $this->Password) == 0)
+            $this->errors[] = 'Password needs at least one letter';
 
-        if (isset($this->Password)) {
-            if (empty($this->Password))
-            $this->errors[] = 'Please enter a Password';
-
-            if (strlen($this->Password) < 6)
-                $this->errors[] = 'Please enter at least 6 characters for the Password';
-
-            if (preg_match('/.*[a-z]+.*/i', $this->Password) == 0)
-                $this->errors[] = 'Password needs at least one letter';
-
-            if (preg_match('/.*\d+.*/i', $this->Password) == 0)
-                $this->errors[] = 'Password needs at least one number';
-        }
+        if (preg_match('/.*\d+.*/i', $this->Password) == 0)
+            $this->errors[] = 'Password needs at least one number';
+        
     }
 
     public function send_activation_email()

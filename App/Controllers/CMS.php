@@ -6,7 +6,10 @@ use App\Models\Artist;
 use App\Models\Concert;
 use App\Models\User;
 use App\Models\AuthLogic;
+use App\Models\Date;
 use App\Models\Flash;
+use App\Models\PlaysAt;
+use App\Models\Venue;
 use \Core\View;
 
 // Verander de 'Template' met de naam van je eigen controller
@@ -37,7 +40,6 @@ class CMS extends \Core\Controller
 
                 $this->redirect('/HF2.2/public/cms/events/jazz');
             } else {
-                Flash::addMessage('Username or password incorrect', Flash::WARNING);
                 View::render('CMS/login.php', [
                     'params' => $this->route_params,
                     'email' => $_POST['email'],
@@ -85,6 +87,17 @@ class CMS extends \Core\Controller
 
                 if ($user->register_user()) {
                     $this->redirect("/cms/login");
+                } else {
+                    View::render('CMS/register.php', [
+                        'params' => $this->route_params,
+                        'firstName' => $_POST['firstName'],
+                        'lastName' => $_POST['lastName'],
+                        'email' => $_POST['email'],
+                        'email_err' => $email_err,
+                        'pass_err' => $pass_err,
+                        'confpass_err' => $confpass_err,
+                        'user_err' => $user->errors
+                    ]);
                 }
             } else {
                 View::render('CMS/register.php', [
@@ -106,19 +119,82 @@ class CMS extends \Core\Controller
     }
 
     public function eventsAction(){
-        var_dump(isset($_SESSION));
-        print_r($this->route_params);
-        $concerts = Concert::getAll($this->route_params["event"]);
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION["user_id"])) {
+            $this->redirect('/cms');
+        }
 
-        
+        $concerts = Concert::getAll($this->route_params["event"]);
+        $days = Date::get_all();
+        $artists = Artist::get_all_by_event($this->route_params["event"]);
+        $locations = Venue::getAll($this->route_params["event"]);
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $playsat = PlaysAt::get_from_concert_ID($_POST["id"]);
+            
+            foreach ($days as $day) {
+                if ($day->Day == explode(" ", $_POST["Date"])[0]) {
+                    $dateID = $day->DateID;
+                }
+            }
+
+            $newArtists = array();
+            $newArtists[] = $this->getArtistID($_POST["Artist1"], $artists);
+            if (isset($_POST["Artist2"])) {
+                $newArtists[] = $this->getArtistID($_POST["Artist2"], $artists);
+            } if (isset($_POST["Artist3"])) {
+                $newArtists[] = $this->getArtistID($_POST["Artist3"], $artists);
+            }
+
+            for ($i=0; $i < count($playsat); $i++) { 
+                for ($x=0; $x < count($newArtists); $x++) { 
+                    if ($playsat[$i]->ArtistID == $newArtists[$x]) {
+                        unset($playsat[$i]);
+                        unset($newArtists[$x]);
+                    }
+                }
+            }
+
+            foreach ($playsat as $play) {
+                PlaysAt::Delete($play->ConcertID, $play->ArtistID);
+            }
+
+            foreach ($newArtists as $artist) {
+                if ($artist != null) {
+                    PlaysAt::Add($_POST["id"], $artist);
+                }
+            }
+
+            $StartTime = date_create_from_format('', $_POST["StartTime"])
+            
+
+
+        }
+
+
+        print_r($this->route_params);
+
         // Wat je mee geeft met deze methode is de Path naar de view 'index', de Path is vanuit de Views map.
         View::render('CMS/events.php', [
             'params' => $this->route_params,
-            'concerts' => $concerts
+            'concerts' => $concerts,
+            'dates' => $days,
+            'artists' => $artists,
+            'locations' => $locations
         ]);
     }
 
     public function ArtistsAction(){
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION["user_id"])) {
+            $this->redirect('/cms');
+        }
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $post = $_POST;
 
@@ -142,6 +218,14 @@ class CMS extends \Core\Controller
             'params' => $this->route_params,
             'artists' => Artist::get_all()
         ]);
+    }
+
+    private function getArtistID($name, $artists){
+        foreach ($artists as $artist) {
+            if ($artist->Name == $name) {
+                return $artist->ArtistID;
+            }
+        }
     }
     
 }

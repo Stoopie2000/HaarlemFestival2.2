@@ -3,13 +3,7 @@
 
     require 'inc/header.php';
 
-    // if login than show nav
-    if (true) {
-        require 'inc/nav.php';
-    // require 'inc/account.php';
-    } else {
-        echo '<div class="navbar1"></div>';
-    }
+    echo '<div class="navbar1"></div>';
 ?>
 
 <div class="content">
@@ -60,7 +54,15 @@
             
         </form>
     </div>
-
+    <?php
+        if (isset($user_err)) {
+            echo "<script type='text/javascript'>alert('";
+            foreach ($user_err as $error) {
+                echo "* " . $error . "\\n";
+            }
+            echo "');</script>";
+        }
+    ?>
     <div class="form" id="forgotPass" hidden>
         <H1 class="text-center">Log in</H1>
 
