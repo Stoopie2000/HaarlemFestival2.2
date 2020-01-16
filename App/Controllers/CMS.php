@@ -35,7 +35,7 @@ class CMS extends \Core\Controller
 
                 Flash::addMessage('Login successful');
 
-                $this->redirect(AuthLogic::getReturnToPage());
+                $this->redirect('/HF2.2/public/cms/events/jazz');
             } else {
                 Flash::addMessage('Username or password incorrect', Flash::WARNING);
                 View::render('CMS/login.php', [
@@ -108,9 +108,6 @@ class CMS extends \Core\Controller
     public function eventsAction(){
         var_dump(isset($_SESSION));
         print_r($this->route_params);
-        if ($this->route_params["event"] == 'jazz') {
-            $this->route_params["event"] = ucfirst($this->route_params["event"]);
-        }
         $concerts = Concert::getAll($this->route_params["event"]);
 
         
