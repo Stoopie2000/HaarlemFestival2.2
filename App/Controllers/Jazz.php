@@ -28,8 +28,8 @@ class Jazz extends \Core\Controller
         }
         View::render('Jazz/index.php', [
             'jazzArtists' => JazzArtist::getAllArtists($dayID),
-            'allAccessJazz' => AllAccessJazz::getAllAccessJazz(),
-            'dates' => Date::get_ALL(),
+            'allAccessJazz' => AllAccessJazz::get_all('jazz'),
+            'dates' => $dates,
             'day' => ucfirst($this->route_params["day"])
         ]);
     }
@@ -47,10 +47,16 @@ class Jazz extends \Core\Controller
     public function artistAction()
     {
         $artistName = $this->route_params["artist"];
-        $artistName = preg_replace('/(?<=[a-z])(?=[A-Z])/', ' ', $artistName);
+        $replaceCharacters = array("-" => " ", "and" => "&");
+        $artistName = strtolower(str_replace(array_keys($replaceCharacters), array_values($replaceCharacters), $artistName));
+
+        $artist = Artist::find_by_name_and_event($artistName, 'jazz');
+        $concertsArtist = $artist->get_concerts();
 
         view::render('Jazz/artist/artist.php', [
-            'artist' => Artist::find_by_name_and_event($artistName, 'jazz')
+            'artist' => $artist,
+            'concertsArtist' => $concertsArtist,
+            'dates' => Date::get_ALL()
         ]);
     }
 }

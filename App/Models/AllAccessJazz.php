@@ -14,14 +14,16 @@ class AllAccessJazz extends Model
         };
     }
 
-    
-    public static function getAllAccessJazz()
+    public static function get_all($Type)
     {
-    $sql = "SELECT * FROM day_tickets WHERE day_tickets.Type LIKE 'Jazz'";
-
-    $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
-    return $users = $stmt->fetchAll();
+        $sql = 'SELECT * 
+        FROM day_tickets
+        WHERE Type = ?';
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$Type]);
+        return $dayTickets = $stmt->fetchAll();
     }
     
 }
+
+
  

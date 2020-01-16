@@ -62,11 +62,13 @@
 
             foreach($jazzArtists as $jazzArtist){
 
-                $strippedArtistName = str_replace(' ', '', $jazzArtist->Name);
+                $replaceCharacters = array(" " => "-", "&" => "and");
+
+                $changedArtistName = strtolower(str_replace(array_keys($replaceCharacters), array_values($replaceCharacters), $jazzArtist->Name));
 
                 if($jazzArtist->DateID == $date->DateID){
                     echo ("
-                        <div class='dayArtist' id='$jazzArtist->Name'><a href='" . Config::URLROOT . "/jazz/artist/$strippedArtistName'>
+                        <div class='dayArtist' id='$jazzArtist->Name'><a href='" . Config::URLROOT . "/jazz/artist/$changedArtistName'>
                                     <img class='img-fluid' src=" . Config::URLROOT . "/img/jazz/jazzLineup/$jazzArtist->Image></a>
                                     <div class='artist'>
                                         <a class='artistName'>$jazzArtist->Name<a class='artistTime'>$jazzArtist->StartTime</a>

@@ -67,7 +67,9 @@
                 /** @var array $allAccessJazz */
                 foreach ($allAccessJazz as $allAccessJazzTicket) 
                 {
-                    echo ("<ul><li><a> $allAccessJazzTicket->Name </a><li><a class=priceAllAccess>€$allAccessJazzTicket->Price,00</a></li><li class=quantity>
+                    $ticketPrice = number_format($allAccessJazzTicket->Price, 2);
+
+                    echo ("<ul><li><a> $allAccessJazzTicket->Name </a><li><a class=priceAllAccess>€$ticketPrice</a></li><li class=quantity>
                     <a class=Add href=../order/addItems?productType=dayTicket&productID=$allAccessJazzTicket->DayTicketID&quantity=1><i class='fas fa-cart-plus'></i></a>
                     </li></ul>");
                 }
@@ -85,10 +87,16 @@
         /** @var array $jazzArtists */
         foreach ($jazzArtists as $jazzArtist)
         {
+            $numberOfTickets = $jazzArtist->NumberOfTickets;
+            $ticketPrice = number_format($jazzArtist->Price, 2);
+
+            if($numberOfTickets <= 0){
+                $ticketPrice = 'Sold Out';
+            }
             
-                echo ("<ul><li><a> $jazzArtist->Name </a><li><a class=hall>$jazzArtist->Hall</a></li><li><a class=priceDay>€$jazzArtist->Price,00</a></li><li class=quantity>
-                <a class=Add href=../order/addItems?productType=concert&productID=$jazzArtist->ConcertID&quantity=1><i class='fas fa-cart-plus'></i></a>
-                </li></ul>");
+            echo ("<ul><li><a> $jazzArtist->Name </a><li><a class=hall>$jazzArtist->Hall</a></li><li><a class=priceDay>€$ticketPrice</a></li><li class=quantity>
+            <a class=Add href=../order/addItems?productType=concert&productID=$jazzArtist->ConcertID&quantity=1><i class='fas fa-cart-plus'></i></a>
+            </li></ul>");
             
         }
     ?>
