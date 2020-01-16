@@ -174,8 +174,13 @@ class CMS extends \Core\Controller
             $Price = (float)$_POST["Price"];
             $VenueID = $this->getVenueID($locations, $_POST["Location"]);
 
-            Concert::edit_concert($_POST["id"], $dateID, $StartTime, $EndTime, $Price, $VenueID, $this->route_params["event"]);
-            $locations[$_POST["id"]] = Concert::get_by_ID($_POST["id"]);
+            Concert::edit_concert($_POST["id"], $dateID, $_POST["BeginTime"], $_POST["EndTime"], $Price, $VenueID, $this->route_params["event"]);
+            $concert = Concert::get_by_ID($_POST["id"]);
+            for ($i=0; $i < count($concerts); $i++) { 
+                if ($concerts[$i]->ConcertID == $concert->ConcertID) {
+                    $concerts[$i] = $concert;
+                }
+            }
 
         }
 

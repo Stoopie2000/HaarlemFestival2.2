@@ -261,6 +261,7 @@
 
     function CheckTime(){
         NewStartTime = document.getElementById('StartTime').value;
+        NewEndTime = document.getElementById('EndTime').value;
         var Hour, Minute;
         StartTime = StartTime.split(":");
         StartTime[0] = parseInt(StartTime[0]);
@@ -268,36 +269,34 @@
         NewStartTime = NewStartTime.split(":");
         NewStartTime[0] = parseInt(NewStartTime[0]);
         NewStartTime[1] = parseInt(NewStartTime[1]);
-        NewEndTime = EndTime.split(":");
+        EndTime = EndTime.split(":");
+        EndTime[0] = parseInt(EndTime[0]);
+        EndTime[1] = parseInt(EndTime[1]);
+        NewEndTime = NewEndTime.split(":");
         NewEndTime[0] = parseInt(NewEndTime[0]);
         NewEndTime[1] = parseInt(NewEndTime[1]);
+        
 
         if (!arraysEqual(StartTime, NewStartTime)) {
-            if (NewEndTime[0] <= 15) {
-                NewEndTime[0] = NewEndTime[0] + 24;
+            if (EndTime[0] < StartTime[0]) {
+                EndTime[0] = EndTime[0] + 24;
+            }
+            Hour = EndTime[0] - StartTime[0];
+            if (EndTime[1] > StartTime[1]) {
+                Minute = 30;
+            } else if (EndTime[1] < StartTime[1]) {
+                Minute = 30;
+                Hour = Hour - 1;
+            } else{
+                Minute = 0;
             }
 
-            if (StartTime[0] < NewStartTime[0]) {
-                Hour = NewStartTime[0] - StartTime[0];
-                NewEndTime[0] = NewEndTime[0] + Hour;
-            } else if (StartTime[0] > NewStartTime[0]) {
-                Hour = StartTime[0] - NewStartTime[0];
-                NewEndTime[0] = NewEndTime[0] - Hour;
+            NewEndTime[0] = NewStartTime[0] + Hour;
+            NewEndTime[1] = NewStartTime[1] + Minute;
+            if (NewEndTime[1] == 60) {
+                NewEndTime[1] = NewEndTime[1] - 60;
+                NewEndTime[0] = NewEndTime[0] + 1;
             }
-
-            if (StartTime[1] < NewStartTime[1]) {
-                NewEndTime[1] = NewEndTime[1] + 30;
-                if (NewEndTime[1] == 60) {
-                    NewEndTime[1] = 0;
-                }
-            } else if (StartTime[1] > NewStartTime[1]) {
-                if (StartTime[1] == 00) {
-                    NewEndTime[1] = NewEndTime[1] + 30;
-                } else {
-                    NewEndTime[1] = NewEndTime[1] - 30;
-                }
-            }
-
             if (NewEndTime[0] >= 24) {
                 NewEndTime[0] = NewEndTime[0] - 24;
             }
