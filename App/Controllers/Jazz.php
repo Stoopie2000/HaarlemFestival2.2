@@ -9,14 +9,12 @@ use App\Models\JazzArtist;
 use App\Models\AllAccessJazz;
 use App\Models\Artist;
 
-class Jazz extends \Core\Controller
+class Jazz extends Controller
 {
 
     /**
      * Show default jazz page
      */
-    
-    
 
     public function ticketsAction()
     {
