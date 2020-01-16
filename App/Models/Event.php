@@ -19,4 +19,8 @@ class Event extends Model
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
         return $events = $stmt->fetchAll();
     }
+
+    public static function get_AllArtistEvents(){
+        
+    }
 }

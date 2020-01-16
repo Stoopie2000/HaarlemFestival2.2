@@ -1,5 +1,10 @@
 body{
     background-color: #990000;
+    font-family: "Arial", sans-serif;
+}
+
+button{
+  cursor:pointer;
 }
 
 .background{
@@ -22,14 +27,13 @@ body{
   width: 40%;
   padding-left: 2%;
   color: white;
-  font-family: "Arial", sans-serif;
   font-size: 14pt;
 }
 
 .arrowDown{
   text-decoration: none;
   color: rgba(255, 255, 255, 0.60);
-  font-family: "Arial", sans-serif;
+  
   font-size: 60pt;
   position: absolute;
   top: 75px;
@@ -60,7 +64,7 @@ body{
 .tab button{
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
-    font-family: "Arial", sans-serif;
+    
     font-size: 36pt;
     border-radius: 10px;
     border-style: none;
@@ -86,7 +90,6 @@ body{
 .tabDays button{
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
-  font-family: "Arial", sans-serif;
   font-size: 24pt;
   border-radius: 10px;
   border-style: none;
@@ -113,9 +116,7 @@ body{
 }
 
 .ticketsMenu a{
-  font-family: Arial, sans-serif;
   font-size: 18pt;
-  
 }
 
 .ticketsMenu li{
@@ -159,6 +160,7 @@ body{
   position: absolute;
   left: 80px;
   top: 310px;
+  font-size: 18pt;
 }
 
 .dayTickets li{
@@ -187,8 +189,6 @@ body{
   text-align: center;
   background-color: transparent;
   border: none;
-  font-family: Arial, sans-serif;
-  font-size: 15pt;
   margin-left: 5px;
   margin-right: 5px;
 }
@@ -211,7 +211,6 @@ input[type=number] {
   margin-top: 20px;
   width: 200px;
   text-align: center;
-  font-family: Arial, sans-serif;
   font-size: 26pt;
   font-weight: bold;
 }
@@ -223,7 +222,6 @@ input[type=number] {
   margin-right: auto;
   width: 300px;
   text-align: center;
-  font-family: Arial, sans-serif;
   font-size: 26pt;
   font-weight: bold;
 }
@@ -234,12 +232,23 @@ input[type=number] {
   margin-top: 200px;
 }
 
+.form-control{
+  position: absolute;
+  left: 1500px;
+  top: 1000px;
+  height: 25px;
+  width: 175px;
+}
+
+/*line up page*/
+
 .dayLineup{
   display: flex;
   position: absolute;
   top: 1130px;
+  left: 0px;
   margin: auto;
-  width: 98.5%;
+  width: 100%;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -263,7 +272,6 @@ input[type=number] {
   height: 48px;
   margin-left: 40px;
   margin-right: 40px;
-  font-family: Arial, sans-serif;
   font-size: 24pt;
   text-align: center;
   line-height: 48px;
@@ -277,7 +285,7 @@ input[type=number] {
   width: 280px;
   height: 23px;
   color: white;
-  font-family: Arial, sans-serif;
+  
 }
 
 .artistName{
@@ -310,4 +318,118 @@ input[type=number] {
   width: 343px;
 }
 
+.artistFilter{
+  position: absolute;
+  top: 1000px;
+  left: 1500px;
+}
 
+
+
+/*artistpage*/
+
+.artistContainer{
+  background-color: #282828;
+  position: absolute;
+  top: 1100px;
+  left: 0px;
+  width: 100%;
+  height: 1100px;
+  
+}
+
+.artistRow{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 150px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.artistColumn{
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  width: 600px;
+  height: 400px;
+}
+
+.artistTimes{
+  display: flex;
+  flex-direction: column;
+  font-size: 20pt;
+  font-weight: bold;
+  background-color: #000000;
+  color: #FFFFFF;
+  width: 600px;
+  height: 400px;
+}
+
+.artistColumnEmpty{
+  display: flex;
+  flex-direction: column;
+  background-color: #990000;
+  color: #FFFFFF;
+  width: 600px;
+  height: 400px;
+}
+
+iframe{
+  border-style: none;
+}
+
+.artistColumn h3{
+  position: relative;
+  left: 50px;
+  font-size: 20pt;
+  text-align: left;
+}
+
+.description{
+  position: relative;
+  left: 50px;
+  top: -20px;
+  display: flex;
+  width: 500px;
+  text-align: left;
+  font-size: 14pt;
+}
+
+.concert{
+  width: 450px;
+  position: relative;
+  left: 75px;
+  top: 10px;
+  margin-top: 15px;
+  font-size: 14pt;
+}
+
+.dayNameArtist{
+  float: left;
+  font-weight: normal;
+}
+
+.concertTime{
+  float: right;
+  font-weight: normal;
+}
+
+.ticketLine{
+  position: relative;
+  top: 100px;
+  border:none;
+  border-top:4px #FFFFFF;
+}
+
+.ticketsButton{
+  background-color: black;
+  border-style: none;
+  color: #FFFFFF;
+  font-size: 20pt;
+  font-weight: bold;
+  position: absolute;
+  top: 300px;
+  left: 61%;
+}

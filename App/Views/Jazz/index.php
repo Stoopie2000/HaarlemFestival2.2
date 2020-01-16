@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">
     <link rel="stylesheet" href="<?php echo Config::URLROOT; ?>/css/Default/Navigation.css">
     <script src="https://kit.fontawesome.com/1ccd03e13f.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Haarlem Festival Homepage</title>
 </head>
 
@@ -59,16 +60,21 @@
     ?>
     </div>
 
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  
     <div class="ticketsMenu">
+        
 
-<a class="allAccessHead">All Access Tickets</a>
-<div class = "allAccess">
+    <a class="allAccessHead">All Access Tickets</a>
+    <div class = "allAccess">
         <?php
                 /** @var array $allAccessJazz */
                 foreach ($allAccessJazz as $allAccessJazzTicket) 
                 {
-                    echo ("<ul><li><a> $allAccessJazzTicket->Name </a><li><a class=priceAllAccess>€$allAccessJazzTicket->Price,00</a></li><li class=quantity>
-                    <a class=Add href=../order/addItems?productType=dayTickets&productID=$allAccessJazzTicket->DayTicketID&quantity=1><i class='fas fa-cart-plus'></i></a>
+                    $ticketPrice = number_format($allAccessJazzTicket->Price, 2);
+
+                    echo ("<ul><li><a> $allAccessJazzTicket->Name </a><li><a class=priceAllAccess>€$ticketPrice</a></li><li class=quantity>
+                    <a class=Add href=../order/addItems?productType=dayTicket&productID=$allAccessJazzTicket->DayTicketID&quantity=1><i class='fas fa-cart-plus'></i></a>
                     </li></ul>");
                 }
         ?>
@@ -79,20 +85,37 @@
 
 <a class=dayTicketsHead>Tickets <?php echo $day;?></a>
 
-<div class = "dayTickets">
+<div class = "dayTickets" id="dayTickets">
     
     <?php 
         /** @var array $jazzArtists */
         foreach ($jazzArtists as $jazzArtist)
         {
+            $numberOfTickets = $jazzArtist->NumberOfTickets;
+            $ticketPrice = number_format($jazzArtist->Price, 2);
+
+            if($numberOfTickets <= 0){
+                $ticketPrice = 'Sold Out';
+            }
             
-                echo ("<ul><li><a> $jazzArtist->Name </a><li><a class=hall>$jazzArtist->Hall</a></li><li><a class=priceDay>€$jazzArtist->Price,00</a></li><li class=quantity>
-                <a class=Add href=../order/addItems?productType=concert&productID=$jazzArtist->ConcertID&quantity=1><i class='fas fa-cart-plus'></i></a>
-                </li></ul>");
+            echo ("<ul>$jazzArtist->Name<li><a class=hall>$jazzArtist->Hall</li><li><a class=priceDay>€$ticketPrice</li><li class=quantity>
+            <a class=Add href=../order/addItems?productType=concert&productID=$jazzArtist->ConcertID&quantity=1><i class='fas fa-cart-plus'></i></a>
+            </li></ul>");
             
         }
     ?>
-</div>  
+</div> 
+
+<script>
+    $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#dayTickets ul").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+    });
+</script>
 
 </body>
 
