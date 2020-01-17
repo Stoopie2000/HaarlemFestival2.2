@@ -14,7 +14,7 @@ use \Core\View;
 use DateTime;
 
 // Verander de 'Template' met de naam van je eigen controller
-class CMS extends \Core\Controller
+class Cms extends \Core\Controller
 {
 
     /**
@@ -54,7 +54,7 @@ class CMS extends \Core\Controller
         }
     }
 
-    public function register(){
+    public function registerAction(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $pass_err = "";
             $confpass_err = "";
