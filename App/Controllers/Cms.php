@@ -40,7 +40,7 @@ class CMS extends Controller
 
                 Flash::addMessage('Login successful');
 
-                $this->redirect('/HF2.2/public/cms/events/jazz');
+                $this->redirect('/cms/events/jazz');
             } else {
                 View::render('CMS/login.php', [
                     'params' => $this->route_params,
