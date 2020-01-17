@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Controllers;
+use App\Config;
 
+use App\Models\Pages;
 use App\Models\Artist;
 use App\Models\Concert;
 use App\Models\User;
@@ -39,7 +41,7 @@ class Cms extends \Core\Controller
 
                 Flash::addMessage('Login successful');
 
-                $this->redirect('/HF2.2/public/cms/events/jazz');
+                $this->redirect('/cms/events/jazz');
             } else {
                 View::render('CMS/login.php', [
                     'params' => $this->route_params,
@@ -128,10 +130,13 @@ class Cms extends \Core\Controller
             $this->redirect('/cms');
         }
 
+        $this->route_params['pages'] = Pages::get_AllPages();
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             for ($i=1; $i <= 3 ; $i++) { 
                 if (isset($_POST["id" . $i])) {
                     $id = $_POST["id" . $i];
+                    break;
                 }
             }
             
@@ -151,6 +156,49 @@ class Cms extends \Core\Controller
         ]);
     }
 
+    public function pagesAction(){
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION["user_id"])) {
+            $this->redirect('/cms');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $target_file = "img/home/". strtolower($_FILES["file"]["name"]);
+            if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)){
+                Pages::add_Page(ucfirst($_POST["name"]), $_POST["description"], strtolower($_FILES["file"]["name"]));
+                $this->redirect('/cms/pages/' . strtolower($_POST["name"]));
+            }
+
+        }
+
+        $venues = array();
+        if ($this->route_params["event"] == "dance") {
+            $venues = Venue::getAll($this->route_params["event"]);
+        }
+
+        $this->route_params['pages'] = Pages::get_AllPages();
+        for ($i=0; $i < count($this->route_params['pages']) ; $i++) { 
+            if($this->route_params['pages'][$i]->Name == ucfirst($this->route_params["event"])){
+                $currentPage = $this->route_params['pages'][$i];
+                break;
+            }
+        }
+
+        if ($this->route_params["event"] == "new") {
+            View::render('CMS/newPage.php', [
+                'params' => $this->route_params
+            ]);
+        }else {
+            View::render('CMS/pages.php', [
+                'params' => $this->route_params,
+                'currentPage' => $currentPage,
+                'venues' => $venues
+            ]);
+        }
+    }
+
     public function eventsAction(){
         if (!isset($_SESSION)) {
             session_start();
@@ -158,6 +206,8 @@ class Cms extends \Core\Controller
         if (!isset($_SESSION["user_id"])) {
             $this->redirect('/cms');
         }
+
+        $this->route_params['pages'] = Pages::get_AllPages();
 
         $concerts = Concert::get_all_by_event($this->route_params["event"]);
         $days = Date::get_all();
@@ -171,6 +221,7 @@ class Cms extends \Core\Controller
             foreach ($days as $day) {
                 if ($day->Day == explode(" ", $_POST["Date"])[0]) {
                     $dateID = $day->DateID;
+                    break;
                 }
             }
 
@@ -209,6 +260,7 @@ class Cms extends \Core\Controller
             for ($i=0; $i < count($concerts); $i++) { 
                 if ($concerts[$i]->ConcertID == $concert->ConcertID) {
                     $concerts[$i] = $concert;
+                    break;
                 }
             }
 
@@ -231,6 +283,8 @@ class Cms extends \Core\Controller
         if (!isset($_SESSION["user_id"])) {
             $this->redirect('/cms');
         }
+
+        $this->route_params['pages'] = Pages::get_AllPages();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $post = $_POST;
