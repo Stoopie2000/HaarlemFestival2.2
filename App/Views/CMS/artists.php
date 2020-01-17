@@ -16,9 +16,6 @@
         <div class="row container">
             <div class="input-group mb-3">
                 <input type="text" id="filter" onkeyup="filter()" class="form-control" placeholder="Artist" aria-label="Artist" aria-describedby="button-addon">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon">Button</button>
-                </div>
             </div>
             <div class="lvheader">
                 <div><a class="content_horizontal">ID</a></div>

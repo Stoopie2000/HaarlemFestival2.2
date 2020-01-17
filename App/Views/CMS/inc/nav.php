@@ -27,8 +27,8 @@
                 <a class="menu menu-sub<?php echo ($params["action"] == 'events' && $params["event"] == 'dance' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/events/dance">Dance</a>
                 <a class="menu menu-sub<?php echo ($params["action"] == 'events' && $params["event"] == 'food' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/events/food">Food</a>
             </div>
-        <a class="menu menu-item<?php echo ($params["action"] == 'finance' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/artists">Artists</a>
-        <a class="menu menu-item<?php echo ($params["action"] == 'finance' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/restaurants">Restaurants</a>
+        <a class="menu menu-item<?php echo ($params["action"] == 'artists' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/artists">Artists</a>
+        <!--<a class="menu menu-item<?php echo ($params["action"] == 'finance' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/restaurants">Restaurants</a>-->
         <a class="menu menu-item<?php echo ($params["action"] == 'finance' ? ' active' : ''); ?>" href="">Finance</a>
     </nav>
 </div>
