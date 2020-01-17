@@ -3,12 +3,10 @@
 
 namespace App\Controllers;
 
-
 use App\Models\Basket;
 use Core\Controller;
 use Core\View;
 use Mollie\Api\Exceptions\ApiException;
-use Mollie\Api\Exceptions\IncompatiblePlatform;
 use Mollie\Api\MollieApiClient;
 use Mollie\Api\Types\PaymentMethod;
 
@@ -64,6 +62,19 @@ class Order extends Controller
         ]);
     }
 
+    public function precheckoutAction(){
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['user_id'])){
+            $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
+            $this->redirect('/login/new');
+        }
+
+        View::render('Order/precheckout.php');
+    }
+
     public function checkoutAction(){
         //TODO: Order opslaan in database
         try {
@@ -103,6 +114,11 @@ class Order extends Controller
                 "method" => PaymentMethod::IDEAL,
                 "metadata" => ['order_id' => $orderId]
             ]);
+
+            foreach ($_SESSION['basket']->items as $basketItem) {
+                $basketItem->Item->add_order_to_database($orderId, $_SESSION['user_id'], $payment->status);
+            }
+
 
             header("Location: " . $payment->getCheckoutUrl(), true, 303);
             //TODO Goede redirect pagina maken voor na order

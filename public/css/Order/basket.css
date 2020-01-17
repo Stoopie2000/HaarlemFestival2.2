@@ -1,0 +1,11 @@
+#basketPage .checkoutButtonContainer a{
+    color: white;
+}
+
+#basketPage .priceTotalContainer, .checkoutButtonContainer{
+    text-align: right;
+}
+
+#basketPage .priceContainer {
+    text-align: right;
+}

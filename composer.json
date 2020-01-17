@@ -1,9 +1,7 @@
 {
     "require": {
       "mollie/mollie-api-php": "^2.0",
-      "ext-pdo": "*",
-        "squizlabs/php_codesniffer": "3.5.3",
-        "friendsofphp/php-cs-fixer": "3.0.x-dev"
+      "ext-pdo": "*"
     },
     "autoload": {
         "psr-4": {
