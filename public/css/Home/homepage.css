@@ -56,10 +56,6 @@
   text-align: left;
 }
 
-.detailText:hover{
-  text-decoration: underline;
-}
-
 .detailText{
   color: #FFFFFF;
   font-family: "Arial", sans-serif;
@@ -74,7 +70,6 @@
 
 .textBox{
   width: 459px;
-  height: 309px;
 }
 
 .img-fluid{

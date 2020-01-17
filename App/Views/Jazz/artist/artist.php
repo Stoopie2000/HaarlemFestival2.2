@@ -42,10 +42,9 @@
     </div>
 
     <div class="artistContainer">
-     <a class="backButton"href="/jazz"><img src="/img/jazz/artist/close-button.png"></a>
         <div class="artistRow">
             <?php  echo ("<div class='artistColumn'><h3>$artist->Name</h3><p class='description'>$artist->Description</p></div>");?>
-            <?php  echo ("<div class='artistColumn'><img class='img-fluid' src=" . Config::URLROOT . "/img/jazz/artist/$artist->Image style='height:400px; width:600px; overflow:hidden;'></div>");?>
+            <?php  echo ("<div class='artistColumn'><img class='img-fluid' src=" . Config::URLROOT . "/img/jazz/artist/$artist->Image></div>");?>
         </div>
    
         <div class="artistRow">
