@@ -46,7 +46,7 @@ $router->add('jazz', ['controller' => 'Jazz', 'action' => 'index']);
 $router->add('jazz/{day}', ['controller' => 'Jazz', 'action' => 'tickets']);
 $router->add('jazz/artist/{artist}', ['controller' => 'Jazz', 'action' => 'artist']);
 $router->add('cms', ['controller' => 'CMS', 'action' => 'login']);
-$router->add('cms/{action}/{event}', ['controller' => 'cms']);
+$router->add('cms/{action}/{event}', ['controller' => 'CMS']);
 $router->add('dance', ['controller' => 'Dance', 'action' => 'index']);
 $router->add('dance/locations/{location}', ['controller' => 'dance', 'action' => 'locations']);
 $router->add('dance/lineup/{artist}', ['controller' => 'dance', 'action' => 'lineup']);
