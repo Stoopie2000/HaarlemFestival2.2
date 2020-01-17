@@ -10,11 +10,12 @@ use App\Models\Date;
 use App\Models\Flash;
 use App\Models\PlaysAt;
 use App\Models\Venue;
+use Core\Controller;
 use \Core\View;
 use DateTime;
 
 // Verander de 'Template' met de naam van je eigen controller
-class CMS extends \Core\Controller
+class CMS extends Controller
 {
 
     /**
