@@ -3,13 +3,8 @@
 
     require 'inc/header.php';
 
-    // if login than show nav
-    if (true) {
-        require 'inc/nav.php';
-    // require 'inc/account.php';
-    } else {
-        echo '<div class="navbar1"></div>';
-    }
+    require 'inc/nav.php';
+
 ?>
 <div class="content" id="artists">
     <div class="container">
@@ -105,9 +100,16 @@
         }
     }
 
+    function Clearlightbox(){
+        document.getElementById('lbName').intertext = null;
+        document.getElementById('Name').value = null;
+        document.getElementById('Description').value = null;
+        document.getElementById('Event').value = "";
+    }
+
     function Create(){
         var lightbox = document.getElementById('lightbox');
-        document.getElementById('lbName').innerText = "Create new artist";
+        document.getElementById('lbName').innerText = "create a artist";
         document.getElementById('Name').value = "";
         document.getElementById('Description').innerText = "";
         

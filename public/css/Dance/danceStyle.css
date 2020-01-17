@@ -16,6 +16,14 @@
     width: 55%;
 }
 
+#dancePage .navbar{
+    padding: 0;
+}
+#dancePage .ultop{
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+
 #dancePage .titleContainer{
     color: white;
     text-align: center;

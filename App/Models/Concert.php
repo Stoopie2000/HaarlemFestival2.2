@@ -86,4 +86,9 @@ class Concert extends Model
         $basketItem->Price = $concert->Price;
         return $basketItem;
     }
+
+    public static function edit_concert($concertid, $dateid, $starttime, $endtime, $price, $venueid, $event){
+        $sql = 'UPDATE concerts SET DateID = ?, StartTime = ?, EndTime = ?, Price = ?, VenueID = ?, Event = ? WHERE ConcertID = ?';
+        self::execute_edit_query($sql, [$dateid, $starttime, $endtime, $price, $venueid,  $event, $concertid]);
+    }
 }
