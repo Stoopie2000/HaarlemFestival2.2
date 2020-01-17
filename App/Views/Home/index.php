@@ -41,13 +41,14 @@ require dirname(__DIR__) . '/header.html'
 
         foreach($events as $event)
         {
-            echo ("<a class='linkStyling' href='/$event->Name' style='text-decoration:none; height: 350px;'><div class='column'>
+            echo ("<div class='column'>
             <img class='img-fluid' src=" . Config::URLROOT . "/img/home/$event->Image alt=Jazz musician>
                 <div class=textBox; style='background-color:$event->Color';>
                     <h2 class='detailTitle'>$event->Name</h2>
-                    <p class='detailText'>$event->Description</br></br><img src='img/home/linkarrow.png' style='float:right;'></p>
+                    <p class='detailText'>$event->Description</p>
+                    </p>
                 </div>
-            </div></a>");
+            </div>");
         }   
         ?>
     </div>
