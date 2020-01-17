@@ -10,11 +10,12 @@ use App\Models\Date;
 use App\Models\Flash;
 use App\Models\PlaysAt;
 use App\Models\Venue;
+use Core\Controller;
 use \Core\View;
 use DateTime;
 
 // Verander de 'Template' met de naam van je eigen controller
-class Cms extends \Core\Controller
+class CMS extends Controller
 {
 
     /**
@@ -54,7 +55,7 @@ class Cms extends \Core\Controller
         }
     }
 
-    public function registerAction(){
+    public function register(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $pass_err = "";
             $confpass_err = "";

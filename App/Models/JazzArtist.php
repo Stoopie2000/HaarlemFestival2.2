@@ -12,6 +12,8 @@ class JazzArtist extends Model
         foreach ($data as $key => $value) {
             $this->$key = $value;
         };
+
+        $this->StartTime = date_create($this->StartTime);
     }
 
     public static function getAllArtists($ID)

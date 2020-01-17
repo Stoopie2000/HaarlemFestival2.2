@@ -43,38 +43,36 @@
 
     <div class=dayLineup>
         <?php
-        foreach($dates as $date){
+            foreach($dates as $date){
 
-            echo("<div class='dayRow'>");
-            
-            $dayName = date_format($date->Date, "l");
-            echo ("<div class='dayName'>$dayName</div><div class='fill'></div>");
+                echo("<div class='dayRow'>");
+                
+                $dayName = date_format($date->Date, "l");
+                echo ("<div class='dayName'>$dayName</div><div class='fill'></div>");
 
-            foreach($jazzArtists as $jazzArtist){
+                foreach($jazzArtists as $jazzArtist){
 
-                /*$startTime = $jazzArtist->StartTime;
-                $startTime = $startTime->format("H:i");*/
+                    $startTime = $jazzArtist->StartTime;
+                    $startTime = $startTime->format("H:i");
 
-                $replaceCharacters = array(" " => "-", "&" => "and");
-                $changedArtistName = strtolower(str_replace(array_keys($replaceCharacters), array_values($replaceCharacters), $jazzArtist->Name));
+                    $replaceCharacters = array(" " => "-", "&" => "and");
+                    $changedArtistName = strtolower(str_replace(array_keys($replaceCharacters), array_values($replaceCharacters), $jazzArtist->Name));
 
-                if($jazzArtist->DateID == $date->DateID){
-                    
+                    if($jazzArtist->DateID == $date->DateID){
+                        
 
-                    echo ("
-                        <div class='dayArtist' id='$jazzArtist->Name'><a href='" . Config::URLROOT . "/jazz/artist/$changedArtistName'>
-                                    <img class='img-fluid' src=" . Config::URLROOT . "/img/jazz/jazzLineup/$jazzArtist->Image></a>
-                                    <div class='artist'>
-                                        <a class='artistName'>$jazzArtist->Name<a class='artistTime'>$jazzArtist->StartTime</a>
-                                    </div><div class='dayFill'>
-                        </div></div>
-                    ");
-                }
-            } 
-            echo("</div>");
-        }
-
-        
+                        echo ("
+                            <div class='dayArtist' id='$jazzArtist->Name'><a href='" . Config::URLROOT . "/jazz/artist/$changedArtistName'>
+                                        <img class='img-fluid' src=" . Config::URLROOT . "/img/jazz/jazzLineup/$jazzArtist->Image></a>
+                                        <div class='artist'>
+                                            <a class='artistName'>$jazzArtist->Name<a class='artistTime'>$startTime</a>
+                                        </div><div class='dayFill'>
+                            </div></div>
+                        ");
+                    }
+                } 
+                echo("</div>");
+            }
         ?>
     </div>
 
