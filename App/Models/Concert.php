@@ -87,9 +87,9 @@ class Concert extends Model
         return $basketItem;
     }
 
-    public function add_order_to_database($orderId, $userId, $paymentStatus){
-        $sql = "INSERT INTO orders_tickets(UserID, ConcertID, OrderDate, Status, OrderID) VALUES (?,?, CURDATE(), ?,?)";
-        $parameters = [$userId, $this->ConcertID ,$paymentStatus, $orderId];
+    public function add_order_to_database($orderId, $userId, $paymentStatus, $quantity){
+        $sql = "INSERT INTO orders_tickets(UserID, ConcertID, OrderDate, Status, OrderID, Quantity) VALUES (?,?, CURDATE(), ?,?,?)";
+        $parameters = [$userId, $this->ConcertID ,$paymentStatus, $orderId, $quantity];
 
         return self::execute_edit_query($sql, $parameters);
     }

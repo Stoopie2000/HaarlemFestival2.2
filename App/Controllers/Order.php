@@ -4,6 +4,8 @@
 namespace App\Controllers;
 
 use App\Models\Basket;
+use App\Models\BasketItem;
+use App\Models\webhook;
 use Core\Controller;
 use Core\View;
 use Mollie\Api\Exceptions\ApiException;
@@ -97,8 +99,13 @@ class Order extends Controller
             $orderId = substr(md5(rand()), 0, 12);
 
             foreach ($_SESSION['basket']->items as $item) {
-                $paymentAmount += $item->Price;
-                $descriptionArray[] = $item->Description;
+                $paymentAmount += ($item->Price * $item->Quantity);
+
+                if ($item->Quantity > 1){
+                    $descriptionArray[] = $item->Description . " x " . $item->Quantity;
+                }else{
+                    $descriptionArray[] = $item->Description;
+                }
             }
             $description = implode(', ', $descriptionArray);
             $paymentAmount = number_format($paymentAmount, 2);
@@ -116,7 +123,7 @@ class Order extends Controller
             ]);
 
             foreach ($_SESSION['basket']->items as $basketItem) {
-                $basketItem->Item->add_order_to_database($orderId, $_SESSION['user_id'], $payment->status);
+                $basketItem->Item->add_order_to_database($orderId, $_SESSION['user_id'], $payment->status, $basketItem->Quantity);
             }
 
 
@@ -129,6 +136,28 @@ class Order extends Controller
     }
 
     public function returnAction(){
-        View::render('Order/redirect.php');
+        View::render('Order/redirect.php', [
+            'paymentStatus' => webhook::get_payment_status($_GET['order_id'])
+        ]);
+    }
+
+    public function webhookAction(){
+        $webhook = new webhook();
+        $webhook->updateStatus($_POST["id"]);
+    }
+
+    public function updateQuantity(){
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
+        $itemId = $_POST['item_id'];
+        $newQuantity = $_POST['new_quantity'];
+
+        foreach ($_SESSION['basket']->items as $basketItem){
+            if ($basketItem->ItemID == $itemId){
+                $basketItem->Quantity = $newQuantity;
+            }
+        }
     }
 }
