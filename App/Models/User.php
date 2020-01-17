@@ -69,6 +69,23 @@ class User extends Model
         return $stmt->fetch();
     }
 
+    public static function get_All_Users()
+    {
+        $sql = 'SELECT UserID, Email, Type, FirstName, LastName FROM users'; //TODO Bepaal of ik wel alles uit de users tabel wil halen (*)
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
+        return $stmt->fetchAll();
+    }
+
+    public static function edit_User($Type, $id){
+        $sql = 'UPDATE users SET Type = ? WHERE UserID = ?';
+        self::execute_edit_query($sql, [$Type, $id]);
+    }
+    
+    public static function delete_User($id){
+        $sql = 'DELETE FROM users WHERE UserID = ?';
+        self::execute_edit_query($sql, [$id]);
+    }
+
     //TODO Kijken hoe ik dit kan gebruiken
 //    public function profileLink()
 //    {

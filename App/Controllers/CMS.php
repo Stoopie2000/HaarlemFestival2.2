@@ -83,7 +83,8 @@ class CMS extends \Core\Controller
                 $user = new User([
                     'Name' => $Name,
                     'Email' => $_POST['email'],
-                    'Password' => $_POST['password']
+                    'Password' => $_POST['password'],
+                    'Type' => "volunteer"
                 ]);
 
                 if ($user->register_user()) {
@@ -117,6 +118,37 @@ class CMS extends \Core\Controller
                 'params' => $this->route_params
                 ]);
         }
+    }
+
+    public function usersAction(){
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION["user_id"])) {
+            $this->redirect('/cms');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            for ($i=1; $i <= 3 ; $i++) { 
+                if (isset($_POST["id" . $i])) {
+                    $id = $_POST["id" . $i];
+                }
+            }
+            
+            if ($_POST["action" . $id] == "Save") {
+                User::edit_User($_POST["Role"], $id);
+            }
+            else if ($_POST["action" . $id] == "Delete") {
+                User::delete_User($id);
+            }
+        }
+
+        $users = User::get_All_Users();
+
+        View::render('CMS/users.php', [
+            'params' => $this->route_params,
+            'users' => $users
+        ]);
     }
 
     public function eventsAction(){
@@ -169,8 +201,6 @@ class CMS extends \Core\Controller
                 }
             }
 
-            $StartTime = new DateTime($_POST["BeginTime"]);
-            $EndTime = new DateTime($_POST["EndTime"]);
             $Price = (float)$_POST["Price"];
             $VenueID = $this->getVenueID($locations, $_POST["Location"]);
 
@@ -183,9 +213,6 @@ class CMS extends \Core\Controller
             }
 
         }
-
-
-        print_r($this->route_params);
 
         // Wat je mee geeft met deze methode is de Path naar de view 'index', de Path is vanuit de Views map.
         View::render('CMS/events.php', [

@@ -102,7 +102,7 @@
     margin: auto;
 }
 
-#artists .listview {
+#artists .listview, #users .listview {
     margin-left: auto;
     margin-right: auto;
     max-height: 550px;
@@ -122,13 +122,13 @@
     grid-template-columns: 50px 200px 580px 100px 150px;
 }
 
-#artists .lvitem {
+#artists .lvitem{
     border-bottom: 1px solid #454d55;
     height: 45px;
     display: grid;
     grid-template-columns: 50px 200px 580px 100px 150px;
 }
-#artists textarea {
+#artists textarea, #users textarea {
     height: 44px;
     width: 580px;
     resize: none;
@@ -136,8 +136,29 @@
     border: 0px;
 }
 
-#artists .button {
+#artists .button, #users .button {
     margin: 12px;
+}
+
+#users .lvheader {
+    height: 50px;
+    color: #fff;
+    background-color: #343a40;
+    font-weight: bold;
+    width: inherit;
+    display: grid;
+    grid-template-columns: 430px 175px 175px 150px 150px;
+}
+
+#users .lvitem {
+    border-bottom: 1px solid #454d55;
+    height: 45px;
+    display: grid;
+    grid-template-columns: 430px 175px 175px 150px 150px;
+}
+
+#users .padding{
+    padding-right: 20px;
 }
 
 .lightbox{

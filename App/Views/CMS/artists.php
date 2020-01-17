@@ -66,7 +66,7 @@
                             <label for="Name" class="col-sm-2 col-form-label">Event:</label>
                             <div class="col-sm-10">
                                 <select name="event" class="custom-select" id="Event">
-                                    <option value="Jazz" selected>Jazz</option>
+                                    <option value="jazz" selected>Jazz</option>
                                     <option value="dance">Dance</option>
                                 </select>
                             </div>
