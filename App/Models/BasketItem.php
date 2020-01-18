@@ -26,9 +26,4 @@ class BasketItem extends Model
     public $Quantity;
     public $Price;
     public $ItemID;
-
-    public function update_quantity($itemId, $newQuantity)
-    {
-
-    }
 }

@@ -13,58 +13,39 @@ class webhook extends Model{
         $sql = "SELECT Status FROM orders_tickets WHERE OrderID = ?";
         $parameters = [$order_id];
         $stmt = self::execute_select_query($sql, PDO::FETCH_ASSOC, $parameters);
-        return $stmt->fetch();
+        return $stmt->fetch()['Status'];
     }
 
-    public function updateStatus($paymentId){
-        $mollie = new MollieApiClient();
-        $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
-
-        $payment = $mollie->payments->get($paymentId);
-        $orderId = $payment->metadata->order_id;
+    public function updateStatus($payment, $orderId){
         /*
          * Update the order in the database.
          */
         $sql = "UPDATE orders_tickets SET Status = ? WHERE OrderID = ?";
         $parameters = [$payment->status, $orderId];
         self::execute_edit_query($sql, $parameters);
+    }
 
-        if ($payment->isPaid() && !$payment->hasRefunds() && !$payment->hasChargebacks()) {
-            /*
-             * The payment is paid and isn't refunded or charged back.
-             * At this point you'd probably want to start the process of delivering the product to the customer.
-             */
-        } elseif ($payment->isOpen()) {
-            /*
-             * The payment is open.
-             */
-        } elseif ($payment->isPending()) {
-            /*
-             * The payment is pending.
-             */
-        } elseif ($payment->isFailed()) {
-            /*
-             * The payment has failed.
-             */
-        } elseif ($payment->isExpired()) {
-            /*
-             * The payment is expired.
-             */
-        } elseif ($payment->isCanceled()) {
-            /*
-             * The payment has been canceled.
-             */
-        } elseif ($payment->hasRefunds()) {
-            /*
-             * The payment has been (partially) refunded.
-             * The status of the payment is still "paid"
-             */
-        } elseif ($payment->hasChargebacks()) {
-            /*
-             * The payment has been (partially) charged back.
-             * The status of the payment is still "paid"
-             */
+    public function send_tickets($recipient_address, $subject, $message){
+        self::send_mail($recipient_address, $subject, $message);
+    }
+
+    public static function get_user_email_by_order_id($orderId)
+    {
+        $sql = "SELECT Email FROM users JOIN orders_tickets ot on users.UserID = ot.UserID WHERE OrderID = ?";
+        $stmt = self::execute_select_query($sql, PDO::FETCH_ASSOC, [$orderId]);
+        return $email = $stmt->fetch()['Email'];
+    }
+
+    public static function get_tickets_by_order_id($orderId){
+        $sql = "SELECT ConcertID FROM orders_tickets WHERE OrderID = ?";
+        $stmt = self::execute_select_query($sql, PDO::FETCH_ASSOC, [$orderId]);
+        $concertIds = $stmt->fetchAll();
+        $concerts = [];
+
+        foreach ($concertIds as $concertId){
+            $concerts[] = Concert::get_by_ID($concertId['ConcertID']);
         }
+        return $tickets = $concerts;
     }
 }
 

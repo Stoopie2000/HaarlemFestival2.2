@@ -90,4 +90,9 @@ abstract class Model
             return false;
         }
     }
+
+    protected static function send_mail($recipient_address, $subject, $message){
+        $message = wordwrap($message, 70);
+        return mail($recipient_address, $subject, $message);
+    }
 }
