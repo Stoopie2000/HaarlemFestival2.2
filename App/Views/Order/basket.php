@@ -18,7 +18,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
 <html lang="en">
 <head>
     <title>Haarlem Festival shopping basket</title>
-  <link rel="stylesheet" href="/css/Dance/danceStyle.css">
+  <link rel="stylesheet" href="/css/Order/basket.css">
   <link rel="stylesheet" href="/css/Default/Navigation.css">
 </head>
 <body id="basketPage" class="">
@@ -67,7 +67,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
             </div>
            <a href=\"/order/removeItems?itemID=$basketItem->ItemID\">Remove Item</a>
             </div>
-            <div class=\"col-sm-2\">
+            <div class=\"col-sm-2 priceContainer\">
             <b> € $basketItem->Price </b>
             </div>
         </div>";
@@ -83,12 +83,23 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
             <div class="col-sm-4">
                 <p>Total</p>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-2 priceContainer">
                 <?php
                 echo "€ $priceTotal";
                 ?>
             </div>
         </div>
+    </div>
+    <div class="checkoutButtonContainer container">
+      <div class="row">
+        <div class="col-sm-10"></div>
+        <div class="col-sm-2">
+          <a href="/order/precheckout" class="btn btn-primary .btn-block">To Checkout</a>
+          <div class="small">
+            You don't have to pay yet.
+          </div>
+        </div>
+      </div>
     </div>
 </main>
 </body>

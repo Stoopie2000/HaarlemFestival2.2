@@ -65,5 +65,9 @@ class Basket extends Model
         }
     }
 
+    public function add_order_to_database(){
+
+    }
+
 
 }
