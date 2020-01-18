@@ -1,3 +1,7 @@
+#dancePage main {
+    margin-top: 200px
+}
+
 #dancePage a{
     text-decoration: none;
     color: white;
@@ -10,6 +14,14 @@
 #dancePage hr{
     border-top: 3px solid white;
     width: 55%;
+}
+
+#dancePage .navbar{
+    padding: 0;
+}
+#dancePage .ultop{
+    margin-top: 1em;
+    margin-bottom: 0;
 }
 
 #dancePage .titleContainer{

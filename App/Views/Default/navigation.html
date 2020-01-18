@@ -1,16 +1,9 @@
-<?php
-if(!isset($_SESSION))
-//session_start();
-?>
 <header class="header" style="" id="">
   <div class="topleft"></div>
   <div class="topbar">
     <ul class="ultop">
       <li class="top"><a href="login/new"><span>Login</span></a></li>
-      <li class="top"><a href="cart/view"><span>Cart</span></a></li>
-      <div class="search-container">
-        <input type="text" placeholder="Search.." name="search">
-      </div>
+      <li class="top"><a href="/order/basket"><span>Basket</span></a></li>
     </ul>
   </div>
 
@@ -18,10 +11,10 @@ if(!isset($_SESSION))
 
   <nav class ="navbar">
     <ul class="ulnav">
-      <li class="linav"><a class="active" href=><span>HOME</span></a></li>
-      <li class="linav"><a href="jazz"><span>JAZZ</span></a></li>
-      <li class="linav"><a href="dance"><span>DANCE</span></a></li>
-      <li class="linav"><a href="food"><span>FOOD</span></a></li>
+      <li class="linav"><a class="homeButton" href="/"><span>HOME</span></a></li>
+      <li class="linav"><a class="jazzButton" href="/jazz"><span>JAZZ</span></a></li>
+      <li class="linav"><a class="danceButton" href="/dance"><span>DANCE</span></a></li>
+      <li class="linav"><a class="foodButton" href="/food"><span>FOOD</span></a></li>
     </ul>
   </nav>
 </header>

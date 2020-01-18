@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="hfteam6.infhaarlem.nl">
+    <serverData>
+      <paths name="633931">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="hfteam6.infhaarlem.nl">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/domains/hfteam6.infhaarlem.nl" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/domains/hfteam6.infhaarlem.nl/public_html" local="$PROJECT_DIR$/public" web="/public_html" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

@@ -12,18 +12,21 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
      *  @var array $artists
      *  @var array $concerts
      *  @var array $plays_at
+     * @var DateTime $firstDay
+     * @var DateTime $finalDay
      *  @author Bram Bos <brambos27@gmail.com>
      */
 
     ?>
-    <link rel="stylesheet" href="/css/Dance/danceStyle.css"
+    <link rel="stylesheet" href="/css/Dance/danceStyle.css">
+    <link rel="stylesheet" href="/css/Default/Navigation.css">
 </head>
 <body id="dancePage" class="">
 <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html") ?>
-<main style="margin-top: 200px ">
+<main>
     <div class="titleContainer">
         <h1>Haarlem Dance 2020</h1>
-        <h2>23 July - 26 July</h2>
+        <h2><?php echo date_format($firstDay, 'l d F') . " - " . date_format($finalDay, 'l d F') ?></h2>
     </div>
     <div class="container">
         <div class="row">
@@ -83,7 +86,9 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
 
                     $concertArtists = [];
                     foreach ($concert->Artists as $artist) {
-                        $concertArtists[] = $artist->Name;
+                      if (!empty($artist)){
+                          $concertArtists[] = $artist->Name;
+                      }
                     }
                     $concertArtistsNames = implode(", ", $concertArtists);
 

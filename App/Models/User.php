@@ -52,9 +52,10 @@ class User extends Model
      */
     public function store_token($token)
     {
-        $sql = 'UPDATE users SET UserTokenHash = ? WHERE UserID = ?';
-        $parameters = [$token, $this->UserID];
-        self::execute_edit_query($sql, $parameters);
+        //TODO: Function store_token
+//        $sql = 'UPDATE users SET UserTokenHash = ? WHERE UserID = ?';
+//        $parameters = [$token, $this->UserID];
+//        self::execute_edit_query($sql, $parameters);
     }
 
     /**
@@ -66,6 +67,23 @@ class User extends Model
         $sql = 'SELECT * FROM users WHERE Email = ?'; //TODO Bepaal of ik wel alles uit de users tabel wil halen (*)
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS ,[$email]);
         return $stmt->fetch();
+    }
+
+    public static function get_All_Users()
+    {
+        $sql = 'SELECT UserID, Email, Type, FirstName, LastName FROM users'; //TODO Bepaal of ik wel alles uit de users tabel wil halen (*)
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
+        return $stmt->fetchAll();
+    }
+
+    public static function edit_User($Type, $id){
+        $sql = 'UPDATE users SET Type = ? WHERE UserID = ?';
+        self::execute_edit_query($sql, [$Type, $id]);
+    }
+    
+    public static function delete_User($id){
+        $sql = 'DELETE FROM users WHERE UserID = ?';
+        self::execute_edit_query($sql, [$id]);
     }
 
     //TODO Kijken hoe ik dit kan gebruiken
@@ -95,8 +113,10 @@ class User extends Model
                 $this->Type = 'customer';
             }
 
-            $sql = 'INSERT INTO users (Email, Type, PasswordHash, FirstName, LastName, UserTokenHash) VALUES (?, ?, ?, ?, ?, ?)';
-            $parameters = [$this->Email, $this->Type, $password_hash, $firstName, $lastName, 0];
+            //TODO UserTokenHash
+
+            $sql = 'INSERT INTO users (Email, Type, PasswordHash, FirstName, LastName) VALUES (?, ?, ?, ?, ?)';
+            $parameters = [$this->Email, $this->Type, $password_hash, $firstName, $lastName];
 
             return self::execute_edit_query($sql, $parameters);
         }
@@ -121,25 +141,15 @@ class User extends Model
      */
     private function validate()
     {
-        if ($this->Name == '')
-            $this->errors[] = 'Name is required';
+        if (strlen($this->Password) < 6)
+            $this->errors[] = 'Please enter at least 6 characters for the Password';
 
-        if (self::find_by_email($this->Email))
-            $this->errors[] = 'This Email address is already registered';
+        if (preg_match('/.*[a-z]+.*/i', $this->Password) == 0)
+            $this->errors[] = 'Password needs at least one letter';
 
-        if (isset($this->Password)) {
-            if (empty($this->Password))
-            $this->errors[] = 'Please enter a Password';
-
-            if (strlen($this->Password) < 6)
-                $this->errors[] = 'Please enter at least 6 characters for the Password';
-
-            if (preg_match('/.*[a-z]+.*/i', $this->Password) == 0)
-                $this->errors[] = 'Password needs at least one letter';
-
-            if (preg_match('/.*\d+.*/i', $this->Password) == 0)
-                $this->errors[] = 'Password needs at least one number';
-        }
+        if (preg_match('/.*\d+.*/i', $this->Password) == 0)
+            $this->errors[] = 'Password needs at least one number';
+        
     }
 
     public function send_activation_email()

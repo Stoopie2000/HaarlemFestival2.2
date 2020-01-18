@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Front controller
  *
@@ -46,13 +45,15 @@ $router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('food', ['controller' => 'Food', 'action' => 'index']);
 $router->add('dance', ['controller' => 'Dance', 'action' => 'index']);
 $router->add('jazz', ['controller' => 'Jazz', 'action' => 'index']);
-$router->add('cms', ['controller' => 'CMS', 'action' => 'login']);
-$router->add('cms/{action}/{event}', ['controller' => 'cms']);
+$router->add('jazz/{day}', ['controller' => 'Jazz', 'action' => 'tickets']);
+$router->add('jazz/artist/{artist}', ['controller' => 'Jazz', 'action' => 'artist']);
+$router->add('cms', ['controller' => 'Cms', 'action' => 'login']);
+$router->add('cms/{action}/{event}', ['controller' => 'Cms']);
 $router->add('dance', ['controller' => 'Dance', 'action' => 'index']);
 $router->add('dance/locations/{location}', ['controller' => 'dance', 'action' => 'locations']);
 $router->add('dance/lineup/{artist}', ['controller' => 'dance', 'action' => 'lineup']);
 $router->add('order/{action}', ['controller' => 'order']);
 $router->add('{controller}/{action}');
 
-    
+
 $router->dispatch($_SERVER['QUERY_STRING']);

@@ -21,15 +21,23 @@ class Dance extends Controller
     /**
      * Show the index page for Haarlem dance
      *
-
      */
     public function indexAction()
     {
+        $concerts = Concert::get_all_by_event('dance');
+
+        $firstDay = $concerts[0]->Date;
+        $lastDay = end($concerts)->Date;
+
+
+
         View::render('Dance/index.php', [
-            'artists' => Artist::getAll('dance'),
+            'artists' => Artist::get_all_by_event('dance'),
             'venues' => Venue::getAll('dance'),
-            'concerts' => Concert::getAll('dance'),
-            'plays_at' => PlaysAt::getAll()
+            'concerts' => $concerts,
+            'plays_at' => PlaysAt::getAll(),
+            'firstDay' => $firstDay,
+            'finalDay' => $lastDay
         ]);
     }
 
@@ -39,7 +47,7 @@ class Dance extends Controller
 
         if ($location) {
             $concertsAtLocation = Concert::find_for_location($location->VenueID);
-            $concerts = Concert::getAll('dance');
+            $concerts = Concert::get_all_by_event('dance');
             $dayTickets = DayTicket::get_all('dance');
 
             View::render('Dance/locations/detail.php', [
@@ -48,21 +56,25 @@ class Dance extends Controller
                 'concertsAtLocation' => $concertsAtLocation,
                 'dayTickets' => $dayTickets
             ]);
+        }else{
+            header('HTTP/1.0 404 Not Found');
+            exit;
         }
     }
 
     public function lineupAction()
     {
-        $artist = Artist::find_by_name(str_replace('-', ' ', $this->route_params['artist']), 'dance');
-        $concertsArtistPlaysAt = $artist->get_concerts();
+        $artist = Artist::find_by_name_and_event(str_replace('-', ' ', $this->route_params['artist']), 'dance');
         if ($artist){
+            $concertsArtistPlaysAt = $artist->get_concerts();
             View::render('Dance/lineup/detail.php', [
                 'artist' => $artist,
                 'concertsArtistPlaysAt' => $concertsArtistPlaysAt
             ]);
         }
         else {
-            //TODO 404
+            header('HTTP/1.0 404 Not Found');
+            exit;
         }
     }
 }

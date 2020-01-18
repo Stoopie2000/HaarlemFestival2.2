@@ -2,38 +2,34 @@
 /** @var $restaurants \App\Models\Restaurant|[] */
 /** @var $categories \App\Models\Category|[] */
 /** @var $categories \App\Models\RestaurantCategory|[] */
+
+use App\Config;
+
+include(dirname(dirname(__FILE__)) . "/Default/navigation.html");
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
 ?>
-<html>
+<html lang="NL">
 <head>
     <title>
         Haarlem festival
     </title>
     <link href="css/food/foodStyle.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo Config::URLROOT; ?>css/Default/Navigation.css">
+</head>
 <body>
-<header>
-    <div class="angle"></div>
+<div class="logo">
+    <img src="<?php echo Config::URLROOT; ?>/img/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180"
+         height="150">
+</div>
 
-    <nav><p style="transform: skew(27deg);">Haarlem Festival <b style="float: Right; padding-right: 20px;">Login</b></nav>
-    <div class="top-left"><img src="https://cdn.discordapp.com/attachments/648122388286013440/648122460121595904/Logo_pic.png" width="100px" height="100px" ></div>
-    <div class="text"></div>
-    <div class="nav2">
-        <b>
-            <a class="a" href="#">Home</a>
-            <a class="a" href="#">Jazz</a>
-            <a class="a" href="#">Dance</a>
-            <a class="a" href="#">Food</a>
-            <a class="a" href="#">Historic</a>
-        </b>
-    </div>
+<div class="background">
+    <img src="<?php echo Config::URLROOT; ?>/img/food/banner pic.jpg" alt="Banner pic Food" width="100%">
+</div>
 
-    <img src="img/food/banner pic.jpg" width="100%" height="60%">
-
-    <div class="top-right"><p><b>Cart</b></p>
-        <div class="anglee">
-        </div>
-    </div>
-
-</header>
 <div class="container">
     <center>
         <select style="margin-top:20px ;" name="category" data-event="filter">
@@ -45,39 +41,64 @@
     </center>
     <div class="box">
         <?php foreach ($restaurants as $restaurant): ?>
-        <div class="restaurant" style="position: relative;">
-            <img alt="<?= $restaurant->image_description; ?>" src="<?= $restaurant->image_url; ?>" width="400px" height="250px" >
-            <div class="food">
-                <button type="button" data-event="reserve" data-restaurant="<?= $restaurant->Name; ?>">Reserve</button>
+            <div class="restaurant-box" style="position: relative;">
+                <div class="restaurant" style="position: relative;">
+                    <img alt="<?= $restaurant->image_description; ?>" src="<?= $restaurant->image_url; ?>" width="400px"
+                         height="250px">
+                    <div class="food">
+                        <button type="button" data-event="reserve" data-restaurant="<?= $restaurant->Name; ?>">Reserve
+                        </button>
 
-                <?= $restaurant->Name; ?> <br>
-                <?= $restaurant->Address; ?> <br>
-                <?= $restaurant->CityAndCountry; ?> <br>
-                <br>
-                First session: <?= $restaurant->FirstSession; ?> <br>
-                Duration: <?= $restaurant->SessionDuration; ?> hours <br>
-                Price: €<?= $restaurant->Price; ?> (including €10 reservation fee, half price for kids below 12 years old) <br>
-                <span class="cuisine">Cuisine: <?= $restaurant->categories; ?></span>
+                        <?= $restaurant->Name; ?> <br>
+                        <?= $restaurant->Address; ?> <br>
+                        <?= $restaurant->CityAndCountry; ?> <br>
+                        <br>
+                        First session: <?= $restaurant->FirstSession; ?> <br>
+                        Duration: <?= $restaurant->SessionDuration; ?> hours <br>
+                        Price: €<?= $restaurant->Price; ?> (including €10 reservation fee, half price for kids below 12
+                        years old) <br>
+                        <span class="cuisine">Cuisine: <?= $restaurant->categories; ?></span>
+                    </div>
+                </div>
+                <div class="reserve" data-restaurant-name="<?= $restaurant->Name; ?>" style="opacity: 0;">
+                    <button type="button" data-event="cancel" data-restaurant="<?= $restaurant->Name; ?>">
+                        Back
+                    </button>
+                    <?= $restaurant->Name; ?> <br>
+                    <?= $restaurant->Address; ?> <br>
+                    <?= $restaurant->CityAndCountry; ?> <br>
+                    <br>
+                    First session: <?= $restaurant->FirstSession; ?> <br>
+                    Duration: <?= $restaurant->SessionDuration; ?> hours <br>
+                    Price: €<?= $restaurant->Price; ?> (including €10 reservation fee, half price for kids below 12
+                    years old) <br>
+                    <span class="cuisine">Cuisine: <?= $restaurant->categories; ?></span> <br>
+                    <br>
+                    Date: <select name="DateSelection">
+                        <option value="DateSelect">Select date</option>
+                        <option value="Thursday, Juli 26th">Thursday, Juli 26th</option>
+                        <option value="Friday, Juli 27th">Friday, Juli 27th</option>
+                        <option value="Saturday, Juli 28th">Saturday, Juli 28th</option>
+                        <option value="Sunday, Juli 29th">Sunday, Juli 29th</option>
+                    </select> <br>
+                    <br>
+                    Date: <select name="TimeSelection">
+                        <option value="TimeSelect">Select time</option>
+
+                    </select> <br>
+                    <br>
+                    Seats: <input type="text" name="Seats" placeholder="Seats"> <br>
+                    <br>
+                    Comments: <br>
+                    <textarea name="remarks" placeholder="Comments" rows="5" style="width: 75%"></textarea>
+                </div>
             </div>
-        </div>
-        <div class="reserve" data-restaurant-name="<?= $restaurant->Name; ?>" style="opacity: 0;">
-            <button type="button" data-event="cancel" data-restaurant="<?= $restaurant->Name; ?>">
-                Back
-            </button>
-            <?= $restaurant->Name; ?> <br>
-            <?= $restaurant->Address; ?> <br>
-            <?= $restaurant->CityAndCountry; ?> <br>
-            <br>
-            First session: <?= $restaurant->FirstSession; ?> <br>
-            Duration: <?= $restaurant->SessionDuration; ?> hours <br>
-            Price: €<?= $restaurant->Price; ?> (including €10 reservation fee, half price for kids below 12 years old) <br>
-            <span class="cuisine">Cuisine: <?= $restaurant->categories; ?></span>
-        </div>
         <?php endforeach; ?>
     </div>
 </div>
 
-<script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
 <script src="/js/food.js"></script>
 
 </body>

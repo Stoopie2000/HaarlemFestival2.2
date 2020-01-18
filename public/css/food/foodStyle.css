@@ -1,3 +1,8 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 .top-left {
     position: absolute;
     top: 8px;
@@ -15,6 +20,11 @@
     opacity: 0.5;
     left: 108px;
 }
+.header {
+    position: absolute;
+    z-index: 1;
+}
+
 nav{
     width: 85.9%;
     height: 50px;
@@ -89,16 +99,18 @@ nav{
     background-color: #FF9E00;
     color: white;
     position: relative;
+    overflow-x: hidden;
 }
 .box{
+    position: relative;
     margin-left:12%;
     margin-right: 12%;
     margin-top:30px;
     color:#333333;
     background-color: #FFC464;
-    height: 72.6%;
     width: 76%;
     font-size: 24px;
+    height: auto;
 }
 .food{
     height: 250px;
@@ -121,10 +133,6 @@ button{
     display: none;
 }
 
-.box {
-    position: relative;
-}
-
 .restaurant {
     margin-bottom: 25px;
     position: relative;
@@ -137,11 +145,12 @@ button{
 
 .reserve {
     position: absolute;
+    z-index: 9001;
     top: 0;
     right: 0;
     width: 800px;
     height: 525px;
-    margin-right: -800px;
     background: #FFB339;
     text-align: left;
+    margin-right: -800px;
 }

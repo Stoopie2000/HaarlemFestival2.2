@@ -4,3 +4,6 @@
 /.vs
 /.vscode
 .vscode/settings.json
+/.vs/
+/.vscode/
+/App/Config.php

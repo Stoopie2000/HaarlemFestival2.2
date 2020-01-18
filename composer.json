@@ -1,23 +1,19 @@
 {
-<<<<<<< HEAD
   "require": {
     "twig/twig": "~2.0",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "squizlabs/php_codesniffer": "3.5.3",
+    "friendsofphp/php-cs-fixer": "3.0.x-dev",
+    "mollie/mollie-api-php": "^2.0"
   },
   "autoload": {
     "psr-4": {
       "Core\\": "Core/",
       "App\\": "App/"
-=======
-    "require": {
-        "twig/twig": "~2.0",
-      "ext-pdo": "*",
-        "squizlabs/php_codesniffer": "3.5.3",
-        "friendsofphp/php-cs-fixer": "3.0.x-dev"
->>>>>>> 3a786a3e2ed0e8d282d897cc6e4b71f800f21c36
     },
     "files": [
       "./helpers.php"
     ]
   }
 }
+

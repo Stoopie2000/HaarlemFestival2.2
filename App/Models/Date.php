@@ -20,6 +20,8 @@ class Date extends Model
         foreach ($data as $key => $value) {
             $this->$key = $value;
         }
+
+        $this->Date = date_create($this->Date);
     }
 
     public static function get_by_ID($DateID)
@@ -29,9 +31,9 @@ class Date extends Model
         return $date = $stmt->fetch();
     }
 
-    public function get_all(){
+    public static function get_all(){
         $sql = 'SELECT * FROM date';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
-        return $date = $stmt->fetchAll();
+        return $stmt->fetchAll();
     }
 }

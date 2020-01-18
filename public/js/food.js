@@ -19,7 +19,7 @@ $(document).ready(function () {
         $(this).closest('.box').find('[data-restaurant-name="' + restaurant + '"]').animate({
             marginRight: 0,
             opacity: 1,
-        }, 100);
+        }, 500);
     });
 
     $('[data-event="cancel"]').on('click', function () {
@@ -27,6 +27,6 @@ $(document).ready(function () {
         $(this).closest('.box').find('[data-restaurant-name="' + restaurant + '"]').animate({
             marginRight: -800,
             opacity: 0,
-        }, 75);
+        }, 500);
     });
 });

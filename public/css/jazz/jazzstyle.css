@@ -1,156 +1,10 @@
 body{
     background-color: #990000;
-}
-
-.logo{
-  position: absolute;
-  z-index: 30;
-  left: 17px;
-  top: 10px;
-}
-
-.topleft{
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  height: 183px;
-  width: 226px;
-  background-color: #FFFFFF;
-  opacity: 0.85;
-  clip-path: polygon(0 0, 100% 0, 178px 100%, 0 100%);
-}
-
-.topbar{
-  width:1550px;
-  height:60px;
-  background-color: #363636;
-  transform: skewX(-14deg);
-  position:absolute; top: 0px;
-  left: 218px;
-  z-index: 15;
-}
-
-.ultop{
-  list-style-type: none;
-}
-
-.top{
-  display: inline-block;
-}
-
-.top a{
-  position: relative;
-  top: 4px;
-  left:1331px;
-  margin-left: -4px;
-  margin-right: 0px;
-  padding-left: 10px;
-  padding-right: 12px;
-  padding-top: 12px;
-  padding-bottom: 11px;
-  font-family: "Arial", sans-serif;
-  font-size: 24pt;
-  text-decoration: none;
-  color: #FFFFFF;
-  line-height: 22px;
-}
-
-.top a span{
-    display: inline-block;
-    transform: skewX(15deg);
-    -ms-transform: skewX(15deg);
-    -webkit-transform: skewX(15deg);
-    width: 121px;
-    text-align: center;
-}
-
-.ultop li a:hover{
-  background-color: #111;
-  color: #FFFFFF;
-}
-
-.ultop .search-container {
-  position: absolute;
-  top: 17px;
-  left: 1150px;
-  transform: skewX(15deg);
-    -ms-transform: skewX(15deg);
-    -webkit-transform: skewX(15deg);
-}
-
-.ultop input[type=text] {
-  padding: 3px;
-  font-size: 17px;
-  border: none;
-}
-
-.topright{
-  position: absolute;
-  left: 1687px;
-  top: 0px;
-  height: 183px;
-  width: 216px;
-  background-color: #363636;
-  clip-path: polygon(49px 0, 100% 0, 100% 100%, 0 100%);
-  z-index: 0;
-}
-
-nav.navbar {
-    background-color: rgb(54, 54, 54, 0.75);
-    height: 123px;
-    transform: skewX(-15deg);
-    -ms-transform: skewX(-15deg);
-    -webkit-transform: skewX(-15deg);
-    width: 1544px;
-    position: absolute;
-    top: 60px;
-    left: 194px;
-}
-
-.ulnav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.linav {
-    display: inline-block;
-}
-
-.linav a {
-    color: white;
-    text-align: center;
-    padding-top: 44px;
-    padding-bottom: 43px;
-    padding-right:23px;
-    padding-left: 23px;
-    margin-left: 20px;
     font-family: "Arial", sans-serif;
-    font-size: 24pt;
-    font-weight: bold;
-    text-decoration: none;
-    line-height: 124px;
-    text-align: center;
-  }
-
-.linav a span {
-    display: inline-block;
-    transform: skewX(15deg);
-    -ms-transform: skewX(15deg);
-    -webkit-transform: skewX(15deg);
-    width: 121px;
-    text-align: center;
-  }
-
-.linav a:hover {
-    background-color: #111;
-    color: #FFFFFF;
-    height: 123px;
 }
 
-.linav .active {
-    background: #990000;
-    color: #FFFFFF;
+button{
+  cursor:pointer;
 }
 
 .background{
@@ -173,18 +27,17 @@ nav.navbar {
   width: 40%;
   padding-left: 2%;
   color: white;
-  font-family: "Arial", sans-serif;
   font-size: 14pt;
 }
 
 .arrowDown{
   text-decoration: none;
   color: rgba(255, 255, 255, 0.60);
-  font-family: "Arial", sans-serif;
+  
   font-size: 60pt;
   position: absolute;
   top: 75px;
-  left: 977px;
+  left: 987px;
   transform: rotate(90deg);
   width: 20px;
   height: 20px;
@@ -204,14 +57,14 @@ nav.navbar {
     display: inline-block;
     position: absolute;
     top: 974px;
-    left: 615px;
+    left: 625px;
     text-align: center;
 }
 
 .tab button{
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
-    font-family: "Arial", sans-serif;
+    
     font-size: 36pt;
     border-radius: 10px;
     border-style: none;
@@ -226,17 +79,17 @@ nav.navbar {
 }
 
 .tabDays{
-  display: inline-block;
-  position: absolute;
+  display: flex;
+  position: relative;
   top: 1111px;
-  left: 571px;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
 .tabDays button{
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
-  font-family: "Arial", sans-serif;
   font-size: 24pt;
   border-radius: 10px;
   border-style: none;
@@ -257,12 +110,12 @@ nav.navbar {
     height: 666px;
     position: absolute;
     top: 1214px;
-    left: 437px;
+    left: 434px;
     line-height: 1em;
+    
 }
 
 .ticketsMenu a{
-  font-family: Arial, sans-serif;
   font-size: 18pt;
 }
 
@@ -284,12 +137,8 @@ nav.navbar {
     align-items: center;
 }
 
-
-
 .add{
-  
   color: #000000;
-  
 }
 
 .allAccess{
@@ -311,7 +160,7 @@ nav.navbar {
   position: absolute;
   left: 80px;
   top: 310px;
-  
+  font-size: 18pt;
 }
 
 .dayTickets li{
@@ -340,8 +189,6 @@ nav.navbar {
   text-align: center;
   background-color: transparent;
   border: none;
-  font-family: Arial, sans-serif;
-  font-size: 15pt;
   margin-left: 5px;
   margin-right: 5px;
 }
@@ -364,7 +211,6 @@ input[type=number] {
   margin-top: 20px;
   width: 200px;
   text-align: center;
-  font-family: Arial, sans-serif;
   font-size: 26pt;
   font-weight: bold;
 }
@@ -376,7 +222,6 @@ input[type=number] {
   margin-right: auto;
   width: 300px;
   text-align: center;
-  font-family: Arial, sans-serif;
   font-size: 26pt;
   font-weight: bold;
 }
@@ -387,3 +232,211 @@ input[type=number] {
   margin-top: 200px;
 }
 
+.form-control{
+  position: absolute;
+  left: 1500px;
+  top: 1000px;
+  height: 25px;
+  width: 175px;
+}
+
+/*line up page*/
+
+.dayLineup{
+  display: flex;
+  position: absolute;
+  top: 1130px;
+  left: 0px;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.dayArtist{
+  display: inline-block;
+  margin-left: 40px;
+  margin-right: 40px;
+  background-color: rgb(255, 255, 255, 0.70);
+  width: 343px;
+  height: auto;
+}
+
+.dayName{
+  background-color: rgb(255, 255, 255);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: black;
+  width: 343px;
+  height: 48px;
+  margin-left: 40px;
+  margin-right: 40px;
+  font-size: 24pt;
+  text-align: center;
+  line-height: 48px;
+}
+
+.artist{
+  background-color: #333333;
+  position: relative;
+  text-align: left;
+  left: 32px;
+  width: 280px;
+  height: 23px;
+  color: white;
+  
+}
+
+.artistName{
+  position: relative;
+  left: 2px;
+  top: 2px;
+}
+
+.artistTime{
+  position: absolute;
+  left: 200px;
+  top: 2px;
+}
+
+.dayRow{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dayFill{
+  height: 30px;
+}
+
+.fill{
+  background-color: rgb(255, 255, 255, 0.70);
+  height: 40px;
+  width: 343px;
+}
+
+.artistFilter{
+  position: absolute;
+  top: 1000px;
+  left: 1500px;
+}
+
+
+
+/*artistpage*/
+
+.artistContainer{
+  background-color: #282828;
+  position: absolute;
+  top: 1100px;
+  left: 0px;
+  width: 100%;
+  height: 950px;
+  
+}
+
+.artistRow{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 75px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.artistColumn{
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  width: 600px;
+  height: 400px;
+}
+
+.artistTimes{
+  display: flex;
+  flex-direction: column;
+  font-size: 20pt;
+  font-weight: bold;
+  background-color: #000000;
+  color: #FFFFFF;
+  width: 600px;
+  height: 400px;
+}
+
+.artistColumnEmpty{
+  display: flex;
+  flex-direction: column;
+  background-color: #990000;
+  color: #FFFFFF;
+  width: 600px;
+  height: 400px;
+}
+
+iframe{
+  border-style: none;
+}
+
+.artistColumn h3{
+  position: relative;
+  left: 50px;
+  font-size: 20pt;
+  text-align: left;
+}
+
+.description{
+  position: relative;
+  left: 50px;
+  top: -20px;
+  display: flex;
+  width: 500px;
+  text-align: left;
+  font-size: 14pt;
+}
+
+.concert{
+  width: 450px;
+  position: relative;
+  left: 75px;
+  top: 10px;
+  margin-top: 15px;
+  font-size: 14pt;
+}
+
+.dayNameArtist{
+  float: left;
+  font-weight: normal;
+}
+
+.concertTime{
+  float: right;
+  font-weight: normal;
+}
+
+.ticketLine{
+  position: relative;
+  top: 100px;
+  border:none;
+  border-top:4px #FFFFFF;
+}
+
+.ticketsButton{
+  background-color: black;
+  border-style: none;
+  color: #FFFFFF;
+  font-size: 20pt;
+  font-weight: bold;
+  position: absolute;
+  top: 300px;
+  left: 61%;
+}
+
+.backButton{
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  
+}

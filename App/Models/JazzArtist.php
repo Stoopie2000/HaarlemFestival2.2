@@ -12,18 +12,33 @@ class JazzArtist extends Model
         foreach ($data as $key => $value) {
             $this->$key = $value;
         };
+
+        $this->StartTime = date_create($this->StartTime);
     }
 
-    public static function getAllArtists()
+    public static function getAllArtists($ID)
     {
-        $sql  = "SELECT artists.Name, concerts.ConcertID, concerts.Price, concerts.StartTime, concerts.NumberOfTickets, concerts.DateID, venue.Hall FROM `plays_at` 
-        INNER JOIN artists ON plays_at.ArtistID=artists.ArtistID 
-        INNER JOIN concerts ON plays_at.ConcertID=concerts.ConcertID
-        INNER JOIN venue ON concerts.VenueID=venue.VenueID
+        $sql  = "SELECT artists.Name, concerts.ConcertID, concerts.Price, concerts.StartTime, concerts.NumberOfTickets, concerts.DateID, venue.Hall 
+            FROM `plays_at` 
+                INNER JOIN artists ON plays_at.ArtistID=artists.ArtistID 
+                    INNER JOIN concerts ON plays_at.ConcertID=concerts.ConcertID
+                        INNER JOIN venue ON concerts.VenueID=venue.VenueID
+            WHERE artists.Event LIKE 'Jazz' AND concerts.DateID = ?
+            ORDER BY concerts.ConcertID";
+
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$ID]);
+        return $jazzArtists = $stmt->fetchAll();
+    }
+
+    public static function getLineUp(){
+        $sql = "SELECT *
+        FROM `plays_at` 
+            INNER JOIN artists ON plays_at.ArtistID=artists.ArtistID 
+                INNER JOIN concerts ON plays_at.ConcertID=concerts.ConcertID
         WHERE artists.Event LIKE 'Jazz'
-        ORDER BY concerts.ConcertID";
+        ORDER BY concerts.DateID ASC, concerts.VenueID ASC, concerts.StartTime ASC";
 
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
-        return $users = $stmt->fetchAll();
+        return $jazzArtists = $stmt->fetchAll();
     }
 }

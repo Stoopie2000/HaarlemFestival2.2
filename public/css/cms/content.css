@@ -11,6 +11,13 @@
     align-items: center;
 }
 
+.content_horizontal {
+    height: 100%;
+    display: flex;
+    padding-left: 12px;
+    align-items: center;
+}
+
 .row {
     height: auto;
     width: 100%;
@@ -27,22 +34,45 @@
     margin-left: auto;
 }
 
-.listview {
+.filter {
+    background-color: white;
+    border: 2px;
+    margin-right: 150px;
+    margin-left: 0px;
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+#events .input-group {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 280px;
+}
+
+#events .container {
+    width: fit-content;
+    max-width: none;
+
+}
+
+#events .listview {
     margin-left: auto;
     margin-right: auto;
     height: 700px;
     width: 1000px;
     background-color: white;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-.listitem {
+#events .listitem {
     width: 100%;
-    height: 100px;
+    height: 110px;
     border: 2px solid black;
 }
 
-.litop {
+#events .litop {
     width: 100%;
     height: 40px;
     border-bottom: 1px solid black;
@@ -50,15 +80,15 @@
     grid-template-columns: 150px 150px 400px 300px;
 }
 
-.libottom {
+#events .libottom {
     width: 100%;
-    height: 56px;
+    height: 66px;
     display: grid;
-    grid-template-columns: 150px 150px 150px 150px 200px 200px;
+    grid-template-columns: 200px 250px 150px 150px 125px 125px;
 
 }
 
-.litoptext {
+#events .litoptext {
     text-align: center;
     font-size: 18px;
     font-weight: bold;
@@ -66,8 +96,175 @@
     vertical-align: middle;
 }
 
-.libottomtext {
+#events .libottomtext {
     text-align: center;
     font-size: 14px;
     margin: auto;
+}
+
+#artists .listview, #users .listview {
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 550px;
+    width: 1080px;
+    background-color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#artists .lvheader {
+    height: 50px;
+    color: #fff;
+    background-color: #343a40;
+    font-weight: bold;
+    width: inherit;
+    display: grid;
+    grid-template-columns: 50px 200px 580px 100px 150px;
+}
+
+#artists .lvitem{
+    border-bottom: 1px solid #454d55;
+    height: 45px;
+    display: grid;
+    grid-template-columns: 50px 200px 580px 100px 150px;
+}
+#artists textarea, #users textarea {
+    height: 44px;
+    width: 580px;
+    resize: none;
+    font-size: 13.333px;
+    border: 0px;
+}
+
+#artists .button, #users .button {
+    margin: 12px;
+}
+
+#users .lvheader {
+    height: 50px;
+    color: #fff;
+    background-color: #343a40;
+    font-weight: bold;
+    width: inherit;
+    display: grid;
+    grid-template-columns: 430px 175px 175px 150px 150px;
+}
+
+#users .lvitem {
+    border-bottom: 1px solid #454d55;
+    height: 45px;
+    display: grid;
+    grid-template-columns: 430px 175px 175px 150px 150px;
+}
+
+#users .padding{
+    padding-right: 20px;
+}
+
+#pages textarea{
+    height: 75px;
+}
+
+#pages hr, #newpage hr {
+    margin-top: 1.3rem;
+    margin-left: 1px;
+    margin-right: 1px;
+    border-top: 1px solid rgba(0,0,0,1);
+}
+
+#pages h3 {
+    min-width: 200px;
+    width: fit-content;
+    padding-right: 49px;
+    padding-left: 50px;
+    text-align: right;
+}
+
+#pages h4, #newpage h4 {
+    width: 500px;
+    padding-left: 200px;
+}
+
+#pages .menu-row, #newpage .menu-row{
+    display: grid;
+    grid-template-columns: max-content auto 200px;
+    margin-bottom: 20px;
+}
+
+#pages .content-row, #newpage .content-row {
+    min-height: 50px;
+    height: max-content;
+    display: grid;
+    grid-template-columns: 500px auto 200px 200px;
+    margin-bottom: 50px;
+}
+
+#pages .save-button, #newpage .save-button {
+    margin-left: 200px;
+    width: 200px;
+}
+
+#newpage input {
+    width: 200px;
+    margin-left: 50px;
+    margin-right: 20px;
+}
+
+#newpage textarea{
+    height: 100px;
+}
+
+.lightbox{
+    display: none;
+    position: fixed;
+    z-index: 1700;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.4);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.lbcontent {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 0px 20px;
+    border: 1px solid #888;
+    border-radius: 20px;
+    width: 50%;
+}
+
+#lightbox textarea {
+    border: 1px solid rgb(169, 169, 169);
+    width: 100%;
+    height: unset;
+}
+
+.lvitem button {
+    height: 30px;
+    width: 35px;
+    padding: 6px;
+    margin-top: 7.5px;
+}
+
+.buttons {
+    padding-right: 35px;
+}
+
+.modal-title {
+    width: 95%;
 }
