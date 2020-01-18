@@ -117,6 +117,12 @@
                             <label for="Time" class="col-sm-2 col-form-label">Time:</label>
                             <div class="col-sm-4">
                                 <select name="BeginTime" class="custom-select" id="StartTime" onchange="CheckTime()">
+                                    <option value="15:00">15:00</option>
+                                    <option value="15:30">15:30</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="16:30">16:30</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="17:30">17:30</option>    
                                     <option value="18:00">18:00</option>
                                     <option value="18:30">18:30</option>
                                     <option value="19:00">19:00</option>
@@ -128,15 +134,17 @@
                                     <option value="22:00">22:00</option>
                                     <option value="22:30">22:30</option>
                                     <option value="23:00">23:00</option>
-                                    <option value="23:30">23:30</option>
-                                    <option value="0:00">0:00</option>
-                                    <option value="0:30">0:30</option>
-                                    <option value="1:00">1:00</option>
                                 </select>
                             </div>
                             <div class="col-sm-2">-</div>
                             <div class="col-sm-4">
                             <select name="EndTime" class="custom-select" id="EndTime" onchange="CheckTime()">
+                                    <option value="16:00">16:00</option>
+                                    <option value="16:30">16:30</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="17:30">17:30</option>    
+                                    <option value="18:00">18:00</option>
+                                    <option value="18:30">18:30</option>        
                                     <option value="19:00">19:00</option>
                                     <option value="19:30">19:30</option>
                                     <option value="20:00">20:00</option>
@@ -152,6 +160,12 @@
                                     <option value="1:00">1:00</option>
                                     <option value="1:30">1:30</option>
                                     <option value="2:00">2:00</option>
+                                    <option value="2:30">2:30</option>
+                                    <option value="3:00">3:00</option>
+                                    <option value="3:30">3:30</option>
+                                    <option value="4:00">4:00</option>
+                                    <option value="4:30">4:30</option>
+                                    <option value="5:00">5:00</option>
                                 </select>
                             </div>
                         </div>

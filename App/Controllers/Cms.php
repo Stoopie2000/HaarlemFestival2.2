@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Controllers;
+use App\Config;
 
+use App\Models\Pages;
 use App\Models\Artist;
 use App\Models\Concert;
 use App\Models\User;
@@ -15,7 +17,7 @@ use \Core\View;
 use DateTime;
 
 // Verander de 'Template' met de naam van je eigen controller
-class CMS extends Controller
+class Cms extends Controller
 {
 
     /**
@@ -55,7 +57,7 @@ class CMS extends Controller
         }
     }
 
-    public function register(){
+    public function registerAction(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $pass_err = "";
             $confpass_err = "";
@@ -84,7 +86,8 @@ class CMS extends Controller
                 $user = new User([
                     'Name' => $Name,
                     'Email' => $_POST['email'],
-                    'Password' => $_POST['password']
+                    'Password' => $_POST['password'],
+                    'Type' => "volunteer"
                 ]);
 
                 if ($user->register_user()) {
@@ -120,6 +123,106 @@ class CMS extends Controller
         }
     }
 
+    public function usersAction(){
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION["user_id"])) {
+            $this->redirect('/cms');
+        }
+
+        $this->route_params['pages'] = Pages::get_AllPages();
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            for ($i=1; $i <= 3 ; $i++) { 
+                if (isset($_POST["id" . $i])) {
+                    $id = $_POST["id" . $i];
+                    break;
+                }
+            }
+            
+            if ($_POST["action" . $id] == "Save") {
+                User::edit_User($_POST["Role"], $id);
+            }
+            else if ($_POST["action" . $id] == "Delete") {
+                User::delete_User($id);
+            }
+        }
+
+        $users = User::get_All_Users();
+
+        View::render('CMS/users.php', [
+            'params' => $this->route_params,
+            'users' => $users
+        ]);
+    }
+
+    public function pagesAction(){
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION["user_id"])) {
+            $this->redirect('/cms');
+        }
+
+        $this->route_params['pages'] = Pages::get_AllPages();
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $target_file = "img/home/". strtolower($_FILES["file"]["name"]);
+
+            foreach ($this->route_params['pages'] as $page) {
+                if ($page->Name == ucfirst($this->route_params["event"])) {
+                    $pageObject = $page;
+                    break;
+                } else {
+                    $pageObject = "";
+                }
+            }
+
+            if (isset($pageObject)) {
+                if ($_FILES["file"]["name"] == "") {
+                    Pages::edit_Page($pageObject->Name, $_POST["description"], $pageObject->Background, $pageObject->PageID);
+                    $this->redirect('/cms/pages/' . strtolower($pageObject->Name));
+                } else {
+                    if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)){
+                        Pages::edit_Page($pageObject->Name, $_POST["description"], strtolower($_FILES["file"]["name"]), $pageObject->PageID);
+                        $this->redirect('/cms/pages/' . strtolower($pageObject->Name));
+                    }
+                }
+            } else {
+                if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)){
+                    Pages::add_Page(ucfirst($_POST["name"]), $_POST["description"], strtolower($_FILES["file"]["name"]));
+                    $this->redirect('/cms/pages/' . strtolower($_POST["name"]));
+                }
+            }
+
+        }
+
+        $venues = array();
+        if ($this->route_params["event"] == "dance") {
+            $venues = Venue::getAll($this->route_params["event"]);
+        }
+
+        for ($i=0; $i < count($this->route_params['pages']) ; $i++) { 
+            if($this->route_params['pages'][$i]->Name == ucfirst($this->route_params["event"])){
+                $currentPage = $this->route_params['pages'][$i];
+                break;
+            }
+        }
+
+        if ($this->route_params["event"] == "new") {
+            View::render('CMS/newPage.php', [
+                'params' => $this->route_params
+            ]);
+        }else {
+            View::render('CMS/pages.php', [
+                'params' => $this->route_params,
+                'currentPage' => $currentPage,
+                'venues' => $venues
+            ]);
+        }
+    }
+
     public function eventsAction(){
         if (!isset($_SESSION)) {
             session_start();
@@ -127,6 +230,8 @@ class CMS extends Controller
         if (!isset($_SESSION["user_id"])) {
             $this->redirect('/cms');
         }
+
+        $this->route_params['pages'] = Pages::get_AllPages();
 
         $concerts = Concert::get_all_by_event($this->route_params["event"]);
         $days = Date::get_all();
@@ -140,6 +245,7 @@ class CMS extends Controller
             foreach ($days as $day) {
                 if ($day->Day == explode(" ", $_POST["Date"])[0]) {
                     $dateID = $day->DateID;
+                    break;
                 }
             }
 
@@ -170,8 +276,6 @@ class CMS extends Controller
                 }
             }
 
-            $StartTime = new DateTime($_POST["BeginTime"]);
-            $EndTime = new DateTime($_POST["EndTime"]);
             $Price = (float)$_POST["Price"];
             $VenueID = $this->getVenueID($locations, $_POST["Location"]);
 
@@ -180,13 +284,11 @@ class CMS extends Controller
             for ($i=0; $i < count($concerts); $i++) { 
                 if ($concerts[$i]->ConcertID == $concert->ConcertID) {
                     $concerts[$i] = $concert;
+                    break;
                 }
             }
 
         }
-
-
-        print_r($this->route_params);
 
         // Wat je mee geeft met deze methode is de Path naar de view 'index', de Path is vanuit de Views map.
         View::render('CMS/events.php', [
@@ -198,13 +300,15 @@ class CMS extends Controller
         ]);
     }
 
-    public function ArtistsAction(){
+    public function artistsAction(){
         if (!isset($_SESSION)) {
             session_start();
         }
         if (!isset($_SESSION["user_id"])) {
             $this->redirect('/cms');
         }
+
+        $this->route_params['pages'] = Pages::get_AllPages();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $post = $_POST;
