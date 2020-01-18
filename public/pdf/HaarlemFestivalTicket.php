@@ -3,7 +3,7 @@
 $con = mysqli_connect('hfteam6.infhaarlem.nl', 'hfteam6_Group', 'tv5rMk4gL');
 mysqli_select_db($con, 'hfteam6_DB');
 
-$query = mysqli_query($con, "SELECT orders_tickets.OrderID, artists.ArtistID, venue.VenueName, date.Date, concerts.StartTime FROM `orders_tickets` 
+$query = mysqli_query($con, "SELECT orders_tickets.OrderID, artists.Name, venue.Name AS Venue, date.Date, concerts.StartTime FROM `orders_tickets` 
 INNER JOIN plays_at ON plays_at.ConcertID=orders_tickets.ConcertID 
 INNER JOIN artists ON artists.ArtistID=plays_at.ArtistID 
 INNER JOIN concerts ON concerts.ConcertID=plays_at.ConcertID 
@@ -24,19 +24,23 @@ $pdf->SetFont('Arial','B',12);
 $pdf->Cell(140,15,$Data['Name'], 'LTR', 0);
 $pdf->Ln();
 $pdf->SetFont('Arial','B',11);
-$pdf->Cell(140,10,$Data['VenueName'], 'LR');
+$pdf->Cell(140,10,$Data['Venue'], 'LR');
 
 $qrcode = new QRcode($Data['OrderID'], 'L');
 $qrcode-> disableBorder ();
-$qrcode-> displayFPDF($pdf, 155, 30, 35);
+$qrcode-> displayFPDF($pdf, 155, 15, 35);
 
 $pdf->Ln();
-$pdf->Cell(80,8,$Data['Date'], 'L');
-$pdf->Cell(60,8,$Data['Time'], 'R');
+$pdf->Cell(15,8,'Date: ', 'L');
+$pdf->Cell(55, 8, $Data['Date']);
+$pdf->Cell(15,8,'Time: ');
+$pdf->Cell(55,8, $Data['StartTime'], 'R');
 $pdf->Ln();
 $pdf->Cell(80,11,'Ordernumber: ', 'LB');
-$pdf->Cell(60,8,$Data['OrderID'], 'BR');
+$pdf->Cell(60,11,$Data['OrderID'], 'BR');
 
 $pdf->Ln();
 $pdf->Ln();
+
+$pdf->Output();
 ?>
