@@ -18,7 +18,7 @@
         <h3>Main</h3>
         <hr>
     </div>
-    <form id="main" action="<?php echo(Config::URLROOT ."/cms/pages/". strtolower($currentPage->Name));?>" onsubmit="return Control('main')" method="post">
+    <form id="main" action="<?php echo(Config::URLROOT ."/cms/pages/". strtolower($currentPage->Name));?>" onsubmit="return Control('main')" method="post" enctype="multipart/form-data">
         <div class="content-row">
             <h4>Information:</h4>
             <textarea name="description" id="description"><?php echo $currentPage->Description; ?></textarea>

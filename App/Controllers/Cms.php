@@ -165,11 +165,35 @@ class Cms extends Controller
             $this->redirect('/cms');
         }
 
+        $this->route_params['pages'] = Pages::get_AllPages();
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $target_file = "img/home/". strtolower($_FILES["file"]["name"]);
-            if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)){
-                Pages::add_Page(ucfirst($_POST["name"]), $_POST["description"], strtolower($_FILES["file"]["name"]));
-                $this->redirect('/cms/pages/' . strtolower($_POST["name"]));
+
+            foreach ($this->route_params['pages'] as $page) {
+                if ($page->Name == ucfirst($this->route_params["event"])) {
+                    $pageObject = $page;
+                    break;
+                } else {
+                    $pageObject = "";
+                }
+            }
+
+            if (isset($pageObject)) {
+                if ($_FILES["file"]["name"] == "") {
+                    Pages::edit_Page($pageObject->Name, $_POST["description"], $pageObject->Background, $pageObject->PageID);
+                    $this->redirect('/cms/pages/' . strtolower($pageObject->Name));
+                } else {
+                    if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)){
+                        Pages::edit_Page($pageObject->Name, $_POST["description"], strtolower($_FILES["file"]["name"]), $pageObject->PageID);
+                        $this->redirect('/cms/pages/' . strtolower($pageObject->Name));
+                    }
+                }
+            } else {
+                if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)){
+                    Pages::add_Page(ucfirst($_POST["name"]), $_POST["description"], strtolower($_FILES["file"]["name"]));
+                    $this->redirect('/cms/pages/' . strtolower($_POST["name"]));
+                }
             }
 
         }
@@ -179,7 +203,6 @@ class Cms extends Controller
             $venues = Venue::getAll($this->route_params["event"]);
         }
 
-        $this->route_params['pages'] = Pages::get_AllPages();
         for ($i=0; $i < count($this->route_params['pages']) ; $i++) { 
             if($this->route_params['pages'][$i]->Name == ucfirst($this->route_params["event"])){
                 $currentPage = $this->route_params['pages'][$i];

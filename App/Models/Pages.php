@@ -24,4 +24,9 @@ class Pages extends Model
         $sql = 'INSERT INTO pages (Name, Description, Background) VALUES (?, ?, ?)';
         self::execute_edit_query($sql, [$name, $description, $background]);
     }
+
+    public static function edit_Page($name, $description, $background, $id){
+        $sql = 'UPDATE pages SET Name = ?, Description = ?, Background = ? WHERE PageID = ?';
+        self::execute_edit_query($sql, [$name, $description, $background, $id]);
+    }
 }
