@@ -13,13 +13,11 @@
         ?>" href="<?php echo Config::URLROOT; ?>/cms">Menu</a>
         <a class="menu menu-item<?php echo ($params["action"] == 'users' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/users">Users</a>
         <a class="menu menu-item dropdown-toggle" href="#Pages" role="button" data-toggle="collapse">Pages</a>
-            <div class="collapse" id="Pages">
-                <!--Needs to be dynamic!! -->
-                <a class="menu menu-sub<?php echo ($params["action"] == 'pages' && $event == 'home' ? ' active' : ''); ?>" href="#">Home</a>
-                <a class="menu menu-sub" href="#">Jazz</a>
-                <a class="menu menu-sub" href="#">Dance</a>
-                <a class="menu menu-sub" href="#">Food</a>
-                <a class="menu menu-sub" href="#">New</a>
+            <div class="collapse<?php echo ($params["action"] == 'pages' ? ' show' : ''); ?>" id="Pages"><?php
+                foreach ($params["pages"] as $page) {
+                    echo ("<a class='menu menu-sub" . ($params["action"] == 'pages' && $params["event"] == strtolower($page->Name) ? ' active' : '') . "' href='". Config::URLROOT ."/cms/pages/". strtolower($page->Name) ."'>". $page->Name . "</a>");
+                }?>
+                <a class="menu menu-sub<?php echo ($params["action"] == 'pages' && $params["event"] == 'new' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/pages/new">New</a>
             </div>
         <a class="menu menu-item dropdown-toggle" href="#Events" role="button" data-toggle="collapse">Events</a>
             <div class="collapse<?php echo ($params["action"] == 'events' ? ' show' : ''); ?>" id="Events">
@@ -27,8 +25,8 @@
                 <a class="menu menu-sub<?php echo ($params["action"] == 'events' && $params["event"] == 'dance' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/events/dance">Dance</a>
                 <a class="menu menu-sub<?php echo ($params["action"] == 'events' && $params["event"] == 'food' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/events/food">Food</a>
             </div>
-        <a class="menu menu-item<?php echo ($params["action"] == 'finance' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/artists">Artists</a>
-        <a class="menu menu-item<?php echo ($params["action"] == 'finance' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/restaurants">Restaurants</a>
+        <a class="menu menu-item<?php echo ($params["action"] == 'artists' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/artists">Artists</a>
+        <!--<a class="menu menu-item<?php echo ($params["action"] == 'finance' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/restaurants">Restaurants</a>-->
         <a class="menu menu-item<?php echo ($params["action"] == 'finance' ? ' active' : ''); ?>" href="">Finance</a>
     </nav>
 </div>
