@@ -83,6 +83,13 @@ class User extends Model
         return $stmt->fetchAll();
     }
 
+    public static function get_quantity()
+    {
+        $sql = "SELECT COUNT(UserID) AS 'Number' FROM users";
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
+        return $stmt->fetch();
+    }
+
     public static function edit_User($Type, $id){
         $sql = 'UPDATE users SET Type = ? WHERE UserID = ?';
         self::execute_edit_query($sql, [$Type, $id]);

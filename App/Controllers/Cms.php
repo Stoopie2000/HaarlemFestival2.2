@@ -37,9 +37,14 @@ class Cms extends Controller
         } else {
             $this->route_params["action"] = "dashboard";
             $this->route_params['pages'] = Pages::get_AllPages();
+            $users = User::get_quantity();
+            ;
 
             View::render('CMS/dashboard.php', [
-            'params' => $this->route_params
+            'params' => $this->route_params,
+            'users' => User::get_quantity(),
+            'artists' => Artist::get_quantity(),
+            'orders' => OrderTickets::get_quantity()
             ]);
         }
 
@@ -56,7 +61,7 @@ class Cms extends Controller
 
                 Flash::addMessage('Login successful');
 
-                $this->redirect('/cms/events/jazz');
+                $this->redirect('/cms');
             } else {
                 View::render('CMS/login.php', [
                     'params' => $this->route_params,

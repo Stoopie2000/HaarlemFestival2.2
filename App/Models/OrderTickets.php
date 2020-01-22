@@ -26,8 +26,12 @@ class OrderTickets extends Model
             $this->$key = $value;
         };
 
-        $this->User = User::get_by_id($this->UserID);
-        $this->OrderDate = date_create($this->OrderDate);
+        if (isset($this->UserID)) {
+            $this->User = User::get_by_id($this->UserID);
+        }
+        if (isset($this->OrderDate)) {
+            $this->OrderDate = date_create($this->OrderDate);
+        }
     }
 
     public static function get_all()
@@ -35,6 +39,13 @@ class OrderTickets extends Model
         $sql = 'SELECT * FROM orders_tickets';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
         return $artists = $stmt->fetchAll();
+    }
+
+    public static function get_quantity()
+    {
+        $sql = "SELECT COUNT(OrderID) AS 'Number' FROM orders_tickets";
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
+        return $stmt->fetch();
     }
 
     public static function get_by_ID($artistID)

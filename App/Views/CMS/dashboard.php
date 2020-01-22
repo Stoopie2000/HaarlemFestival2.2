@@ -13,66 +13,61 @@
                 <?php echo ucfirst($params["action"]); ?>
             </h1>
         </div>
-        <div class="row container">
-            <div class="input-group mb-3">
-                <input type="text" id="filter" onkeyup="filter()" class="form-control" placeholder="Artist" aria-label="Artist" aria-describedby="button-addon">
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="btn-big btn-big-style container">
+                <a href="<?php echo Config::URLROOT; ?>/cms/users"><div class="btn-big correction">
+                    <h3 class="btn-big-center"><?php echo $users->Number; ?> users<i class="fas fa-users"></i></h3>
+                    <div class="under-title"><h5 class="text-center">Users</h5></div>
+                    <div class="under-title-info"><h5 class="text-center">Users</h5><h6 class="text-center">Edit and remove</h6></div>
+                </div></a>
             </div>
-            <div class="lvheader">
-                <div><a class="content_horizontal">ID</a></div>
-                <div><a class="content_horizontal">Name</a></div>
-                <div><a class="content_horizontal">Description</a></div>
-                <div><a class="content_horizontal">Events</a></div>
-            </div>
-            <div class="listview" id="listview"><?php
-                foreach ($artists as $artist) {
-                    echo("<div class='lvitem' id='" . $artist->ArtistID . "'><div><a class='content_horizontal'><strong>" . $artist->ArtistID . "</strong></a></div>");
-                    echo("<div><a class='content_horizontal'>" . $artist->Name . "</a></div>");
-                    echo("<div><textarea readonly class='content_horizontal'>" . $artist->Description . "</textarea></div>");
-                    echo("<div><a class='content_horizontal'>" . $artist->Event . "</a></div>");
-                    echo("<div class='buttons'>");
-                    echo("<button type='button' class='btn btn-secondary float-left' onclick='Edit(" . $artist->ArtistID . ")'><i class='far fa-edit fa-lg'></i>");
-                    echo("<button type='button' class='btn btn-danger float-right' onclick='Delete(" . $artist->ArtistID . ")'><i class='far fa-trash-alt fa-lg'></i>");
-                    echo("</div></div>");
-                }?></div>
-            <div>
-                <button type="button" class="button btn btn-success" onclick="Create()">Add artist</button>
-            </div>
-            <div class="lightbox" id="lightbox">
-                <div class="lbcontent">
-                    <div class="modal-header text-center">
-                        <h5 class="modal-title" id="lbName"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="hideLightbox()">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form action="<?php echo Config::URLROOT; ?>/cms/artists" onsubmit="return control()" method="post">
-                        <input id="id" name="id" type="hidden">
-                        <div class="form-group row">
-                            <label for="Name" class="col-sm-2 col-form-label">Name:</label>
-                          <div class="col-sm-10">
-                                <input name="name" type="text" class="form-control" id="Name" placeholder="Name">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="Name" class="col-sm-2 col-form-label">Description:</label>
-                            <div class="col-sm-10">
-                                <textarea name="description" id="Description"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="Name" class="col-sm-2 col-form-label">Event:</label>
-                            <div class="col-sm-10">
-                                <select name="event" class="custom-select" id="Event">
-                                    <option value="jazz" selected>Jazz</option>
-                                    <option value="dance">Dance</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row content_center">
-                        <button id="submit" type="submit" value="Submit"></button>
-                        </div>
-                    </form>
+        </div>
+        <div class="col">
+                <div class="btn-big btn-big-style container no-padding">
+                    <a href="<?php echo Config::URLROOT; ?>/cms/events/jazz"><div class="btn-small firstbtn">Jazz</div></a>
+                    <a href="<?php echo Config::URLROOT; ?>/cms/events/dance"><div class="btn-small">Dance</div></a>
+                    <a href="<?php echo Config::URLROOT; ?>/cms/events/food"><div class="btn-small">Food</div></a>
+                    <div class="underTitle"><h5 class="text-center">Events</h5></div>
                 </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="btn-big-style btn-pages container">
+            <div class="correction">
+                <?php for ($i=0; $i < count($params["pages"]); $i++) { 
+                    echo "<a href='". Config::URLROOT ."/cms/pages/". $params["pages"][$i]->Name ."'>";
+                    echo "<div class='btn-smaller ";
+                    if ($i == 0) {
+                        echo "firstbtn";
+                    }
+                    echo "'>";
+                    echo ucfirst($params["pages"][$i]->Name);
+                    echo "</div></a>";
+                }
+                ?>
+                <div class="underTitle"><h5 class="text-center">Pages</h5></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="btn-big btn-big-style container">
+                <a href="<?php echo Config::URLROOT; ?>/cms/artists"><div class="btn-big correction">
+                    <h3 class="btn-big-center"><?php echo $artists->Number; ?> artists<i class="fas fa-guitar"></i></h3>
+                    <div class="under-title"><h5 class="text-center">Artists</h5></div>
+                    <div class="under-title-info"><h5 class="text-center">Artists</h5><h6 class="text-center">Edit, remove and add</h6></div>
+                </div></a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="btn-big btn-big-style container">
+                <a href="<?php echo Config::URLROOT; ?>/cms/finance"><div class="btn-big correction">
+                    <h3 class="btn-big-center"><?php echo $orders->Number; ?> orders<i class="fas fa-receipt"></i></i></h3>
+                    <div class="under-title"><h5 class="text-center">Finance</h5></div>
+                    <div class="under-title-info"><h5 class="text-center">Finance</h5><h6 class="text-center">See and download orders</h6></div>
+                </div></a>
             </div>
         </div>
     </div>

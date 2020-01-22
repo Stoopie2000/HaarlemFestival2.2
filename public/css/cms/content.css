@@ -44,6 +44,141 @@
     border-radius: 10px;
 }
 
+#dashboard .btn-big {
+    height: 200px;
+    width: 360px;
+}
+
+#dashboard .btn-big-style {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 35px;
+}
+
+#dashboard a {
+    color: black;
+    text-decoration: none;
+}
+
+#dashboard .correction {
+    margin-left: -15px;
+}
+
+#dashboard .btn-big-center {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dashboard i {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+#dashboard .under-title {
+    height: 50px;
+    width: 360px;
+    background-color: grey;
+    margin-left: -1px;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+#dashboard h3{
+    margin-bottom: 0;
+}
+
+#dashboard h5{
+    padding-top: 10px;
+    margin-bottom: 0;
+}
+
+#dashboard h6{
+    padding-top: 10px;
+    margin-bottom: 0;
+}
+
+#dashboard .under-title-info {
+    height: 70px;
+    width: 360px;
+    background-color: grey;
+    margin-left: -1px;
+    margin-top: -20px;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    display: none;
+}
+
+#dashboard .btn-big-style:hover .under-title {
+    display: none;
+}
+
+#dashboard .btn-big-style:hover .under-title-info {
+    display: block;
+}
+
+#dashboard .no-padding {
+    padding: 0;
+}
+
+#dashboard .underTitle {
+    height: 50px;
+    width: 360px;
+    background-color: grey;
+    margin-left: -1px;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+#dashboard .btn-small {
+    width: 358px;
+    height: 50px;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+    padding-top: 8px;
+    font-weight: 600;
+    padding-left: 20px;
+}
+
+#dashboard .btn-smaller {
+    width: 358px;
+    height: 35px;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+    padding-top: 2px;
+    font-weight: 600;
+    padding-left: 20px;
+}
+
+#dashboard .btn-small:hover {
+    background-color: grey;
+}
+
+#dashboard .btn-pages {
+    height: fit-content;
+    width: 360px;
+}
+
+#dashboard .btn-smaller:hover {
+    background-color: grey;
+}
+
+#dashboard .firstbtn {
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+}
+
 #events .input-group {
     margin-left: 10px;
     margin-right: 10px;

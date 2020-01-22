@@ -46,6 +46,13 @@ class Artist extends Model
         return $artists = $stmt->fetchAll();
     }
 
+    public static function get_quantity()
+    {
+        $sql = "SELECT COUNT(ArtistID) AS 'Number' FROM artists";
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
+        return $stmt->fetch();
+    }
+
     public static function get_by_ID($artistID)
     {
         $sql = 'SELECT * FROM artists WHERE ArtistID = ?';
