@@ -7,7 +7,7 @@
         <a class="menu menu-head<?php 
             // Short if else statement ({condition} ? {code if true} : {code if false})
             //echo ($params["action"] == 'login' ? ' active' : '');
-            if ($params["action"] == "login") {
+            if ($params["action"] == "dashboard") {
                 echo " active"; 
             };
         ?>" href="<?php echo Config::URLROOT; ?>/cms">Menu</a>
@@ -27,7 +27,7 @@
             </div>
         <a class="menu menu-item<?php echo ($params["action"] == 'artists' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/artists">Artists</a>
         <!--<a class="menu menu-item<?php echo ($params["action"] == 'finance' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/restaurants">Restaurants</a>-->
-        <a class="menu menu-item<?php echo ($params["action"] == 'finance' ? ' active' : ''); ?>" href="">Finance</a>
+        <a class="menu menu-item<?php echo ($params["action"] == 'finance' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/finance">Finance</a>
     </nav>
 </div>
 

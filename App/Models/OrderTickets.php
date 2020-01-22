@@ -6,49 +6,44 @@ use Core\Model;
 use PDO;
 
 /**
- * Class Artist
+ * Class OrderTickets
  * @package App\Models
  *
- * @property int ArtistID
- * @author Bram Bos <brambos27@gmail.com>
+ * @property User UserID
+ * @property int ConcertID
+ * @property int OrderID
+ * @property string Status
+ * @property DateTime OrderDate
+ * @property int Quantity
  */
-class Artist extends Model
+class OrderTickets extends Model
 {
-    /**
-     * Artist constructor.
-     *
-     * @param array $data
-     */
+
     public function __construct($data = [])
     {
+
         foreach ($data as $key => $value) {
             $this->$key = $value;
         };
-    }
 
-    /**
-     * Get all the artists as an associative array
-     *
-     * @param string $event
-     * @return array
-     */
-    public static function get_all_by_event($event)
-    {
-        $sql = 'SELECT * FROM artists WHERE Event = ?';
-        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$event]);
-        return $artists = $stmt->fetchAll();
+        if (isset($this->UserID)) {
+            $this->User = User::get_by_id($this->UserID);
+        }
+        if (isset($this->OrderDate)) {
+            $this->OrderDate = date_create($this->OrderDate);
+        }
     }
 
     public static function get_all()
     {
-        $sql = 'SELECT * FROM artists';
+        $sql = 'SELECT * FROM orders_tickets';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
         return $artists = $stmt->fetchAll();
     }
 
     public static function get_quantity()
     {
-        $sql = "SELECT COUNT(ArtistID) AS 'Number' FROM artists";
+        $sql = "SELECT COUNT(OrderID) AS 'Number' FROM orders_tickets";
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
         return $stmt->fetch();
     }
