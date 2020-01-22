@@ -12,7 +12,7 @@
             <h1 class="content_center">
                 <?php echo ucfirst($params["action"]); ?>
             </h1>
-            <?php echo ($download) ? "<a id='download' href='orders.csv' download='orders.csv'></a>" : '' ;?>
+            <?php echo ($download) ? "<a id='download' href='../orders.csv' download='orders.csv'></a>" : '' ;?>
         </div>
         <div class="row container">
             <div class="lvheader">

@@ -27,10 +27,23 @@ class Cms extends Controller
     
     // Dit is de Action 'index', de naam van deze methode is dus de naam van je Action met 'Action' erachter.
     public function indexAction() {
-        var_dump(isset($_SESSION));
-        View::render('CMS/login.php', [
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION["user_id"])) {
+            View::render('CMS/login.php', [
+                'params' => $this->route_params
+                ]);
+        } else {
+            $this->route_params["action"] = "dashboard";
+            $this->route_params['pages'] = Pages::get_AllPages();
+
+            View::render('CMS/dashboard.php', [
             'params' => $this->route_params
             ]);
+        }
+
+        
     }
 
     public function loginAction() {
@@ -351,7 +364,7 @@ class Cms extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $ordersToDownload = $_POST['orders'];
 
-            $filename = "cms/orders.csv";
+            $filename = "orders.csv";
             try {
                 $handle = fopen($filename, 'w+');
                 fputcsv($handle, array("UserID","ConcertID", 'OrderID', 'Status', 'OrderDate', 'Quantity'));

@@ -7,7 +7,7 @@
         <a class="menu menu-head<?php 
             // Short if else statement ({condition} ? {code if true} : {code if false})
             //echo ($params["action"] == 'login' ? ' active' : '');
-            if ($params["action"] == "login") {
+            if ($params["action"] == "dashboard") {
                 echo " active"; 
             };
         ?>" href="<?php echo Config::URLROOT; ?>/cms">Menu</a>
