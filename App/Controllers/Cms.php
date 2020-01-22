@@ -13,6 +13,7 @@ use App\Models\Flash;
 use App\Models\PlaysAt;
 use App\Models\Venue;
 use App\Models\OrderTickets;
+use App\Models\Restaurant;
 use Core\Controller;
 use \Core\View;
 use DateTime;
@@ -37,8 +38,6 @@ class Cms extends Controller
         } else {
             $this->route_params["action"] = "dashboard";
             $this->route_params['pages'] = Pages::get_AllPages();
-            $users = User::get_quantity();
-            ;
 
             View::render('CMS/dashboard.php', [
             'params' => $this->route_params,
@@ -252,71 +251,83 @@ class Cms extends Controller
 
         $this->route_params['pages'] = Pages::get_AllPages();
 
-        $concerts = Concert::get_all_by_event($this->route_params["event"]);
-        $days = Date::get_all();
-        $artists = Artist::get_all_by_event($this->route_params["event"]);
-        $locations = Venue::getAll($this->route_params["event"]);
+        if ($this->route_params["event"] != "food") {
+            $concerts = Concert::get_all_by_event($this->route_params["event"]);
+            $days = Date::get_all();
+            $artists = Artist::get_all_by_event($this->route_params["event"]);
+            $locations = Venue::getAll($this->route_params["event"]);
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $playsat = PlaysAt::get_from_concert_ID($_POST["id"]);
-            
-            foreach ($days as $day) {
-                if ($day->Day == explode(" ", $_POST["Date"])[0]) {
-                    $dateID = $day->DateID;
-                    break;
+                $playsat = PlaysAt::get_from_concert_ID($_POST["id"]);
+                
+                foreach ($days as $day) {
+                    if ($day->Day == explode(" ", $_POST["Date"])[0]) {
+                        $dateID = $day->DateID;
+                        break;
+                    }
                 }
-            }
 
-            $newArtists = array();
-            $newArtists[] = $this->getArtistID($_POST["Artist1"], $artists);
-            if (isset($_POST["Artist2"])) {
-                $newArtists[] = $this->getArtistID($_POST["Artist2"], $artists);
-            } if (isset($_POST["Artist3"])) {
-                $newArtists[] = $this->getArtistID($_POST["Artist3"], $artists);
-            }
+                $newArtists = array();
+                $newArtists[] = $this->getArtistID($_POST["Artist1"], $artists);
+                if (isset($_POST["Artist2"])) {
+                    $newArtists[] = $this->getArtistID($_POST["Artist2"], $artists);
+                } if (isset($_POST["Artist3"])) {
+                    $newArtists[] = $this->getArtistID($_POST["Artist3"], $artists);
+                }
 
-            for ($i=0; $i < count($playsat); $i++) { 
-                for ($x=0; $x < count($newArtists); $x++) { 
-                    if ($playsat[$i]->ArtistID == $newArtists[$x]) {
-                        unset($playsat[$i]);
-                        unset($newArtists[$x]);
+                for ($i=0; $i < count($playsat); $i++) { 
+                    for ($x=0; $x < count($newArtists); $x++) { 
+                        if ($playsat[$i]->ArtistID == $newArtists[$x]) {
+                            unset($playsat[$i]);
+                            unset($newArtists[$x]);
+                        }
+                    }
+                }
+
+                foreach ($playsat as $play) {
+                    PlaysAt::Delete($play->ConcertID, $play->ArtistID);
+                }
+
+                foreach ($newArtists as $artist) {
+                    if ($artist != null) {
+                        PlaysAt::Add($_POST["id"], $artist);
+                    }
+                }
+
+                $Price = (float)$_POST["Price"];
+                $VenueID = $this->getVenueID($locations, $_POST["Location"]);
+
+                Concert::edit_concert($_POST["id"], $dateID, $_POST["BeginTime"], $_POST["EndTime"], $Price, $VenueID, $this->route_params["event"]);
+                $concert = Concert::get_by_ID($_POST["id"]);
+                for ($i=0; $i < count($concerts); $i++) { 
+                    if ($concerts[$i]->ConcertID == $concert->ConcertID) {
+                        $concerts[$i] = $concert;
+                        break;
                     }
                 }
             }
 
-            foreach ($playsat as $play) {
-                PlaysAt::Delete($play->ConcertID, $play->ArtistID);
+            View::render('CMS/events.php', [
+                    'params' => $this->route_params,
+                    'concerts' => $concerts,
+                    'dates' => $days,
+                    'artists' => $artists,
+                    'locations' => $locations
+                ]);
+
+        } else {
+            $restaurants = Restaurant::getAll();
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                Restaurant::edit( $_POST["id"], $_POST["Name"], $_POST["Seats"], $_POST["Address"], $_POST["City"], $_POST["Price"], $_POST["firstSession"], $_POST["Sessions"], $_POST["Duration"]);
             }
 
-            foreach ($newArtists as $artist) {
-                if ($artist != null) {
-                    PlaysAt::Add($_POST["id"], $artist);
-                }
-            }
-
-            $Price = (float)$_POST["Price"];
-            $VenueID = $this->getVenueID($locations, $_POST["Location"]);
-
-            Concert::edit_concert($_POST["id"], $dateID, $_POST["BeginTime"], $_POST["EndTime"], $Price, $VenueID, $this->route_params["event"]);
-            $concert = Concert::get_by_ID($_POST["id"]);
-            for ($i=0; $i < count($concerts); $i++) { 
-                if ($concerts[$i]->ConcertID == $concert->ConcertID) {
-                    $concerts[$i] = $concert;
-                    break;
-                }
-            }
-
+            View::render('CMS/foodEvent.php', [
+                'params' => $this->route_params,
+                'restaurants' => Restaurant::getAll()
+            ]);
         }
-
-        // Wat je mee geeft met deze methode is de Path naar de view 'index', de Path is vanuit de Views map.
-        View::render('CMS/events.php', [
-            'params' => $this->route_params,
-            'concerts' => $concerts,
-            'dates' => $days,
-            'artists' => $artists,
-            'locations' => $locations
-        ]);
     }
 
     public function artistsAction(){
