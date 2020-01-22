@@ -12,6 +12,7 @@ use App\Models\Date;
 use App\Models\Flash;
 use App\Models\PlaysAt;
 use App\Models\Venue;
+use App\Models\OrderTickets;
 use Core\Controller;
 use \Core\View;
 use DateTime;
@@ -332,6 +333,50 @@ class Cms extends Controller
         View::render('CMS/artists.php', [
             'params' => $this->route_params,
             'artists' => Artist::get_all()
+        ]);
+    }
+
+    public function financeAction(){
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION["user_id"])) {
+            $this->redirect('/cms');
+        }
+
+        $download = false;
+        $this->route_params['pages'] = Pages::get_AllPages();
+        $orders = OrderTickets::get_all();
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $ordersToDownload = $_POST['orders'];
+
+            $filename = "cms/orders.csv";
+            try {
+                $handle = fopen($filename, 'w+');
+                fputcsv($handle, array("UserID","ConcertID", 'OrderID', 'Status', 'OrderDate', 'Quantity'));
+                foreach ($ordersToDownload as $orderToDownload) {
+                    foreach ($orders as $order) {
+                        if ($order->OrderID == $orderToDownload) {
+                            fputcsv($handle, array($order->UserID, $order->ConcertID, $order->OrderID, $order->Status, $order->OrderDate->format('Y-m-d H:i:s'), $order->Quantity));
+                        break;
+                        }
+                    }
+                }
+            } catch (\Throwable $th) {
+                //throw $th;
+            } finally{
+                $download = fclose($handle);
+            }
+
+        }
+
+
+
+        View::render('CMS/finance.php', [
+            'params' => $this->route_params,
+            'orders' => $orders,
+            'download' => $download
         ]);
     }
 

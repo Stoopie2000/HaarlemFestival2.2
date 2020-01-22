@@ -214,6 +214,37 @@
     height: 100px;
 }
 
+#finance .lvheader {
+    height: 50px;
+    color: #fff;
+    background-color: #343a40;
+    font-weight: bold;
+    width: inherit;
+    display: grid;
+    grid-template-columns: 50px 250px 100px 150px 100px 330px 100px;
+}
+
+#finance .listview {
+    height: 600px;
+    width: 1080px;
+    background-color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 20px;
+}
+
+#finance .lvitem {
+    border-bottom: 1px solid #454d55;
+    height: 45px;
+    display: grid;
+    grid-template-columns: 50px 250px 100px 150px 100px 330px 100px;
+}
+
+#finance .check {
+    margin-left: 17.5px;
+    margin-top: 17.5px;
+}
+
 .lightbox{
     display: none;
     position: fixed;

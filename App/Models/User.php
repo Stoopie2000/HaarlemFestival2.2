@@ -69,6 +69,13 @@ class User extends Model
         return $stmt->fetch();
     }
 
+    public static function get_by_id($id)
+    {
+        $sql = 'SELECT * FROM users WHERE UserID = ?';
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS ,[$id]);
+        return $stmt->fetch();
+    }
+
     public static function get_All_Users()
     {
         $sql = 'SELECT UserID, Email, Type, FirstName, LastName FROM users'; //TODO Bepaal of ik wel alles uit de users tabel wil halen (*)
