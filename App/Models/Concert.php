@@ -91,4 +91,11 @@ class Concert extends Model
         $sql = 'UPDATE concerts SET DateID = ?, StartTime = ?, EndTime = ?, Price = ?, VenueID = ?, Event = ? WHERE ConcertID = ?';
         self::execute_edit_query($sql, [$dateid, $starttime, $endtime, $price, $venueid,  $event, $concertid]);
     }
+
+    public function add_order_to_database($orderId, $userId, $paymentStatus, $quantity){
+        $sql = "INSERT INTO orders_tickets(UserID, ConcertID, OrderDate, Status, OrderID, Quantity) VALUES (?,?, CURDATE(), ?,?,?)";
+        $parameters = [$userId, $this->ConcertID ,$paymentStatus, $orderId, $quantity];
+
+        return self::execute_edit_query($sql, $parameters);
+    }
 }
