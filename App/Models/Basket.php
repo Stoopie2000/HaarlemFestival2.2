@@ -24,7 +24,6 @@ class Basket extends Model
     public function addItem($get)
     {
         $class = ucfirst($get['productType']);
-        echo "class=[".$class."]";
         $class = "App\Models\\" . $class;
         if (class_exists($class)){
             $newItem = $class::makeBasketItem($get);
@@ -72,7 +71,7 @@ class Basket extends Model
         }else{
             echo "5";
             //TODO: 404 gooien ofzo idk. Nadenken
-//            header('HTTP/1.0 404 Not Found');
+            header('HTTP/1.0 404 Not Found');
             exit;
         }
     }

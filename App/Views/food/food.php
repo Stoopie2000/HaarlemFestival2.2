@@ -75,7 +75,6 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
                     years old) <br>
                     <span class="cuisine">Cuisine: <?= $restaurant->categories; ?></span> <br>
                     <br>
-<!--                    localhost/order/addItems?productType=concert&productID=21&quantity=1&stoelen=2&comment=geen_ui-->
                     <form method="get" action="/order/addItems">
 
                         <input type="hidden" name="productType" value="restaurant"">
@@ -114,11 +113,6 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
                     <br>
                     Comments: <br>
                     <textarea name="Comments" placeholder="Comments" rows="5" style="width: 75%"></textarea>
-<!--                        // button will store:-->
-<!--                        // -selected date-->
-<!--                        // -selected time-->
-<!--                        // -entered seats-->
-<!--                        // -entered comment-->
                     <button type="submit" data-restaurant="<?= $restaurant->Name; ?>">
                         Reserve
                     </button>
