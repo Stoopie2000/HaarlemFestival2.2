@@ -69,7 +69,6 @@ class Basket extends Model
             }
 
         }else{
-            echo "5";
             //TODO: 404 gooien ofzo idk. Nadenken
             header('HTTP/1.0 404 Not Found');
             exit;
