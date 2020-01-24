@@ -142,6 +142,30 @@ class Restaurant extends Model
         return $results;
     }
 
+    public static function makeBasketItem($restaurantinfo)
+    {
+        $restaurants = self::getAll();
+        $r = null;
+
+        foreach ($restaurants as $restaurant) {
+            if ($restaurant->RestaurantID == $restaurantinfo['restaurantID'])
+            {
+                $r = $restaurant;
+                $basketItem = new BasketItem();
+                $basketItem->Description = $restaurant->Name . " Ticket";
+                $basketItem->Item = $restaurant->Name;
+                $basketItem->Price = "10";
+                return $basketItem;
+                break;
+            }
+        }
+        //TODO display error message if $r = null
+
+
+
+
+    }
+
     public static function create(array $attributes = [])
     {
         $sql = "INSERT INTO `restaurants` (";

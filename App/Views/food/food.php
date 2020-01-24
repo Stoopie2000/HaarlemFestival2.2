@@ -2,6 +2,7 @@
 /** @var $restaurants \App\Models\Restaurant|[] */
 /** @var $categories \App\Models\Category|[] */
 /** @var $categories \App\Models\RestaurantCategory|[] */
+/** @var $dates \App\Models\Date */
 
 use App\Config;
 
@@ -74,23 +75,54 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
                     years old) <br>
                     <span class="cuisine">Cuisine: <?= $restaurant->categories; ?></span> <br>
                     <br>
+<!--                    localhost/order/addItems?productType=concert&productID=21&quantity=1&stoelen=2&comment=geen_ui-->
+                    <form method="get" action="/order/addItems">
+
+                        <input type="hidden" name="productType" value="restaurant"">
+                        <input type="hidden" name="restaurantID" value="<?= $restaurant->RestaurantID; ?>"">
+
                     Date: <select name="DateSelection">
                         <option value="DateSelect">Select date</option>
-                        <option value="Thursday, Juli 26th">Thursday, Juli 26th</option>
-                        <option value="Friday, Juli 27th">Friday, Juli 27th</option>
-                        <option value="Saturday, Juli 28th">Saturday, Juli 28th</option>
-                        <option value="Sunday, Juli 29th">Sunday, Juli 29th</option>
+                        <?php foreach ($dates as $date): ?>
+                            <option value="<?= date_format($date->Date,"Y-m-d"); ?>"><?= date_format($date->Date,"d-m-Y"); ?></option>
+                        <?php endforeach; ?>
                     </select> <br>
-                    <br>
-                    Date: <select name="TimeSelection">
-                        <option value="TimeSelect">Select time</option>
 
+                    <br>
+                    Time: <select name="TimeSelection">
+                        <option value="TimeSelect">Select time</option>
+                        <?php
+                        for ($i = 0; $i < $restaurant->TotalSessions; $i++)
+                        {
+                            $firstItem = $restaurant->FirstSession;
+                            // FirstSession is a string
+                            $d = new DateTime($restaurant->FirstSession);
+                            // SessionDuration is a double, in hours in double
+                            // let's convert in minutes
+                            $timespan = $i*60*$restaurant->SessionDuration;
+                            $dv = new DateInterval('PT'.$timespan.'M');
+                            $d->add($dv);
+                            $secondItem = $d->format('H:i:s');
+
+                            // Here you can use $firstItem and $secondItem for your dropdown
+                            echo "<option value=\"".$secondItem."\">".$secondItem."</option>";
+                        }
+                        ?>
                     </select> <br>
                     <br>
-                    Seats: <input type="text" name="Seats" placeholder="Seats"> <br>
+                    Seats: <input type="text" name="Quantity" placeholder="Seats"> <br>
                     <br>
                     Comments: <br>
-                    <textarea name="remarks" placeholder="Comments" rows="5" style="width: 75%"></textarea>
+                    <textarea name="Comments" placeholder="Comments" rows="5" style="width: 75%"></textarea>
+<!--                        // button will store:-->
+<!--                        // -selected date-->
+<!--                        // -selected time-->
+<!--                        // -entered seats-->
+<!--                        // -entered comment-->
+                    <button type="submit" data-restaurant="<?= $restaurant->Name; ?>">
+                        Reserve
+                    </button>
+                    </form>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -102,5 +134,4 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
 <script src="/js/food.js"></script>
 
 </body>
-</head>
 </html>
