@@ -13,8 +13,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">
     <link rel="stylesheet" href="<?php echo Config::URLROOT; ?>/css/Default/Navigation.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">
     <title>Haarlem Festival Homepage</title>
 </head>
 

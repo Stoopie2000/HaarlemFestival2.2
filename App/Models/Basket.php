@@ -34,6 +34,24 @@ class Basket extends Model
                 $newItem->Quantity = 1;
             }
 
+            if (isset($get['DateSelection'])){
+                $newItem->DateSelection = $get['DateSelection'];
+            }else{
+                $newItem->DateSelection = null;
+            }
+
+            if (isset($get['TimeSelection'])){
+                $newItem->TimeSelection = $get['TimeSelection'];
+            }else{
+                $newItem->TimeSelection = null;
+            }
+
+            if (isset($get['Comments'])){
+                $newItem->Comments = $get['Comments'];
+            }else{
+                $newItem->Comments = null;
+            }
+
             if (!isset($this->items)){
                 $this->items = [];
             }
@@ -51,6 +69,7 @@ class Basket extends Model
             }
 
         }else{
+            echo "5";
             //TODO: 404 gooien ofzo idk. Nadenken
             header('HTTP/1.0 404 Not Found');
             exit;

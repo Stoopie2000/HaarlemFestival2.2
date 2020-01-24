@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Front controller
  *
@@ -42,6 +41,9 @@ $router = new Core\Router();
   *     Je kan ook variables mee geven in de URL als je dat wilt vraag het dan even.
   */
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
+
+$router->add('food', ['controller' => 'Food', 'action' => 'index']);
+$router->add('dance', ['controller' => 'Dance', 'action' => 'index']);
 $router->add('jazz', ['controller' => 'Jazz', 'action' => 'index']);
 $router->add('jazz/{day}', ['controller' => 'Jazz', 'action' => 'tickets']);
 $router->add('jazz/artist/{artist}', ['controller' => 'Jazz', 'action' => 'artist']);

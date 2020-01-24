@@ -142,6 +142,30 @@ class Restaurant extends Model
         return $results;
     }
 
+    public static function makeBasketItem($restaurantinfo)
+    {
+        $restaurants = self::getAll();
+        $r = null;
+
+        foreach ($restaurants as $restaurant) {
+            if ($restaurant->RestaurantID == $restaurantinfo['restaurantID'])
+            {
+                $r = $restaurant;
+                $basketItem = new BasketItem();
+                $basketItem->Description = $restaurant->Name . " Ticket";
+                $basketItem->Item = $restaurant->Name;
+                $basketItem->Price = "10";
+                return $basketItem;
+                break;
+            }
+        }
+        //TODO display error message if $r = null
+
+
+
+
+    }
+
     public static function create(array $attributes = [])
     {
         $sql = "INSERT INTO `restaurants` (";
@@ -168,10 +192,4 @@ class Restaurant extends Model
 
         return self::execute_select_query($sql, PDO::FETCH_CLASS);
     }
-
-    public static function edit($id, $name, $seats, $address, $city, $price, $firstsession, $sessions, $duration){
-        $sql = 'UPDATE restaurants SET Name = ?, Seats = ?, Address = ?, CityAndCountry = ?, Price = ?, FirstSession = ?, TotalSessions = ?, SessionDuration = ? WHERE RestaurantID = ?';
-        self::execute_edit_query($sql, [$name, $seats, $address, $city, $price, $firstsession, $sessions, $duration, $id]);
-    }
-
 }
