@@ -18,18 +18,27 @@ class Jazz extends Controller
 
     public function ticketsAction()
     {
+        $dayID = NULL;
         $dates = Date::get_ALL();
         foreach($dates as $date){
             if(date_format($date->Date, "l") == ucfirst($this->route_params["day"])){
                 $dayID = $date->DateID;
             }
         }
-        View::render('Jazz/tickets.php', [
-            'jazzArtists' => JazzArtist::getAllArtists($dayID),
-            'allAccessJazz' => AllAccessJazz::get_all('jazz'),
-            'dates' => $dates,
-            'day' => ucfirst($this->route_params["day"])
-        ]);
+
+        if($dayID){
+            View::render('Jazz/tickets.php', [
+                'jazzArtists' => JazzArtist::getAllArtists($dayID),
+                'allAccessJazz' => AllAccessJazz::get_all('jazz'),
+                'dates' => $dates,
+                'day' => ucfirst($this->route_params["day"])
+            ]);
+        }
+        else{
+            view::render('404.html');
+            
+        }
+        
     }
 
     public function indexAction()
@@ -49,12 +58,19 @@ class Jazz extends Controller
         $artistName = strtolower(str_replace(array_keys($replaceCharacters), array_values($replaceCharacters), $artistName));
 
         $artist = Artist::find_by_name_and_event($artistName, 'jazz');
-        $concertsArtist = $artist->get_concerts();
+
+        if($artist){
+            $concertsArtist = $artist->get_concerts();
 
         view::render('Jazz/artist/artist.php', [
             'artist' => $artist,
             'concertsArtist' => $concertsArtist,
             'dates' => Date::get_ALL()
         ]);
+        }
+        else{
+            view::render('404.html');
+        }
+        
     }
 }
