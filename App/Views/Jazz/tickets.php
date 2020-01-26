@@ -73,7 +73,7 @@
                 {
                     $ticketPrice = number_format($allAccessJazzTicket->Price, 2);
 
-                    echo ("<ul><li><a> $allAccessJazzTicket->Name </a><li><a class=priceAllAccess>€$ticketPrice</a></li><li class=quantity>
+                    echo ("<ul><li><a> $allAccessJazzTicket->Name </a><li><a class=priceAllAccess>€$ticketPrice</a></li><li class=addTicket>
                     <a class=Add href=../order/addItems?productType=dayTicket&productID=$allAccessJazzTicket->DayTicketID&quantity=1><i class='fas fa-cart-plus'></i></a>
                     </li></ul>");
                 }
@@ -95,12 +95,19 @@
             $ticketPrice = number_format($jazzArtist->Price, 2);
 
             if($numberOfTickets <= 0){
-                $ticketPrice = 'Sold Out';
+                
+                echo ("<ul>$jazzArtist->Name<li><a class=hall>$jazzArtist->Hall</li><li><a class=soldOut>Sold-out</li>
+                </a>
+                </ul>");
+
             }
-            
-            echo ("<ul>$jazzArtist->Name<li><a class=hall>$jazzArtist->Hall</li><li><a class=priceDay>€$ticketPrice</li><li class=quantity>
+            else{
+                echo ("<ul>$jazzArtist->Name<li><a class=hall>$jazzArtist->Hall</li><li><a class=priceDay>€$ticketPrice</li><li class=addTicket>
             <a class=Add href=../order/addItems?productType=concert&productID=$jazzArtist->ConcertID&quantity=1><i class='fas fa-cart-plus'></i></a>
             </li></ul>");
+            }
+            
+            
             
         }
     ?>

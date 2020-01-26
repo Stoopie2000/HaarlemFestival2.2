@@ -178,7 +178,13 @@ button{
   left: 650px;
 }
 
-.quantity{
+.soldOut{
+  position: absolute;
+  left: 770px;
+  width: 100px;
+}
+
+.addTicket{
   position: absolute;
   left: 770px;
   width: 100px;
