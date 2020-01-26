@@ -30,12 +30,11 @@ class Dance extends Controller
         $lastDay = end($concerts)->Date;
 
 
-
         View::render('Dance/index.php', [
             'artists' => Artist::get_all_by_event('dance'),
-            'venues' => Venue::getAll('dance'),
+            'venues' => Venue::get_all_by_event('dance'),
             'concerts' => $concerts,
-            'plays_at' => PlaysAt::getAll(),
+            'plays_at' => PlaysAt::get_all(),
             'firstDay' => $firstDay,
             'finalDay' => $lastDay
         ]);
@@ -56,7 +55,7 @@ class Dance extends Controller
                 'concertsAtLocation' => $concertsAtLocation,
                 'dayTickets' => $dayTickets
             ]);
-        }else{
+        } else {
             header('HTTP/1.0 404 Not Found');
             exit;
         }
@@ -65,16 +64,54 @@ class Dance extends Controller
     public function lineupAction()
     {
         $artist = Artist::find_by_name_and_event(str_replace('-', ' ', $this->route_params['artist']), 'dance');
-        if ($artist){
+        if ($artist) {
             $concertsArtistPlaysAt = $artist->get_concerts();
             View::render('Dance/lineup/detail.php', [
                 'artist' => $artist,
                 'concertsArtistPlaysAt' => $concertsArtistPlaysAt
             ]);
-        }
-        else {
+        } else {
             header('HTTP/1.0 404 Not Found');
             exit;
+        }
+    }
+
+    public function searchAction()
+    {
+        $searchString = $_GET["q"];
+        if (strlen($searchString) > 0) {
+            $venues = Venue::get_all_by_event("dance");
+            $artists = Artist::get_all_by_event("dance");
+            $hint = "";
+            foreach ($venues as $item){
+                if (stristr($item->Name, $searchString)){
+                    if ($hint == ""){
+                        $hint = "<a href='dance/locations/" . strtolower(str_replace(' ', '-', $item->Name)) . "'> $item->Name </a></li>";
+                    }else{
+                        $hint .= "<br/><a href='dance/locations/" . strtolower(str_replace(' ', '-', $item->Name)) . "'> $item->Name </a></li>";
+                    }
+                }
+            }
+            foreach ($artists as $item){
+                if (stristr($item->Name, $searchString)){
+                    if ($hint == ""){
+                        $hint = "<a href='dance/lineup/" . strtolower(str_replace(' ', '-', $item->Name)) . "'> $item->Name </a></li>";
+                    }else{
+                        $hint .= "<br/><a href='dance/lineup/" . strtolower(str_replace(' ', '-', $item->Name)) . "'> $item->Name </a></li>";
+                    }
+                }
+            }
+
+            // Set output to "no suggestion" if no hint was found
+// or to the correct values
+            if ($hint=="") {
+                $response="no suggestion";
+            } else {
+                $response=$hint;
+            }
+
+//output the response
+            echo $response;
         }
     }
 }

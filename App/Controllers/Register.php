@@ -16,7 +16,7 @@ class Register extends Controller
 {
     public function newAction()
     {
-        View::render('register/new.php');
+        View::render('Register/new.php');
     }
 
     public function createAction()
@@ -25,9 +25,10 @@ class Register extends Controller
 
         if ($user->register_user()) {
             $user->send_activation_email();
-            $this->redirect('/register/success');
+            $this->redirect('/Register/success');
+            //TODO
         } else {
-            View::render('register/new.php', [
+            View::render('Register/new.php', [
                 'user' => $user
             ]);
         }

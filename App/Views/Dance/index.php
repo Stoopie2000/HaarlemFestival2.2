@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="../../../public/css/Dance/danceStyle.css"/>
     <title>Haarlem Dance</title>
     <?php
     use App\Config;
@@ -24,6 +25,12 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
 <body id="dancePage" class="">
 <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html") ?>
 <main>
+    <div class="searchContainer">
+        <form>
+            <input type="text" size="30" onkeyup="showResult(this.value)">
+            <div class="searchSuggestions" id="livesearch"></div>
+        </form>
+    </div>
     <div class="titleContainer">
         <h1>Haarlem Dance 2020</h1>
         <h2><?php echo date_format($firstDay, 'l d F') . " - " . date_format($finalDay, 'l d F') ?></h2>
@@ -68,22 +75,6 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
                         }
                     }
 
-//                    $plays_at_array = [];
-//                    foreach ($plays_at as $item) {
-//                        if ($item->ConcertID == $concert->ConcertID) {
-//                            array_push($plays_at_array, $item);
-//                        }
-//                    }
-//
-//                    $concertArtists = [];
-//                    foreach ($plays_at_array as $item) {
-//                        foreach ($artists as $artist) {
-//                            if ($item->ArtistID == $artist->ArtistID) {
-//                                array_push($concertArtists, $artist->Name);
-//                            }
-//                        }
-//                    }
-
                     $concertArtists = [];
                     foreach ($concert->Artists as $artist) {
                       if (!empty($artist)){
@@ -101,3 +92,27 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
     </div>
 </main>
 </body>
+
+<script>
+    function showResult(str) {
+        if (str.length==0) {
+            document.getElementById("livesearch").innerHTML="";
+            document.getElementById("livesearch").style.border="0px";
+            return;
+        }
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        } else {  // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function() {
+            if (this.readyState==4 && this.status==200) {
+                document.getElementById("livesearch").innerHTML=this.responseText;
+                document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+            }
+        };
+        xmlhttp.open("GET","dance/search?q="+str,true);
+        xmlhttp.send();
+    }
+</script>

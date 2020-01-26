@@ -69,3 +69,15 @@
     background: linear-gradient(160deg, rgba(11, 1, 71, 1) 0%, rgba(74, 1, 125, 1) 8%, rgba(112, 0, 73, 1) 13%, rgba(11, 1, 70, 1) 18%, rgba(4, 71, 112, 1) 32%, rgba(11, 1, 70, 1) 42%, rgba(114, 2, 125, 1) 51%, rgba(11, 0, 69, 1) 61%, rgba(240, 4, 127, 1) 69%, rgba(74, 1, 125, 1) 78%, rgba(11, 0, 69, 1) 87%, rgba(46, 88, 166, 1) 94%, rgba(248, 1, 64, 1) 100%) fixed;
     -webkit-font-smoothing: antialiased;
 }
+
+#dancePage .searchContainer {
+    position: relative;
+    top: -185px;
+    z-index: 1000;
+    width: fit-content;
+    left: 1260px;
+}
+
+#dancePage .searchSuggestions {
+    position: absolute;
+}

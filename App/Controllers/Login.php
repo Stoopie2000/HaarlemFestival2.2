@@ -22,7 +22,7 @@ class Login extends Controller
      */
     public function newAction()
     {
-        View::render('login/new.php');
+        View::render('Login/new.php');
     }
 
     /**

@@ -20,7 +20,7 @@ class PlaysAt extends Model
         }
     }
 
-    public static function getAll()
+    public static function get_all()
     {
         $sql = 'SELECT * FROM plays_at';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
