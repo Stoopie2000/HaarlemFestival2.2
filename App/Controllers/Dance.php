@@ -95,9 +95,9 @@ class Dance extends Controller
             foreach ($artists as $item){
                 if (stristr($item->Name, $searchString)){
                     if ($hint == ""){
-                        $hint = "<a href='dance/lineup/" . strtolower(str_replace(' ', '-', $item->Name)) . "'> $item->Name </a></li>";
+                        $hint = "<a href='dance/lineup/" . strtolower(str_replace(' ', '-', $item->UnAccentedName)) . "'> $item->Name </a></li>";
                     }else{
-                        $hint .= "<br/><a href='dance/lineup/" . strtolower(str_replace(' ', '-', $item->Name)) . "'> $item->Name </a></li>";
+                        $hint .= "<br/><a href='dance/lineup/" . strtolower(str_replace(' ', '-', $item->UnAccentedName)) . "'> $item->Name </a></li>";
                     }
                 }
             }

@@ -10,6 +10,8 @@ use PDO;
  * @package App\Models
  *
  * @property int ArtistID
+ * @property string UnAccentedName
+ * @property string Name
  * @author Bram Bos <brambos27@gmail.com>
  */
 class Artist extends Model
@@ -23,7 +25,9 @@ class Artist extends Model
     {
         foreach ($data as $key => $value) {
             $this->$key = $value;
-        };
+        }
+
+        $this->UnAccentedName = self::remove_accents($this->Name);
     }
 
     /**
@@ -49,7 +53,7 @@ class Artist extends Model
     public static function get_quantity()
     {
         $sql = "SELECT COUNT(ArtistID) AS 'Number' FROM artists";
-        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
+        $stmt = self::execute_select_query($sql, PDO::FETCH_ASSOC);
         return $stmt->fetch();
     }
 

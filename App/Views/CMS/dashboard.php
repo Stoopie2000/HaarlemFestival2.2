@@ -55,7 +55,7 @@
         <div class="col">
             <div class="btn-big btn-big-style container">
                 <a href="<?php echo Config::URLROOT; ?>/cms/artists"><div class="btn-big correction">
-                    <h3 class="btn-big-center"><?php echo $artists->Number; ?> artists<i class="fas fa-guitar"></i></h3>
+                    <h3 class="btn-big-center"><?php echo $artists["Number"]; ?> artists<i class="fas fa-guitar"></i></h3>
                     <div class="under-title"><h5 class="text-center">Artists</h5></div>
                     <div class="under-title-info"><h5 class="text-center">Artists</h5><h6 class="text-center">Edit, remove and add</h6></div>
                 </div></a>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="../../../public/css/Dance/danceStyle.css"/>
     <title>Haarlem Dance</title>
     <?php
     use App\Config;
+
 
 include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
 
@@ -51,7 +51,7 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
                 <hr>
                 <?php
                     foreach ($artists as $artist) {
-                        echo("<li style='list-style-type: none;'><a href='dance/lineup/" . strtolower(str_replace(' ', '-', $artist->Name)) . "'> $artist->Name </a></li>");
+                        echo("<li style='list-style-type: none;'><a href='dance/lineup/" . strtolower(str_replace(' ', '-', $artist->UnAccentedName)). "'> $artist->Name </a></li>");
                     }
                 ?>
             </div>
