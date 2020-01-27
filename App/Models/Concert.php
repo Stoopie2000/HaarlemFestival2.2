@@ -81,7 +81,7 @@ class Concert extends Model
     {
         $concert = self::get_by_ID($ticketInfo['productID']);
         $basketItem = new BasketItem();
-        $basketItem->Description = $concert->Venue->Name . " Ticket";
+        $basketItem->Description = $concert->Venue->Name . " Ticket for " . date_format($concert->Date, 'l d F');
         $basketItem->Item = $concert;
         $basketItem->Price = $concert->Price;
         return $basketItem;

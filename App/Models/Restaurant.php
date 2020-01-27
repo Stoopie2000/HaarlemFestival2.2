@@ -160,10 +160,6 @@ class Restaurant extends Model
             }
         }
         //TODO display error message if $r = null
-
-
-
-
     }
 
     public static function create(array $attributes = [])

@@ -30,8 +30,8 @@ class Login extends Controller
      */
     public function createAction()
     {
-        $user = User::authenticate($_POST["email"], $_POST["password"]);
-        $remember = isset($_POST["remember_me"]);
+        $user = User::authenticate($_POST["Email"], $_POST["Password"]);
+        $remember = isset($_POST["Remember_me"]);
 
         if ($user) {
             AuthLogic::on_login($user, $remember);
@@ -42,7 +42,7 @@ class Login extends Controller
         } else {
             Flash::addMessage('Username or password incorrect', Flash::WARNING);
             View::render('Login/new.php', [
-                    'email' => $_POST['email'],
+                    'email' => $_POST['Email'],
                     'remember_me' => $remember
                 ]);
         }
