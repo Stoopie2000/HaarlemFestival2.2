@@ -19,7 +19,7 @@ class Config
      * Database host
      * @var string
      */
-    const DB_HOST = 'hfteam6.infhaarlem.nl';
+    const DB_HOST = '';
 
     /**
      * Database name
@@ -44,7 +44,7 @@ class Config
      * Show or hide error messages on screen
      * @var boolean
      */
-    const SHOW_ERRORS = true;
+    const SHOW_ERRORS = false;
 
     /**
      * Secret key to be used in hashing
