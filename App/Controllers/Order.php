@@ -78,7 +78,6 @@ class Order extends Controller
     }
 
     public function checkoutAction(){
-        //TODO: Order opslaan in database
         try {
         /*
          * Initialize the Mollie API library with your API key.
@@ -129,7 +128,6 @@ class Order extends Controller
 
 
             header("Location: " . $payment->getCheckoutUrl(), true, 303);
-            //TODO Goede redirect pagina maken voor na order
         }
         }catch (ApiException $e){
             echo "API call failed: " . htmlspecialchars($e->getMessage());
@@ -138,7 +136,8 @@ class Order extends Controller
 
     public function returnAction(){
         View::render('Order/redirect.php', [
-            'paymentStatus' => webhook::get_payment_status($_GET['order_id'])
+            'paymentStatus' => webhook::get_payment_status($_GET['order_id']),
+            'orderid' => $_GET['order_id']
         ]);
     }
 

@@ -38,7 +38,7 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
     <div class="container">
         <div class="row">
             <div class="col-sm-6 locationContainer">
-                <h2><a href="location/index">Locations</a></h2>
+                <h2>Locations</h2>
                 <hr>
                     <?php
                     foreach ($venues as $venue) {
@@ -47,7 +47,7 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
                 ?>
             </div>
             <div class="col-sm-6 artistContainer">
-                <h2><a href="lineup/index">Line Up</a></h2>
+                <h2>Line Up</h2>
                 <hr>
                 <?php
                     foreach ($artists as $artist) {

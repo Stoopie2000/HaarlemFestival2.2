@@ -54,7 +54,11 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
             echo ("
             <div class=\"row\">
               <div class=\"col-sm-6\">
-              $basketItem->Description
+              <p>$basketItem->Description</p>
+              <p class='small descriptionExtra'>");
+                if(isset($basketItem->Extra)){echo $basketItem->Extra;};
+                echo ("
+              </p>
               </div>
               <div class=\"col-sm-4\">
               <div class='dropdown'>

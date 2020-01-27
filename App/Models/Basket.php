@@ -47,9 +47,9 @@ class Basket extends Model
             }
 
             if (isset($get['Comments'])){
-                $newItem->Comments = $get['Comments'];
+                $newItem->Extra = $get['Comments'];
             }else{
-                $newItem->Comments = null;
+                $newItem->Extra = null;
             }
 
             if (!isset($this->items)){
@@ -57,19 +57,20 @@ class Basket extends Model
             }
             $matchedItem = false;
             foreach ($this->items as $item){
-                if ($item->Item == $newItem->Item){
+                if ($item->Item == $newItem->Item && $item->Extra == $newItem->Extra){
                    $matchedItem = true;
-                   //TODO: Either increase quantity or display message saying the item is already in the shopping basket
+                   $item->Quantity++;
                 }
             }
 
             if (!$matchedItem){
                 $newItem->ItemID = substr(md5(rand()), 0, 12);
                 $this->items[] = $newItem;
+            }else{
+
             }
 
         }else{
-            //TODO: 404 gooien ofzo idk. Nadenken
             header('HTTP/1.0 404 Not Found');
             exit;
         }
