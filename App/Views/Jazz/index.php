@@ -37,8 +37,8 @@
     </div>
 
     <div class="tab">
-    <button class="active"><a>Line Up</a></button>
-    <?php echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz/Thursday'><a>Tickets</a></button>");?>
+        <button class="active"><a>Line Up</a></button>
+        <?php echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz/Thursday'><a>Tickets</a></button>");?>
     </div>
 
     <div class=dayLineup>

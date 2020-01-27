@@ -27,8 +27,8 @@ require dirname(__DIR__) . '/header.html'
     </div>
 
     <div class="backgroundText">
-        <p class="introductionText">Haarlem Festival is a festival spanning multiple days in the city of Haarlem. With the four different</br>
-        events: Jazz, Food, Dance and Historic we show four different sides of Haarlem's rich culture.</br>
+        <p class="introductionText">Haarlem Festival is a festival spanning multiple days in the city of Haarlem. With the four different
+        events: Jazz, Food, Dance and Historic we show four different sides of Haarlem's rich culture.
         The festival will take place from Thursday 26th of July to Sunday 29th of July.
         </p>
         <a class="arrowDown" href=>&#187;</a>
