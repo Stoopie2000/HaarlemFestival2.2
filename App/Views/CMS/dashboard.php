@@ -37,7 +37,7 @@
         <div class="btn-big-style btn-pages container">
             <div class="correction">
                 <?php for ($i=0; $i < count($params["pages"]); $i++) { 
-                    echo "<a href='". Config::URLROOT ."/cms/pages/". $params["pages"][$i]->Name ."'>";
+                    echo "<a href='". Config::URLROOT ."/cms/pages/". strtolower($params["pages"][$i]->Name) ."'>";
                     echo "<div class='btn-smaller ";
                     if ($i == 0) {
                         echo "firstbtn";
