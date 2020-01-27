@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect('hfteam6.infhaarlem.nl', 'hfteam6_Group', 'tv5rMk4gL');
+$con = mysqli_connect('localhost', 'hfteam6_Group', 'tv5rMk4gL');
 mysqli_select_db($con, 'hfteam6_DB');
 
 $query = mysqli_query($con, "SELECT orders_tickets.OrderID, artists.Name, venue.Name AS Venue, date.Date, concerts.StartTime FROM `orders_tickets` 
@@ -9,7 +9,7 @@ INNER JOIN artists ON artists.ArtistID=plays_at.ArtistID
 INNER JOIN concerts ON concerts.ConcertID=plays_at.ConcertID 
 INNER JOIN venue ON venue.VenueID=concerts.VenueID 
 INNER JOIN date ON date.DateID=concerts.DateID 
-WHERE orders_tickets.OrderID = '".$_GET['OrderID']."'");
+WHERE orders_tickets.OrderID = '". $orderid ."'");
 $Data = mysqli_fetch_array($query);
 
 require('fpdf.php');

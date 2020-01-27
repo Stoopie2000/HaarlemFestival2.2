@@ -138,7 +138,8 @@ class Order extends Controller
 
     public function returnAction(){
         View::render('Order/redirect.php', [
-            'paymentStatus' => webhook::get_payment_status($_GET['order_id'])
+            'paymentStatus' => webhook::get_payment_status($_GET['order_id']),
+            'orderid' => $_GET['order_id']
         ]);
     }
 
