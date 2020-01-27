@@ -150,9 +150,10 @@ class Cms extends Controller
         }
 
         $this->route_params['pages'] = Pages::get_AllPages();
+        $userCount = User::get_quantity()->Number;
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            for ($i=1; $i <= 3 ; $i++) { 
+            for ($i=1; $i <= $userCount ; $i++) { 
                 if (isset($_POST["id" . $i])) {
                     $id = $_POST["id" . $i];
                     break;
