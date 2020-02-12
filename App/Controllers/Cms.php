@@ -52,6 +52,9 @@ class Cms extends Controller
 
     public function loginAction() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Santize de post data zodat er geen code of iets in de database komt
+            $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
+
             $user = User::authenticate($_POST["email"], $_POST["password"]);
             $remember = isset($_POST["remember_me"]);
 
@@ -77,6 +80,9 @@ class Cms extends Controller
 
     public function registerAction(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Santize de post data zodat er geen code of iets in de database komt
+            $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
+
             $pass_err = "";
             $confpass_err = "";
             $email_err = "";
@@ -153,6 +159,9 @@ class Cms extends Controller
         $userCount = User::get_quantity()->Number;
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Santize de post data zodat er geen code of iets in de database komt
+            $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
+
             for ($i=1; $i <= $userCount ; $i++) { 
                 if (isset($_POST["id" . $i])) {
                     $id = $_POST["id" . $i];
@@ -187,6 +196,9 @@ class Cms extends Controller
         $this->route_params['pages'] = Pages::get_AllPages();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Santize de post data zodat er geen code of iets in de database komt
+            $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
+
             $target_file = "img/home/". strtolower($_FILES["file"]["name"]);
 
             foreach ($this->route_params['pages'] as $page) {
@@ -259,6 +271,8 @@ class Cms extends Controller
             $locations = Venue::getAll($this->route_params["event"]);
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Santize de post data zodat er geen code of iets in de database komt
+                $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
 
                 $playsat = PlaysAt::get_from_concert_ID($_POST["id"]);
                 
@@ -321,6 +335,9 @@ class Cms extends Controller
             $restaurants = Restaurant::getAll();
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Santize de post data zodat er geen code of iets in de database komt
+                $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
+
                 Restaurant::edit( $_POST["id"], $_POST["Name"], $_POST["Seats"], $_POST["Address"], $_POST["City"], $_POST["Price"], $_POST["firstSession"], $_POST["Sessions"], $_POST["Duration"]);
             }
 
@@ -342,6 +359,9 @@ class Cms extends Controller
         $this->route_params['pages'] = Pages::get_AllPages();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Santize de post data zodat er geen code of iets in de database komt
+            $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
+
             $post = $_POST;
 
             if (count($post) == 1) {
@@ -379,6 +399,9 @@ class Cms extends Controller
         $orders = OrderTickets::get_all();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Santize de post data zodat er geen code of iets in de database komt
+            $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
+
             $ordersToDownload = $_POST['orders'];
 
             $filename = "orders.csv";
