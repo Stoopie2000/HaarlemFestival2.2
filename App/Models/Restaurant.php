@@ -188,4 +188,11 @@ class Restaurant extends Model
 
         return self::execute_select_query($sql, PDO::FETCH_CLASS);
     }
+
+    public function add_order_to_database($orderId, $userId, $paymentStatus, $quantity){
+        $sql = "INSERT INTO makes_reservation(CustomerID, RestaurantID, OrderID, Status, OrderDate, Quantity) VALUES (?,?,?,?, NOW() ,?)";
+        $parameters = [$userId, $this->RestaurantId, $orderId, $paymentStatus, $quantity];
+
+        return self::execute_edit_query($sql, $parameters);
+    }
 }

@@ -4,6 +4,7 @@
 namespace App\Controllers;
 
 use App\Models\AuthLogic;
+use App\Models\Flash;
 use App\Models\User;
 use Core\Controller;
 use Core\View;
@@ -22,22 +23,26 @@ class Register extends Controller
 
     public function createAction()
     {
-        $user = new User($_POST);
+        $user = User::find_by_email($_POST['Email']);
+        if ($user){
+            Flash::addMessage("Email Already Taken", 'warning');
+        }else{
+            $user = new User([$_POST['Email'], $_POST['Password'], $_POST['Name']]);
+            if ($user->register_user()) {
+                $user->send_activation_email();
+                $user = User::authenticate($_POST["Email"], $_POST["Password"]);
+                AuthLogic::on_login($user, false);
 
-        if ($user->register_user()) {
-            $user->send_activation_email();
-            $user = User::authenticate($_POST["Email"], $_POST["Password"]);
-            AuthLogic::on_login($user, false);
-
-            $this->redirect($this->get_return_to_page());
-        } else {
-            View::render('/Register/new.php', [
-                'user' => $user
-            ]);
+                $this->redirect($this->get_return_to_page());
+            }
         }
+
+        View::render('/Register/new.php', [
+            'user' => $user
+        ]);
     }
 
     public function successAction(){
-
+        //TODO
     }
 }
