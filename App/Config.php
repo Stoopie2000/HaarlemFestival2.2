@@ -19,7 +19,7 @@ class Config
      * Database host
      * @var string
      */
-    const DB_HOST = '';
+    const DB_HOST = 'hfteam6.infhaarlem.nl';
 
     /**
      * Database name
