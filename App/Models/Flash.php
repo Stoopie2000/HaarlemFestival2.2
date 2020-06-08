@@ -39,6 +39,9 @@ class Flash
      */
     public static function addMessage($message, $type = 'success')
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         // Create array in the session if it doesn't already exist
         if (! isset($_SESSION['flash_notifications'])) {
             $_SESSION['flash_notifications'] = [];
@@ -58,6 +61,9 @@ class Flash
      */
     public static function getMessages()
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_SESSION['flash_notifications'])) {
             //return $_SESSION['flash_notifications'];
             $messages = $_SESSION['flash_notifications'];

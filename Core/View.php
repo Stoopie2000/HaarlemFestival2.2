@@ -2,6 +2,7 @@
 
 namespace Core;
 
+use App\Models\Flash;
 use Exception;
 
 /**
@@ -23,6 +24,8 @@ class View
      */
     public static function render($view, $args = [])
     {
+        $args += ['flash' => Flash::getMessages()];
+
         extract($args, EXTR_SKIP);
 
         $file = dirname(__DIR__) . "/App/Views/$view";  // relative to Core directory
