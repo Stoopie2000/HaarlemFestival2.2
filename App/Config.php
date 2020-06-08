@@ -51,4 +51,8 @@ class Config
      * @var int
      */
     const SECRET_KEY = 42;
+
+    const CAPTCHA_SECRET = "6LfLu74UAAAAAAYT7Tc92k2BuF-LveRbYu_4T6XV";
+
+    const CAPTCHA_SITE_KEY = "6LfLu74UAAAAAJvzZUPM-pMBixajOv_7QuCAGJ-b";
 }

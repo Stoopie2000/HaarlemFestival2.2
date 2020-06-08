@@ -22,7 +22,20 @@ class Login extends Controller
      */
     public function newAction()
     {
-        View::render('Login/new.php');
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['email'])){
+            $email = "";
+        }else{
+            $email = $_SESSION['email'];
+        }
+
+        View::render('Login/new.php' , [
+            'email' => $email,
+            'remember_me' => isset($_SESSION['remember_me'])
+        ]);
     }
 
     /**
@@ -30,6 +43,31 @@ class Login extends Controller
      */
     public function createAction()
     {
+//        $user = User::authenticate($_POST["Email"], $_POST["Password"]);
+//        $remember = isset($_POST["Remember_me"]);
+//
+//        if ($user) {
+//            AuthLogic::on_login($user, $remember);
+//
+//            Flash::addMessage('Login successful');
+//
+//            $this->redirect(AuthLogic::getReturnToPage());
+//        } else {
+//            Flash::addMessage('Username or password incorrect', Flash::WARNING);
+//            View::render('Login/new.php', [
+//                    'email' => $_POST['Email'],
+//                    'remember_me' => $remember
+//                ]);
+//        }
+
+
+        if (!isset($_POST["Email"])){
+            $this->redirect("/login/new");
+        }
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
         $user = User::authenticate($_POST["Email"], $_POST["Password"]);
         $remember = isset($_POST["Remember_me"]);
 
@@ -41,10 +79,10 @@ class Login extends Controller
             $this->redirect(AuthLogic::getReturnToPage());
         } else {
             Flash::addMessage('Username or password incorrect', Flash::WARNING);
-            View::render('Login/new.php', [
-                    'email' => $_POST['Email'],
-                    'remember_me' => $remember
-                ]);
+
+            $_SESSION['email'] = $_POST["Email"];
+            $_SESSION['remember_me'] = isset($_POST["Remember_me"]);
+            $this->redirect("/login/new");
         }
     }
 }

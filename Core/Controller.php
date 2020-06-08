@@ -2,6 +2,7 @@
 
 namespace Core;
 
+use App\Config;
 use Exception;
 
 /**
@@ -103,5 +104,24 @@ abstract class Controller
         } else {
             return '/';
         }
+    }
+
+    /**
+     * @param $captchaResponse
+     * @return bool TRUE on success FALSE otherwise
+     */
+    public function verify_captcha($captchaResponse)
+    {
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, ['secret' => Config::CAPTCHA_SECRET, 'response' => $captchaResponse]);
+
+        curl_setopt($curl, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $result = json_decode(curl_exec($curl));
+
+        curl_close($curl);
+
+        return $result->success;
     }
 }
