@@ -12,18 +12,14 @@
 
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <?php  include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html"); ?>
+  <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">
-    <link rel="stylesheet" href="<?php echo Config::URLROOT; ?>/css/Default/Navigation.css">
     <title>Haarlem Festival Homepage</title>
 </head>
 
 <body>
-    <div class="logo">
-        <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">   
-    </div>
-
-    <?php include(dirname(dirname(dirname(__FILE__))) . "/Default/navigation.html") ?>
+<?php include(dirname(dirname(dirname(__FILE__))) . "/Default/navigation_new.php") ?>
 
     <div class="background">
         <img src="<?php echo Config::URLROOT; ?>/img/jazz/gumbokings.jpg" alt="Gumbo Kings">
@@ -46,7 +42,7 @@
     <div class="artistContainer">
      <a class="backButton"href="/jazz"><img src="/img/jazz/artist/close-button.png"></a>
         <div class="artistRow">
-            <?php  echo ("<div class='artistColumn'><h3>$artist->Name</h3><p class='description'>$artist->Description</p></div>");?>
+            <?php  echo ("<div class='artistColumn'><h3 class='my-3'>$artist->Name</h3><p class='description'>$artist->Description</p></div>");?>
             <?php  echo ("<div class='artistColumn'><img class='img-fluid' src=" . Config::URLROOT . "/img/jazz/artist/$artist->Image style='height:400px; width:600px; overflow:hidden;'></div>");?>
         </div>
    

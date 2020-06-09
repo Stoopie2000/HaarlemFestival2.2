@@ -1,8 +1,13 @@
-<header class="header" style="" id="">
+<header class="header">
   <div class="topleft"></div>
   <div class="topbar">
     <ul class="ultop">
+      <?php if(isset($_SESSION["user_id"])){ ?>
+        <li class="top"><a class="" href=""><span>Account</span></a></li>
+        <li class="top"><a class="" href="/login/new"><span>Logout</span></a></li>
+      <?php }else{ ?>
       <li class="top"><a href="/login/new"><span>Login</span></a></li>
+      <?php }?>
       <li class="top"><a href="/order/basket"><span>Basket</span></a></li>
     </ul>
   </div>

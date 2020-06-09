@@ -6,7 +6,6 @@
 
 use App\Config;
 
-include(dirname(dirname(__FILE__)) . "/Default/navigation.html");
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -19,13 +18,12 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
         Haarlem festival
     </title>
     <link href="css/food/foodStyle.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo Config::URLROOT; ?>css/Default/Navigation.css">
+  <?php
+include(dirname(dirname(__FILE__)) . "/Default/website_head.html") ?>
+
 </head>
-<body>
-<div class="logo">
-    <img src="<?php echo Config::URLROOT; ?>/img/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180"
-         height="150">
-</div>
+<body id="foodPage">
+<?php include(dirname(dirname(__FILE__)) . "/Default/navigation_new.php") ?>
 
 <div class="background">
     <img src="<?php echo Config::URLROOT; ?>/img/food/banner pic.jpg" alt="Banner pic Food" width="100%">
