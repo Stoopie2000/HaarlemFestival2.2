@@ -23,6 +23,6 @@ class Event extends Model
     public static function get_JazzEvent(){
         $sql = "SELECT * FROM event WHERE Name LIKE 'Jazz'";
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS);
-        return $events = $stmt->fetchAll();
+        return $event = $stmt->fetch();
     }
 }

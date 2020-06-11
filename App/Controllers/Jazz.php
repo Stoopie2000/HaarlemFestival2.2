@@ -8,6 +8,7 @@ use App\Models\Date;
 use App\Models\JazzArtist;
 use App\Models\AllAccessJazz;
 use App\Models\Artist;
+use App\Models\Event;
 
 class Jazz extends Controller
 {
