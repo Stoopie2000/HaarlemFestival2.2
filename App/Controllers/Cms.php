@@ -54,7 +54,7 @@ class Cms extends Controller
     public function loginAction() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Santize de post data zodat er geen code of iets in de database komt
-            $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $user = User::authenticate($_POST["email"], $_POST["password"]);
             $remember = isset($_POST["remember_me"]);
@@ -82,28 +82,28 @@ class Cms extends Controller
     public function registerAction(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Santize de post data zodat er geen code of iets in de database komt
-            $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $pass_err = "";
             $confpass_err = "";
             $email_err = "";
 
             if ($_POST['email'] == "") {
-                $email_err = "please fill in your email address";
+                $email_err = "Please fill in your email address";
             } else if(User::find_by_email($_POST['email'])){
                 $email_err = "Email is already in use";
             }
 
             if ($_POST['password'] == "") {
-                $pass_err = "please fill in your password";
+                $pass_err = "Please fill in your password";
             }
 
             if ($_POST['confpassword'] == "") {
-                $confpass_err = "please confirm your password";
+                $confpass_err = "Please confirm your password";
             }
 
             if ($_POST['password'] != $_POST['confpassword']) {
-                $confpass_err = "password and confirm password are not the same";
+                $confpass_err = "Password and confirm password are not the same";
             }
 
             if ($_POST['firstName'] != "" && $_POST['lastName'] != "" && $email_err == "" && $pass_err == "" && $confpass_err == "") {
