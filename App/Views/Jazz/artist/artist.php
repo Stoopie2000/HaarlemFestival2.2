@@ -23,7 +23,7 @@
         <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">   
     </div>
 
-    <?php include(dirname(dirname(dirname(__FILE__))) . "/Default/navigation.html") ?>
+    <?php include(dirname(dirname(dirname(__FILE__))) . "/Default/navigation.php") ?>
 
     <div class="background">
         <img src="<?php echo Config::URLROOT; ?>/img/jazz/gumbokings.jpg" alt="Gumbo Kings">

@@ -1,7 +1,7 @@
 <?php 
     use App\Config;
 
-    include(dirname(dirname(__FILE__)) . "/Default/navigation.html");
+    include(dirname(dirname(__FILE__)) . "/Default/navigation.php");
 
     if (!isset($_SESSION)) {
     session_start();

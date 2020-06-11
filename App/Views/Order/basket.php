@@ -22,7 +22,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
   <link rel="stylesheet" href="/css/Default/Navigation.css">
 </head>
 <body id="basketPage" class="">
-<?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html") ?>
+<?php include(dirname(dirname(__FILE__)) . "/Default/navigation.php") ?>
 <main style="margin-top: 200px">
   <?php if (empty($basket) || empty($basket->items)){ ?>
   <div class="container">
