@@ -433,6 +433,17 @@ class Cms extends Controller
         ]);
     }
 
+    public function logoutAction(){
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (isset($_SESSION["user_id"])) {
+            unset($_SESSION['user_id']);
+        }
+
+        $this->redirect('/cms/login');
+    }
+
     private function getArtistID($name, $artists){
         foreach ($artists as $artist) {
             if ($artist->Name == $name) {
