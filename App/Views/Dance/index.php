@@ -22,7 +22,8 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
     <link rel="stylesheet" href="/css/Dance/danceStyle.css">
 </head>
 <body id="dancePage" class="">
-<?php include(dirname(dirname(__FILE__)) . "/Default/navigation.php") ?>
+<?php include(dirname(dirname(__FILE__)) . "/Default/navigation_new.php") ?>
+
 <main>
     <div class="searchContainer">
         <form>
