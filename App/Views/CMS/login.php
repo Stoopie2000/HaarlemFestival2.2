@@ -37,7 +37,7 @@
 
             <div class="form-group">
                 <a href="#" class="float-left">Forgot password?</a>
-                <a href="cms/register" class="float-right">No account? Register</a>
+                <a href="<?php echo Config::URLROOT; ?>/cms/register" class="float-right">No account? Register</a>
             </div>
             
         </form>
