@@ -31,14 +31,13 @@ class Jazz extends Controller
                 'jazzArtists' => JazzArtist::getAllArtists($dayID),
                 'allAccessJazz' => AllAccessJazz::get_all('jazz'),
                 'dates' => $dates,
-                'day' => ucfirst($this->route_params["day"])
+                'day' => ucfirst($this->route_params["day"]),
+                'event' => Event::get_JazzEvent()
             ]);
         }
         else{
             view::render('404.html');
-            
         }
-        
     }
 
     public function indexAction()
@@ -47,7 +46,8 @@ class Jazz extends Controller
     
         View::render('Jazz/index.php', [
             'dates' => Date::get_ALL(),
-            'jazzArtists' => JazzArtist::getLineUp()
+            'jazzArtists' => JazzArtist::getLineUp(),
+            'event' => Event::get_JazzEvent()
         ]);
     }
 
@@ -65,7 +65,8 @@ class Jazz extends Controller
         view::render('Jazz/artist/artist.php', [
             'artist' => $artist,
             'concertsArtist' => $concertsArtist,
-            'dates' => Date::get_ALL()
+            'dates' => Date::get_ALL(),
+            'event' => Event::get_JazzEvent()
         ]);
         }
         else{

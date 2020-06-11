@@ -26,13 +26,11 @@
     <?php include(dirname(dirname(dirname(__FILE__))) . "/Default/navigation.html") ?>
 
     <div class="background">
-        <img src="<?php echo Config::URLROOT; ?>/img/jazz/gumbokings.jpg" alt="Gumbo Kings">
+        <img src="<?php echo Config::URLROOT . "/img/jazz/" .$Event->Image?>" alt="Gumbo Kings">
     </div>
 
     <div class="backgroundText">
-        <p class="jazzText">Haarlem Festival has invited some of the best jazz artists for a very special event. 
-        On Thursday, Friday and Saturday Patronaat will host the jazz event. On Sunday there will be a free concert on near De Grote Kerk
-        </p>
+        <p class="jazzText"><?php $Event->Description ?></p>
         <a class="arrowDown" href=>&#187;</a>
     </div>
 
