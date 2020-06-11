@@ -20,11 +20,15 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
     <title>Haarlem Festival shopping basket</title>
   <link rel="stylesheet" href="/css/Order/basket.css">
   <link rel="stylesheet" href="/css/Default/Navigation.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body id="basketPage" class="">
 <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.php") ?>
 <main style="margin-top: 200px">
-  <?php if (empty($basket) || empty($basket->items)){ ?>
+  <?php
+  if(!isset($_SESSION))
+  {session_start();}
+  if (empty($_SESSION['basket']) || empty($_SESSION['basket']->items)){ ?>
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
@@ -45,32 +49,36 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
     <div class="basketContainer container">
         <?php
         $priceTotal = 0;
-        foreach($basket->items as $basketItem){
-            $priceTotal += $basketItem->Price;
-            echo "        <div class=\"row\">
-            <div class=\"col-sm-6\">
-            $basketItem->Description
-            </div>
-            <div class=\"col-sm-4\">
-            <div class='dropdown'>
-              <select>
-              ";
-            for($x = 0; $x < ($basketItem->Quantity + 5); $x++){
-                    if ($x == $basketItem->Quantity){
-                        echo"<option selected value='$x'>$x</option>";
-                    }else{
-                        echo"<option value='$x'>$x</option>";
-                    }
-              }
-            echo "
-              </select>
-            </div>
-           <a href=\"/order/removeItems?itemID=$basketItem->ItemID\">Remove Item</a>
-            </div>
-            <div class=\"col-sm-2 priceContainer\">
-            <b> € $basketItem->Price </b>
-            </div>
-        </div>";
+        foreach($_SESSION['basket']->items as $basketItem){
+            $priceTotal += $basketItem->Price * $basketItem->Quantity;
+            echo ("
+            <div class=\"row\">
+              <div class=\"col-sm-6\">
+              <p>$basketItem->Description</p>
+              <p class='small descriptionExtra'>");
+                if(isset($basketItem->Extra)){echo $basketItem->Extra;};
+                echo ("
+              </p>
+              </div>
+              <div class=\"col-sm-4\">
+              <div class='dropdown'>
+                <select id='$basketItem->ItemID' onchange=\"quantity_changed('$basketItem->ItemID', '$basketItem->Price')\">");
+              for($x = 0; $x < ($basketItem->Quantity + 5); $x++){
+                      if ($x == $basketItem->Quantity){
+                          echo"<option selected value='$x'>$x</option>";
+                      }else{
+                          echo"<option value='$x'>$x</option>";
+                      }
+                }
+              echo "
+                </select>
+              </div>
+                <a href=\"/order/removeItems?itemID=$basketItem->ItemID\">Remove Item</a>
+              </div>
+              <div class=\"col-sm-2 priceContainer\">
+              <b class='price' id='price$basketItem->ItemID'> € " . $basketItem->Price * $basketItem->Quantity . "</b>
+              </div>
+            </div>";
         }
         ?>
 
@@ -83,7 +91,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
             <div class="col-sm-4">
                 <p>Total</p>
             </div>
-            <div class="col-sm-2 priceContainer">
+            <div id="priceTotal" class="col-sm-2 priceContainer">
                 <?php
                 echo "€ $priceTotal";
                 ?>
@@ -94,13 +102,42 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
       <div class="row">
         <div class="col-sm-10"></div>
         <div class="col-sm-2">
-          <a href="/order/precheckout" class="btn btn-primary .btn-block">To Checkout</a>
+          <a href="/order/precheckout" class="btn btn-primary .btn-block">To order overview</a>
           <div class="small">
-            You don't have to pay yet.
+            You won't have to pay yet.
           </div>
         </div>
       </div>
     </div>
 </main>
 </body>
-<?php }
+
+<?php } ?>
+
+<script>
+    function quantity_changed(item_id, item_price) {
+        var newQuantity = document.getElementById(item_id).value;
+        save_to_db(item_id, newQuantity, item_price);
+    }
+
+    function save_to_db(item_id, new_quantity, item_price) {
+        var priceId = "#price" + item_id;
+        $.ajax({
+            url : "/order/updateQuantity",
+            data : {item_id: item_id, new_quantity: new_quantity},
+            type : 'post',
+            success : function(response) {
+                console.log("success");
+                var totalItemPrice = new_quantity * item_price;
+                $(priceId).text("€ " + totalItemPrice);
+                var price_total = 0;
+
+                $(".price").each(function(){
+                    var item_price = $(this).text().replace('€', '');
+                    price_total = parseInt(price_total) + parseInt(item_price);
+            });
+                $("#priceTotal").text("€ " + parseInt(price_total))
+            }
+        });
+    }
+</script>

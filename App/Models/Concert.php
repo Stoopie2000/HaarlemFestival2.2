@@ -81,7 +81,7 @@ class Concert extends Model
     {
         $concert = self::get_by_ID($ticketInfo['productID']);
         $basketItem = new BasketItem();
-        $basketItem->Description = $concert->Venue->Name . " Ticket";
+        $basketItem->Description = $concert->Venue->Name . " Ticket for " . date_format($concert->Date, 'l d F');
         $basketItem->Item = $concert;
         $basketItem->Price = $concert->Price;
         return $basketItem;
@@ -90,5 +90,12 @@ class Concert extends Model
     public static function edit_concert($concertid, $dateid, $starttime, $endtime, $price, $venueid, $event){
         $sql = 'UPDATE concerts SET DateID = ?, StartTime = ?, EndTime = ?, Price = ?, VenueID = ?, Event = ? WHERE ConcertID = ?';
         self::execute_edit_query($sql, [$dateid, $starttime, $endtime, $price, $venueid,  $event, $concertid]);
+    }
+
+    public function add_order_to_database($orderId, $userId, $paymentStatus, $quantity){
+        $sql = "INSERT INTO orders_tickets(UserID, ConcertID, OrderDate, Status, OrderID, Quantity) VALUES (?,?, NOW(), ?,?,?)";
+        $parameters = [$userId, $this->ConcertID ,$paymentStatus, $orderId, $quantity];
+
+        return self::execute_edit_query($sql, $parameters);
     }
 }

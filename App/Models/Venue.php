@@ -20,7 +20,7 @@ class Venue extends Model
         }
     }
 
-    public static function getAll($event)
+    public static function get_all_by_event($event)
     {
         $sql = 'SELECT * FROM venue WHERE Event = ?';
         $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, [$event]);

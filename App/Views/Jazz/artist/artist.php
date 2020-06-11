@@ -26,19 +26,19 @@
     <?php include(dirname(dirname(dirname(__FILE__))) . "/Default/navigation.php") ?>
 
     <div class="background">
-        <img src="<?php echo Config::URLROOT; ?>/img/jazz/gumbokings.jpg" alt="Gumbo Kings">
+        <img src="<?php echo Config::URLROOT . "/img/jazz/" . $event->Image?>" alt="Gumbo Kings">
     </div>
 
     <div class="backgroundText">
-        <p class="jazzText">Haarlem Festival has invited some of the best jazz artists for a very special event. 
-        On Thursday, Friday and Saturday Patronaat will host the jazz event. On Sunday there will be a free concert on near De Grote Kerk
-        </p>
+        <?php echo ("<p class='jazzText'>$event->Description</p>")?>
         <a class="arrowDown" href=>&#187;</a>
     </div>
 
     <div class="tab">
-            <button class="active"><a>Line Up</a></button>
-            <?php echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz/Thursday'><a>Tickets</a></button>");?>
+            
+            <?php
+            echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz'><a>Line Up</a></button>");
+            echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz/Thursday'><a>Tickets</a></button>");?>
     </div>
 
     <div class="artistContainer">

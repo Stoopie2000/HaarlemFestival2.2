@@ -3,6 +3,7 @@
 
 namespace App\Controllers;
 
+use App\Models\AuthLogic;
 use App\Models\User;
 use Core\Controller;
 use Core\View;
@@ -16,7 +17,7 @@ class Register extends Controller
 {
     public function newAction()
     {
-        View::render('register/new.php');
+        View::render('Register/new.php');
     }
 
     public function createAction()
@@ -25,11 +26,18 @@ class Register extends Controller
 
         if ($user->register_user()) {
             $user->send_activation_email();
-            $this->redirect('/register/success');
+            $user = User::authenticate($_POST["Email"], $_POST["Password"]);
+            AuthLogic::on_login($user, false);
+
+            $this->redirect($this->get_return_to_page());
         } else {
-            View::render('register/new.php', [
+            View::render('/Register/new.php', [
                 'user' => $user
             ]);
         }
+    }
+
+    public function successAction(){
+
     }
 }

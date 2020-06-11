@@ -9,3 +9,7 @@
 #basketPage .priceContainer {
     text-align: right;
 }
+
+#basketPage .descriptionExtra {
+    margin-top: -15px;
+}

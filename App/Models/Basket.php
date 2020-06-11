@@ -34,24 +34,43 @@ class Basket extends Model
                 $newItem->Quantity = 1;
             }
 
+            if (isset($get['DateSelection'])){
+                $newItem->DateSelection = $get['DateSelection'];
+            }else{
+                $newItem->DateSelection = null;
+            }
+
+            if (isset($get['TimeSelection'])){
+                $newItem->TimeSelection = $get['TimeSelection'];
+            }else{
+                $newItem->TimeSelection = null;
+            }
+
+            if (isset($get['Comments'])){
+                $newItem->Extra = $get['Comments'];
+            }else{
+                $newItem->Extra = null;
+            }
+
             if (!isset($this->items)){
                 $this->items = [];
             }
             $matchedItem = false;
             foreach ($this->items as $item){
-                if ($item->Item == $newItem->Item){
+                if ($item->Item == $newItem->Item && $item->Extra == $newItem->Extra){
                    $matchedItem = true;
-                   //TODO: Either increase quantity or display message saying the item is already in the shopping basket
+                   $item->Quantity++;
                 }
             }
 
             if (!$matchedItem){
                 $newItem->ItemID = substr(md5(rand()), 0, 12);
                 $this->items[] = $newItem;
+            }else{
+
             }
 
         }else{
-            //TODO: 404 gooien ofzo idk. Nadenken
             header('HTTP/1.0 404 Not Found');
             exit;
         }

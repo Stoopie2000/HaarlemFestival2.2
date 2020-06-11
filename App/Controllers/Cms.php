@@ -17,6 +17,7 @@ use App\Models\Restaurant;
 use Core\Controller;
 use \Core\View;
 use DateTime;
+use Throwable;
 
 // Verander de 'Template' met de naam van je eigen controller
 class Cms extends Controller
@@ -231,7 +232,7 @@ class Cms extends Controller
 
         $venues = array();
         if ($this->route_params["event"] == "dance") {
-            $venues = Venue::getAll($this->route_params["event"]);
+            $venues = Venue::get_all_by_event($this->route_params["event"]);
         }
 
         for ($i=0; $i < count($this->route_params['pages']) ; $i++) { 
@@ -268,7 +269,7 @@ class Cms extends Controller
             $concerts = Concert::get_all_by_event($this->route_params["event"]);
             $days = Date::get_all();
             $artists = Artist::get_all_by_event($this->route_params["event"]);
-            $locations = Venue::getAll($this->route_params["event"]);
+            $locations = Venue::get_all_by_event($this->route_params["event"]);
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Santize de post data zodat er geen code of iets in de database komt
@@ -416,7 +417,7 @@ class Cms extends Controller
                         }
                     }
                 }
-            } catch (\Throwable $th) {
+            } catch (Throwable $th) {
                 //throw $th;
             } finally{
                 $download = fclose($handle);

@@ -3,6 +3,8 @@
 
 namespace App\Models;
 
+use Core\Model;
+
 /**
  * Class BasketItem
  * @package App\Models
@@ -15,7 +17,7 @@ namespace App\Models;
  *
  * @author Bram Bos <brambos27@gmail.com>
  */
-class BasketItem
+class BasketItem extends Model
 {
     public $Item;
     public $Description;

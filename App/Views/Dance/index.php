@@ -5,6 +5,7 @@
     <?php
     use App\Config;
 
+
 include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
 
     /**
@@ -24,6 +25,12 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
 <body id="dancePage" class="">
 <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.php") ?>
 <main>
+    <div class="searchContainer">
+        <form>
+            <input type="text" size="30" onkeyup="showResult(this.value)">
+            <div class="searchSuggestions" id="livesearch"></div>
+        </form>
+    </div>
     <div class="titleContainer">
         <h1>Haarlem Dance 2020</h1>
         <h2><?php echo date_format($firstDay, 'l d F') . " - " . date_format($finalDay, 'l d F') ?></h2>
@@ -31,7 +38,7 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
     <div class="container">
         <div class="row">
             <div class="col-sm-6 locationContainer">
-                <h2><a href="location/index">Locations</a></h2>
+                <h2>Locations</h2>
                 <hr>
                     <?php
                     foreach ($venues as $venue) {
@@ -40,11 +47,11 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
                 ?>
             </div>
             <div class="col-sm-6 artistContainer">
-                <h2><a href="lineup/index">Line Up</a></h2>
+                <h2>Line Up</h2>
                 <hr>
                 <?php
                     foreach ($artists as $artist) {
-                        echo("<li style='list-style-type: none;'><a href='dance/lineup/" . strtolower(str_replace(' ', '-', $artist->Name)) . "'> $artist->Name </a></li>");
+                        echo("<li style='list-style-type: none;'><a href='dance/lineup/" . strtolower(str_replace(' ', '-', $artist->UnAccentedName)). "'> $artist->Name </a></li>");
                     }
                 ?>
             </div>
@@ -68,22 +75,6 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
                         }
                     }
 
-//                    $plays_at_array = [];
-//                    foreach ($plays_at as $item) {
-//                        if ($item->ConcertID == $concert->ConcertID) {
-//                            array_push($plays_at_array, $item);
-//                        }
-//                    }
-//
-//                    $concertArtists = [];
-//                    foreach ($plays_at_array as $item) {
-//                        foreach ($artists as $artist) {
-//                            if ($item->ArtistID == $artist->ArtistID) {
-//                                array_push($concertArtists, $artist->Name);
-//                            }
-//                        }
-//                    }
-
                     $concertArtists = [];
                     foreach ($concert->Artists as $artist) {
                       if (!empty($artist)){
@@ -101,3 +92,27 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
     </div>
 </main>
 </body>
+
+<script>
+    function showResult(str) {
+        if (str.length==0) {
+            document.getElementById("livesearch").innerHTML="";
+            document.getElementById("livesearch").style.border="0px";
+            return;
+        }
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        } else {  // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function() {
+            if (this.readyState==4 && this.status==200) {
+                document.getElementById("livesearch").innerHTML=this.responseText;
+                document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+            }
+        };
+        xmlhttp.open("GET","dance/search?q="+str,true);
+        xmlhttp.send();
+    }
+</script>
