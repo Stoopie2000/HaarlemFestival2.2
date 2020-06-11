@@ -8,11 +8,10 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html");
 <head>
   <title>Haarlem Festival shopping basket</title>
   <link rel="stylesheet" href="/css/Order/basket.css">
-  <link rel="stylesheet" href="/css/Default/Navigation.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body id="precheckoutPage" class="">
-<?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html") ?>
+<?php include(dirname(dirname(__FILE__)) . "/Default/navigation_new.php") ?>
   <main style="margin-top: 200px">
     <div class="container">
       <div class="row">

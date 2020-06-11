@@ -19,11 +19,10 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
 <head>
     <title>Haarlem Festival shopping basket</title>
   <link rel="stylesheet" href="/css/Order/basket.css">
-  <link rel="stylesheet" href="/css/Default/Navigation.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body id="basketPage" class="">
-<?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html") ?>
+<?php include(dirname(dirname(__FILE__)) . "/Default/navigation_new.php") ?>
 <main style="margin-top: 200px">
   <?php
   if(!isset($_SESSION))
@@ -127,17 +126,22 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
             data : {item_id: item_id, new_quantity: new_quantity},
             type : 'post',
             success : function(response) {
-                console.log("success");
-                var totalItemPrice = new_quantity * item_price;
-                $(priceId).text("€ " + totalItemPrice);
-                var price_total = 0;
-
-                $(".price").each(function(){
-                    var item_price = $(this).text().replace('€', '');
-                    price_total = parseInt(price_total) + parseInt(item_price);
-            });
-                $("#priceTotal").text("€ " + parseInt(price_total))
+              update_screen(response)
             }
         });
     }
+
+    function update_screen(response){
+        console.log("success");
+        var totalItemPrice = new_quantity * item_price;
+        $(priceId).text("€ " + totalItemPrice);
+        var price_total = 0;
+
+        $(".price").each(function(){
+            var item_price = $(this).text().replace('€', '');
+            price_total = parseInt(price_total) + parseInt(item_price);
+        });
+        $("#priceTotal").text("€ " + parseInt(price_total))
+    }
+
 </script>

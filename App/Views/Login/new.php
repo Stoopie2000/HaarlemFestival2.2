@@ -6,7 +6,7 @@
     <?php include(dirname(dirname(__FILE__)) . "/Default/website_head.html");?>
 </head>
 <body id="loginAndRegisterPage" >
-<?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html") ?>
+<?php include(dirname(dirname(__FILE__)) . "/Default/navigation_new.php") ?>
 <div class="container">
     <div class="row mb-3">
         <div class="col-8 offset-2">
