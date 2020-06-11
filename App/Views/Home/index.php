@@ -17,10 +17,7 @@ use App\Config;
 </head>
 
 <body id="homePage">
-<!--    <div class="logo">-->
-<!--            <img src="--><?php //echo Config::URLROOT; ?><!--/img/jazz/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">-->
-<!--    </div>-->
-    <?php include(dirname(dirname(__FILE__)) . "/Default/navigation_new.php") ?>
+    <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.php")?>
 
     <div class="background">
         <img src="<?php echo Config::URLROOT; ?>/img/home/haarlem-spaarne-zomer.jpg" alt="Haarlem Spaarne">
