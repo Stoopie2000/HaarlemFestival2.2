@@ -16,7 +16,7 @@
                 <ul class="navbar-nav ml-auto">
                     <?php if(isset($_SESSION["user_id"])){ ?>
                       <li class="nav-item"><a class="nav-link p-2" href=""><span>Account</span></a></li>
-                      <li class="nav-item"><a class="nav-link p-2" href="/login/new"><span>Logout</span></a></li>
+                      <li class="nav-item"><a class="nav-link p-2" href="/login/logout"><span>Logout</span></a></li>
                     <?php }else{ ?>
                       <li class="nav-item"><a class="nav-link p-2" href="/login/new"><span>Login</span></a></li>
                     <?php }?>

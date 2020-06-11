@@ -65,6 +65,9 @@ abstract class Controller
      */
     protected function before()
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
     }
 
     /**

@@ -68,14 +68,10 @@ class Login extends Controller
             session_start();
         }
 
-        $user = User::authenticate($_POST["Email"], $_POST["Password"]);
-        $remember = isset($_POST["Remember_me"]);
-
-        if ($user) {
-            AuthLogic::on_login($user, $remember);
+        if ($user = User::authenticate($_POST["Email"], $_POST["Password"])) {
+            AuthLogic::on_login($user, isset($_POST["Remember_me"]));
 
             Flash::addMessage('Login successful');
-
             $this->redirect(AuthLogic::getReturnToPage());
         } else {
             Flash::addMessage('Username or password incorrect', Flash::WARNING);
@@ -84,5 +80,10 @@ class Login extends Controller
             $_SESSION['remember_me'] = isset($_POST["Remember_me"]);
             $this->redirect("/login/new");
         }
+    }
+
+    public function logoutAction(){
+        AuthLogic::logout();
+        $this->redirect("/");
     }
 }
