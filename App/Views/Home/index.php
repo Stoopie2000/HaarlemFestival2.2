@@ -17,7 +17,7 @@ use App\Config;
 </head>
 
 <body id="homePage">
-    <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.php")?>
+    <?php include(dirname(dirname(__FILE__)) . "/Default/navigation_new.php")?>
 
     <div class="background">
         <img src="<?php echo Config::URLROOT; ?>/img/home/haarlem-spaarne-zomer.jpg" alt="Haarlem Spaarne">
