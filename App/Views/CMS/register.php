@@ -49,7 +49,7 @@
 
             <div class="form-group">
                 <a href="#" class="float-left">Forgot password?</a>
-                <a href="<?php echo Config::URLROOT; ?>" class="float-right">login</a>
+                <a href="<?php echo Config::URLROOT; ?>/cms/login" class="float-right">login</a>
             </div>
             
         </form>
