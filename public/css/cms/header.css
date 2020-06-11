@@ -2,6 +2,11 @@ body, html{
     height: 100%;
 }
 
+.log-out{
+    height: 54px;
+    width: 100px;
+}
+
 .title_bar{
     position: absolute;
     width: 100%;
