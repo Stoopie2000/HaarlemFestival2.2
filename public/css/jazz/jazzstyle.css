@@ -287,11 +287,10 @@ input[type=number] {
   background-color: #333333;
   position: relative;
   text-align: left;
-  left: 32px;
+  left: 31px;
   width: 280px;
   height: 23px;
   color: white;
-  
 }
 
 .artistName{
