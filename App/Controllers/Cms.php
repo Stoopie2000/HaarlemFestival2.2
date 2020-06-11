@@ -161,7 +161,7 @@ class Cms extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Santize de post data zodat er geen code of iets in de database komt
-            $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             for ($i=1; $i <= $userCount ; $i++) { 
                 if (isset($_POST["id" . $i])) {
@@ -198,7 +198,7 @@ class Cms extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Santize de post data zodat er geen code of iets in de database komt
-            $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $target_file = "img/home/". strtolower($_FILES["file"]["name"]);
 
@@ -273,7 +273,7 @@ class Cms extends Controller
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Santize de post data zodat er geen code of iets in de database komt
-                $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
                 $playsat = PlaysAt::get_from_concert_ID($_POST["id"]);
                 
@@ -337,7 +337,7 @@ class Cms extends Controller
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Santize de post data zodat er geen code of iets in de database komt
-                $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
                 Restaurant::edit( $_POST["id"], $_POST["Name"], $_POST["Seats"], $_POST["Address"], $_POST["City"], $_POST["Price"], $_POST["firstSession"], $_POST["Sessions"], $_POST["Duration"]);
             }
@@ -361,7 +361,7 @@ class Cms extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Santize de post data zodat er geen code of iets in de database komt
-            $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $post = $_POST;
 
@@ -377,7 +377,6 @@ class Cms extends Controller
                 } else {
                     Artist::edit_artist($post["id"], $post["name"], $post["description"], $post["event"]);
                 }
-                print_r($post);
             }
         }
 
@@ -401,7 +400,7 @@ class Cms extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Santize de post data zodat er geen code of iets in de database komt
-            $_POST = filter_var($_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $ordersToDownload = $_POST['orders'];
 
