@@ -24,9 +24,6 @@ class AuthLogic
      */
     public static function on_login($user, $remember)
     {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
         $_SESSION["user_id"] = $user->UserID;
 
         if ($remember) {
@@ -37,6 +34,14 @@ class AuthLogic
             $user->store_token($token->getValue());
 
             setcookie('rememberme', $cookie, time()+60*60*24*365, '/');
+        }
+    }
+
+    public static function logout(){
+        unset($_SESSION["user_id"]);
+        if (isset($_COOKIE['rememberme'])) {
+            unset($_COOKIE['rememberme']);
+            setcookie('rememberme', '', time() - 3600, '/');
         }
     }
 

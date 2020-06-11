@@ -1,8 +1,6 @@
 <?php 
     use App\Config;
 
-    /*require dirname(__DIR__) . '\header.html'*/
-
     if (!isset($_SESSION)) {
     session_start();
     }
@@ -12,20 +10,17 @@
 
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+  <?php include(dirname(dirname(__FILE__)) . "/Default/website_head.html"); ?>
+
+  <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="<?php echo Config::URLROOT; ?>/css/jazz/jazzstyle.css">
-    <link rel="stylesheet" href="<?php echo Config::URLROOT; ?>/css/Default/Navigation.css">
     <script src="https://kit.fontawesome.com/1ccd03e13f.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Haarlem Festival Homepage</title>
 </head>
 
 <body id="jazzPage" class="">
-    <div class="logo">
-        <img src="<?php echo Config::URLROOT; ?>/img/jazz/haarlem-logo-png-transparent.png" alt="Logo Haarlem" width="180" height="150">   
-    </div>
-
-    <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.php")?>
+    <?php include(dirname(dirname(__FILE__)) . "/Default/navigation_new.php")?>
 
     <div class="background">
         <img src="<?php echo Config::URLROOT . "/img/jazz/" . $event->Image?>" alt="Gumbo Kings">

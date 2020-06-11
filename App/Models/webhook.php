@@ -25,7 +25,10 @@ class webhook extends Model{
         self::execute_edit_query($sql, $parameters);
     }
 
-    public function send_tickets($recipient_address, $subject, $message){
+    public function send_tickets($orderId, $ticketDescription){
+        $recipient_address = $this->get_user_email_by_order_id($orderId);
+        $message = "Here are you tickets for " . $ticketDescription;
+        $subject = $message;
         self::send_mail($recipient_address, $subject, $message);
     }
 

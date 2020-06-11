@@ -65,4 +65,11 @@ class DayTicket extends Model
         $basketItem->Price = $dayTicket->Price;
         return $basketItem;
     }
+
+    public function add_order_to_database($orderId, $userId, $paymentStatus, $quantity){
+        $sql = "INSERT INTO orders_day_ticket(CustomerID, DayTicketID, OrderID, Status, OrderDate, Quantity) VALUES (?,?,?,?,NOW(),?)";
+        $parameters = [$userId, $this->DayTicketID, $orderId, $paymentStatus , $quantity];
+
+        return self::execute_edit_query($sql, $parameters);
+    }
 }

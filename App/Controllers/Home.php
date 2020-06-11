@@ -22,7 +22,8 @@ class Home extends Controller
     public function indexAction()
     {
         View::render('Home/index.php' ,[
-            'events' => Event::get_AllEvents()
+            'events' => Event::get_AllEvents(),
+            'home' => Event::get_Event('Home')
         ]);
     }
 }

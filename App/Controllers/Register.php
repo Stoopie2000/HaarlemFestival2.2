@@ -4,6 +4,7 @@
 namespace App\Controllers;
 
 use App\Models\AuthLogic;
+use App\Models\Flash;
 use App\Models\User;
 use Core\Controller;
 use Core\View;
@@ -22,22 +23,32 @@ class Register extends Controller
 
     public function createAction()
     {
-        $user = new User($_POST);
+        if (empty($_POST['g-recaptcha-response']) || !$this->verify_captcha($_POST['g-recaptcha-response'])) {
+            Flash::addMessage("Captcha failed please try again", "warning");
+            $this->redirect("/login/new");
+        }
 
-        if ($user->register_user()) {
+        if (User::find_by_email($_POST['Email'])){
+            Flash::addMessage("Email Already Taken", 'warning');
+            $this->redirect("/login/new");
+        }else{
+            $user = new User($_POST);
+            $user->register_user();
             $user->send_activation_email();
-            $user = User::authenticate($_POST["Email"], $_POST["Password"]);
-            AuthLogic::on_login($user, false);
 
-            $this->redirect($this->get_return_to_page());
-        } else {
-            View::render('/Register/new.php', [
-                'user' => $user
-            ]);
+            if (empty($user->errors)) {
+                Flash::addMessage("Successfully registered");
+                $this->redirect('/register/success');
+            } else {
+                foreach ($user->errors as $error){
+                    Flash::addMessage($error, "warning");
+                }
+                $this->redirect("/login/new");
+            }
         }
     }
 
-    public function successAction(){
-
+    private function successAction(){
+        $this->redirect('/login/new');
     }
 }

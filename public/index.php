@@ -52,6 +52,8 @@ $router->add('cms/{action}/{event}', ['controller' => 'Cms']);
 $router->add('dance', ['controller' => 'Dance', 'action' => 'index']);
 $router->add('dance/locations/{location}', ['controller' => 'dance', 'action' => 'locations']);
 $router->add('dance/lineup/{artist}', ['controller' => 'dance', 'action' => 'lineup']);
+$router->add('order/checkout', ['controller' => 'MollieController', 'action' => 'checkout']);
+$router->add('order/return', ['controller' => 'MollieController', 'action' => 'return']);
 $router->add('order/{action}', ['controller' => 'order']);
 $router->add('{controller}/{action}');
 

@@ -10,7 +10,6 @@ use App\Models\Venue;
  * @var array $dayTickets
  * @author Bram Bos <brambos27@gmail.com>
  */
-include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html");
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -21,7 +20,9 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Haarlem Dance - <?php echo $venue->Name ?></title>
+<?php  include(dirname(dirname(dirname(__FILE__))) . "/Default/website_head.html"); ?>
+
+  <title>Haarlem Dance - <?php echo $venue->Name ?></title>
   <link rel="stylesheet" href="/css/Dance/danceStyle.css"
 </head>
 <body id="dancePage" class="">

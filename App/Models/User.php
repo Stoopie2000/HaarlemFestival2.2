@@ -109,7 +109,7 @@ class User extends Model
     /**
      * If properties are valid stores user model in database
      *
-     * @return bool TRUE on success or FALSE on failure.
+     * @return void
      */
     public function register_user()
     {
@@ -131,11 +131,8 @@ class User extends Model
 
             $sql = 'INSERT INTO users (Email, Type, PasswordHash, FirstName, LastName) VALUES (?, ?, ?, ?, ?)';
             $parameters = [$this->Email, $this->Type, $password_hash, $firstName, $lastName];
-
-            return self::execute_edit_query($sql, $parameters);
+            self::execute_edit_query($sql, $parameters);
         }
-
-        return false;
     }
 
     /**

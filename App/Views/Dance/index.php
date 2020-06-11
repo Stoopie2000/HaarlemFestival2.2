@@ -20,13 +20,13 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
 
     ?>
     <link rel="stylesheet" href="/css/Dance/danceStyle.css">
-    <link rel="stylesheet" href="/css/Default/Navigation.css">
 </head>
 <body id="dancePage" class="">
 <?php include(dirname(dirname(__FILE__)) . "/Default/navigation.php") ?>
 <main>
     <div class="searchContainer">
         <form>
+          <label for="livesearch">Zoeken in dance event </label>
             <input type="text" size="30" onkeyup="showResult(this.value)">
             <div class="searchSuggestions" id="livesearch"></div>
         </form>

@@ -98,4 +98,11 @@ class Concert extends Model
 
         return self::execute_edit_query($sql, $parameters);
     }
+
+    public static function get_with_end_time_before($date, $time){
+        $sql = "SELECT * FROM concerts where EndTime < ? AND DateID = ?";
+        $parameters = [$time, $date];
+
+        return self::execute_select_query($sql, $parameters);
+    }
 }

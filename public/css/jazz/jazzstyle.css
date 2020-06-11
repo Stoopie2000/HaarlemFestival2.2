@@ -81,7 +81,7 @@ button{
 .tabDays{
   display: flex;
   position: relative;
-  top: 1111px;
+  top: 955px;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -390,12 +390,12 @@ iframe{
   left: 50px;
   font-size: 20pt;
   text-align: left;
+  font-weight: bold;
 }
 
 .description{
   position: relative;
   left: 50px;
-  top: -20px;
   display: flex;
   width: 500px;
   text-align: left;
@@ -445,3 +445,4 @@ iframe{
   top: 20px;
   
 }
+
