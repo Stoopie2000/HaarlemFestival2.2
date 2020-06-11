@@ -26,7 +26,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
   <link rel="stylesheet" href="/css/Dance/danceStyle.css"
 </head>
 <body id="dancePage" class="">
-<?php include(dirname(dirname(dirname(__FILE__))) . "/Default/navigation_new.php") ?>
+<?php include(dirname(dirname(dirname(__FILE__))) . "/Default/navigation.php") ?>
 <main style="">
     <div class="titleContainerDetail container">
         <div class="row">
