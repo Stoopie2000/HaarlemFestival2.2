@@ -23,7 +23,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body id="basketPage" class="">
-<?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html") ?>
+<?php include(dirname(dirname(__FILE__)) . "/Default/navigation.php") ?>
 <main style="margin-top: 200px">
   <?php
   if(!isset($_SESSION))

@@ -25,6 +25,4 @@
             <div class="logoparallelogram"></div>
         </div>
 
-        <div class="text-center title_bar">
-            <h1><strong>Haarlem festival <small>CMS</small></strong></h1>
-        </div>
+<?php require_once 'account.php';

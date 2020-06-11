@@ -2,7 +2,6 @@
     use App\Config;
 
     require 'inc/header.php';
-
     require 'inc/nav.php';
 
 ?>

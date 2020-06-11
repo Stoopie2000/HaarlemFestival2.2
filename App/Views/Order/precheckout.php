@@ -12,7 +12,7 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html");
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body id="precheckoutPage" class="">
-<?php include(dirname(dirname(__FILE__)) . "/Default/navigation.html") ?>
+<?php include(dirname(dirname(__FILE__)) . "/Default/navigation.php") ?>
   <main style="margin-top: 200px">
     <div class="container">
       <div class="row">
