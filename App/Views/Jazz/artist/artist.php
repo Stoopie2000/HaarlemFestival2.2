@@ -26,11 +26,11 @@
     <?php include(dirname(dirname(dirname(__FILE__))) . "/Default/navigation.html") ?>
 
     <div class="background">
-        <img src="<?php echo Config::URLROOT . "/img/jazz/" .$Event->Image?>" alt="Gumbo Kings">
+        <img src="<?php echo Config::URLROOT . "/img/jazz/" . $event->Image?>" alt="Gumbo Kings">
     </div>
 
     <div class="backgroundText">
-        <p class="jazzText"><?php $Event->Description ?></p>
+        <?php echo ("<p class='jazzText'>$event->Description</p>")?>
         <a class="arrowDown" href=>&#187;</a>
     </div>
 
