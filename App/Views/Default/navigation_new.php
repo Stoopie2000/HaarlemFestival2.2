@@ -16,11 +16,11 @@
                 <ul class="navbar-nav ml-auto">
                     <?php if(isset($_SESSION["user_id"])){ ?>
                       <li class="nav-item"><a class="nav-link p-2" href=""><span>Account</span></a></li>
-                      <li class="nav-item"><a class="nav-link p-2" href="/login/logout"><span>Logout</span></a></li>
+                      <li class="nav-item"><a class="nav-link p-2" href="<?php echo Config::URLROOT; ?>/login/logout"><span>Logout</span></a></li>
                     <?php }else{ ?>
-                      <li class="nav-item"><a class="nav-link p-2" href="/login/new"><span>Login</span></a></li>
+                      <li class="nav-item"><a class="nav-link p-2" href="<?php echo Config::URLROOT; ?>/login/new"><span>Login</span></a></li>
                     <?php }?>
-                  <li class="nav-item"><a class="nav-link p-2" href="/order/basket"><span>Basket</span></a></li>
+                  <li class="nav-item"><a class="nav-link p-2" href="<?php echo Config::URLROOT; ?>/order/basket"><span>Basket</span></a></li>
                 </ul>
               </nav>
             </div>
@@ -35,16 +35,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item homeButton ">
-                      <a class="nav-link p-4" href="/"><span>Home</span></a>
+                      <a class="nav-link p-4" href="<?php echo Config::URLROOT; ?>/"><span>Home</span></a>
                     </li>
                     <li class="nav-item jazzButton">
-                      <a class="nav-link p-4" href="/jazz"><span>Jazz</span></a>
+                      <a class="nav-link p-4" href="<?php echo Config::URLROOT; ?>/jazz"><span>Jazz</span></a>
                     </li>
                     <li class="nav-item danceButton ">
-                      <a class="nav-link p-4" href="/dance"><span>Dance</span></a>
+                      <a class="nav-link p-4" href="<?php echo Config::URLROOT; ?>/dance"><span>Dance</span></a>
                     </li>
                     <li class="nav-item foodButton ">
-                      <a class="nav-link p-4" href="/food"><span>Food</span></a>
+                      <a class="nav-link p-4" href="<?php echo Config::URLROOT; ?>/food"><span>Food</span></a>
                     </li>
                   </ul>
                 </div>
