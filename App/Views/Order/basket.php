@@ -28,7 +28,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
   if(!isset($_SESSION))
   {session_start();}
   if (empty($_SESSION['basket']) || empty($_SESSION['basket']->items)){ ?>
-  <div class="container">
+  <div class="food_container">
     <div class="row">
       <div class="col-sm-12">
         <h1>Your shopping basket is empty!</h1>
@@ -38,14 +38,14 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
   </div>
   <?php }else{ ?>
 
-    <div class="container">
+    <div class="food_container">
       <div class="row">
         <div class="col-sm-12">
           <h1>Shopping basket</h1>
         </div>
       </div>
     </div>
-    <div class="basketContainer container">
+    <div class="basketContainer food_container">
         <?php
         $priceTotal = 0;
         foreach($_SESSION['basket']->items as $basketItem){
@@ -82,7 +82,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
         ?>
 
     </div>
-    <div class="priceTotalContainer container">
+    <div class="priceTotalContainer food_container">
         <div class="row">
             <div class="col-sm-6">
 
@@ -97,7 +97,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
             </div>
         </div>
     </div>
-    <div class="checkoutButtonContainer container">
+    <div class="checkoutButtonContainer food_container">
       <div class="row">
         <div class="col-sm-10"></div>
         <div class="col-sm-2">

@@ -6,7 +6,7 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
 ?>
 <body>
 <?php include(dirname(dirname(__FILE__)) . "/Default/navigation_new.php") ?>
-<div class="container">
+<div class="food_container">
   <div class="row">
     <div class="col-6 offset-3">
       <h1>Register</h1>

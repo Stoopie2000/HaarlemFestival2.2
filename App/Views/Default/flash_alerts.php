@@ -1,8 +1,6 @@
 <?php
 if (isset($flash)){
-    echo "<div class=\"container fixed-bottom position-absolute\">
-    <div class=\"row\">
-        <div class=\"col-6 offset-3\">";
+    echo "col-6 offset-3\\";
     foreach ($flash as $message){
         switch ($message["type"]){
             case "success":     echo ("

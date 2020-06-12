@@ -7,7 +7,7 @@
 ?>
 
 <div class="content">
-<div class="container">
+<div class="food_container">
     <div class="form" id="login">
         <H1 class="text-center">Log in</H1>
 

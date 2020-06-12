@@ -52,7 +52,7 @@ class Config
      */
     const SECRET_KEY = 42;
 
-    const CAPTCHA_SECRET = "6LfLu74UAAAAAAYT7Tc92k2BuF-LveRbYu_4T6XV";
+    const CAPTCHA_SECRET = "6Le3qKMZAAAAAG--keIvVEMMoO1JMjg1ns4qtBsP";
 
-    const CAPTCHA_SITE_KEY = "6LfLu74UAAAAAJvzZUPM-pMBixajOv_7QuCAGJ-b";
+    const CAPTCHA_SITE_KEY = "6Le3qKMZAAAAAK96RVEhDBukCzpYbq8cPo6xffnZ";
 }

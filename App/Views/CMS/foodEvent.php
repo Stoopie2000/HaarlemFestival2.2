@@ -8,7 +8,7 @@
 ?>
 
 <div class="content" id="events">
-    <div class="container">
+    <div class="food_container">
         <div class="title">
             <h1 class="content_center" id="Title">
                 <?php echo ucfirst($params["event"]); ?>

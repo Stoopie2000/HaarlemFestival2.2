@@ -36,7 +36,7 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html")
         <h1>Haarlem Dance 2020</h1>
         <h2><?php echo date_format($firstDay, 'l d F') . " - " . date_format($finalDay, 'l d F') ?></h2>
     </div>
-    <div class="container">
+    <div class="food_container">
         <div class="row">
             <div class="col-sm-6 locationContainer">
                 <h2>Locations</h2>

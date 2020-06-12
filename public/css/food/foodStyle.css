@@ -93,7 +93,7 @@ html, body {
 
 /*    display: inline-block;*/
 /*}*/
-.container{
+.food_container{
     width: 100%;
     height: 330%;
     background-color: #FF9E00;
@@ -117,6 +117,7 @@ html, body {
     width: 800px;
     background-color: #FFB339;
     float: right;
+    font-size: 20px;
 }
 button{
     background-color: #C67A00;
@@ -144,12 +145,13 @@ button{
 }
 
 .reserve {
+    font-size: 20px;
     position: absolute;
     z-index: 9001;
     top: 0;
     right: 0;
-    width: 800px;
-    height: 525px;
+    width: 850px;
+    height: 800px;
     background: #FFB339;
     text-align: left;
     margin-right: -800px;

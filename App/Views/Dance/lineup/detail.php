@@ -26,7 +26,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
 <?php include(dirname(dirname(dirname(__FILE__))) . "/Default/navigation_new.php") ?>
 
 <main>
-    <div class="titleContainerDetail container">
+    <div class="titleContainerDetail food_container">
         <div class="row">
             <div class="col-sm-12">
                 <h1 style="text-transform: capitalize">
@@ -35,7 +35,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
             </div>
         </div>
     </div>
-    <div class="container descriptionContainer">
+    <div class="food_container descriptionContainer">
         <div class="row">
             <div class="col-sm-6">
                 <img class="img-fluid" src="<?php echo(Config::URLROOT . "/img/dance/"); echo($artist->Image)?>">
@@ -45,7 +45,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
             </div>
         </div>
     </div>
-    <div class="container schedule&TicketsContainer">
+    <div class="food_container schedule&TicketsContainer">
         <div class="row">
             <div class="col-sm-6">
                 <?php foreach($concertsArtistPlaysAt as $valueConcert){
@@ -62,7 +62,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
                 } ?>
             </div>
             <div class="col-sm-6">
-                <div class="container ticketContainer">
+                <div class="food_container ticketContainer">
                     <h2>Buy Tickets Now!</h2>
                     <?php foreach ($concertsArtistPlaysAt as $valueConcert) {
                         $venue = $valueConcert->Venue;

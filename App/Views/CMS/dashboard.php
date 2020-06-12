@@ -7,7 +7,7 @@
 
 ?>
 <div class="content" id="dashboard">
-    <div class="container">
+    <div class="food_container">
         <div class="title">
             <h1 class="content_center">
                 <?php echo ucfirst($params["action"]); ?>
@@ -16,7 +16,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <div class="btn-big btn-big-style container">
+            <div class="btn-big btn-big-style food_container">
                 <a href="<?php echo Config::URLROOT; ?>/cms/users"><div class="btn-big correction">
                     <h3 class="btn-big-center"><?php echo $users->Number; ?> users<i class="fas fa-users"></i></h3>
                     <div class="under-title"><h5 class="text-center">Users</h5></div>
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="col">
-                <div class="btn-big btn-big-style container no-padding">
+                <div class="btn-big btn-big-style food_container no-padding">
                     <a href="<?php echo Config::URLROOT; ?>/cms/events/jazz"><div class="btn-small firstbtn">Jazz</div></a>
                     <a href="<?php echo Config::URLROOT; ?>/cms/events/dance"><div class="btn-small">Dance</div></a>
                     <a href="<?php echo Config::URLROOT; ?>/cms/events/food"><div class="btn-small">Food</div></a>
@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="btn-big-style btn-pages container">
+        <div class="btn-big-style btn-pages food_container">
             <div class="correction">
                 <?php for ($i=0; $i < count($params["pages"]); $i++) { 
                     echo "<a href='". Config::URLROOT ."/cms/pages/". strtolower($params["pages"][$i]->Name) ."'>";
@@ -53,7 +53,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <div class="btn-big btn-big-style container">
+            <div class="btn-big btn-big-style food_container">
                 <a href="<?php echo Config::URLROOT; ?>/cms/artists"><div class="btn-big correction">
                     <h3 class="btn-big-center"><?php echo $artists["Number"]; ?> artists<i class="fas fa-guitar"></i></h3>
                     <div class="under-title"><h5 class="text-center">Artists</h5></div>
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="btn-big btn-big-style container">
+            <div class="btn-big btn-big-style food_container">
                 <a href="<?php echo Config::URLROOT; ?>/cms/finance"><div class="btn-big correction">
                     <h3 class="btn-big-center"><?php echo $orders->Number; ?> orders<i class="fas fa-receipt"></i></i></h3>
                     <div class="under-title"><h5 class="text-center">Finance</h5></div>

@@ -13,7 +13,7 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html");
 <body id="precheckoutPage" class="">
 <?php include(dirname(dirname(__FILE__)) . "/Default/navigation_new.php") ?>
   <main class="mt-3">
-    <div class="container">
+    <div class="food_container">
       <div class="row">
         <div class="col-12">
           <div class="basket">
@@ -22,7 +22,7 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html");
         </div>
         <div class="col-12">
           <div class="">
-            <div class="basketContainer container">
+            <div class="basketContainer food_container">
                 <?php
                 $priceTotal = 0;
                 foreach($_SESSION['basket']->items as $basketItem){
@@ -52,7 +52,7 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html");
           </div>
         </div>
       </div>
-      <div class="priceTotalContainer container">
+      <div class="priceTotalContainer food_container">
         <div class="row">
           <div class="col-sm-6">
 

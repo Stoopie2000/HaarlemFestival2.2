@@ -7,13 +7,13 @@
 
 ?>
 <div class="content" id="users">
-    <div class="container">
+    <div class="food_container">
         <div class="title">
             <h1 class="content_center">
                 <?php echo ucfirst($params["action"]); ?>
             </h1>
         </div>
-        <div class="row container">
+        <div class="row food_container">
             <div class="input-group mb-3">
                 <input type="text" id="filter" onkeyup="filter()" class="form-control" placeholder="Email, First Name or Last Name" aria-label="Artist" aria-describedby="button-addon">
             </div>

@@ -43,24 +43,6 @@ class Login extends Controller
      */
     public function createAction()
     {
-//        $user = User::authenticate($_POST["Email"], $_POST["Password"]);
-//        $remember = isset($_POST["Remember_me"]);
-//
-//        if ($user) {
-//            AuthLogic::on_login($user, $remember);
-//
-//            Flash::addMessage('Login successful');
-//
-//            $this->redirect(AuthLogic::getReturnToPage());
-//        } else {
-//            Flash::addMessage('Username or password incorrect', Flash::WARNING);
-//            View::render('Login/new.php', [
-//                    'email' => $_POST['Email'],
-//                    'remember_me' => $remember
-//                ]);
-//        }
-
-
         if (!isset($_POST["Email"])){
             $this->redirect("/login/new");
         }

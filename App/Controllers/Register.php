@@ -38,7 +38,7 @@ class Register extends Controller
 
             if (empty($user->errors)) {
                 Flash::addMessage("Successfully registered");
-                $this->redirect('/register/success');
+                $this->redirect('/login/new');
             } else {
                 foreach ($user->errors as $error){
                     Flash::addMessage($error, "warning");
@@ -46,9 +46,5 @@ class Register extends Controller
                 $this->redirect("/login/new");
             }
         }
-    }
-
-    private function successAction(){
-        $this->redirect('/login/new');
     }
 }

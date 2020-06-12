@@ -11,7 +11,7 @@ use Mollie\Api\Exceptions\ApiException;
 use Mollie\Api\MollieApiClient;
 use Mollie\Api\Types\PaymentMethod;
 
-class MollieController extends Controller
+class Mollie extends Controller
 {
 
     public function checkoutAction(){
@@ -72,6 +72,7 @@ class MollieController extends Controller
     }
 
     public function returnAction(){
+        unset($_SESSION['basket']);
         View::render('Order/redirect.php', [
             'paymentStatus' => webhook::get_payment_status($_GET['order_id']),
             'orderid' => $_GET['order_id']

@@ -7,14 +7,14 @@
 
 ?>
 <div class="content" id="finance">
-    <div class="container">
+    <div class="food_container">
         <div class="title">
             <h1 class="content_center">
                 <?php echo ucfirst($params["action"]); ?>
             </h1>
             <?php echo ($download) ? "<a id='download' href='../orders.csv' download='orders.csv'></a>" : '' ;?>
         </div>
-        <div class="row container">
+        <div class="row food_container">
             <div class="lvheader">
                 <div><input id="checkbox" class="check" type="checkbox" name="All" value="all" onchange="CheckAll()"></div>
                 <div><a class="content_horizontal">User</a></div>

@@ -29,7 +29,7 @@ include(dirname(dirname(__FILE__)) . "/Default/website_head.html") ?>
     <img src="<?php echo Config::URLROOT; ?>/img/food/banner pic.jpg" alt="Banner pic Food" width="100%">
 </div>
 
-<div class="container">
+<div class="food_container">
     <center>
         <select style="margin-top:20px ;" name="category" data-event="filter">
             <option value="Select Cuisine style">Select Cuisine style</option>

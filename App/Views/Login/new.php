@@ -7,7 +7,7 @@
 </head>
 <body id="loginAndRegisterPage" >
 <?php include(dirname(dirname(__FILE__)) . "/Default/navigation_new.php") ?>
-<div class="container">
+<div class="food_container">
     <div class="row mb-3">
         <div class="col-8 offset-2">
             <h1 class="h1">Log in</h1>
@@ -37,7 +37,7 @@
           </form>
       </div>
         <div class="col-4 register-container">
-            <p><b>Don't have an account yet?</b><br>Create one to review your teachers!</p>
+            <p><b>Don't have an account yet?</b><br>Create one to order tickets!</p>
             <form method="post" action="/register/create" id="formSignup">
                 <div class="form-group">
                     <input id="inputName" name="Name" placeholder="Full name" value="<?php if (!empty($user->Name)) {
@@ -54,7 +54,7 @@
                 </div>
 
                 <!--Start Google Captcha-->
-                <div class="g-recaptcha" data-sitekey="6LfLu74UAAAAAJvzZUPM-pMBixajOv_7QuCAGJ-b"></div>
+                <div class="g-recaptcha" data-sitekey="6Le3qKMZAAAAAK96RVEhDBukCzpYbq8cPo6xffnZ"></div>
                 <br/>
                 <!--End Google Captcha-->
 

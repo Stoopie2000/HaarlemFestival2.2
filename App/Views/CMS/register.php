@@ -7,7 +7,7 @@
 ?>
 
 <div class="content">
-<div class="container">
+<div class="food_container">
     <div class="form" id="register">
         <H1 class="text-center">Register</H1>
 

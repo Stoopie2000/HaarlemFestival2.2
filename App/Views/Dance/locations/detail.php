@@ -28,7 +28,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
 <body id="dancePage" class="">
 <?php include(dirname(dirname(dirname(__FILE__))) . "/Default/navigation_new.php") ?>
 <main style="">
-    <div class="titleContainerDetail container">
+    <div class="titleContainerDetail food_container">
         <div class="row">
             <div class="col-sm-8">
               <h1 style="text-transform: capitalize" >
@@ -36,7 +36,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
             </div>
         </div>
     </div>
-    <div class="container descriptionContainer">
+    <div class="food_container descriptionContainer">
         <div class="row">
             <div class="col-sm-6">
                 <p> <?php echo($venue->Description); ?> </p>
@@ -46,7 +46,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
             </div>
         </div>
     </div>
-    <div class="container ticketContainer">
+    <div class="food_container ticketContainer">
         <h2>Buy Tickets Now!</h2>
         <?php foreach ($concertsAtLocation as $concert) {
     echo("<div class='row ticket'>
@@ -77,7 +77,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
     }
 } ?>
     </div>
-    <div class="container allAccessContainer">
+    <div class="food_container allAccessContainer">
         <div class='row'>
             <div class='col-sm-6'>
                 <h2>All-access passes Haarlem dance</h2>
