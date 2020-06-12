@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Core\Model;
+use DateInterval;
 use DateTime;
 use PDO;
 
@@ -17,6 +18,7 @@ use PDO;
  * @property string Event
  * @property int VenueID
  * @property float Price
+ * @property int DurationInMinutes
  * @author Bram Bos <brambos27@gmail.com>
  */
 class Concert extends Model
@@ -102,7 +104,29 @@ class Concert extends Model
     public static function get_with_end_time_before($date, $time){
         $sql = "SELECT * FROM concerts where EndTime < ? AND DateID = ?";
         $parameters = [$time, $date];
+        $stmt = self::execute_select_query($sql, PDO::FETCH_CLASS, $parameters);
 
-        return self::execute_select_query($sql, $parameters);
+        return $stmt->fetchAll();
     }
+
+    public static function get_with_start_time_after($date, $time)
+    {
+        $sql = "SELECT * FROM concerts where StartTime" . ($time <= 6 ? '<' : '>') . " ? AND DateID = ?";
+        $parameters = [$time, $date];
+        $stmt = self::execute_select_query($sql,PDO::FETCH_CLASS, $parameters);
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * @return int
+     */
+    public function getDurationInMinutes()
+    {
+        $diff = $this->StartTime->diff($this->EndTime);
+        if ($diff->invert){
+            $diff = $this->StartTime->diff($this->EndTime->modify('+1 day'));
+        }
+        return  ($diff->h * 60) + ($diff->i);
+    }
+
 }

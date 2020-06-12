@@ -54,7 +54,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
             <div class=\"row\">
               <div class=\"col-sm-6\">
               <p>$basketItem->Description</p>
-              <p class='small descriptionExtra'>");
+              <p class='small mt-n3'>");
                 if(isset($basketItem->Extra)){echo $basketItem->Extra;};
                 echo ("
               </p>
@@ -75,7 +75,7 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
                 <a href=\"/order/removeItems?itemID=$basketItem->ItemID\">Remove Item</a>
               </div>
               <div class=\"col-sm-2 priceContainer\">
-              <b class='price' id='price$basketItem->ItemID'> € " . $basketItem->Price * $basketItem->Quantity . "</b>
+                <b class='price' id='price$basketItem->ItemID'> € " . $basketItem->Price * $basketItem->Quantity . "</b>
               </div>
             </div>";
         }
@@ -126,13 +126,12 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
             data : {item_id: item_id, new_quantity: new_quantity},
             type : 'post',
             success : function(response) {
-              update_screen(response)
+              update_screen(response, new_quantity, item_price, priceId)
             }
         });
     }
 
-    function update_screen(response){
-        console.log("success");
+    function update_screen(response, new_quantity, item_price, priceId){
         var totalItemPrice = new_quantity * item_price;
         $(priceId).text("€ " + totalItemPrice);
         var price_total = 0;
@@ -143,5 +142,4 @@ $_SESSION['return_to'] = $_SERVER['REDIRECT_URL'];
         });
         $("#priceTotal").text("€ " + parseInt(price_total))
     }
-
 </script>

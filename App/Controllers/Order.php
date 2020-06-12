@@ -74,7 +74,15 @@ class Order extends Controller
             $this->redirect('/login/new');
         }
 
-        View::render('Order/precheckout.php');
+        if (empty($_SESSION['basket'])){
+            $basket = "";
+        }else{
+            $basket = $_SESSION['basket'];
+        }
+
+        View::render('Order/precheckout.php', [
+            'basket' => $basket
+        ]);
     }
 
     public function updateQuantity(){

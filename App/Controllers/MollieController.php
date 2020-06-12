@@ -57,8 +57,11 @@ class MollieController extends Controller
                 ]);
 
                 $paymentId = $payment->id;
+
                 foreach ($_SESSION['basket']->items as $basketItem) {
-                    $basketItem->Item->add_order_to_database($orderId, $_SESSION['user_id'], $payment->status, $basketItem->Quantity);
+                    if (method_exists($basketItem->Item, 'add_order_to_database')) {
+                        $basketItem->Item->add_order_to_database($orderId, $_SESSION['user_id'], $payment->status, $basketItem->Quantity);
+                    }
                 }
 
                 header("Location: " . $payment->getCheckoutUrl(), true, 303);
