@@ -67,8 +67,8 @@
 }
 
 #dancePage .searchContainer {
+    top: -70px;
     position: relative;
-    top: -185px;
     z-index: 1000;
     width: fit-content;
     left: 1260px;
