@@ -39,7 +39,7 @@
 .custom-row{
   display: flex;
   position: relative;
-  top: 900px;
+  top: 800px;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -97,8 +97,7 @@
   align-items: center;
   text-align: center;
   position: relative;
-  top: 930px;
-
+  top: 800px;
 }
 
 

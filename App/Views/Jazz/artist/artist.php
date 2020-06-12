@@ -31,7 +31,6 @@
     </div>
 
     <div class="tab">
-            
             <?php
             echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz'><a>Line Up</a></button>");
             echo("<button class=tabLinks onclick=window.location.href='" . Config::URLROOT . "/jazz/Thursday'><a>Tickets</a></button>");?>
@@ -70,11 +69,8 @@
 
                             if($date->DateID == $concert->DateID){
                                 $dayName = date_format($date->Date, "l");
-                                $startTime = $concert->StartTime;
-                                $endTime = $concert->EndTime;
-
-                                $startTime = $startTime->format("H:i");
-                                $endTime = $endTime->format("H:i");
+                                $startTime = $concert->StartTime->format("H:i");
+                                $endTime = $concert->EndTime->format("H:i");
 
                                 echo("<div class='concert'><a class='dayNameArtist'>$dayName:<a class='concertTime'>$startTime - $endTime</a></div>");
                             }

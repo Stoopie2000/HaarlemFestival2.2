@@ -47,8 +47,7 @@
 
                 foreach($jazzArtists as $jazzArtist){
 
-                    $startTime = $jazzArtist->StartTime;
-                    $startTime = $startTime->format("H:i");
+                    $startTime = $jazzArtist->StartTime->format("H:i");
 
                     $replaceCharacters = array(" " => "-", "&" => "and");
                     $changedArtistName = strtolower(str_replace(array_keys($replaceCharacters), array_values($replaceCharacters), $jazzArtist->Name));
