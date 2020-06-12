@@ -26,18 +26,6 @@
                 <a class="menu menu-sub<?php echo ($params["action"] == 'events' && $params["event"] == 'food' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/events/food">Food</a>
             </div>
         <a class="menu menu-item<?php echo ($params["action"] == 'artists' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/artists">Artists</a>
-        <!--<a class="menu menu-item<?php echo ($params["action"] == 'finance' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/restaurants">Restaurants</a>-->
         <a class="menu menu-item<?php echo ($params["action"] == 'finance' ? ' active' : ''); ?>" href="<?php echo Config::URLROOT; ?>/cms/finance">Finance</a>
     </nav>
 </div>
-
-<?php /* A dropdown at hover
-            <div class="submenu nav flex-column nav-fill">
-                <a class="menu menu-item dropdown-toggle" href="<?php echo Config::URLROOT; ?>/cms/event" id="Event">Events</a>
-                <div class="sub" id="nav">
-                    <a class="menu menu-sub" href="<?php echo Config::URLROOT; ?>/cms/event?jazz">Jazz</a>
-                    <a class="menu menu-sub" href="#">Dance</a>
-                    <a class="menu menu-sub" href="#">Food</a>
-                </div>
-            </div>
-        */?>
